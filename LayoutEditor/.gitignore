@@ -1,0 +1,12 @@
+﻿# Ignore build folders
+bin/
+obj/
+
+# Ignore Visual Studio files
+*.user
+*.suo
+*.vcxproj.user
+
+# Ignore temporary files
+*.tmp
+

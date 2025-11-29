@@ -1,0 +1,1240 @@
+\documentclass[11pt,a4paper]{report}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in,headheight=14pt]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{menukeys}
+\usepackage{fontawesome5}
+
+% Colors
+\definecolor{primaryblue}{RGB}{74, 144, 217}
+\definecolor{successgreen}{RGB}{46, 204, 113}
+\definecolor{warningorange}{RGB}{243, 156, 18}
+\definecolor{errorred}{RGB}{231, 76, 60}
+\definecolor{codebg}{RGB}{248, 249, 250}
+\definecolor{darkgray}{RGB}{73, 80, 87}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primaryblue,
+    urlcolor=primaryblue,
+    citecolor=primaryblue,
+    pdftitle={Simulation Layout Editor - User Manual},
+    pdfauthor={Simulation Team},
+    pdfsubject={User Manual}
+}
+
+% Header/Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{Simulation Layout Editor}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Chapter formatting
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries\color{primaryblue}}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+% Code listing style
+\lstdefinelanguage{json}{
+    basicstyle=\ttfamily\small,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    literate=
+     *{0}{{{\color{primaryblue}0}}}{1}
+      {1}{{{\color{primaryblue}1}}}{1}
+      {2}{{{\color{primaryblue}2}}}{1}
+      {3}{{{\color{primaryblue}3}}}{1}
+      {4}{{{\color{primaryblue}4}}}{1}
+      {5}{{{\color{primaryblue}5}}}{1}
+      {6}{{{\color{primaryblue}6}}}{1}
+      {7}{{{\color{primaryblue}7}}}{1}
+      {8}{{{\color{primaryblue}8}}}{1}
+      {9}{{{\color{primaryblue}9}}}{1}
+      {:}{{{\color{darkgray}{:}}}}{1}
+      {,}{{{\color{darkgray}{,}}}}{1}
+      {\{}{{{\color{darkgray}{\{}}}}{1}
+      {\}}{{{\color{darkgray}{\}}}}}{1}
+      {[}{{{\color{darkgray}{[}}}}{1}
+      {]}{{{\color{darkgray}{]}}}}{1},
+    morestring=[b]",
+    stringstyle=\color{successgreen},
+}
+
+\lstset{
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    rulecolor=\color{gray!30},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{primaryblue},
+    stringstyle=\color{successgreen},
+    commentstyle=\color{gray},
+    tabsize=2
+}
+
+% Custom boxes
+\newtcolorbox{notebox}{
+    colback=primaryblue!10,
+    colframe=primaryblue,
+    title=\faInfoCircle\ Note,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{tipbox}{
+    colback=successgreen!10,
+    colframe=successgreen,
+    title=\faLightbulb\ Tip,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{warningbox}{
+    colback=warningorange!10,
+    colframe=warningorange,
+    title=\faExclamationTriangle\ Warning,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{importantbox}{
+    colback=errorred!10,
+    colframe=errorred,
+    title=\faExclamationCircle\ Important,
+    fonttitle=\bfseries
+}
+
+% Custom commands
+\newcommand{\menupath}[1]{\texttt{\color{darkgray}#1}}
+\newcommand{\keystroke}[1]{\texttt{\fcolorbox{gray!50}{gray!10}{#1}}}
+\newcommand{\button}[1]{\texttt{[#1]}}
+
+% Document info
+\title{
+    \vspace{-2cm}
+    \includegraphics[width=0.3\textwidth]{placeholder}\\[1cm]
+    {\Huge\bfseries\color{primaryblue}Simulation Layout Editor}\\[0.5cm]
+    {\LARGE User Manual}\\[0.3cm]
+    {\large Version 2.0}
+}
+\author{Simulation Team}
+\date{\today}
+
+\begin{document}
+
+% Title page
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\Huge\bfseries\color{primaryblue}Simulation Layout Editor}\\[1cm]
+    {\LARGE User Manual}\\[0.5cm]
+    {\large Version 2.0}
+    
+    \vspace{2cm}
+    
+    \begin{tcolorbox}[colback=white,colframe=primaryblue,width=0.8\textwidth]
+        \centering
+        \large
+        A visual editor for creating discrete event simulation layouts with support for manufacturing systems, AGV routing, and process modeling.
+    \end{tcolorbox}
+    
+    \vfill
+    
+    {\large\today}
+    
+\end{titlepage}
+
+% Table of contents
+\tableofcontents
+\newpage
+
+% ============================================================================
+\chapter{Introduction}
+% ============================================================================
+
+\section{Overview}
+
+The \textbf{Simulation Layout Editor} is a visual design tool for creating discrete event simulation layouts. It provides an intuitive interface for designing manufacturing floors, production lines, warehouse systems, and other process-oriented environments.
+
+\subsection{Key Features}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Visual Layout Design} -- Drag-and-drop placement of simulation elements
+    \item \textbf{Multiple Node Types} -- Sources, sinks, machines, buffers, workstations, and more
+    \item \textbf{Path Routing} -- Single and double lane paths with direct or Manhattan routing
+    \item \textbf{Simulation Parameters} -- Configure process times, capacities, and distributions
+    \item \textbf{Validation} -- Automatic detection of layout issues
+    \item \textbf{JSON Export} -- Standard format for simulation engine consumption
+    \item \textbf{Icon Library} -- 40+ industrial vector icons
+\end{itemize}
+
+\subsection{System Requirements}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Component} & \textbf{Requirement} \\
+\midrule
+Operating System & Windows 10/11 (64-bit) \\
+Runtime & .NET 8.0 Desktop Runtime \\
+Memory & 4 GB RAM minimum \\
+Display & 1280 $\times$ 720 minimum resolution \\
+\bottomrule
+\end{tabular}
+\caption{System requirements}
+\end{table}
+
+\section{Installation}
+
+\subsection{Prerequisites}
+
+Ensure the .NET 8.0 Desktop Runtime is installed. Download from:
+\begin{center}
+\url{https://dotnet.microsoft.com/download/dotnet/8.0}
+\end{center}
+
+\subsection{Running the Application}
+
+\begin{enumerate}
+    \item Extract the \texttt{LayoutEditor.zip} archive
+    \item Navigate to the extracted folder
+    \item Run \texttt{dotnet build} to compile
+    \item Run \texttt{dotnet run} to start the application
+\end{enumerate}
+
+Alternatively, if you have a compiled executable:
+\begin{enumerate}
+    \item Double-click \texttt{LayoutEditor.exe}
+\end{enumerate}
+
+% ============================================================================
+\chapter{User Interface}
+% ============================================================================
+
+\section{Main Window Layout}
+
+The application window is divided into several functional areas:
+
+\begin{figure}[h]
+\centering
+\begin{tcolorbox}[colback=white,colframe=gray,width=\textwidth]
+\begin{verbatim}
++------------------------------------------------------------------+
+|  Menu Bar                                                         |
++------------------------------------------------------------------+
+|  Toolbar (File, Edit, Tools, Zoom, Validation)                   |
++------------+-------------------------------------+----------------+
+|            |                                     |                |
+|  Toolbox   |                                     |   Properties   |
+|  & Layers  |         Canvas Area                 |     Panel      |
+|            |                                     |                |
+|  - Nodes   |     [Grid and Layout Elements]      |  - Basic Info  |
+|  - Layers  |                                     |  - Position    |
+|  - Elements|                          [Minimap]  |  - Simulation  |
+|            |                                     |                |
++------------+-------------------------------------+----------------+
+|  Status Bar (Mode, Coordinates, Units, Counts)                   |
++------------------------------------------------------------------+
+\end{verbatim}
+\end{tcolorbox}
+\caption{Main window layout}
+\end{figure}
+
+\section{Menu Bar}
+
+\subsection{File Menu}
+
+\begin{longtable}{p{4cm}p{3cm}p{7cm}}
+\toprule
+\textbf{Command} & \textbf{Shortcut} & \textbf{Description} \\
+\midrule
+\endhead
+New & \keystroke{Ctrl+N} & Create a new empty layout \\
+Open & \keystroke{Ctrl+O} & Open an existing layout file \\
+Save & \keystroke{Ctrl+S} & Save current layout \\
+Save As & -- & Save with a new filename \\
+Import Background & -- & Load a floor plan image \\
+Import DXF & -- & Import CAD drawing (future) \\
+Export for Simulation & -- & Export simulation-ready JSON \\
+Export as Image & -- & Save canvas as image (future) \\
+Exit & -- & Close application \\
+\bottomrule
+\caption{File menu commands}
+\end{longtable}
+
+\subsection{Edit Menu}
+
+\begin{longtable}{p{4cm}p{3cm}p{7cm}}
+\toprule
+\textbf{Command} & \textbf{Shortcut} & \textbf{Description} \\
+\midrule
+\endhead
+Undo & \keystroke{Ctrl+Z} & Undo last action (50 levels) \\
+Redo & \keystroke{Ctrl+Y} & Redo undone action \\
+Cut & \keystroke{Ctrl+X} & Cut selected elements \\
+Copy & \keystroke{Ctrl+C} & Copy selected elements \\
+Paste & \keystroke{Ctrl+V} & Paste elements \\
+Delete & \keystroke{Delete} & Delete selected elements \\
+Select All & \keystroke{Ctrl+A} & Select all nodes \\
+Group & \keystroke{Ctrl+G} & Group selected nodes \\
+Ungroup & \keystroke{Ctrl+Shift+G} & Ungroup selection \\
+\bottomrule
+\caption{Edit menu commands}
+\end{longtable}
+
+\subsection{View Menu}
+
+\begin{longtable}{p{4cm}p{3cm}p{7cm}}
+\toprule
+\textbf{Command} & \textbf{Shortcut} & \textbf{Description} \\
+\midrule
+\endhead
+Zoom In & \keystroke{Ctrl++} & Increase zoom level \\
+Zoom Out & \keystroke{Ctrl+-} & Decrease zoom level \\
+Zoom to Fit & \keystroke{Ctrl+0} & Fit all content in view \\
+Reset Zoom & -- & Return to 100\% zoom \\
+Show Grid & -- & Toggle grid visibility \\
+Show Rulers & -- & Toggle ruler visibility \\
+Show Minimap & -- & Toggle minimap overlay \\
+Show Labels & -- & Toggle node labels \\
+Snap to Grid & -- & Toggle grid snapping \\
+Show Alignment Guides & -- & Toggle alignment guides \\
+\bottomrule
+\caption{View menu commands}
+\end{longtable}
+
+\section{Toolbar}
+
+The toolbar provides quick access to common operations:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ccp{8cm}}
+\toprule
+\textbf{Icon} & \textbf{Name} & \textbf{Function} \\
+\midrule
+\faFile & New & Create new layout \\
+\faFolderOpen & Open & Open existing file \\
+\faSave & Save & Save current file \\
+\faUndo & Undo & Undo last action \\
+\faRedo & Redo & Redo action \\
+\faMousePointer & Select & Selection mode (default) \\
+\faHandPaper & Pan & Pan/scroll mode \\
+\faArrowRight & Path & Draw path mode \\
+\faSquare & Zone & Draw zone mode \\
+\faMinus & Zoom Out & Decrease zoom \\
+\faPlus & Zoom In & Increase zoom \\
+\faCheck & Validate & Run validation \\
+\bottomrule
+\end{tabular}
+\caption{Toolbar buttons}
+\end{table}
+
+\section{Left Panel: Toolbox \& Layers}
+
+\subsection{Node Toolbox}
+
+The toolbox contains all available node types organized by category:
+
+\subsubsection{Sources \& Sinks}
+\begin{itemize}
+    \item \textbf{Source} -- Entry point for entities into the system
+    \item \textbf{Sink/Exit} -- Exit point where entities leave the system
+\end{itemize}
+
+\subsubsection{Processing}
+\begin{itemize}
+    \item \textbf{Machine} -- Processing station with configurable process time
+    \item \textbf{Workstation} -- Manual or semi-automated work area
+    \item \textbf{Inspection} -- Quality control checkpoint
+\end{itemize}
+
+\subsubsection{Buffers \& Storage}
+\begin{itemize}
+    \item \textbf{Buffer (FIFO)} -- First-in-first-out queue
+    \item \textbf{Storage/Rack} -- General storage area
+\end{itemize}
+
+\subsubsection{Transport}
+\begin{itemize}
+    \item \textbf{Conveyor} -- Material transport line
+    \item \textbf{Junction} -- Path intersection point
+    \item \textbf{AGV Station} -- Automated guided vehicle stop
+\end{itemize}
+
+\subsection{Layers Panel}
+
+Control visibility of different element types:
+
+\begin{itemize}
+    \item \textbf{Background} -- Floor plan or reference image
+    \item \textbf{Corridors} -- AGV/transport corridors
+    \item \textbf{Zones} -- Restricted or special areas
+    \item \textbf{Paths} -- Connection lines between nodes
+    \item \textbf{Nodes} -- All simulation elements
+    \item \textbf{Labels} -- Node names and identifiers
+\end{itemize}
+
+\subsection{Elements List}
+
+Displays all nodes and paths in the current layout. Click an item to select it on the canvas.
+
+\section{Right Panel: Properties}
+
+The properties panel shows details of the selected element.
+
+\subsection{Node Properties}
+
+\subsubsection{Basic Information}
+\begin{itemize}
+    \item \textbf{ID} -- Unique identifier (read-only)
+    \item \textbf{Type} -- Node type (source, machine, etc.)
+    \item \textbf{Name} -- Descriptive name
+    \item \textbf{Label} -- Short label shown on canvas
+\end{itemize}
+
+\subsubsection{Position \& Size}
+\begin{itemize}
+    \item \textbf{X, Y} -- Canvas coordinates
+    \item \textbf{Width, Height} -- Node dimensions
+    \item \textbf{Rotation} -- Rotation angle in degrees
+\end{itemize}
+
+\subsubsection{Visual}
+\begin{itemize}
+    \item \textbf{Icon} -- Visual representation
+    \item \textbf{Color} -- Node color (hex format)
+    \item \textbf{Label Position} -- Bottom, Top, Left, Right, Center
+\end{itemize}
+
+\subsubsection{Simulation Parameters}
+
+Parameters vary by node type. See Chapter~\ref{ch:simulation} for details.
+
+\subsection{Path Properties}
+
+\begin{itemize}
+    \item \textbf{From/To} -- Connected nodes
+    \item \textbf{Path Type} -- Single or Double lane
+    \item \textbf{Routing Mode} -- Direct, Manhattan, or Corridor
+    \item \textbf{Transport Type} -- Conveyor, AGV, Manual, Crane
+    \item \textbf{Speed} -- Transport speed
+    \item \textbf{Capacity} -- Maximum entities on path
+\end{itemize}
+
+\section{Canvas Area}
+
+The central canvas is where you design your layout.
+
+\subsection{Navigation}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lp{8cm}}
+\toprule
+\textbf{Action} & \textbf{How To} \\
+\midrule
+Pan & Hold \keystroke{Space} and drag, or use Pan tool \\
+Zoom In/Out & \keystroke{Ctrl} + Mouse Wheel \\
+Zoom to Fit & \keystroke{Ctrl+0} or toolbar button \\
+\bottomrule
+\end{tabular}
+\caption{Canvas navigation}
+\end{table}
+
+\subsection{Grid and Snapping}
+
+\begin{itemize}
+    \item Grid lines help align elements
+    \item When ``Snap to Grid'' is enabled, elements align to grid intersections
+    \item Default grid size is 20 pixels
+\end{itemize}
+
+\subsection{Minimap}
+
+The minimap in the bottom-right corner shows an overview of the entire layout. The blue rectangle indicates the current viewport.
+
+\section{Status Bar}
+
+The status bar displays:
+
+\begin{itemize}
+    \item \textbf{Status} -- Current operation or message
+    \item \textbf{Mode} -- Active tool (Select, Pan, Path, etc.)
+    \item \textbf{Coordinates} -- Mouse position in current units
+    \item \textbf{Units} -- Current measurement unit (meters, feet, pixels)
+    \item \textbf{Counts} -- Number of nodes and paths
+    \item \textbf{File} -- Current filename and save status
+\end{itemize}
+
+% ============================================================================
+\chapter{Working with Nodes}
+% ============================================================================
+
+\section{Adding Nodes}
+
+There are several ways to add nodes to the canvas:
+
+\subsection{Method 1: Toolbox Button}
+
+\begin{enumerate}
+    \item Click a node type button in the left toolbox
+    \item The node appears at the center of the visible canvas
+    \item Drag to reposition as needed
+\end{enumerate}
+
+\subsection{Method 2: Right-Click Menu}
+
+\begin{enumerate}
+    \item Right-click on the canvas at the desired location
+    \item Select \menupath{Add Node Here} from the context menu
+    \item Choose the node type from the submenu
+\end{enumerate}
+
+\begin{tipbox}
+Using the right-click method places the node exactly where you click, saving time on positioning.
+\end{tipbox}
+
+\section{Selecting Nodes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lp{8cm}}
+\toprule
+\textbf{Action} & \textbf{Result} \\
+\midrule
+Click node & Select single node (deselects others) \\
+\keystroke{Ctrl} + Click & Toggle node in selection \\
+\keystroke{Shift} + Click & Add node to selection \\
+\keystroke{Ctrl+A} & Select all nodes \\
+Click empty space & Deselect all \\
+\bottomrule
+\end{tabular}
+\caption{Selection methods}
+\end{table}
+
+Selected nodes display a blue glow effect and thicker borders.
+
+\section{Moving Nodes}
+
+\begin{enumerate}
+    \item Select one or more nodes
+    \item Click and drag any selected node
+    \item All selected nodes move together
+    \item Release to place
+\end{enumerate}
+
+\begin{notebox}
+When ``Snap to Grid'' is enabled, nodes automatically align to grid points while dragging.
+\end{notebox}
+
+\section{Editing Node Properties}
+
+\begin{enumerate}
+    \item Select a single node
+    \item View properties in the right panel
+    \item Edit values directly in the text fields
+    \item Changes apply immediately
+\end{enumerate}
+
+\section{Duplicating Nodes}
+
+\begin{enumerate}
+    \item Select one or more nodes
+    \item Right-click and select \menupath{Duplicate}
+    \item Copies appear offset from originals
+    \item New nodes are automatically selected
+\end{enumerate}
+
+\section{Deleting Nodes}
+
+\begin{enumerate}
+    \item Select nodes to delete
+    \item Press \keystroke{Delete} or use \menupath{Edit > Delete}
+\end{enumerate}
+
+\begin{warningbox}
+Deleting a node also deletes all paths connected to it.
+\end{warningbox}
+
+\section{Aligning Multiple Nodes}
+
+When multiple nodes are selected, alignment tools appear in the properties panel:
+
+\begin{itemize}
+    \item \textbf{Align Left} -- Align to leftmost node
+    \item \textbf{Align Top} -- Align to topmost node
+    \item \textbf{Distribute Horizontally} -- Equal horizontal spacing
+    \item \textbf{Distribute Vertically} -- Equal vertical spacing
+\end{itemize}
+
+% ============================================================================
+\chapter{Working with Paths}
+% ============================================================================
+
+\section{Path Concepts}
+
+Paths represent material flow or entity movement between nodes. Each path has:
+
+\begin{itemize}
+    \item A \textbf{source node} (where entities come from)
+    \item A \textbf{destination node} (where entities go)
+    \item Optional \textbf{waypoints} for custom routing
+    \item \textbf{Visual properties} (color, thickness, style)
+    \item \textbf{Simulation properties} (speed, capacity, transport type)
+\end{itemize}
+
+\section{Path Types}
+
+\subsection{Single Lane}
+
+Standard unidirectional path. Drawn as a single line with an arrow indicating direction.
+
+\subsection{Double Lane}
+
+Higher-capacity path rendered as two parallel lines. Useful for:
+\begin{itemize}
+    \item High-throughput connections
+    \item Bidirectional transport (visual indication)
+    \item Multi-lane conveyors
+\end{itemize}
+
+\section{Routing Modes}
+
+\subsection{Direct Routing}
+
+Straight line from source to destination. Best for:
+\begin{itemize}
+    \item Short connections
+    \item Adjacent nodes
+    \item Simple layouts
+\end{itemize}
+
+\subsection{Manhattan Routing}
+
+Paths use only horizontal and vertical segments (90° turns). Best for:
+\begin{itemize}
+    \item Grid-based layouts
+    \item Conveyor systems
+    \item Clean, organized appearance
+\end{itemize}
+
+\section{Creating Paths}
+
+\subsection{Method 1: Path Tool}
+
+\begin{enumerate}
+    \item Select the Path tool from the toolbar (or press \keystroke{P})
+    \item Click the source node
+    \item (Optional) \keystroke{Ctrl} + Click to add waypoints
+    \item Click the destination node
+\end{enumerate}
+
+\subsection{Method 2: Right-Click Menu}
+
+\begin{enumerate}
+    \item Right-click on the source node
+    \item Select \menupath{Start Path From Here}
+    \item Right-click on the destination node
+    \item Select \menupath{End Path Here}
+\end{enumerate}
+
+\subsection{Setting Path Options Before Drawing}
+
+Before creating a path, set options in the toolbar:
+\begin{itemize}
+    \item \textbf{Path Type} dropdown -- Single or Double
+    \item \textbf{Manhattan} checkbox -- Enable orthogonal routing
+\end{itemize}
+
+\section{Adding Waypoints}
+
+Waypoints allow custom path routing:
+
+\begin{enumerate}
+    \item Start path drawing (click source node)
+    \item Hold \keystroke{Ctrl} and click to add waypoint
+    \item Add additional waypoints as needed
+    \item Click destination node to complete
+\end{enumerate}
+
+\begin{tipbox}
+Waypoints are useful for routing paths around obstacles or through specific corridors.
+\end{tipbox}
+
+\section{Editing Paths}
+
+\begin{enumerate}
+    \item Click on a path line to select it (or use Elements list)
+    \item Edit properties in the right panel
+    \item Changes to From/To reconnect the path to different nodes
+\end{enumerate}
+
+\section{Deleting Paths}
+
+\begin{enumerate}
+    \item Select the path
+    \item Press \keystroke{Delete} or click \button{Delete Path} in properties panel
+\end{enumerate}
+
+% ============================================================================
+\chapter{Simulation Parameters}
+\label{ch:simulation}
+% ============================================================================
+
+\section{Overview}
+
+Each node type has specific simulation parameters that control behavior during simulation execution.
+
+\section{Statistical Distributions}
+
+Many parameters use statistical distributions to model variability:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lp{5cm}l}
+\toprule
+\textbf{Distribution} & \textbf{Parameters} & \textbf{Use Case} \\
+\midrule
+Constant & Value & Fixed times \\
+Exponential & Mean ($\mu$) & Random arrivals \\
+Normal & Mean ($\mu$), Std Dev ($\sigma$) & Natural variation \\
+Uniform & Min, Max & Equal probability range \\
+Triangular & Min, Mode, Max & Estimated ranges \\
+Weibull & Shape (k), Scale ($\lambda$) & Failure modeling \\
+\bottomrule
+\end{tabular}
+\caption{Available statistical distributions}
+\end{table}
+
+\section{Node-Specific Parameters}
+
+\subsection{Source Nodes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lp{8cm}}
+\toprule
+\textbf{Parameter} & \textbf{Description} \\
+\midrule
+Interarrival Time & Time between entity arrivals (distribution) \\
+Entity Type & Type/class of generated entities \\
+Batch Size & Number of entities per arrival \\
+Max Arrivals & Limit on total arrivals (optional) \\
+\bottomrule
+\end{tabular}
+\caption{Source node parameters}
+\end{table}
+
+\begin{notebox}
+For an arrival rate of $\lambda$ entities per hour, set the interarrival time to an exponential distribution with mean $\mu = 60/\lambda$ minutes.
+\end{notebox}
+
+\subsection{Machine \& Workstation Nodes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lp{8cm}}
+\toprule
+\textbf{Parameter} & \textbf{Description} \\
+\midrule
+Servers & Number of parallel processing units \\
+Capacity & Maximum entities that can be processed simultaneously \\
+Process Time & Time to process one entity (distribution) \\
+Setup Time & Time between different entity types (optional) \\
+MTBF & Mean Time Between Failures (hours) \\
+MTTR & Mean Time To Repair (minutes) \\
+\bottomrule
+\end{tabular}
+\caption{Machine/Workstation parameters}
+\end{table}
+
+\subsection{Buffer \& Storage Nodes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lp{8cm}}
+\toprule
+\textbf{Parameter} & \textbf{Description} \\
+\midrule
+Capacity & Maximum number of entities \\
+Initial Level & Entities present at simulation start \\
+Queue Discipline & FIFO, LIFO, or Priority \\
+Blocking Mode & Behavior when full \\
+\bottomrule
+\end{tabular}
+\caption{Buffer/Storage parameters}
+\end{table}
+
+\subsection{Inspection Nodes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lp{8cm}}
+\toprule
+\textbf{Parameter} & \textbf{Description} \\
+\midrule
+Servers & Number of inspection stations \\
+Process Time & Inspection duration (distribution) \\
+\bottomrule
+\end{tabular}
+\caption{Inspection node parameters}
+\end{table}
+
+\subsection{Sink Nodes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lp{8cm}}
+\toprule
+\textbf{Parameter} & \textbf{Description} \\
+\midrule
+Collect Statistics & Enable/disable output statistics collection \\
+\bottomrule
+\end{tabular}
+\caption{Sink node parameters}
+\end{table}
+
+\section{Path Parameters}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lp{8cm}}
+\toprule
+\textbf{Parameter} & \textbf{Description} \\
+\midrule
+Transport Type & Conveyor, AGV, Manual, or Crane \\
+Speed & Transport velocity (units per time) \\
+Capacity & Maximum entities on path simultaneously \\
+Distance & Path length (auto-calculated or manual) \\
+Lanes & Number of parallel lanes \\
+Bidirectional & Allow two-way travel \\
+\bottomrule
+\end{tabular}
+\caption{Path simulation parameters}
+\end{table}
+
+% ============================================================================
+\chapter{Validation}
+% ============================================================================
+
+\section{Overview}
+
+The validation system checks your layout for potential issues before simulation. Run validation via:
+\begin{itemize}
+    \item \menupath{Validate > Validate Layout}
+    \item Toolbar validate button
+    \item Keyboard shortcut \keystroke{F5}
+\end{itemize}
+
+\section{Validation Rules}
+
+\subsection{Error-Level Issues}
+
+Errors indicate problems that will likely cause simulation failures:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lp{7cm}}
+\toprule
+\textbf{Code} & \textbf{Description} \\
+\midrule
+ZERO\_SERVERS & Machine has 0 servers configured \\
+ZERO\_CAPACITY & Buffer has 0 capacity \\
+MISSING\_PROCESS\_TIME & Machine lacks process time distribution \\
+MISSING\_INTERARRIVAL & Source lacks interarrival time \\
+INVALID\_DISTRIBUTION & Distribution parameters are invalid \\
+UNREACHABLE\_SINK & No path exists from any source to sink \\
+\bottomrule
+\end{tabular}
+\caption{Error-level validation issues}
+\end{table}
+
+\subsection{Warning-Level Issues}
+
+Warnings indicate potential problems or unusual configurations:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lp{7cm}}
+\toprule
+\textbf{Code} & \textbf{Description} \\
+\midrule
+DISCONNECTED\_NODE & Node has no incoming or outgoing paths \\
+ORPHAN\_SOURCE & Source has no outgoing paths \\
+ORPHAN\_SINK & Sink has no incoming paths \\
+NO\_SOURCES & Layout has no source nodes \\
+NO\_SINKS & Layout has no sink nodes \\
+OVERLAPPING\_NODES & Two nodes visually overlap \\
+PATH\_CROSSES\_RESTRICTED & Path goes through restricted zone \\
+\bottomrule
+\end{tabular}
+\caption{Warning-level validation issues}
+\end{table}
+
+\section{Interpreting Results}
+
+The validation status appears in the toolbar:
+
+\begin{itemize}
+    \item \textcolor{successgreen}{\faCheck\ Valid} -- No issues found
+    \item \textcolor{warningorange}{\faExclamationTriangle\ X errors, Y warnings} -- Issues detected
+\end{itemize}
+
+Click the validation button to see a detailed report of all issues.
+
+% ============================================================================
+\chapter{File Operations}
+% ============================================================================
+
+\section{File Format}
+
+Layouts are saved as JSON files with the \texttt{.json} extension. The format includes:
+
+\begin{itemize}
+    \item Metadata (name, author, units)
+    \item Canvas settings
+    \item Templates
+    \item All nodes with visual and simulation properties
+    \item All paths with routing and transport settings
+    \item Zones and groups
+    \item Display preferences
+\end{itemize}
+
+\section{Saving Layouts}
+
+\subsection{Save}
+\keystroke{Ctrl+S} saves to the current file. If no file exists, prompts for filename.
+
+\subsection{Save As}
+Creates a new file with a different name, leaving the original unchanged.
+
+\section{Opening Layouts}
+
+\keystroke{Ctrl+O} opens a file browser to select an existing layout file.
+
+\begin{warningbox}
+Opening a file replaces the current layout. Save your work first if needed.
+\end{warningbox}
+
+\section{Exporting for Simulation}
+
+\menupath{File > Export for Simulation} creates a streamlined JSON file containing only simulation-relevant data (removes visual properties for smaller file size).
+
+\section{Importing Background Images}
+
+\begin{enumerate}
+    \item \menupath{File > Import Background}
+    \item Select an image file (PNG, JPG, BMP)
+    \item Adjust opacity in canvas settings
+    \item Use as reference for node placement
+\end{enumerate}
+
+\begin{tipbox}
+Set background opacity to 20-30\% for best visibility while still seeing your layout elements.
+\end{tipbox}
+
+% ============================================================================
+\chapter{Keyboard Shortcuts}
+% ============================================================================
+
+\section{Quick Reference}
+
+\begin{longtable}{lp{8cm}}
+\toprule
+\textbf{Shortcut} & \textbf{Action} \\
+\midrule
+\endhead
+\multicolumn{2}{l}{\textbf{File Operations}} \\
+\keystroke{Ctrl+N} & New layout \\
+\keystroke{Ctrl+O} & Open layout \\
+\keystroke{Ctrl+S} & Save layout \\
+\midrule
+\multicolumn{2}{l}{\textbf{Edit Operations}} \\
+\keystroke{Ctrl+Z} & Undo \\
+\keystroke{Ctrl+Y} & Redo \\
+\keystroke{Ctrl+X} & Cut \\
+\keystroke{Ctrl+C} & Copy \\
+\keystroke{Ctrl+V} & Paste \\
+\keystroke{Delete} & Delete selected \\
+\keystroke{Ctrl+A} & Select all \\
+\keystroke{Ctrl+G} & Group selected \\
+\keystroke{Ctrl+Shift+G} & Ungroup \\
+\midrule
+\multicolumn{2}{l}{\textbf{View Operations}} \\
+\keystroke{Ctrl+Scroll} & Zoom in/out \\
+\keystroke{Ctrl+0} & Zoom to fit \\
+\keystroke{Space+Drag} & Pan canvas \\
+\midrule
+\multicolumn{2}{l}{\textbf{Tools}} \\
+\keystroke{Escape} & Cancel current operation \\
+\keystroke{F5} & Validate layout \\
+\midrule
+\multicolumn{2}{l}{\textbf{Path Drawing}} \\
+\keystroke{Ctrl+Click} & Add waypoint (in path mode) \\
+\midrule
+\multicolumn{2}{l}{\textbf{Selection}} \\
+\keystroke{Ctrl+Click} & Toggle selection \\
+\keystroke{Shift+Click} & Add to selection \\
+\bottomrule
+\caption{Keyboard shortcuts}
+\end{longtable}
+
+% ============================================================================
+\chapter{Best Practices}
+% ============================================================================
+
+\section{Layout Design Tips}
+
+\begin{enumerate}
+    \item \textbf{Start with sources and sinks} -- Define entry and exit points first
+    \item \textbf{Work left-to-right} -- Typical flow direction aids readability
+    \item \textbf{Use consistent spacing} -- Enable grid snapping for alignment
+    \item \textbf{Group related elements} -- Use the Group feature for logical sections
+    \item \textbf{Label clearly} -- Use descriptive names for all elements
+    \item \textbf{Validate often} -- Check for issues during design, not just at the end
+\end{enumerate}
+
+\section{Naming Conventions}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Element} & \textbf{Suggested Format} \\
+\midrule
+Sources & ``Raw Material Input'', ``Part Arrival'' \\
+Machines & ``CNC Mill 1'', ``Drill Press A'' \\
+Buffers & ``WIP Buffer'', ``Input Queue'' \\
+Workstations & ``Assembly Station 1'', ``Packing'' \\
+Sinks & ``Shipping'', ``Finished Goods Exit'' \\
+\bottomrule
+\end{tabular}
+\caption{Naming conventions}
+\end{table}
+
+\section{Performance Considerations}
+
+\begin{itemize}
+    \item Large layouts (100+ nodes) may experience slower rendering
+    \item Disable minimap for very large layouts if needed
+    \item Use layers to hide elements you're not currently editing
+    \item Save frequently during extended editing sessions
+\end{itemize}
+
+% ============================================================================
+\chapter{Troubleshooting}
+% ============================================================================
+
+\section{Common Issues}
+
+\subsection{Application Won't Start}
+
+\begin{itemize}
+    \item Ensure .NET 8.0 Desktop Runtime is installed
+    \item Check Windows Event Viewer for error messages
+    \item Try running from command line to see error output
+\end{itemize}
+
+\subsection{Cannot Save File}
+
+\begin{itemize}
+    \item Verify write permissions for the target folder
+    \item Check if file is open in another application
+    \item Ensure sufficient disk space
+\end{itemize}
+
+\subsection{Nodes Not Visible}
+
+\begin{itemize}
+    \item Check if ``Nodes'' layer is enabled in Layers panel
+    \item Zoom out to see if nodes are outside visible area
+    \item Use ``Zoom to Fit'' (\keystroke{Ctrl+0})
+\end{itemize}
+
+\subsection{Paths Not Connecting Properly}
+
+\begin{itemize}
+    \item Ensure you're clicking on the node, not empty space
+    \item Check that both nodes exist and aren't deleted
+    \item Verify ``Paths'' layer is visible
+\end{itemize}
+
+\section{Getting Help}
+
+For additional support:
+\begin{itemize}
+    \item Check \menupath{Help > User Guide}
+    \item View \menupath{Help > Keyboard Shortcuts}
+    \item Contact your simulation team administrator
+\end{itemize}
+
+% ============================================================================
+\appendix
+\chapter{JSON Schema Reference}
+% ============================================================================
+
+\section{Root Structure}
+
+\begin{lstlisting}[language=json,caption={Root JSON structure}]
+{
+  "version": "2.0",
+  "metadata": { ... },
+  "canvas": { ... },
+  "templates": [ ... ],
+  "corridors": [ ... ],
+  "nodes": [ ... ],
+  "paths": [ ... ],
+  "zones": [ ... ],
+  "groups": [ ... ],
+  "display": { ... },
+  "validation": { ... }
+}
+\end{lstlisting}
+
+\section{Node Object}
+
+\begin{lstlisting}[language=json,caption={Node JSON structure}]
+{
+  "id": "mach_001",
+  "type": "machine",
+  "name": "CNC Mill 1",
+  "label": "M1",
+  "visual": {
+    "x": 350,
+    "y": 250,
+    "width": 80,
+    "height": 60,
+    "rotation": 0,
+    "icon": "cnc_mill",
+    "color": "#4A90D9",
+    "labelPosition": "bottom",
+    "labelVisible": true
+  },
+  "simulation": {
+    "servers": 1,
+    "capacity": 1,
+    "processTime": {
+      "distribution": "triangular",
+      "min": 8.0,
+      "mode": 10.0,
+      "max": 15.0,
+      "unit": "minutes"
+    },
+    "mtbf": 480,
+    "mttr": 30
+  }
+}
+\end{lstlisting}
+
+\section{Path Object}
+
+\begin{lstlisting}[language=json,caption={Path JSON structure}]
+{
+  "id": "path_001",
+  "from": "src_001",
+  "to": "buf_001",
+  "pathType": "single",
+  "routingMode": "direct",
+  "visual": {
+    "color": "#888888",
+    "thickness": 2,
+    "style": "solid",
+    "arrowSize": 8,
+    "laneSpacing": 6,
+    "waypoints": []
+  },
+  "simulation": {
+    "transportType": "conveyor",
+    "speed": 1.0,
+    "capacity": 10,
+    "lanes": 1,
+    "bidirectional": false
+  }
+}
+\end{lstlisting}
+
+% ============================================================================
+\chapter{Icon Reference}
+% ============================================================================
+
+\section{Available Icons}
+
+\begin{longtable}{llp{6cm}}
+\toprule
+\textbf{Category} & \textbf{Icon Key} & \textbf{Description} \\
+\midrule
+\endhead
+\multirow{3}{*}{Sources} & source\_arrow & Arrow indicating entry \\
+ & source\_funnel & Funnel shape \\
+ & source\_truck & Truck/delivery icon \\
+\midrule
+\multirow{3}{*}{Sinks} & exit\_flag & Finish flag \\
+ & exit\_door & Door/exit \\
+ & exit\_arrow & Arrow indicating exit \\
+\midrule
+\multirow{6}{*}{Machines} & machine\_generic & Generic machine \\
+ & cnc\_mill & CNC milling machine \\
+ & cnc\_lathe & CNC lathe \\
+ & robot\_arm & Robotic arm \\
+ & press & Press machine \\
+ & drill & Drill press \\
+\midrule
+\multirow{4}{*}{Buffers} & buffer\_fifo & FIFO queue \\
+ & buffer\_lifo & LIFO stack \\
+ & buffer\_rack & Storage rack \\
+ & buffer\_pallet & Pallet storage \\
+\midrule
+\multirow{3}{*}{Stations} & workstation & General workstation \\
+ & assembly & Assembly station \\
+ & inspection & Inspection point \\
+\midrule
+\multirow{3}{*}{Transport} & conveyor & Conveyor belt \\
+ & agv & Automated guided vehicle \\
+ & junction & Path junction \\
+\bottomrule
+\caption{Available icons by category}
+\end{longtable}
+
+% ============================================================================
+% Back matter
+% ============================================================================
+
+\chapter*{Document History}
+\addcontentsline{toc}{chapter}{Document History}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llp{8cm}}
+\toprule
+\textbf{Version} & \textbf{Date} & \textbf{Changes} \\
+\midrule
+2.0 & January 2025 & Initial release of v2.0 user manual \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}

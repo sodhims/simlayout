@@ -1,0 +1,375 @@
+{
+  "version": "2.1",
+  "metadata": {
+    "name": "Sample Cell-Based Layout",
+    "author": "Demo User",
+    "created": "2025-11-26T00:00:00Z",
+    "modified": "2025-11-26T00:00:00Z",
+    "description": "A three-cell production line demonstrating cell-based routing",
+    "units": "meters",
+    "pixelsPerUnit": 20.0
+  },
+  "canvas": {
+    "width": 1200,
+    "height": 800,
+    "gridSize": 20,
+    "snapToGrid": true
+  },
+  "templates": [],
+  "resourcePools": [],
+  "corridors": [],
+  "nodes": [
+    {
+      "id": "source_001",
+      "type": "source",
+      "name": "Source",
+      "label": "SRC",
+      "visual": {
+        "x": 50,
+        "y": 300,
+        "width": 50,
+        "height": 50,
+        "icon": "source_arrow",
+        "color": "#2ECC71"
+      },
+      "simulation": {
+        "interarrivalTime": {
+          "distribution": "exponential",
+          "mean": 5.0,
+          "unit": "minutes"
+        }
+      }
+    },
+    {
+      "id": "buf_001",
+      "type": "buffer",
+      "name": "Buffer 1",
+      "label": "C1Q0",
+      "indexInCell": 0,
+      "visual": {
+        "x": 200,
+        "y": 280,
+        "width": 60,
+        "height": 40,
+        "icon": "buffer_fifo",
+        "color": "#F5A623"
+      },
+      "simulation": {
+        "capacity": 50,
+        "queueDiscipline": "FIFO"
+      }
+    },
+    {
+      "id": "mach_001",
+      "type": "machine",
+      "name": "Machine 1",
+      "label": "C1M0",
+      "indexInCell": 0,
+      "visual": {
+        "x": 320,
+        "y": 270,
+        "width": 80,
+        "height": 60,
+        "icon": "cnc_mill",
+        "color": "#4A90D9"
+      },
+      "simulation": {
+        "capacity": 1,
+        "processTime": {
+          "distribution": "exponential",
+          "mean": 8.0,
+          "unit": "minutes"
+        }
+      }
+    },
+    {
+      "id": "buf_002",
+      "type": "buffer",
+      "name": "Buffer 2",
+      "label": "C2Q0",
+      "indexInCell": 0,
+      "visual": {
+        "x": 500,
+        "y": 280,
+        "width": 60,
+        "height": 40,
+        "icon": "buffer_fifo",
+        "color": "#F5A623"
+      },
+      "simulation": {
+        "capacity": 50,
+        "queueDiscipline": "FIFO"
+      }
+    },
+    {
+      "id": "mach_002a",
+      "type": "machine",
+      "name": "Machine 2A",
+      "label": "C2M0",
+      "indexInCell": 0,
+      "visual": {
+        "x": 620,
+        "y": 220,
+        "width": 80,
+        "height": 60,
+        "icon": "cnc_mill",
+        "color": "#27AE60"
+      },
+      "simulation": {
+        "capacity": 1,
+        "processTime": {
+          "distribution": "exponential",
+          "mean": 12.0,
+          "unit": "minutes"
+        }
+      }
+    },
+    {
+      "id": "mach_002b",
+      "type": "machine",
+      "name": "Machine 2B",
+      "label": "C2M1",
+      "indexInCell": 1,
+      "visual": {
+        "x": 620,
+        "y": 320,
+        "width": 80,
+        "height": 60,
+        "icon": "cnc_mill",
+        "color": "#27AE60"
+      },
+      "simulation": {
+        "capacity": 1,
+        "processTime": {
+          "distribution": "exponential",
+          "mean": 12.0,
+          "unit": "minutes"
+        }
+      }
+    },
+    {
+      "id": "buf_003",
+      "type": "buffer",
+      "name": "Buffer 3",
+      "label": "C3Q0",
+      "indexInCell": 0,
+      "visual": {
+        "x": 800,
+        "y": 280,
+        "width": 60,
+        "height": 40,
+        "icon": "buffer_fifo",
+        "color": "#F5A623"
+      },
+      "simulation": {
+        "capacity": 50,
+        "queueDiscipline": "FIFO"
+      }
+    },
+    {
+      "id": "mach_003",
+      "type": "machine",
+      "name": "Machine 3",
+      "label": "C3M0",
+      "indexInCell": 0,
+      "visual": {
+        "x": 920,
+        "y": 270,
+        "width": 80,
+        "height": 60,
+        "icon": "cnc_mill",
+        "color": "#E74C3C"
+      },
+      "simulation": {
+        "capacity": 1,
+        "processTime": {
+          "distribution": "exponential",
+          "mean": 6.0,
+          "unit": "minutes"
+        }
+      }
+    },
+    {
+      "id": "sink_001",
+      "type": "sink",
+      "name": "Exit",
+      "label": "SNK",
+      "visual": {
+        "x": 1080,
+        "y": 300,
+        "width": 50,
+        "height": 50,
+        "icon": "sink_exit",
+        "color": "#E74C3C"
+      }
+    }
+  ],
+  "paths": [
+    {
+      "id": "path_src",
+      "from": "source_001",
+      "to": "buf_001",
+      "fromTerminal": "output",
+      "toTerminal": "input",
+      "pathType": "single"
+    },
+    {
+      "id": "path_c1",
+      "from": "buf_001",
+      "to": "mach_001",
+      "fromTerminal": "output",
+      "toTerminal": "input",
+      "pathType": "single"
+    },
+    {
+      "id": "path_c1_c2",
+      "from": "mach_001",
+      "to": "buf_002",
+      "fromTerminal": "output",
+      "toTerminal": "input",
+      "pathType": "single"
+    },
+    {
+      "id": "path_c2a",
+      "from": "buf_002",
+      "to": "mach_002a",
+      "fromTerminal": "output",
+      "toTerminal": "input",
+      "pathType": "single"
+    },
+    {
+      "id": "path_c2b",
+      "from": "buf_002",
+      "to": "mach_002b",
+      "fromTerminal": "output",
+      "toTerminal": "input",
+      "pathType": "single"
+    },
+    {
+      "id": "path_c2_c3a",
+      "from": "mach_002a",
+      "to": "buf_003",
+      "fromTerminal": "output",
+      "toTerminal": "input",
+      "pathType": "single"
+    },
+    {
+      "id": "path_c2_c3b",
+      "from": "mach_002b",
+      "to": "buf_003",
+      "fromTerminal": "output",
+      "toTerminal": "input",
+      "pathType": "single"
+    },
+    {
+      "id": "path_c3",
+      "from": "buf_003",
+      "to": "mach_003",
+      "fromTerminal": "output",
+      "toTerminal": "input",
+      "pathType": "single"
+    },
+    {
+      "id": "path_exit",
+      "from": "mach_003",
+      "to": "sink_001",
+      "fromTerminal": "output",
+      "toTerminal": "input",
+      "pathType": "single"
+    }
+  ],
+  "zones": [],
+  "groups": [
+    {
+      "id": "cell_001",
+      "name": "Cell 1",
+      "cellType": "simple",
+      "cellIndex": 1,
+      "members": ["buf_001", "mach_001"],
+      "entryPoints": ["buf_001"],
+      "exitPoints": ["mach_001"],
+      "internalPaths": ["path_c1"],
+      "internalRouting": {
+        "buf_001": [
+          {"to": "mach_001", "priority": 1, "probability": 1.0}
+        ]
+      },
+      "color": "#4A90D9",
+      "isCell": true,
+      "inputTerminalPosition": "left",
+      "outputTerminalPosition": "right"
+    },
+    {
+      "id": "cell_002",
+      "name": "Cell 2 (Parallel)",
+      "cellType": "parallel",
+      "cellIndex": 2,
+      "members": ["buf_002", "mach_002a", "mach_002b"],
+      "entryPoints": ["buf_002"],
+      "exitPoints": ["mach_002a", "mach_002b"],
+      "internalPaths": ["path_c2a", "path_c2b"],
+      "internalRouting": {
+        "buf_002": [
+          {"to": "mach_002a", "priority": 1, "probability": 1.0},
+          {"to": "mach_002b", "priority": 2, "probability": 1.0}
+        ]
+      },
+      "color": "#27AE60",
+      "isCell": true,
+      "inputTerminalPosition": "left",
+      "outputTerminalPosition": "right"
+    },
+    {
+      "id": "cell_003",
+      "name": "Cell 3",
+      "cellType": "simple",
+      "cellIndex": 3,
+      "members": ["buf_003", "mach_003"],
+      "entryPoints": ["buf_003"],
+      "exitPoints": ["mach_003"],
+      "internalPaths": ["path_c3"],
+      "internalRouting": {
+        "buf_003": [
+          {"to": "mach_003", "priority": 1, "probability": 1.0}
+        ]
+      },
+      "color": "#E74C3C",
+      "isCell": true,
+      "inputTerminalPosition": "left",
+      "outputTerminalPosition": "right"
+    }
+  ],
+  "partTypes": [
+    {
+      "id": "part_a",
+      "name": "Part_A",
+      "color": "#E74C3C",
+      "spawnProbability": 0.5,
+      "routeMode": "sequence",
+      "cellRoute": ["cell_001", "cell_002", "cell_003"],
+      "requiresTransporter": false
+    },
+    {
+      "id": "part_b",
+      "name": "Part_B",
+      "color": "#3498DB",
+      "spawnProbability": 0.5,
+      "routeMode": "sequence",
+      "cellRoute": ["cell_001", "cell_003"],
+      "requiresTransporter": false
+    }
+  ],
+  "display": {
+    "zoom": 1.0,
+    "panX": 0,
+    "panY": 0,
+    "layers": {
+      "nodes": true,
+      "paths": true,
+      "zones": true,
+      "labels": true,
+      "icons": true,
+      "grid": true
+    }
+  }
+}

@@ -1,0 +1,450 @@
+{
+  "version": "2.1",
+  "metadata": {
+    "name": "Sample Manufacturing Layout",
+    "author": "Demo User",
+    "created": "2025-01-15T10:00:00Z",
+    "modified": "2025-01-15T10:00:00Z",
+    "description": "A sample production line with source, machines, buffers, and sink",
+    "units": "meters",
+    "pixelsPerUnit": 20.0
+  },
+  "canvas": {
+    "width": 1200,
+    "height": 800,
+    "gridSize": 20,
+    "snapToGrid": true,
+    "background": {
+      "enabled": false,
+      "source": "",
+      "opacity": 0.3,
+      "scale": 1.0,
+      "offsetX": 0,
+      "offsetY": 0
+    }
+  },
+  "templates": [
+    {
+      "id": "tpl_001",
+      "name": "CNC Machine",
+      "nodeType": "machine",
+      "icon": "cnc_mill",
+      "defaultColor": "#4A90D9",
+      "defaultWidth": 80,
+      "defaultHeight": 60,
+      "simulation": {
+        "servers": 1,
+        "capacity": 1,
+        "processTime": {
+          "distribution": "exponential",
+          "mean": 10.0,
+          "unit": "minutes"
+        }
+      }
+    }
+  ],
+  "corridors": [],
+  "nodes": [
+    {
+      "id": "src_001",
+      "type": "source",
+      "name": "Part Arrival",
+      "label": "SRC",
+      "visual": {
+        "x": 100,
+        "y": 350,
+        "width": 50,
+        "height": 50,
+        "rotation": 0,
+        "icon": "source_arrow",
+        "color": "#2ECC71",
+        "labelPosition": "bottom",
+        "labelVisible": true
+      },
+      "simulation": {
+        "interarrivalTime": {
+          "distribution": "exponential",
+          "mean": 5.0,
+          "unit": "minutes"
+        },
+        "entityType": "part",
+        "batchSize": 1
+      }
+    },
+    {
+      "id": "buf_001",
+      "type": "buffer",
+      "name": "Input Buffer",
+      "label": "B1",
+      "visual": {
+        "x": 220,
+        "y": 340,
+        "width": 60,
+        "height": 40,
+        "rotation": 0,
+        "icon": "buffer_fifo",
+        "color": "#F5A623",
+        "labelPosition": "bottom",
+        "labelVisible": true
+      },
+      "simulation": {
+        "capacity": 20,
+        "initialLevel": 0,
+        "queueDiscipline": "FIFO"
+      }
+    },
+    {
+      "id": "mach_001",
+      "type": "machine",
+      "name": "CNC Mill 1",
+      "label": "M1",
+      "visual": {
+        "x": 350,
+        "y": 250,
+        "width": 80,
+        "height": 60,
+        "rotation": 0,
+        "icon": "cnc_mill",
+        "color": "#4A90D9",
+        "labelPosition": "bottom",
+        "labelVisible": true
+      },
+      "simulation": {
+        "servers": 1,
+        "capacity": 1,
+        "processTime": {
+          "distribution": "triangular",
+          "min": 8.0,
+          "mode": 10.0,
+          "max": 15.0,
+          "unit": "minutes"
+        },
+        "mtbf": 480,
+        "mttr": 30
+      }
+    },
+    {
+      "id": "mach_002",
+      "type": "machine",
+      "name": "CNC Mill 2",
+      "label": "M2",
+      "visual": {
+        "x": 350,
+        "y": 420,
+        "width": 80,
+        "height": 60,
+        "rotation": 0,
+        "icon": "cnc_mill",
+        "color": "#4A90D9",
+        "labelPosition": "bottom",
+        "labelVisible": true
+      },
+      "simulation": {
+        "servers": 1,
+        "capacity": 1,
+        "processTime": {
+          "distribution": "triangular",
+          "min": 8.0,
+          "mode": 10.0,
+          "max": 15.0,
+          "unit": "minutes"
+        },
+        "mtbf": 480,
+        "mttr": 30
+      }
+    },
+    {
+      "id": "buf_002",
+      "type": "buffer",
+      "name": "WIP Buffer",
+      "label": "B2",
+      "visual": {
+        "x": 500,
+        "y": 340,
+        "width": 60,
+        "height": 40,
+        "rotation": 0,
+        "icon": "buffer_fifo",
+        "color": "#F5A623",
+        "labelPosition": "bottom",
+        "labelVisible": true
+      },
+      "simulation": {
+        "capacity": 30,
+        "initialLevel": 0,
+        "queueDiscipline": "FIFO"
+      }
+    },
+    {
+      "id": "ws_001",
+      "type": "workstation",
+      "name": "Assembly Station",
+      "label": "WS1",
+      "visual": {
+        "x": 620,
+        "y": 330,
+        "width": 100,
+        "height": 70,
+        "rotation": 0,
+        "icon": "assembly",
+        "color": "#7ED321",
+        "labelPosition": "bottom",
+        "labelVisible": true
+      },
+      "simulation": {
+        "servers": 2,
+        "capacity": 2,
+        "processTime": {
+          "distribution": "normal",
+          "mean": 12.0,
+          "stdDev": 2.0,
+          "unit": "minutes"
+        }
+      }
+    },
+    {
+      "id": "insp_001",
+      "type": "inspection",
+      "name": "Quality Check",
+      "label": "INS",
+      "visual": {
+        "x": 780,
+        "y": 340,
+        "width": 60,
+        "height": 50,
+        "rotation": 0,
+        "icon": "inspection",
+        "color": "#9B59B6",
+        "labelPosition": "bottom",
+        "labelVisible": true
+      },
+      "simulation": {
+        "servers": 1,
+        "processTime": {
+          "distribution": "constant",
+          "value": 2.0,
+          "unit": "minutes"
+        }
+      }
+    },
+    {
+      "id": "sink_001",
+      "type": "sink",
+      "name": "Shipping",
+      "label": "EXIT",
+      "visual": {
+        "x": 900,
+        "y": 350,
+        "width": 50,
+        "height": 50,
+        "rotation": 0,
+        "icon": "exit_flag",
+        "color": "#E74C3C",
+        "labelPosition": "bottom",
+        "labelVisible": true
+      },
+      "simulation": {
+        "collectStatistics": true
+      }
+    }
+  ],
+  "paths": [
+    {
+      "id": "path_001",
+      "from": "src_001",
+      "to": "buf_001",
+      "pathType": "single",
+      "routingMode": "direct",
+      "visual": {
+        "color": "#888888",
+        "thickness": 2,
+        "style": "solid",
+        "arrowSize": 8,
+        "laneSpacing": 6,
+        "waypoints": []
+      },
+      "simulation": {
+        "transportType": "conveyor",
+        "speed": 1.0,
+        "capacity": 10,
+        "lanes": 1,
+        "bidirectional": false
+      }
+    },
+    {
+      "id": "path_002",
+      "from": "buf_001",
+      "to": "mach_001",
+      "pathType": "single",
+      "routingMode": "manhattan",
+      "visual": {
+        "color": "#888888",
+        "thickness": 2,
+        "style": "solid",
+        "arrowSize": 8,
+        "laneSpacing": 6,
+        "waypoints": []
+      },
+      "simulation": {
+        "transportType": "conveyor",
+        "speed": 1.0,
+        "capacity": 10,
+        "lanes": 1,
+        "bidirectional": false
+      }
+    },
+    {
+      "id": "path_003",
+      "from": "buf_001",
+      "to": "mach_002",
+      "pathType": "single",
+      "routingMode": "manhattan",
+      "visual": {
+        "color": "#888888",
+        "thickness": 2,
+        "style": "solid",
+        "arrowSize": 8,
+        "laneSpacing": 6,
+        "waypoints": []
+      },
+      "simulation": {
+        "transportType": "conveyor",
+        "speed": 1.0,
+        "capacity": 10,
+        "lanes": 1,
+        "bidirectional": false
+      }
+    },
+    {
+      "id": "path_004",
+      "from": "mach_001",
+      "to": "buf_002",
+      "pathType": "single",
+      "routingMode": "manhattan",
+      "visual": {
+        "color": "#888888",
+        "thickness": 2,
+        "style": "solid",
+        "arrowSize": 8,
+        "laneSpacing": 6,
+        "waypoints": []
+      },
+      "simulation": {
+        "transportType": "conveyor",
+        "speed": 1.0,
+        "capacity": 10,
+        "lanes": 1,
+        "bidirectional": false
+      }
+    },
+    {
+      "id": "path_005",
+      "from": "mach_002",
+      "to": "buf_002",
+      "pathType": "single",
+      "routingMode": "manhattan",
+      "visual": {
+        "color": "#888888",
+        "thickness": 2,
+        "style": "solid",
+        "arrowSize": 8,
+        "laneSpacing": 6,
+        "waypoints": []
+      },
+      "simulation": {
+        "transportType": "conveyor",
+        "speed": 1.0,
+        "capacity": 10,
+        "lanes": 1,
+        "bidirectional": false
+      }
+    },
+    {
+      "id": "path_006",
+      "from": "buf_002",
+      "to": "ws_001",
+      "pathType": "double",
+      "routingMode": "direct",
+      "visual": {
+        "color": "#888888",
+        "thickness": 2,
+        "style": "solid",
+        "arrowSize": 8,
+        "laneSpacing": 8,
+        "waypoints": []
+      },
+      "simulation": {
+        "transportType": "conveyor",
+        "speed": 1.5,
+        "capacity": 20,
+        "lanes": 2,
+        "bidirectional": false
+      }
+    },
+    {
+      "id": "path_007",
+      "from": "ws_001",
+      "to": "insp_001",
+      "pathType": "single",
+      "routingMode": "direct",
+      "visual": {
+        "color": "#888888",
+        "thickness": 2,
+        "style": "solid",
+        "arrowSize": 8,
+        "laneSpacing": 6,
+        "waypoints": []
+      },
+      "simulation": {
+        "transportType": "conveyor",
+        "speed": 1.0,
+        "capacity": 10,
+        "lanes": 1,
+        "bidirectional": false
+      }
+    },
+    {
+      "id": "path_008",
+      "from": "insp_001",
+      "to": "sink_001",
+      "pathType": "single",
+      "routingMode": "direct",
+      "visual": {
+        "color": "#888888",
+        "thickness": 2,
+        "style": "solid",
+        "arrowSize": 8,
+        "laneSpacing": 6,
+        "waypoints": []
+      },
+      "simulation": {
+        "transportType": "conveyor",
+        "speed": 1.0,
+        "capacity": 10,
+        "lanes": 1,
+        "bidirectional": false
+      }
+    }
+  ],
+  "zones": [],
+  "groups": [],
+  "display": {
+    "showGrid": true,
+    "showRulers": true,
+    "showMinimap": true,
+    "showLabels": true,
+    "pathRoutingDefault": "direct",
+    "layers": {
+      "background": true,
+      "corridors": true,
+      "zones": true,
+      "paths": true,
+      "nodes": true,
+      "labels": true
+    }
+  },
+  "validation": {
+    "lastValidated": null,
+    "issues": []
+  }
+}
