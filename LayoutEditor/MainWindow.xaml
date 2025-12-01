@@ -3,195 +3,74 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:LayoutEditor.Controls"
         Title="Simulation Layout Editor" Height="800" Width="1400"
-        WindowStartupLocation="CenterScreen"
-        WindowState="Maximized"
-        KeyDown="Window_KeyDown"
-        Closing="Window_Closing">
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        KeyDown="Window_KeyDown" Closing="Window_Closing">
     
     <Window.Resources>
-        <!-- VS-Style Color Resources -->
-        <SolidColorBrush x:Key="PanelBackground" Color="#F5F5F5"/>
-        <SolidColorBrush x:Key="PanelHeaderBackground" Color="#E8E8E8"/>
-        <SolidColorBrush x:Key="BorderColor" Color="#CCCEDB"/>
-        <SolidColorBrush x:Key="AccentColor" Color="#007ACC"/>
-        <SolidColorBrush x:Key="ErrorColor" Color="#E51400"/>
-        <SolidColorBrush x:Key="WarningColor" Color="#CA5100"/>
-        <SolidColorBrush x:Key="SuccessColor" Color="#107C10"/>
-        <SolidColorBrush x:Key="TextColor" Color="#1E1E1E"/>
-        <SolidColorBrush x:Key="TextMutedColor" Color="#6E6E6E"/>
+        <SolidColorBrush x:Key="PanelBg" Color="#F5F5F5"/>
+        <SolidColorBrush x:Key="HeaderBg" Color="#E8E8E8"/>
+        <SolidColorBrush x:Key="Border" Color="#CCCEDB"/>
+        <SolidColorBrush x:Key="Accent" Color="#007ACC"/>
+        <SolidColorBrush x:Key="TextMuted" Color="#6E6E6E"/>
         
-        <!-- VS-Style Section Header -->
-        <Style x:Key="SectionHeader" TargetType="TextBlock">
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="FontSize" Value="11"/>
-            <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
-            <Setter Property="Margin" Value="0,6,0,4"/>
-        </Style>
-        
-        <!-- VS-Style Panel Header -->
-        <Style x:Key="PanelHeader" TargetType="TextBlock">
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="FontSize" Value="11"/>
-            <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
-            <Setter Property="Padding" Value="6,4"/>
-            <Setter Property="Background" Value="{StaticResource PanelHeaderBackground}"/>
-        </Style>
-        
-        <Style x:Key="ToolButton" TargetType="RadioButton">
-            <Setter Property="Width" Value="32"/>
-            <Setter Property="Height" Value="32"/>
-            <Setter Property="Margin" Value="1"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="RadioButton">
-                        <Border x:Name="border" Background="Transparent" 
-                                BorderBrush="Transparent" BorderThickness="1" CornerRadius="2"
-                                ToolTip="{TemplateBinding ToolTip}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#E5E5E5"/>
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#CCE8FF"/>
-                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource AccentColor}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        
-        <Style x:Key="IconButton" TargetType="Button">
+        <Style x:Key="Btn" TargetType="Button">
             <Setter Property="Width" Value="24"/>
             <Setter Property="Height" Value="24"/>
             <Setter Property="Margin" Value="1"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+        
+        <Style x:Key="ToolBtn" TargetType="RadioButton">
+            <Setter Property="Width" Value="28"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="Margin" Value="1"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" Background="{TemplateBinding Background}" 
-                                CornerRadius="2" Padding="2">
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="bd" Background="Transparent" BorderThickness="1" CornerRadius="2" ToolTip="{TemplateBinding ToolTip}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#E5E5E5"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#CCCEDB"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="border" Property="Opacity" Value="0.5"/>
-                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="bd" Property="Background" Value="#E5E5E5"/></Trigger>
+                            <Trigger Property="IsChecked" Value="True"><Setter TargetName="bd" Property="Background" Value="#CCE8FF"/><Setter TargetName="bd" Property="BorderBrush" Value="{StaticResource Accent}"/></Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
         
-        <!-- Compact Node Icon Button for Toolbox Grid -->
-        <Style x:Key="NodeIconButton" TargetType="Button">
+        <Style x:Key="NodeBtn" TargetType="Button">
             <Setter Property="Width" Value="32"/>
             <Setter Property="Height" Value="32"/>
             <Setter Property="Margin" Value="1"/>
             <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderBrush" Value="#D0D0D0"/>
+            <Setter Property="BorderBrush" Value="#DDD"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" Background="{TemplateBinding Background}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                CornerRadius="2" Padding="3"
-                                ToolTip="{TemplateBinding ToolTip}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#E8F4FD"/>
-                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource AccentColor}"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#CCE8FF"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
         </Style>
         
-        <!-- Legacy NodeTypeButton (kept for compatibility) -->
-        <Style x:Key="NodeTypeButton" TargetType="Button">
-            <Setter Property="Height" Value="28"/>
+        <Style x:Key="SmallNodeBtn" TargetType="Button">
+            <Setter Property="Width" Value="24"/>
+            <Setter Property="Height" Value="24"/>
             <Setter Property="Margin" Value="1"/>
             <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderBrush" Value="#D0D0D0"/>
+            <Setter Property="BorderBrush" Value="#DDD"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="FontSize" Value="11"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" Background="{TemplateBinding Background}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                CornerRadius="2" Padding="4,2">
-                            <ContentPresenter VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#E8F4FD"/>
-                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource AccentColor}"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#CCE8FF"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        
-        <Style x:Key="CompactTextBox" TargetType="TextBox">
-            <Setter Property="Height" Value="22"/>
-            <Setter Property="Padding" Value="3,1"/>
-            <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="FontSize" Value="11"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="BorderBrush" Value="#CCCEDB"/>
-        </Style>
-        
-        <Style x:Key="CompactComboBox" TargetType="ComboBox">
-            <Setter Property="Height" Value="22"/>
-            <Setter Property="Padding" Value="3,1"/>
-            <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="FontSize" Value="11"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="2"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#E8F4FD"/>
+                    <Setter Property="BorderBrush" Value="#007ACC"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
         
         <Style x:Key="LayerCheckBox" TargetType="CheckBox">
             <Setter Property="Margin" Value="0,2"/>
-            <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="FontSize" Value="11"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-        
-        <!-- VS-Style Expander -->
-        <Style x:Key="CompactExpander" TargetType="Expander">
-            <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="FontSize" Value="11"/>
-            <Setter Property="Margin" Value="0,2,0,2"/>
-            <Setter Property="Padding" Value="0"/>
+            <Setter Property="FontSize" Value="10"/>
         </Style>
     </Window.Resources>
     
@@ -203,46 +82,26 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-        <!-- Menu Bar -->
+        <!-- Menu -->
         <Menu Grid.Row="0" Background="White" BorderBrush="#DEE2E6" BorderThickness="0,0,0,1">
             <MenuItem Header="_File">
-                <MenuItem Header="_New" Click="New_Click" InputGestureText="Ctrl+N">
-                    <MenuItem.Icon>
-                        <TextBlock Text="📄" FontSize="14"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="_Open..." Click="Open_Click" InputGestureText="Ctrl+O">
-                    <MenuItem.Icon>
-                        <TextBlock Text="📂" FontSize="14"/>
-                    </MenuItem.Icon>
-                </MenuItem>
+                <MenuItem Header="_New" Click="New_Click" InputGestureText="Ctrl+N"/>
+                <MenuItem Header="_Open..." Click="Open_Click" InputGestureText="Ctrl+O"/>
                 <Separator/>
-                <MenuItem Header="_Save" Click="Save_Click" InputGestureText="Ctrl+S">
-                    <MenuItem.Icon>
-                        <TextBlock Text="💾" FontSize="14"/>
-                    </MenuItem.Icon>
-                </MenuItem>
+                <MenuItem Header="_Save" Click="Save_Click" InputGestureText="Ctrl+S"/>
                 <MenuItem Header="Save _As..." Click="SaveAs_Click"/>
                 <Separator/>
                 <MenuItem Header="_Import">
-                    <MenuItem Header="Import _Background Image..." Click="ImportBackground_Click"/>
-                    <MenuItem Header="Import _DXF..." Click="ImportDxf_Click"/>
-                    <Separator/>
-                    <MenuItem Header="_Clear Background" Click="ClearBackground_Click"/>
+                    <MenuItem Header="Background Image..." Click="ImportBackground_Click"/>
+                    <MenuItem Header="DXF..." Click="ImportDxf_Click"/>
+                    <MenuItem Header="Clear Background" Click="ClearBackground_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Export">
-                    <MenuItem Header="Export for _Simulation (JSON)..." Click="ExportSimulation_Click"/>
-                    <MenuItem Header="Export as _Image (PNG/JPG)..." Click="ExportImage_Click"/>
-                    <Separator/>
-                    <MenuItem Header="Export as S_VG..." Click="ExportSvg_Click"
-                              ToolTip="Scalable vector graphics for web or design tools"/>
-                    <MenuItem Header="Export as _DXF (AutoCAD)..." Click="ExportDxf_Click"
-                              ToolTip="Drawing exchange format for CAD software and Revit"/>
-                    <Separator/>
-                    <MenuItem Header="Export _Bill of Materials (CSV)..." Click="ExportBomCsv_Click"
-                              ToolTip="Equipment list in spreadsheet format"/>
-                    <MenuItem Header="Export _Equipment List (TXT)..." Click="ExportEquipmentList_Click"
-                              ToolTip="Formatted equipment report"/>
+                    <MenuItem Header="Simulation JSON..." Click="ExportSimulation_Click"/>
+                    <MenuItem Header="Image (PNG)..." Click="ExportImage_Click"/>
+                    <MenuItem Header="SVG..." Click="ExportSvg_Click"/>
+                    <MenuItem Header="DXF..." Click="ExportDxf_Click"/>
+                    <MenuItem Header="BOM CSV..." Click="ExportBomCsv_Click"/>
                 </MenuItem>
                 <Separator/>
                 <MenuItem Header="E_xit" Click="Exit_Click"/>
@@ -255,755 +114,253 @@
                 <MenuItem Header="_Copy" Click="Copy_Click" InputGestureText="Ctrl+C"/>
                 <MenuItem Header="_Paste" Click="Paste_Click" InputGestureText="Ctrl+V"/>
                 <MenuItem Header="_Duplicate" Click="Duplicate_Click" InputGestureText="Ctrl+D"/>
-                <MenuItem Header="_Delete" Click="Delete_Click" InputGestureText="Del"/>
+                <MenuItem Header="Delete" Click="Delete_Click" InputGestureText="Del"/>
                 <Separator/>
-                <MenuItem Header="Select _All" Click="SelectAll_Click" InputGestureText="Ctrl+A"/>
-                <MenuItem Header="_Group" Click="Group_Click" InputGestureText="Ctrl+G"/>
-                <MenuItem Header="U_ngroup" Click="Ungroup_Click" InputGestureText="Ctrl+Shift+G"/>
+                <MenuItem Header="Select All" Click="SelectAll_Click" InputGestureText="Ctrl+A"/>
+                <MenuItem Header="Group" Click="Group_Click" InputGestureText="Ctrl+G"/>
+                <MenuItem Header="Ungroup" Click="Ungroup_Click" InputGestureText="Ctrl+Shift+G"/>
+                <MenuItem Header="Define as Cell" Click="DefineCell_Click" InputGestureText="Ctrl+Shift+C"/>
+                <MenuItem Header="Ungroup Cell" Click="UngroupCell_Click"/>
+                <MenuItem Header="Refresh Cell Entry/Exit" Click="RefreshCellEntryExit_Click"/>
                 <Separator/>
-                <MenuItem Header="Define as _Cell" Click="DefineCell_Click" InputGestureText="Ctrl+Shift+C"
-                          ToolTip="Group selected nodes as a work cell (paths between them don't require AGV transport)"/>
-                <MenuItem Header="Ungroup C_ell" Click="UngroupCell_Click" InputGestureText="Ctrl+Shift+U"/>
-                <MenuItem Header="_Refresh Cell Entry/Exit" Click="RefreshCellEntryExit_Click"
-                          ToolTip="Recalculate entry/exit points based on current external paths"/>
-                <Separator/>
-                <MenuItem Header="_Align" x:Name="AlignMenu">
-                    <MenuItem Header="Align _Left" Click="AlignLeft_Click" InputGestureText="Ctrl+←">
-                        <MenuItem.Icon>
-                            <TextBlock Text="⫷" FontSize="14"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Align _Right" Click="AlignRight_Click" InputGestureText="Ctrl+→">
-                        <MenuItem.Icon>
-                            <TextBlock Text="⫸" FontSize="14"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Align _Top" Click="AlignTop_Click" InputGestureText="Ctrl+↑">
-                        <MenuItem.Icon>
-                            <TextBlock Text="⊤" FontSize="14"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Align _Bottom" Click="AlignBottom_Click" InputGestureText="Ctrl+↓">
-                        <MenuItem.Icon>
-                            <TextBlock Text="⊥" FontSize="14"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
+                <MenuItem Header="Align">
+                    <MenuItem Header="Left" Click="AlignLeft_Click"/>
+                    <MenuItem Header="Right" Click="AlignRight_Click"/>
+                    <MenuItem Header="Top" Click="AlignTop_Click"/>
+                    <MenuItem Header="Bottom" Click="AlignBottom_Click"/>
                     <Separator/>
-                    <MenuItem Header="Align Center _Horizontal" Click="AlignCenterH_Click">
-                        <MenuItem.Icon>
-                            <TextBlock Text="⫿" FontSize="14"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Align Center _Vertical" Click="AlignCenterV_Click">
-                        <MenuItem.Icon>
-                            <TextBlock Text="⊡" FontSize="14"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
+                    <MenuItem Header="Center H" Click="AlignCenterH_Click"/>
+                    <MenuItem Header="Center V" Click="AlignCenterV_Click"/>
                     <Separator/>
-                    <MenuItem Header="_Distribute Horizontally" Click="DistributeH_Click">
-                        <MenuItem.Icon>
-                            <TextBlock Text="⋯" FontSize="14"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="D_istribute Vertically" Click="DistributeV_Click">
-                        <MenuItem.Icon>
-                            <TextBlock Text="⋮" FontSize="14"/>
-                        </MenuItem.Icon>
-                    </MenuItem>
+                    <MenuItem Header="Distribute H" Click="DistributeH_Click"/>
+                    <MenuItem Header="Distribute V" Click="DistributeV_Click"/>
                     <Separator/>
-                    <MenuItem Header="Same _Width" Click="SameWidth_Click"/>
-                    <MenuItem Header="Same _Height" Click="SameHeight_Click"/>
-                    <MenuItem Header="Same _Size" Click="SameSize_Click"/>
+                    <MenuItem Header="Same Width" Click="SameWidth_Click"/>
+                    <MenuItem Header="Same Height" Click="SameHeight_Click"/>
+                    <MenuItem Header="Same Size" Click="SameSize_Click"/>
                 </MenuItem>
+                <Separator/>
+                <MenuItem Header="Editor Settings..." Click="EditorSettings_Click"/>
             </MenuItem>
             <MenuItem Header="_View">
-                <MenuItem Header="_Zoom In" Click="ZoomIn_Click" InputGestureText="Ctrl++"/>
-                <MenuItem Header="Zoom _Out" Click="ZoomOut_Click" InputGestureText="Ctrl+-"/>
-                <MenuItem Header="Zoom to _Fit" Click="ZoomFit_Click" InputGestureText="Ctrl+0"/>
-                <MenuItem Header="_Reset Zoom" Click="ZoomReset_Click"/>
+                <MenuItem Header="Zoom In" Click="ZoomIn_Click" InputGestureText="Ctrl++"/>
+                <MenuItem Header="Zoom Out" Click="ZoomOut_Click" InputGestureText="Ctrl+-"/>
+                <MenuItem Header="Zoom to Fit" Click="ZoomFit_Click" InputGestureText="Ctrl+0"/>
+                <MenuItem Header="Reset Zoom" Click="ZoomReset_Click"/>
                 <Separator/>
-                <MenuItem Header="Show _Grid" x:Name="ShowGridMenu" IsCheckable="True" IsChecked="True" Click="ToggleGrid_Click"/>
-                <MenuItem Header="Show _Rulers" x:Name="ShowRulersMenu" IsCheckable="True" IsChecked="True" Click="ToggleRulers_Click"/>
-                <MenuItem Header="Show _Minimap" x:Name="ShowMinimapMenu" IsCheckable="True" IsChecked="False" Click="ToggleMinimap_Click"/>
-                <MenuItem Header="Show _Labels" x:Name="ShowLabelsMenu" IsCheckable="True" IsChecked="True" Click="ToggleLabels_Click"/>
+                <MenuItem Header="Show Grid" x:Name="ShowGridMenu" IsCheckable="True" IsChecked="True" Click="ToggleGrid_Click"/>
+                <MenuItem Header="Show Rulers" x:Name="ShowRulersMenu" IsCheckable="True" IsChecked="True" Click="ToggleRulers_Click"/>
+                <MenuItem Header="Show Minimap" x:Name="ShowMinimapMenu" IsCheckable="True" IsChecked="False" Click="ToggleMinimap_Click"/>
+                <MenuItem Header="Show Labels" x:Name="ShowLabelsMenu" IsCheckable="True" IsChecked="True" Click="ToggleLabels_Click"/>
                 <Separator/>
-                <MenuItem Header="_Snap to Grid" x:Name="SnapToGridMenu" IsCheckable="True" IsChecked="True"/>
-                <MenuItem Header="Show _Alignment Guides" x:Name="ShowGuidesMenu" IsCheckable="True" IsChecked="True"/>
+                <MenuItem Header="Snap to Grid" x:Name="SnapToGridMenu" IsCheckable="True" IsChecked="True"/>
+                <MenuItem Header="Show Guides" x:Name="ShowGuidesMenu" IsCheckable="True" IsChecked="True"/>
             </MenuItem>
             <MenuItem Header="_Tools">
-                <MenuItem Header="_Apply Canonical Names" Click="ApplyCanonicalNames_Click"
-                          ToolTip="Rename all nodes and cells using canonical naming (M1, Q1, C1, C1M1, etc.)">
-                    <MenuItem.Icon>
-                        <TextBlock Text="🏷️" FontSize="12"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="Canonical Names _Options...">
-                    <MenuItem Header="Rename _All (Nodes + Cells)" Click="ApplyCanonicalNames_Click"/>
-                    <MenuItem Header="Rename _Nodes Only" Click="ApplyCanonicalNamesNodes_Click"/>
-                    <MenuItem Header="Rename _Cells Only" Click="ApplyCanonicalNamesCells_Click"/>
-                    <Separator/>
-                    <MenuItem Header="_Reset to Original Names" Click="ResetNames_Click"
-                              ToolTip="Restore default names like 'Machine 1', 'Buffer 2'"/>
-                </MenuItem>
+                <MenuItem Header="Apply Canonical Names" Click="ApplyCanonicalNames_Click"/>
+                <MenuItem Header="Rename Nodes Only" Click="ApplyCanonicalNamesNodes_Click"/>
+                <MenuItem Header="Rename Cells Only" Click="ApplyCanonicalNamesCells_Click"/>
+                <MenuItem Header="Reset Names" Click="ResetNames_Click"/>
                 <Separator/>
-                <MenuItem Header="_Auto-Generate Paths" Click="AutoGeneratePaths_Click"/>
-                <MenuItem Header="Clear All _Paths" Click="ClearPaths_Click"/>
+                <MenuItem Header="Auto-Generate Paths" Click="AutoGeneratePaths_Click"/>
+                <MenuItem Header="Clear All Paths" Click="ClearPaths_Click"/>
                 <Separator/>
-                <MenuItem Header="_Resource Pools..." Click="ResourcePools_Click"
-                          ToolTip="Manage AGV, robot, operator pools"/>
-                <Separator/>
-                <MenuItem Header="_Templates Manager..." Click="TemplatesManager_Click"/>
-                <MenuItem Header="_Layout Properties..." Click="LayoutProperties_Click"/>
+                <MenuItem Header="Resource Pools..." Click="ResourcePools_Click"/>
+                <MenuItem Header="Templates Manager..." Click="TemplatesManager_Click"/>
+                <MenuItem Header="Layout Properties..." Click="LayoutProperties_Click"/>
             </MenuItem>
             <MenuItem Header="_Validate">
-                <MenuItem Header="_Validate Layout" Click="Validate_Click" InputGestureText="F5">
-                    <MenuItem.Icon>
-                        <TextBlock Text="✓" FontSize="14" Foreground="{StaticResource SuccessColor}"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="_Show Validation Panel" x:Name="ShowValidationMenu" IsCheckable="True" Click="ToggleValidation_Click"/>
+                <MenuItem Header="Validate Layout" Click="Validate_Click" InputGestureText="F5"/>
+                <MenuItem Header="Show Validation Panel" x:Name="ShowValidationMenu" IsCheckable="True" Click="ToggleValidation_Click"/>
             </MenuItem>
             <MenuItem Header="_Help">
-                <MenuItem Header="_Keyboard Shortcuts" Click="Shortcuts_Click"/>
-                <MenuItem Header="_User Guide" Click="UserGuide_Click"/>
+                <MenuItem Header="Keyboard Shortcuts" Click="Shortcuts_Click"/>
+                <MenuItem Header="User Guide" Click="UserGuide_Click"/>
                 <Separator/>
-                <MenuItem Header="_About" Click="About_Click"/>
+                <MenuItem Header="About" Click="About_Click"/>
             </MenuItem>
         </Menu>
         
         <!-- Toolbar -->
         <Border Grid.Row="1" Background="White" BorderBrush="#DEE2E6" BorderThickness="0,0,0,1" Padding="4,2">
-            <WrapPanel>
-                <!-- File Operations -->
-                <Button Style="{StaticResource IconButton}" ToolTip="New (Ctrl+N)" Click="New_Click">
-                    <TextBlock Text="📄" FontSize="14"/>
-                </Button>
-                <Button Style="{StaticResource IconButton}" ToolTip="Open (Ctrl+O)" Click="Open_Click">
-                    <TextBlock Text="📂" FontSize="14"/>
-                </Button>
-                <Button Style="{StaticResource IconButton}" ToolTip="Save (Ctrl+S)" Click="Save_Click">
-                    <TextBlock Text="💾" FontSize="14"/>
-                </Button>
-                
-                <Separator Margin="6,4"/>
-                
-                <!-- Edit Operations -->
-                <Button Style="{StaticResource IconButton}" ToolTip="Undo (Ctrl+Z)" Click="Undo_Click">
-                    <TextBlock Text="↩" FontSize="14"/>
-                </Button>
-                <Button Style="{StaticResource IconButton}" ToolTip="Redo (Ctrl+Y)" Click="Redo_Click">
-                    <TextBlock Text="↪" FontSize="14"/>
-                </Button>
-                
-                <Separator Margin="6,4"/>
-                
-                <!-- Tool Selection -->
-                <StackPanel Orientation="Horizontal">
-                    <RadioButton x:Name="SelectTool" Style="{StaticResource ToolButton}" 
-                                 ToolTip="Select (V)" IsChecked="True" Checked="Tool_Changed" Tag="select">
-                        <TextBlock Text="◇" FontSize="16"/>
-                    </RadioButton>
-                    <RadioButton x:Name="MoveTool" Style="{StaticResource ToolButton}" 
-                                 ToolTip="Move Nodes (M)" Checked="Tool_Changed" Tag="move">
-                        <TextBlock Text="✥" FontSize="16"/>
-                    </RadioButton>
-                    <RadioButton x:Name="PanTool" Style="{StaticResource ToolButton}" 
-                                 ToolTip="Pan (Space+Drag)" Checked="Tool_Changed" Tag="pan">
-                        <TextBlock Text="✋" FontSize="14"/>
-                    </RadioButton>
-                    <RadioButton x:Name="PathTool" Style="{StaticResource ToolButton}" 
-                                 ToolTip="Draw Path (P)" Checked="Tool_Changed" Tag="path">
-                        <TextBlock Text="↗" FontSize="16"/>
-                    </RadioButton>
-                    <RadioButton x:Name="CorridorTool" Style="{StaticResource ToolButton}" 
-                                 ToolTip="Draw Corridor (C)" Checked="Tool_Changed" Tag="corridor">
-                        <TextBlock Text="═" FontSize="16"/>
-                    </RadioButton>
-                    <RadioButton x:Name="ZoneTool" Style="{StaticResource ToolButton}" 
-                                 ToolTip="Draw Zone (Z)" Checked="Tool_Changed" Tag="zone">
-                        <TextBlock Text="▢" FontSize="16"/>
-                    </RadioButton>
-                    <RadioButton x:Name="WallTool" Style="{StaticResource ToolButton}" 
-                                 ToolTip="Draw Wall (W)" Checked="Tool_Changed" Tag="wall">
-                        <TextBlock Text="▬" FontSize="16" FontWeight="Bold"/>
-                    </RadioButton>
-                    <RadioButton x:Name="ColumnTool" Style="{StaticResource ToolButton}" 
-                                 ToolTip="Place Column (Shift=round)" Checked="Tool_Changed" Tag="column">
-                        <TextBlock Text="▪" FontSize="16"/>
-                    </RadioButton>
-                    <RadioButton x:Name="MeasureTool" Style="{StaticResource ToolButton}" 
-                                 ToolTip="Measure Distance (R)" Checked="Tool_Changed" Tag="measure">
-                        <TextBlock Text="📏" FontSize="14"/>
-                    </RadioButton>
-                </StackPanel>
-                
-                <Separator Margin="6,4"/>
-                
-                <!-- Wall Type Selection -->
-                <TextBlock Text="Wall:" VerticalAlignment="Center" Margin="4,0"/>
-                <ComboBox x:Name="WallTypeCombo" Width="80" Height="24" SelectedIndex="0" SelectionChanged="WallType_Changed">
-                    <ComboBoxItem Content="Standard" Tag="standard"/>
-                    <ComboBoxItem Content="Exterior" Tag="exterior"/>
-                    <ComboBoxItem Content="Partition" Tag="partition"/>
-                    <ComboBoxItem Content="Glass" Tag="glass"/>
-                    <ComboBoxItem Content="Safety" Tag="safety"/>
-                </ComboBox>
-                
-                <Separator Margin="6,4"/>
-                
-                <!-- Path Options -->
-                <TextBlock Text="Path:" VerticalAlignment="Center" Margin="4,0"/>
-                <ComboBox x:Name="PathTypeCombo" Width="80" Height="24" SelectedIndex="0">
-                    <ComboBoxItem Content="Single" Tag="single"/>
-                    <ComboBoxItem Content="Double" Tag="double"/>
-                </ComboBox>
-                <CheckBox x:Name="ManhattanCheck" Content="Manhattan" VerticalAlignment="Center" Margin="8,0"/>
-                <ToggleButton x:Name="PathEditMode" ToolTip="Path Edit Mode (E) - click paths to add/drag waypoints"
-                              Width="70" Height="26" Margin="4,0" Checked="PathEditMode_Changed" Unchecked="PathEditMode_Changed"
-                              Background="#FFE0E0" BorderBrush="#E74C3C" BorderThickness="1">
-                    <TextBlock Text="✎ Edit Path" FontWeight="SemiBold"/>
-                </ToggleButton>
-                <Button Style="{StaticResource IconButton}" ToolTip="Auto-Connect Nodes" Click="AutoGeneratePaths_Click"
-                        Margin="4,0">
-                    <TextBlock Text="⚡" FontSize="14"/>
-                </Button>
-                
-                <Separator Margin="6,4"/>
-                
-                <!-- Cell Operations -->
-                <Button x:Name="DefineCellBtn" Style="{StaticResource IconButton}" 
-                        ToolTip="Define as Cell (Ctrl+Shift+C)" Click="DefineCell_Click"
-                        IsEnabled="False">
-                    <TextBlock Text="⬚" FontSize="16" Foreground="#3498DB"/>
-                </Button>
-                <Button x:Name="UngroupCellBtn" Style="{StaticResource IconButton}" 
-                        ToolTip="Ungroup Cell (Ctrl+Shift+U)" Click="UngroupCell_Click"
-                        IsEnabled="False">
-                    <TextBlock Text="⊟" FontSize="16" Foreground="#E74C3C"/>
-                </Button>
-                
-                <Separator Margin="6,4"/>
-                
-                <!-- Alignment (enabled when 2+ nodes selected) -->
-                <Button x:Name="AlignLeftBtn" Style="{StaticResource IconButton}" 
-                        ToolTip="Align Left (Ctrl+←)" Click="AlignLeft_Click" IsEnabled="False">
-                    <TextBlock Text="⫷" FontSize="14"/>
-                </Button>
-                <Button x:Name="AlignCenterHBtn" Style="{StaticResource IconButton}" 
-                        ToolTip="Align Center Horizontal" Click="AlignCenterH_Click" IsEnabled="False">
-                    <TextBlock Text="⫿" FontSize="14"/>
-                </Button>
-                <Button x:Name="AlignRightBtn" Style="{StaticResource IconButton}" 
-                        ToolTip="Align Right (Ctrl+→)" Click="AlignRight_Click" IsEnabled="False">
-                    <TextBlock Text="⫸" FontSize="14"/>
-                </Button>
-                <Button x:Name="AlignTopBtn" Style="{StaticResource IconButton}" 
-                        ToolTip="Align Top (Ctrl+↑)" Click="AlignTop_Click" IsEnabled="False">
-                    <TextBlock Text="⊤" FontSize="14"/>
-                </Button>
-                <Button x:Name="AlignCenterVBtn" Style="{StaticResource IconButton}" 
-                        ToolTip="Align Center Vertical" Click="AlignCenterV_Click" IsEnabled="False">
-                    <TextBlock Text="⊡" FontSize="14"/>
-                </Button>
-                <Button x:Name="AlignBottomBtn" Style="{StaticResource IconButton}" 
-                        ToolTip="Align Bottom (Ctrl+↓)" Click="AlignBottom_Click" IsEnabled="False">
-                    <TextBlock Text="⊥" FontSize="14"/>
-                </Button>
-                <Button x:Name="DistributeHBtn" Style="{StaticResource IconButton}" 
-                        ToolTip="Distribute Horizontally" Click="DistributeH_Click" IsEnabled="False">
-                    <TextBlock Text="⋯" FontSize="14"/>
-                </Button>
-                <Button x:Name="DistributeVBtn" Style="{StaticResource IconButton}" 
-                        ToolTip="Distribute Vertically" Click="DistributeV_Click" IsEnabled="False">
-                    <TextBlock Text="⋮" FontSize="14"/>
-                </Button>
-                
-                <Separator Margin="6,4"/>
-                
-                <!-- Zoom -->
-                <Button Style="{StaticResource IconButton}" ToolTip="Zoom Out" Click="ZoomOut_Click">
-                    <TextBlock Text="−" FontSize="18" FontWeight="Bold"/>
-                </Button>
-                <TextBlock x:Name="ZoomLabel" Text="100%" Width="45" TextAlignment="Center" 
-                           VerticalAlignment="Center" Margin="2,0"/>
-                <Button Style="{StaticResource IconButton}" ToolTip="Zoom In" Click="ZoomIn_Click">
-                    <TextBlock Text="+" FontSize="18" FontWeight="Bold"/>
-                </Button>
-                <Button Style="{StaticResource IconButton}" ToolTip="Zoom to Fit" Click="ZoomFit_Click">
-                    <TextBlock Text="⊡" FontSize="16"/>
-                </Button>
-                
-                <Separator Margin="6,4"/>
-                
-                <!-- Validate -->
-                <Button Style="{StaticResource IconButton}" ToolTip="Validate (F5)" Click="Validate_Click">
-                    <TextBlock Text="✓" FontSize="16" Foreground="{StaticResource SuccessColor}"/>
-                </Button>
-                <TextBlock x:Name="ValidationStatus" VerticalAlignment="Center" Margin="4,0" FontSize="11"/>
-            </WrapPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource Btn}" ToolTip="New" Click="New_Click"><TextBlock Text="📄" FontSize="14"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Open" Click="Open_Click"><TextBlock Text="📂" FontSize="14"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Save" Click="Save_Click"><TextBlock Text="💾" FontSize="14"/></Button>
+                <Separator Margin="4,4"/>
+                <Button Style="{StaticResource Btn}" ToolTip="Undo" Click="Undo_Click"><TextBlock Text="↩" FontSize="14"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Redo" Click="Redo_Click"><TextBlock Text="↪" FontSize="14"/></Button>
+                <Separator Margin="4,4"/>
+                <RadioButton x:Name="SelectTool" Style="{StaticResource ToolBtn}" IsChecked="True" ToolTip="Select (V)" GroupName="Tools" Click="ToolButton_Click" Tag="select"><TextBlock Text="⬚" FontSize="14"/></RadioButton>
+                <RadioButton x:Name="AreaSelectTool" Style="{StaticResource ToolBtn}" ToolTip="Area Select (A) - drag rectangle to select multiple" GroupName="Tools" Click="ToolButton_Click" Tag="area"><TextBlock Text="⬒" FontSize="14"/></RadioButton>
+                <RadioButton x:Name="MoveTool" Style="{StaticResource ToolBtn}" ToolTip="Move (M)" GroupName="Tools" Click="ToolButton_Click" Tag="move"><TextBlock Text="✥" FontSize="14"/></RadioButton>
+                <RadioButton x:Name="PanTool" Style="{StaticResource ToolBtn}" ToolTip="Pan (H)" GroupName="Tools" Click="ToolButton_Click" Tag="pan"><TextBlock Text="✋" FontSize="12"/></RadioButton>
+                <RadioButton x:Name="PathTool" Style="{StaticResource ToolBtn}" ToolTip="Path (P)" GroupName="Tools" Click="ToolButton_Click" Tag="path"><TextBlock Text="↗" FontSize="14"/></RadioButton>
+                <RadioButton x:Name="WallTool" Style="{StaticResource ToolBtn}" ToolTip="Wall (W)" GroupName="Tools" Click="ToolButton_Click" Tag="wall"><TextBlock Text="▭" FontSize="14"/></RadioButton>
+                <RadioButton x:Name="CorridorTool" Style="{StaticResource ToolBtn}" ToolTip="Corridor (C)" GroupName="Tools" Click="ToolButton_Click" Tag="corridor"><TextBlock Text="═" FontSize="14"/></RadioButton>
+                <RadioButton x:Name="ZoneTool" Style="{StaticResource ToolBtn}" ToolTip="Zone (Z)" GroupName="Tools" Click="ToolButton_Click" Tag="zone"><TextBlock Text="▢" FontSize="14"/></RadioButton>
+                <RadioButton x:Name="MeasureTool" Style="{StaticResource ToolBtn}" ToolTip="Measure (R)" GroupName="Tools" Click="ToolButton_Click" Tag="measure"><TextBlock Text="📏" FontSize="12"/></RadioButton>
+                <RadioButton x:Name="ColumnTool" Style="{StaticResource ToolBtn}" ToolTip="Column" GroupName="Tools" Click="ToolButton_Click" Tag="column"><TextBlock Text="⬤" FontSize="12"/></RadioButton>
+                <Separator Margin="4,4"/>
+                <!-- Alignment Tools -->
+                <Button Style="{StaticResource Btn}" ToolTip="Align Left" Click="AlignLeft_Click"><TextBlock Text="⫷" FontSize="12"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Align Center H" Click="AlignCenterH_Click"><TextBlock Text="⫿" FontSize="12"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Align Right" Click="AlignRight_Click"><TextBlock Text="⫸" FontSize="12"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Align Top" Click="AlignTop_Click"><TextBlock Text="⊤" FontSize="12"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Align Center V" Click="AlignCenterV_Click"><TextBlock Text="⊝" FontSize="12"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Align Bottom" Click="AlignBottom_Click"><TextBlock Text="⊥" FontSize="12"/></Button>
+                <Separator Margin="4,4"/>
+                <CheckBox x:Name="PathEditMode" Content="Edit Paths" VerticalAlignment="Center" FontSize="10" Margin="4,0" Checked="PathEditMode_Changed" Unchecked="PathEditMode_Changed"/>
+                <Separator Margin="4,4"/>
+                <Button Style="{StaticResource Btn}" ToolTip="Zoom In" Click="ZoomIn_Click"><TextBlock Text="🔍+" FontSize="10"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Zoom Out" Click="ZoomOut_Click"><TextBlock Text="🔍-" FontSize="10"/></Button>
+                <TextBlock x:Name="ZoomLabel" Text="100%" VerticalAlignment="Center" Margin="4,0" FontSize="10"/>
+                <Separator Margin="4,4"/>
+                <TextBlock x:Name="ModeText" Text="" VerticalAlignment="Center" FontSize="10" Foreground="{StaticResource Accent}" FontWeight="SemiBold"/>
+                <Separator Margin="4,4"/>
+                <Button Style="{StaticResource Btn}" ToolTip="Validate" Click="Validate_Click"><TextBlock Text="✓" FontSize="14" Foreground="Green"/></Button>
+                <TextBlock x:Name="ValidationStatus" Text="" VerticalAlignment="Center" FontSize="10" Margin="4,0"/>
+            </StackPanel>
         </Border>
         
         <!-- Main Content -->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" MinWidth="150" MaxWidth="300"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="200" MinWidth="150" MaxWidth="350"/>
+                <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="260" MinWidth="200" MaxWidth="400"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="220" MinWidth="180" MaxWidth="400"/>
             </Grid.ColumnDefinitions>
             
-            <!-- Left Panel: Properties + Compact Toolbox -->
-            <Border Grid.Column="0" Background="{StaticResource PanelBackground}" 
-                    BorderBrush="{StaticResource BorderColor}" BorderThickness="0,0,1,0">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    
-                    <!-- Panel Header -->
-                    <Border Grid.Row="0" Background="{StaticResource PanelHeaderBackground}" 
-                            BorderBrush="{StaticResource BorderColor}" BorderThickness="0,0,0,1">
-                        <TextBlock Text="Properties" FontWeight="SemiBold" FontSize="11" 
-                                   FontFamily="Segoe UI" Padding="6,4"/>
-                    </Border>
-                    
-                    <!-- Properties Content -->
-                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                        <StackPanel Margin="6">
-                            <!-- No Selection -->
-                            <TextBlock x:Name="NoSelectionText" Text="No element selected" 
-                                       Foreground="{StaticResource TextMutedColor}" FontStyle="Italic"
-                                       FontFamily="Segoe UI" FontSize="11"/>
-                            
-                            <!-- Node Properties Panel -->
-                            <StackPanel x:Name="NodePropertiesPanel" Visibility="Collapsed">
-                                <!-- Basic Info -->
-                                <TextBlock Text="Basic" Style="{StaticResource SectionHeader}"/>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="55"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
+            <!-- Left Panel -->
+            <Border Grid.Column="0" Background="{StaticResource PanelBg}" BorderBrush="{StaticResource Border}" BorderThickness="0,0,0.5,0">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <!-- Floor Selector -->
+                        <Border Background="{StaticResource HeaderBg}" Padding="4" BorderBrush="{StaticResource Border}" BorderThickness="0,0,0,1">
+                            <StackPanel>
+                                <TextBlock Text="Floor" FontWeight="SemiBold" FontSize="10" Margin="0,0,0,4"/>
+                                <ComboBox x:Name="FloorCombo" Height="22" FontSize="10" SelectionChanged="Floor_Changed">
+                                    <ComboBoxItem Content="All Floors" Tag="all" IsSelected="True"/>
+                                    <ComboBoxItem Content="Ground" Tag="F1"/>
+                                </ComboBox>
+                                <Button Content="Manage Floors..." Click="ManageFloors_Click" Height="18" FontSize="8" Margin="0,4,0,0" HorizontalAlignment="Left" Padding="8,1"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <!-- Toolbox - Expanded -->
+                        <Border Background="{StaticResource HeaderBg}" Padding="4">
+                            <Expander Header="Toolbox" IsExpanded="True">
+                                <StackPanel>
+                                    <TextBlock Text="Click to place, or right-click canvas" FontSize="8" Foreground="{StaticResource TextMuted}" TextWrapping="Wrap" Margin="0,0,0,4"/>
                                     
-                                    <TextBlock Text="ID:" Grid.Row="0" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <TextBox x:Name="PropNodeId" Grid.Row="0" Grid.Column="1" 
-                                             Style="{StaticResource CompactTextBox}" IsReadOnly="True" 
-                                             Background="#F0F0F0" Margin="0,1"/>
+                                    <!-- Sources & Sinks -->
+                                    <TextBlock Text="Flow" FontSize="8" Foreground="{StaticResource TextMuted}" Margin="0,2,0,2"/>
+                                    <WrapPanel>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="source" Click="AddNode_Click" ToolTip="Source - Parts enter"><Path Data="M2,10 L12,10 M8,5 L14,10 L8,15" Stroke="#2ECC71" StrokeThickness="1.5" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="sink" Click="AddNode_Click" ToolTip="Sink - Parts exit"><Path Data="M4,3 L4,15 M4,3 L14,3 L14,9 L4,9" Stroke="#E74C3C" StrokeThickness="1.5" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="junction" Click="AddNode_Click" ToolTip="Junction - Split/Merge"><Path Data="M8,2 L8,14 M2,8 L14,8" Stroke="#1ABC9C" StrokeThickness="1.5" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="decision" Click="AddNode_Click" ToolTip="Decision - Routing"><Path Data="M8,2 L14,8 L8,14 L2,8 Z" Stroke="#9B59B6" StrokeThickness="1.5" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                    </WrapPanel>
                                     
-                                    <TextBlock Text="Type:" Grid.Row="1" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <ComboBox x:Name="PropNodeType" Grid.Row="1" Grid.Column="1" 
-                                              Style="{StaticResource CompactComboBox}" Margin="0,1"
-                                              SelectionChanged="PropNodeType_Changed"/>
+                                    <!-- Processing -->
+                                    <TextBlock Text="Processing" FontSize="8" Foreground="{StaticResource TextMuted}" Margin="0,4,0,2"/>
+                                    <WrapPanel>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="machine" Click="AddNode_Click" ToolTip="Machine - Processing"><Path Data="M2,5 L14,5 L14,13 L2,13 Z M5,5 L5,2 L11,2 L11,5" Stroke="#4A90D9" StrokeThickness="1.5" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="workstation" Click="AddNode_Click" ToolTip="Workstation - Manual"><Path Data="M2,7 L14,7 L14,13 L2,13 Z M4,7 L4,4 L7,4 L7,7" Stroke="#7ED321" StrokeThickness="1.5" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="assembly" Click="AddNode_Click" ToolTip="Assembly - Combine"><Path Data="M2,4 L8,8 L2,12 M14,4 L8,8 L14,12" Stroke="#16A085" StrokeThickness="1.5" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="inspection" Click="AddNode_Click" ToolTip="Inspection - QC"><Path Data="M7,2 A4,4 0 1,0 7,10 M10,9 L14,13" Stroke="#9B59B6" StrokeThickness="1.5" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="robot" Click="AddNode_Click" ToolTip="Robot"><Path Data="M8,4 L8,10 M4,6 L12,6 M4,6 L2,10 M12,6 L14,10 M6,2 L10,2 L10,4 L6,4 Z" Stroke="#E67E22" StrokeThickness="1.2" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="printer3d" Click="AddNode_Click" ToolTip="3D Printer"><Path Data="M2,6 L14,6 L14,14 L2,14 Z M4,6 L4,2 L12,2 L12,6 M6,10 L10,10" Stroke="#3498DB" StrokeThickness="1.2" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                    </WrapPanel>
                                     
-                                    <TextBlock Text="Name:" Grid.Row="2" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <TextBox x:Name="PropNodeName" Grid.Row="2" Grid.Column="1" 
-                                             Style="{StaticResource CompactTextBox}" Margin="0,1"
-                                             TextChanged="PropNode_Changed"/>
+                                    <!-- Storage & Buffers -->
+                                    <TextBlock Text="Storage" FontSize="8" Foreground="{StaticResource TextMuted}" Margin="0,4,0,2"/>
+                                    <WrapPanel>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="buffer" Click="AddNode_Click" ToolTip="Buffer - Queue"><Path Data="M2,4 L14,4 L14,12 L2,12 Z M2,7 L14,7 M2,10 L14,10" Stroke="#F5A623" StrokeThickness="1.5" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="storage" Click="AddNode_Click" ToolTip="Storage - Warehouse"><Path Data="M2,2 L2,14 M14,2 L14,14 M2,2 L14,2 M2,8 L14,8 M8,2 L8,14" Stroke="#8E44AD" StrokeThickness="1.5" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="rack" Click="AddNode_Click" ToolTip="Rack - Shelving"><Path Data="M3,2 L3,14 M13,2 L13,14 M3,4 L13,4 M3,8 L13,8 M3,12 L13,12" Stroke="#8E44AD" StrokeThickness="1.2" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="pallet" Click="AddNode_Click" ToolTip="Pallet Position"><Path Data="M2,10 L14,10 L14,14 L2,14 Z M4,10 L4,6 L12,6 L12,10" Stroke="#95A5A6" StrokeThickness="1.2" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                    </WrapPanel>
                                     
-                                    <TextBlock Text="Label:" Grid.Row="3" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <TextBox x:Name="PropNodeLabel" Grid.Row="3" Grid.Column="1" 
-                                             Style="{StaticResource CompactTextBox}" Margin="0,1"
-                                             TextChanged="PropNode_Changed"/>
-                                </Grid>
-                                
-                                <!-- Position & Size -->
-                                <TextBlock Text="Position &amp; Size" Style="{StaticResource SectionHeader}"/>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="55"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
+                                    <!-- Transport -->
+                                    <TextBlock Text="Transport" FontSize="8" Foreground="{StaticResource TextMuted}" Margin="0,4,0,2"/>
+                                    <WrapPanel>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="conveyor" Click="AddNode_Click" ToolTip="Conveyor"><Path Data="M2,6 L14,6 M2,10 L14,10" Stroke="#95A5A6" StrokeThickness="1.5" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="agv_station" Click="AddNode_Click" ToolTip="AGV Station"><Path Data="M4,10 L12,10 M4,12 L12,12 M3,10 A2,2 0 0,1 3,6 L13,6 A2,2 0 0,1 13,10" Stroke="#3498DB" StrokeThickness="1.2" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="elevator" Click="AddNode_Click" ToolTip="Elevator - Floor connector"><Path Data="M4,2 L4,14 M12,2 L12,14 M4,2 L12,2 M4,14 L12,14 M6,6 L10,6 M8,4 L8,8 M6,10 L10,10 M8,12 L8,8" Stroke="#E74C3C" StrokeThickness="1.2" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="dock" Click="AddNode_Click" ToolTip="Loading Dock"><Path Data="M2,4 L2,12 L10,12 L10,4 M10,6 L14,6 L14,10 L10,10" Stroke="#27AE60" StrokeThickness="1.2" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                    </WrapPanel>
                                     
-                                    <TextBlock Text="X:" Grid.Row="0" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <TextBox x:Name="PropNodeX" Grid.Row="0" Grid.Column="1" 
-                                             Style="{StaticResource CompactTextBox}" Margin="0,1"
-                                             TextChanged="PropNodePosition_Changed"/>
+                                    <!-- People -->
+                                    <TextBlock Text="People" FontSize="8" Foreground="{StaticResource TextMuted}" Margin="0,4,0,2"/>
+                                    <WrapPanel>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="operator" Click="AddNode_Click" ToolTip="Operator"><Path Data="M8,4 A2,2 0 1,0 8,0 M8,6 L8,10 M4,8 L12,8 M8,10 L5,14 M8,10 L11,14" Stroke="#3498DB" StrokeThickness="1.2" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                        <Button Style="{StaticResource SmallNodeBtn}" Tag="crew" Click="AddNode_Click" ToolTip="Crew Station"><Path Data="M5,3 A1.5,1.5 0 1,0 5,0 M11,3 A1.5,1.5 0 1,0 11,0 M5,5 L5,9 M11,5 L11,9 M3,7 L7,7 M9,7 L13,7" Stroke="#3498DB" StrokeThickness="1.2" Width="14" Height="14" Stretch="Uniform"/></Button>
+                                    </WrapPanel>
                                     
-                                    <TextBlock Text="Y:" Grid.Row="1" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <TextBox x:Name="PropNodeY" Grid.Row="1" Grid.Column="1" 
-                                             Style="{StaticResource CompactTextBox}" Margin="0,1"
-                                             TextChanged="PropNodePosition_Changed"/>
-                                    
-                                    <TextBlock Text="Width:" Grid.Row="2" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <TextBox x:Name="PropNodeWidth" Grid.Row="2" Grid.Column="1" 
-                                             Style="{StaticResource CompactTextBox}" Margin="0,1"
-                                             TextChanged="PropNodeSize_Changed"/>
-                                    
-                                    <TextBlock Text="Height:" Grid.Row="3" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <TextBox x:Name="PropNodeHeight" Grid.Row="3" Grid.Column="1" 
-                                             Style="{StaticResource CompactTextBox}" Margin="0,1"
-                                             TextChanged="PropNodeSize_Changed"/>
-                                    
-                                    <TextBlock Text="Rotation:" Grid.Row="4" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <TextBox x:Name="PropNodeRotation" Grid.Row="4" Grid.Column="1" 
-                                             Style="{StaticResource CompactTextBox}" Margin="0,1"
-                                             TextChanged="PropNodeVisual_Changed"/>
-                                </Grid>
-                                
-                                <!-- Visual / Icon -->
-                                <TextBlock Text="Visual" Style="{StaticResource SectionHeader}"/>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="55"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-                                    
-                                    <TextBlock Text="Icon:" Grid.Row="0" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <Grid Grid.Row="0" Grid.Column="1" Margin="0,1">
+                                    <Button Content="More Nodes..." Click="ShowNodePalette_Click" Height="20" FontSize="9" Margin="0,6,0,0" HorizontalAlignment="Left" Padding="10,2"/>
+                                </StackPanel>
+                            </Expander>
+                        </Border>
+                        
+                        <!-- Visibility Toggles -->
+                        <Border Background="{StaticResource HeaderBg}" Padding="4" BorderBrush="{StaticResource Border}" BorderThickness="0,1,0,0">
+                            <Expander Header="Visibility" IsExpanded="True">
+                                <StackPanel>
+                                    <WrapPanel>
+                                        <CheckBox x:Name="LayerBackgroundImage" Content="Image" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" Margin="0,0,8,2"/>
+                                        <CheckBox x:Name="LayerWalls" Content="Walls" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" Margin="0,0,8,2"/>
+                                        <CheckBox x:Name="LayerNodes" Content="Nodes" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" Margin="0,0,8,2"/>
+                                        <CheckBox x:Name="LayerPaths" Content="Paths" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" Margin="0,0,8,2"/>
+                                        <CheckBox x:Name="LayerLabels" Content="Labels" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" Margin="0,0,8,2"/>
+                                        <CheckBox x:Name="LayerZones" Content="Zones" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" Margin="0,0,8,2"/>
+                                        <CheckBox x:Name="LayerBackground" Content="Grid" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" Margin="0,0,8,2"/>
+                                        <CheckBox x:Name="LayerMeasurements" Content="Measurements" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" Margin="0,0,8,2"/>
+                                        <CheckBox x:Name="LayerCorridors" Content="Corridors" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed"/>
+                                    </WrapPanel>
+                                </StackPanel>
+                            </Expander>
+                        </Border>
+                        
+                        <!-- Templates -->
+                        <Border Background="{StaticResource HeaderBg}" Padding="4" BorderBrush="{StaticResource Border}" BorderThickness="0,1,0,0">
+                            <Expander Header="Templates" IsExpanded="True">
+                                <StackPanel>
+                                    <ListBox x:Name="TemplateList" Height="80" FontSize="9" SelectionChanged="Template_SelectionChanged"/>
+                                    <Grid Margin="0,4,0,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <ComboBox x:Name="PropNodeIcon" 
-                                                  Style="{StaticResource CompactComboBox}"
-                                                  SelectionChanged="PropNodeVisual_SelectionChanged"/>
-                                        <Button Grid.Column="1" Content="..." Width="24" Height="22" Margin="2,0,0,0"
-                                                Click="BrowseIcon_Click" ToolTip="Browse all icons"/>
+                                        <Button Content="+ Add Selected" Click="AddTemplate_Click" Height="22" FontSize="9"/>
+                                        <Button Grid.Column="1" Content="✕" Click="DeleteTemplate_Click" Width="22" Height="22" FontSize="9" Margin="4,0,0,0" ToolTip="Delete selected template"/>
                                     </Grid>
-                                    
-                                    <TextBlock Text="Color:" Grid.Row="1" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0,1">
-                                        <Border x:Name="PropNodeColorPreview" Width="22" Height="22" 
-                                                BorderBrush="Gray" BorderThickness="1" CornerRadius="2"
-                                                Margin="0,0,4,0" Cursor="Hand" MouseLeftButtonDown="ColorPreview_Click"/>
-                                        <TextBox x:Name="PropNodeColor" Width="60" 
-                                                 Style="{StaticResource CompactTextBox}"
-                                                 TextChanged="PropNodeColor_Changed"/>
-                                    </StackPanel>
-                                    
-                                    <TextBlock Text="Label Pos:" Grid.Row="2" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <ComboBox x:Name="PropLabelPosition" Grid.Row="2" Grid.Column="1" 
-                                              Style="{StaticResource CompactComboBox}" Margin="0,1"
-                                              SelectionChanged="PropNodeVisual_SelectionChanged">
-                                        <ComboBoxItem Content="Bottom"/>
-                                        <ComboBoxItem Content="Top"/>
-                                        <ComboBoxItem Content="Left"/>
-                                        <ComboBoxItem Content="Right"/>
-                                        <ComboBoxItem Content="Center"/>
-                                    </ComboBox>
-                                </Grid>
-                                
-                                <!-- Simulation Parameters -->
-                                <TextBlock Text="Simulation" Style="{StaticResource SectionHeader}"/>
-                                <StackPanel x:Name="SimParamsPanel">
-                                    <!-- Dynamic content based on node type -->
                                 </StackPanel>
-                                
-                                <!-- Connections -->
-                                <TextBlock Text="Connections" Style="{StaticResource SectionHeader}"/>
-                                <TextBlock x:Name="PropConnections" Text="None" Foreground="{StaticResource TextMutedColor}" 
-                                           TextWrapping="Wrap" FontSize="10"/>
-                            </StackPanel>
-                            
-                            <!-- Path Properties Panel -->
-                            <StackPanel x:Name="PathPropertiesPanel" Visibility="Collapsed">
-                                <TextBlock Text="Path" Style="{StaticResource SectionHeader}"/>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="55"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-                                    
-                                    <TextBlock Text="ID:" Grid.Row="0" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <TextBox x:Name="PropPathId" Grid.Row="0" Grid.Column="1" 
-                                             Style="{StaticResource CompactTextBox}" IsReadOnly="True" 
-                                             Background="#F0F0F0" Margin="0,1"/>
-                                    
-                                    <TextBlock Text="From:" Grid.Row="1" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <ComboBox x:Name="PropPathFrom" Grid.Row="1" Grid.Column="1" 
-                                              Style="{StaticResource CompactComboBox}" Margin="0,1"
-                                              SelectionChanged="PropPath_SelectionChanged"/>
-                                    
-                                    <TextBlock Text="To:" Grid.Row="2" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <ComboBox x:Name="PropPathTo" Grid.Row="2" Grid.Column="1" 
-                                              Style="{StaticResource CompactComboBox}" Margin="0,1"
-                                              SelectionChanged="PropPath_SelectionChanged"/>
-                                    
-                                    <TextBlock Text="Type:" Grid.Row="3" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <ComboBox x:Name="PropPathType" Grid.Row="3" Grid.Column="1" 
-                                              Style="{StaticResource CompactComboBox}" Margin="0,1"
-                                              SelectionChanged="PropPath_SelectionChanged">
-                                        <ComboBoxItem Content="Single" Tag="single"/>
-                                        <ComboBoxItem Content="Double" Tag="double"/>
-                                    </ComboBox>
-                                    
-                                    <TextBlock Text="Routing:" Grid.Row="4" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <ComboBox x:Name="PropPathRouting" Grid.Row="4" Grid.Column="1" 
-                                              Style="{StaticResource CompactComboBox}" Margin="0,1"
-                                              SelectionChanged="PropPath_SelectionChanged">
-                                        <ComboBoxItem Content="Direct" Tag="direct"/>
-                                        <ComboBoxItem Content="Manhattan" Tag="manhattan"/>
-                                        <ComboBoxItem Content="Corridor" Tag="corridor"/>
-                                    </ComboBox>
-                                    
-                                    <TextBlock Text="Color:" Grid.Row="5" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <TextBox x:Name="PropPathColor" Grid.Row="5" Grid.Column="1" 
-                                             Style="{StaticResource CompactTextBox}" Margin="0,1"
-                                             TextChanged="PropPath_TextChanged"/>
-                                </Grid>
-                                
-                                <TextBlock Text="Transport" Style="{StaticResource SectionHeader}"/>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="55"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-                                    
-                                    <TextBlock Text="Type:" Grid.Row="0" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <ComboBox x:Name="PropTransportType" Grid.Row="0" Grid.Column="1" 
-                                              Style="{StaticResource CompactComboBox}" Margin="0,1"
-                                              SelectionChanged="PropPath_SelectionChanged">
-                                        <ComboBoxItem Content="Conveyor"/>
-                                        <ComboBoxItem Content="AGV"/>
-                                        <ComboBoxItem Content="Manual"/>
-                                        <ComboBoxItem Content="Crane"/>
-                                    </ComboBox>
-                                    
-                                    <TextBlock Text="Speed:" Grid.Row="1" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0,1">
-                                        <TextBox x:Name="PropPathSpeed" Width="50" 
-                                                 Style="{StaticResource CompactTextBox}"
-                                                 TextChanged="PropPath_TextChanged"/>
-                                        <TextBlock Text=" m/s" VerticalAlignment="Center" FontSize="10"/>
-                                    </StackPanel>
-                                    
-                                    <TextBlock Text="Capacity:" Grid.Row="2" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <TextBox x:Name="PropPathCapacity" Grid.Row="2" Grid.Column="1" 
-                                             Style="{StaticResource CompactTextBox}" Margin="0,1"
-                                             TextChanged="PropPath_TextChanged"/>
-                                    
-                                    <TextBlock Text="Distance:" Grid.Row="3" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="0,1">
-                                        <TextBox x:Name="PropPathDistance" Width="50" 
-                                                 Style="{StaticResource CompactTextBox}" IsReadOnly="True"
-                                                 Background="#F0F0F0"/>
-                                        <TextBlock Text=" m" VerticalAlignment="Center" FontSize="10"/>
-                                    </StackPanel>
-                                </Grid>
-                            </StackPanel>
-                            
-                            <!-- Group/Cell Properties Panel -->
-                            <StackPanel x:Name="GroupPropertiesPanel" Visibility="Collapsed">
-                                <TextBlock Text="Group/Cell" Style="{StaticResource SectionHeader}"/>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="55"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
-                                    
-                                    <TextBlock Text="ID:" Grid.Row="0" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <TextBox x:Name="PropGroupId" Grid.Row="0" Grid.Column="1" 
-                                             Style="{StaticResource CompactTextBox}" IsReadOnly="True" 
-                                             Background="#F0F0F0" Margin="0,1"/>
-                                    
-                                    <TextBlock Text="Name:" Grid.Row="1" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <TextBox x:Name="PropGroupName" Grid.Row="1" Grid.Column="1" 
-                                             Style="{StaticResource CompactTextBox}" Margin="0,1"
-                                             TextChanged="PropGroup_Changed"/>
-                                    
-                                    <TextBlock Text="Is Cell:" Grid.Row="2" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <CheckBox x:Name="PropGroupIsCell" Grid.Row="2" Grid.Column="1" 
-                                              Margin="0,1" Click="PropGroupIsCell_Changed"/>
-                                    
-                                    <TextBlock Text="Input:" Grid.Row="3" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <ComboBox x:Name="PropCellInputPos" Grid.Row="3" Grid.Column="1" 
-                                              Margin="0,1" Height="22" FontSize="10"
-                                              SelectionChanged="PropCellTerminal_Changed">
-                                        <ComboBoxItem Content="Left" Tag="left"/>
-                                        <ComboBoxItem Content="Right" Tag="right"/>
-                                        <ComboBoxItem Content="Top" Tag="top"/>
-                                        <ComboBoxItem Content="Bottom" Tag="bottom"/>
-                                    </ComboBox>
-                                    
-                                    <TextBlock Text="Output:" Grid.Row="4" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <ComboBox x:Name="PropCellOutputPos" Grid.Row="4" Grid.Column="1" 
-                                              Margin="0,1" Height="22" FontSize="10"
-                                              SelectionChanged="PropCellTerminal_Changed">
-                                        <ComboBoxItem Content="Left" Tag="left"/>
-                                        <ComboBoxItem Content="Right" Tag="right"/>
-                                        <ComboBoxItem Content="Top" Tag="top"/>
-                                        <ComboBoxItem Content="Bottom" Tag="bottom"/>
-                                    </ComboBox>
-                                    
-                                    <TextBlock Text="Members:" Grid.Row="5" VerticalAlignment="Center" Margin="0,1" FontSize="11"/>
-                                    <TextBlock x:Name="PropGroupMembers" Grid.Row="5" Grid.Column="1" 
-                                               TextWrapping="Wrap" FontSize="10" Margin="0,1"/>
-                                </Grid>
-                            </StackPanel>
-                            
-                            <!-- Multi-Selection Panel -->
-                            <StackPanel x:Name="MultiSelectPanel" Visibility="Collapsed">
-                                <TextBlock Text="Multiple Selection" Style="{StaticResource SectionHeader}"/>
-                                <TextBlock x:Name="MultiSelectCount" Text="0 items selected" FontSize="11" Margin="0,0,0,6"/>
-                                
-                                <TextBlock Text="Alignment" FontSize="10" Foreground="{StaticResource TextMutedColor}" Margin="0,4,0,2"/>
-                                <WrapPanel>
-                                    <Button Content="⫷" Width="28" Height="22" ToolTip="Align Left" Click="AlignLeft_Click" Margin="1"/>
-                                    <Button Content="⫿" Width="28" Height="22" ToolTip="Align Center H" Click="AlignCenterH_Click" Margin="1"/>
-                                    <Button Content="⫸" Width="28" Height="22" ToolTip="Align Right" Click="AlignRight_Click" Margin="1"/>
-                                    <Button Content="⊤" Width="28" Height="22" ToolTip="Align Top" Click="AlignTop_Click" Margin="1"/>
-                                    <Button Content="⊡" Width="28" Height="22" ToolTip="Align Center V" Click="AlignCenterV_Click" Margin="1"/>
-                                    <Button Content="⊥" Width="28" Height="22" ToolTip="Align Bottom" Click="AlignBottom_Click" Margin="1"/>
-                                </WrapPanel>
-                                
-                                <TextBlock Text="Distribute" FontSize="10" Foreground="{StaticResource TextMutedColor}" Margin="0,6,0,2"/>
-                                <WrapPanel>
-                                    <Button Content="⋯ H" Width="40" Height="22" ToolTip="Distribute Horizontally" Click="DistributeH_Click" Margin="1"/>
-                                    <Button Content="⋮ V" Width="40" Height="22" ToolTip="Distribute Vertically" Click="DistributeV_Click" Margin="1"/>
-                                </WrapPanel>
-                                
-                                <TextBlock Text="Actions" FontSize="10" Foreground="{StaticResource TextMutedColor}" Margin="0,6,0,2"/>
-                                <Button Content="Create Cell" Click="DefineCell_Click" Height="22" FontSize="10" Margin="0,2"/>
-                                <Button Content="Delete Selected" Click="Delete_Click" Height="22" FontSize="10" 
-                                        Background="#FFDDDD" Margin="0,2"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </ScrollViewer>
-                    
-                    <!-- Separator -->
-                    <Border Grid.Row="2" Height="1" Background="{StaticResource BorderColor}"/>
-                    
-                    <!-- Layers Panel -->
-                    <Border Grid.Row="3" Background="{StaticResource PanelHeaderBackground}" MaxHeight="250">
-                        <Expander Header="Layers" IsExpanded="True" Margin="4">
-                            <local:LayersPanel x:Name="LayersPanelControl" Height="200"/>
-                        </Expander>
-                    </Border>
-                    
-                    <!-- Compact Toolbox -->
-                    <Border Grid.Row="4" Background="{StaticResource PanelHeaderBackground}"
-                            BorderBrush="{StaticResource BorderColor}" BorderThickness="0,1,0,0">
-                        <Expander Header="Toolbox" IsExpanded="True" Margin="4">
-                            <StackPanel>
-                                <!-- Sources & Sinks -->
-                                <TextBlock Text="Sources &amp; Sinks" FontSize="10" Foreground="{StaticResource TextMutedColor}" Margin="0,2,0,2"/>
-                                <WrapPanel>
-                                    <Button Style="{StaticResource NodeIconButton}" Tag="source" Click="AddNode_Click" ToolTip="Source">
-                                        <Path Data="M2,12 L14,12 M10,6 L16,12 L10,18" Stroke="#2ECC71" StrokeThickness="1.5" Width="20" Height="20" Stretch="Uniform"/>
-                                    </Button>
-                                    <Button Style="{StaticResource NodeIconButton}" Tag="sink" Click="AddNode_Click" ToolTip="Sink/Exit">
-                                        <Path Data="M6,4 L6,20 M6,4 L18,4 L18,12 L6,12" Stroke="#E74C3C" StrokeThickness="1.5" Width="20" Height="20" Stretch="Uniform"/>
-                                    </Button>
-                                </WrapPanel>
-                                
-                                <!-- Processing -->
-                                <TextBlock Text="Processing" FontSize="10" Foreground="{StaticResource TextMutedColor}" Margin="0,4,0,2"/>
-                                <WrapPanel>
-                                    <Button Style="{StaticResource NodeIconButton}" Tag="machine" Click="AddNode_Click" ToolTip="Machine">
-                                        <Path Data="M4,6 L20,6 L20,18 L4,18 Z M8,6 L8,2 L16,2 L16,6" Stroke="#4A90D9" StrokeThickness="1.5" Width="20" Height="20" Stretch="Uniform"/>
-                                    </Button>
-                                    <Button Style="{StaticResource NodeIconButton}" Tag="workstation" Click="AddNode_Click" ToolTip="Workstation">
-                                        <Path Data="M4,10 L20,10 L20,18 L4,18 Z M6,10 L6,6 L10,6 L10,10" Stroke="#7ED321" StrokeThickness="1.5" Width="20" Height="20" Stretch="Uniform"/>
-                                    </Button>
-                                    <Button Style="{StaticResource NodeIconButton}" Tag="inspection" Click="AddNode_Click" ToolTip="Inspection">
-                                        <Path Data="M10,2 A6,6 0 1,0 10,14 M14,12 L20,18" Stroke="#9B59B6" StrokeThickness="1.5" Width="20" Height="20" Stretch="Uniform"/>
-                                    </Button>
-                                </WrapPanel>
-                                
-                                <!-- Buffers & Storage -->
-                                <TextBlock Text="Buffers &amp; Storage" FontSize="10" Foreground="{StaticResource TextMutedColor}" Margin="0,4,0,2"/>
-                                <WrapPanel>
-                                    <Button Style="{StaticResource NodeIconButton}" Tag="buffer" Click="AddNode_Click" ToolTip="Buffer (FIFO)">
-                                        <Path Data="M4,6 L20,6 L20,18 L4,18 Z M4,10 L20,10 M4,14 L20,14" Stroke="#F5A623" StrokeThickness="1.5" Width="20" Height="20" Stretch="Uniform"/>
-                                    </Button>
-                                    <Button Style="{StaticResource NodeIconButton}" Tag="storage" Click="AddNode_Click" ToolTip="Storage/Rack">
-                                        <Path Data="M4,4 L4,20 M20,4 L20,20 M4,4 L20,4 M4,12 L20,12 M12,4 L12,20" Stroke="#8E44AD" StrokeThickness="1.5" Width="20" Height="20" Stretch="Uniform"/>
-                                    </Button>
-                                </WrapPanel>
-                                
-                                <!-- Transport -->
-                                <TextBlock Text="Transport" FontSize="10" Foreground="{StaticResource TextMutedColor}" Margin="0,4,0,2"/>
-                                <WrapPanel>
-                                    <Button Style="{StaticResource NodeIconButton}" Tag="conveyor" Click="AddNode_Click" ToolTip="Conveyor">
-                                        <Path Data="M4,10 L20,10 M4,14 L20,14 M2,12 A2,2 0 1,0 6,12 M18,12 A2,2 0 1,0 22,12" Stroke="#95A5A6" StrokeThickness="1.5" Width="20" Height="20" Stretch="Uniform"/>
-                                    </Button>
-                                    <Button Style="{StaticResource NodeIconButton}" Tag="junction" Click="AddNode_Click" ToolTip="Junction">
-                                        <Path Data="M12,4 L12,20 M4,12 L20,12" Stroke="#95A5A6" StrokeThickness="1.5" Width="20" Height="20" Stretch="Uniform"/>
-                                    </Button>
-                                    <Button Style="{StaticResource NodeIconButton}" Tag="agv_station" Click="AddNode_Click" ToolTip="AGV Station">
-                                        <Path Data="M8,4 L16,4 L16,8 L18,8 L18,12 L16,12 L16,20 L8,20 Z" Stroke="#3498DB" StrokeThickness="1.5" Width="20" Height="20" Stretch="Uniform"/>
-                                    </Button>
-                                </WrapPanel>
-                                
-                                <!-- Layers -->
-                                <TextBlock Text="Layers" FontSize="10" Foreground="{StaticResource TextMutedColor}" Margin="0,6,0,2"/>
-                                <WrapPanel>
-                                    <CheckBox x:Name="LayerBackgroundImage" Content="Img" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" Margin="0,0,8,0" FontSize="10" ToolTip="Background Image"/>
-                                    <CheckBox x:Name="LayerWalls" Content="Wall" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" Margin="0,0,8,0" FontSize="10" ToolTip="Walls"/>
-                                    <CheckBox x:Name="LayerNodes" Content="Node" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" Margin="0,0,8,0" FontSize="10"/>
-                                    <CheckBox x:Name="LayerPaths" Content="Path" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" FontSize="10"/>
-                                </WrapPanel>
-                                <WrapPanel>
-                                    <CheckBox x:Name="LayerLabels" Content="Lbl" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" Margin="0,0,8,0" FontSize="10"/>
-                                    <CheckBox x:Name="LayerMeasurements" Content="Meas" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" Margin="0,0,8,0" FontSize="10" ToolTip="Measurements"/>
-                                    <CheckBox x:Name="LayerZones" Content="Zone" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" FontSize="10"/>
-                                </WrapPanel>
-                                <WrapPanel>
-                                    <CheckBox x:Name="LayerBackground" Content="Grid" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" Margin="0,0,8,0" FontSize="10" ToolTip="Grid Background"/>
-                                    <CheckBox x:Name="LayerCorridors" Content="Corr" IsChecked="True" Style="{StaticResource LayerCheckBox}" Click="Layer_Changed" FontSize="10"/>
-                                </WrapPanel>
-                                
-                                <!-- Templates -->
-                                <TextBlock Text="Templates" FontSize="10" Foreground="{StaticResource TextMutedColor}" Margin="0,6,0,2"/>
-                                <ListBox x:Name="TemplateList" Height="60" FontSize="10"
-                                         SelectionChanged="Template_SelectionChanged"/>
-                                <Button Content="+ Add Template" Click="AddTemplate_Click" Height="20" FontSize="10" Margin="0,2"/>
-                            </StackPanel>
-                        </Expander>
-                    </Border>
-                </Grid>
+                            </Expander>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
             </Border>
             
-            <GridSplitter Grid.Column="1" Width="4" HorizontalAlignment="Center" 
-                          VerticalAlignment="Stretch" Background="Transparent"/>
+            <GridSplitter Grid.Column="1" Width="5" 
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                          Background="#888888" 
+                          ResizeBehavior="PreviousAndNext" 
+                          ResizeDirection="Columns" 
+                          ShowsPreview="True"
+                          Focusable="False">
+                <GridSplitter.Template>
+                    <ControlTemplate TargetType="GridSplitter">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="#666666" BorderThickness="1,0" 
+                                Cursor="SizeWE"/>
+                    </ControlTemplate>
+                </GridSplitter.Template>
+            </GridSplitter>
             
-            <!-- Center: Canvas Area -->
+            <!-- Canvas -->
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -1014,182 +371,125 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 
-                <!-- Horizontal Ruler -->
-                <Canvas x:Name="HorizontalRuler" Grid.Row="0" Grid.Column="1" 
-                        Height="20" Background="#F8F9FA" ClipToBounds="True"/>
+                <Canvas x:Name="HorizontalRuler" Grid.Row="0" Grid.Column="1" Height="20" Background="#F8F9FA" ClipToBounds="True"/>
+                <Canvas x:Name="VerticalRuler" Grid.Row="1" Grid.Column="0" Width="20" Background="#F8F9FA" ClipToBounds="True"/>
                 
-                <!-- Vertical Ruler -->
-                <Canvas x:Name="VerticalRuler" Grid.Row="1" Grid.Column="0" 
-                        Width="20" Background="#F8F9FA" ClipToBounds="True"/>
-                
-                <!-- Main Canvas Container -->
-                <Border Grid.Row="1" Grid.Column="1" Background="#FFFFFF" 
-                        BorderBrush="{StaticResource BorderColor}" BorderThickness="1"
-                        ClipToBounds="True">
+                <Border Grid.Row="1" Grid.Column="1" Background="#FFFFFF" BorderBrush="{StaticResource Border}" BorderThickness="0.5" ClipToBounds="True">
                     <Grid>
-                        <!-- Scrollable Canvas Area -->
-                        <ScrollViewer x:Name="CanvasScroller" 
-                                      HorizontalScrollBarVisibility="Auto" 
-                                      VerticalScrollBarVisibility="Auto"
-                                      PreviewMouseWheel="Canvas_PreviewMouseWheel">
-                            <Canvas x:Name="EditorCanvas" 
-                                    Width="2000" Height="1500"
-                                    Background="White"
+                        <ScrollViewer x:Name="CanvasScroller" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" PreviewMouseWheel="Canvas_PreviewMouseWheel">
+                            <Canvas x:Name="EditorCanvas" Width="2000" Height="1500" Background="White" AllowDrop="True"
+                                    Drop="EditorCanvas_Drop" DragOver="EditorCanvas_DragOver"
                                     PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown"
                                     MouseLeftButtonDown="Canvas_MouseLeftButtonDown"
                                     MouseRightButtonDown="Canvas_MouseRightButtonDown"
-                                    MouseMove="Canvas_MouseMove"
-                                    MouseLeftButtonUp="Canvas_MouseLeftButtonUp"
-                                    ClipToBounds="True">
-                                <Canvas.LayoutTransform>
-                                    <ScaleTransform x:Name="CanvasScale" ScaleX="1" ScaleY="1"/>
-                                </Canvas.LayoutTransform>
-                                
-                                <!-- Context Menu -->
-                                <Canvas.ContextMenu>
-                                    <ContextMenu x:Name="CanvasContextMenu">
-                                        <MenuItem Header="Add Node Here" x:Name="AddNodeHereMenu">
-                                            <MenuItem Header="Source" Tag="source" Click="AddNodeHere_Click"/>
-                                            <MenuItem Header="Sink" Tag="sink" Click="AddNodeHere_Click"/>
-                                            <MenuItem Header="Machine" Tag="machine" Click="AddNodeHere_Click"/>
-                                            <MenuItem Header="Buffer" Tag="buffer" Click="AddNodeHere_Click"/>
-                                            <MenuItem Header="Workstation" Tag="workstation" Click="AddNodeHere_Click"/>
-                                        </MenuItem>
-                                        <Separator/>
-                                        <MenuItem Header="Start Path Here" x:Name="StartPathMenu" Click="StartPath_Click"/>
-                                        <MenuItem Header="End Path Here" x:Name="EndPathMenu" Click="EndPath_Click" IsEnabled="False"/>
-                                        <MenuItem Header="Cancel Path" x:Name="CancelPathMenu" Click="CancelPath_Click" IsEnabled="False"/>
-                                        <Separator/>
-                                        <MenuItem Header="Define as Cell" x:Name="DefineCellMenu" Click="DefineCell_Click" 
-                                                  IsEnabled="False" InputGestureText="Ctrl+Shift+C"
-                                                  ToolTip="Group selected nodes as a work cell (paths between them are internal)"/>
-                                        <MenuItem Header="Ungroup Cell" x:Name="UngroupCellMenu" Click="UngroupCell_Click" 
-                                                  IsEnabled="False" InputGestureText="Ctrl+Shift+U"/>
-                                        <Separator/>
-                                        <MenuItem Header="Duplicate" Click="Duplicate_Click" InputGestureText="Ctrl+D"/>
-                                        <MenuItem Header="Paste" Click="Paste_Click" InputGestureText="Ctrl+V"/>
-                                        <MenuItem Header="Select All" Click="SelectAll_Click" InputGestureText="Ctrl+A"/>
-                                    </ContextMenu>
-                                </Canvas.ContextMenu>
+                                    MouseMove="Canvas_MouseMove" MouseLeftButtonUp="Canvas_MouseLeftButtonUp" ClipToBounds="True">
+                                <Canvas.LayoutTransform><ScaleTransform x:Name="CanvasScale" ScaleX="1" ScaleY="1"/></Canvas.LayoutTransform>
+                                <Canvas.ContextMenu><ContextMenu x:Name="CanvasContextMenu"/></Canvas.ContextMenu>
                             </Canvas>
                         </ScrollViewer>
-                        
-                        <!-- Minimap Overlay (hidden) -->
-                        <Border x:Name="MinimapBorder" 
-                                Visibility="Collapsed"
-                                HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                Margin="10" Width="180" Height="120"
-                                Background="#F8F9FA" BorderBrush="{StaticResource BorderColor}" 
-                                BorderThickness="1" CornerRadius="4"
-                                Opacity="0.9">
-                            <Grid>
-                                <Canvas x:Name="MinimapCanvas" ClipToBounds="True"/>
-                                <Rectangle x:Name="MinimapViewport" 
-                                           Stroke="{StaticResource AccentColor}" 
-                                           StrokeThickness="2" Fill="#4A90D920"
-                                           HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                            </Grid>
+                        <Border x:Name="MinimapBorder" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Width="150" Height="100" Background="#F8F9FA" BorderBrush="{StaticResource Border}" BorderThickness="1" CornerRadius="4" Opacity="0.9">
+                            <Grid><Canvas x:Name="MinimapCanvas" ClipToBounds="True"/><Rectangle x:Name="MinimapViewport" Stroke="{StaticResource Accent}" StrokeThickness="2" Fill="#4A90D920" HorizontalAlignment="Left" VerticalAlignment="Top"/></Grid>
                         </Border>
-                        
-                        <!-- Alignment Guides (drawn dynamically) -->
                         <Canvas x:Name="GuideCanvas" IsHitTestVisible="False"/>
                     </Grid>
                 </Border>
             </Grid>
             
-            <GridSplitter Grid.Column="3" Width="4" HorizontalAlignment="Center" 
-                          VerticalAlignment="Stretch" Background="Transparent"/>
+            <GridSplitter Grid.Column="3" Width="5" 
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                          Background="#888888" 
+                          ResizeBehavior="PreviousAndNext" 
+                          ResizeDirection="Columns" 
+                          ShowsPreview="True"
+                          Focusable="False">
+                <GridSplitter.Template>
+                    <ControlTemplate TargetType="GridSplitter">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="#666666" BorderThickness="1,0" 
+                                Cursor="SizeWE"/>
+                    </ControlTemplate>
+                </GridSplitter.Template>
+            </GridSplitter>
             
-            <!-- Right Panel: Topology Explorer -->
-            <Border Grid.Column="4" Background="{StaticResource PanelBackground}" 
-                    BorderBrush="{StaticResource BorderColor}" BorderThickness="1,0,0,0">
+            <!-- Right Panel -->
+            <Border Grid.Column="4" Background="{StaticResource PanelBg}" BorderBrush="{StaticResource Border}" BorderThickness="0.5,0,0,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     
-                    <!-- Panel Header -->
-                    <Border Grid.Row="0" Background="{StaticResource PanelHeaderBackground}" 
-                            BorderBrush="{StaticResource BorderColor}" BorderThickness="0,0,0,1">
-                        <TextBlock Text="Topology Explorer" FontWeight="SemiBold" FontSize="11" 
-                                   FontFamily="Segoe UI" Padding="6,4"/>
-                    </Border>
-                    
-                    <!-- Topology Tree -->
-                    <TreeView x:Name="TopologyTree" Grid.Row="1" 
-                              BorderThickness="0"
-                              FontFamily="Segoe UI" FontSize="11"
-                              SelectedItemChanged="TopologyTree_SelectedItemChanged">
-                        <TreeView.ItemContainerStyle>
-                            <Style TargetType="TreeViewItem">
-                                <Setter Property="IsExpanded" Value="True"/>
-                                <Setter Property="Padding" Value="2,1"/>
-                            </Style>
-                        </TreeView.ItemContainerStyle>
-                    </TreeView>
-                    
-                    <!-- Quick Actions -->
-                    <Border Grid.Row="2" Background="{StaticResource PanelHeaderBackground}" 
-                            BorderBrush="{StaticResource BorderColor}" BorderThickness="0,1,0,0" Padding="4">
-                        <StackPanel>
-                            <TextBlock Text="Quick Actions" FontSize="10" Foreground="{StaticResource TextMutedColor}" Margin="0,0,0,4"/>
-                            <WrapPanel>
-                                <Button Content="Refresh" Click="RefreshTopology_Click" Margin="2" Padding="6,2" FontSize="10"/>
-                                <Button Content="Expand All" Click="ExpandAllTopology_Click" Margin="2" Padding="6,2" FontSize="10"/>
-                                <Button Content="Collapse All" Click="CollapseAllTopology_Click" Margin="2" Padding="6,2" FontSize="10"/>
-                            </WrapPanel>
-                            <WrapPanel Margin="0,4,0,0">
-                                <Button Content="Select All Nodes" Click="SelectAll_Click" Margin="2" Padding="6,2" FontSize="10"/>
-                                <Button Content="Clear Selection" Click="ClearSelection_Click" Margin="2" Padding="6,2" FontSize="10"/>
-                            </WrapPanel>
+                    <Border Grid.Row="0" Background="{StaticResource HeaderBg}" BorderBrush="{StaticResource Border}" BorderThickness="0,0,0,1">
+                        <StackPanel Orientation="Horizontal" Margin="6,4">
+                            <TextBlock Text="Explorer" FontWeight="SemiBold" FontSize="11"/>
+                            <TextBlock x:Name="NodeCountLabel" Text=" (0 nodes)" FontSize="10" Foreground="{StaticResource TextMuted}" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Border>
+                    
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <TreeView x:Name="TopologyTree" FontSize="10" BorderThickness="0" SelectedItemChanged="TopologyTree_SelectedItemChanged"/>
+                        
+                        <Expander Grid.Row="1" Header="Validation" x:Name="ValidationExpander" IsExpanded="False" Margin="4">
+                            <Grid Height="120">
+                                <ListBox x:Name="ValidationList" FontSize="9" BorderThickness="0" SelectionChanged="ValidationList_Changed"/>
+                            </Grid>
+                        </Expander>
+                    </Grid>
                 </Grid>
             </Border>
         </Grid>
         
         <!-- Status Bar -->
-        <StatusBar Grid.Row="3" Background="#F8F9FA" BorderBrush="#DEE2E6" BorderThickness="0,1,0,0">
-            <StatusBarItem>
-                <TextBlock x:Name="StatusText" Text="Ready"/>
-            </StatusBarItem>
+        <StatusBar Grid.Row="3" Background="White" BorderBrush="#DEE2E6" BorderThickness="0,1,0,0">
+            <StatusBarItem><TextBlock x:Name="StatusText" Text="Ready" FontSize="11"/></StatusBarItem>
             <Separator/>
-            <StatusBarItem>
-                <TextBlock x:Name="ModeText" Text="Mode: Select"/>
-            </StatusBarItem>
+            <StatusBarItem><TextBlock x:Name="FileText" Text="" FontSize="10"/></StatusBarItem>
+            <Separator/>
+            <StatusBarItem><TextBlock x:Name="NodeCountText" Text="Nodes: 0  Paths: 0  Walls: 0" FontSize="10"/></StatusBarItem>
             <Separator/>
             <StatusBarItem>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Layer: " VerticalAlignment="Center"/>
-                    <ComboBox x:Name="ActiveLayerCombo" Width="100" Height="20" Padding="4,0"
-              SelectionChanged="ActiveLayer_Changed"/>
+                    <TextBlock Text="Wall:" FontSize="10" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                    <ComboBox x:Name="WallTypeCombo" Width="70" Height="20" FontSize="9">
+                        <ComboBoxItem Content="Solid" IsSelected="True"/>
+                        <ComboBoxItem Content="Glass"/>
+                        <ComboBoxItem Content="Partition"/>
+                        <ComboBoxItem Content="Fence"/>
+                    </ComboBox>
                 </StackPanel>
             </StatusBarItem>
-            <Separator/>
-            <StatusBarItem>
-                <TextBlock x:Name="MousePosText" Text="X: 0  Y: 0"/>
-            </StatusBarItem>
-            <Separator/>
             <StatusBarItem>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Units: "/>
-                    <ComboBox x:Name="UnitsCombo" Width="70" Height="20" Padding="4,0" 
-                              SelectionChanged="Units_Changed">
-                        <ComboBoxItem Content="meters" IsSelected="True"/>
-                        <ComboBoxItem Content="feet"/>
-                        <ComboBoxItem Content="pixels"/>
+                    <TextBlock Text="Units:" FontSize="10" VerticalAlignment="Center" Margin="8,0,4,0"/>
+                    <ComboBox x:Name="UnitsCombo" Width="50" Height="20" FontSize="9">
+                        <ComboBoxItem Content="m" IsSelected="True"/>
+                        <ComboBoxItem Content="ft"/>
+                        <ComboBoxItem Content="px"/>
+                    </ComboBox>
+                </StackPanel>
+            </StatusBarItem>
+            <StatusBarItem>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Grid:" FontSize="10" VerticalAlignment="Center" Margin="8,0,4,0"/>
+                    <ComboBox x:Name="GridSizeCombo" Width="50" Height="20" FontSize="9" SelectionChanged="GridSize_Changed">
+                        <ComboBoxItem Content="10" Tag="10"/>
+                        <ComboBoxItem Content="20" Tag="20" IsSelected="True"/>
+                        <ComboBoxItem Content="50" Tag="50"/>
+                        <ComboBoxItem Content="100" Tag="100"/>
                     </ComboBox>
                 </StackPanel>
             </StatusBarItem>
             <Separator/>
-            <StatusBarItem>
-                <TextBlock x:Name="NodeCountText" Text="Nodes: 0  Paths: 0"/>
-            </StatusBarItem>
-            <Separator/>
             <StatusBarItem HorizontalAlignment="Right">
-                <TextBlock x:Name="FileText" Text="New Layout"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="ZoomText" Text="100%" FontSize="10" Margin="0,0,12,0"/>
+                    <TextBlock x:Name="MousePosText" Text="X: 0  Y: 0" FontSize="10"/>
+                </StackPanel>
             </StatusBarItem>
         </StatusBar>
     </Grid>

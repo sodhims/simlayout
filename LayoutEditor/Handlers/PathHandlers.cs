@@ -24,10 +24,8 @@ namespace LayoutEditor
 
             SaveUndoState();
 
-            // Use Manhattan routing if checkbox is checked
-            var routingMode = ManhattanCheck.IsChecked == true 
-                ? RoutingModes.Manhattan 
-                : RoutingModes.Direct;
+            // Use direct routing by default
+            var routingMode = RoutingModes.Direct;
 
             var path = new PathData
             {
@@ -87,9 +85,44 @@ namespace LayoutEditor
             var startNode = _layout.Nodes.FirstOrDefault(n => n.Id == _pathStartNodeId);
             if (startNode == null) return;
 
-            var startPoint = new Point(
-                startNode.Visual.X + startNode.Visual.Width / 2,
-                startNode.Visual.Y + startNode.Visual.Height / 2);
+            Point startPoint;
+            
+            // Check if starting node is inside a cell - if so, draw from cell's output terminal
+            var cell = _layout.Groups.FirstOrDefault(g => g.IsCell && g.Members.Contains(_pathStartNodeId));
+            if (cell != null)
+            {
+                // Get cell bounds
+                var cellNodes = cell.Members.Select(id => _layout.Nodes.FirstOrDefault(n => n.Id == id))
+                    .Where(n => n != null).ToList();
+                if (cellNodes.Count > 0)
+                {
+                    const double pad = 15;
+                    const double terminalOffset = 12;
+                    double minX = cellNodes.Min(n => n!.Visual.X) - pad;
+                    double minY = cellNodes.Min(n => n!.Visual.Y) - pad;
+                    double maxX = cellNodes.Max(n => n!.Visual.X + n!.Visual.Width) + pad;
+                    double maxY = cellNodes.Max(n => n!.Visual.Y + n!.Visual.Height) + pad;
+                    
+                    // Get output terminal position
+                    startPoint = cell.OutputTerminalPosition?.ToLower() switch
+                    {
+                        "top" => new Point((minX + maxX) / 2, minY - terminalOffset),
+                        "bottom" => new Point((minX + maxX) / 2, maxY + terminalOffset),
+                        "left" => new Point(minX - terminalOffset, (minY + maxY) / 2),
+                        _ => new Point(maxX + terminalOffset, (minY + maxY) / 2) // right default
+                    };
+                }
+                else
+                {
+                    // Fallback to node terminal
+                    startPoint = Services.TerminalHelper.GetNodeOutputTerminal(startNode);
+                }
+            }
+            else
+            {
+                // Start from node's OUTPUT terminal
+                startPoint = Services.TerminalHelper.GetNodeOutputTerminal(startNode);
+            }
 
             _pathRenderer.ClearTempPath(EditorCanvas);
             _pathRenderer.DrawTempPath(EditorCanvas, startPoint, currentPos);
@@ -108,7 +141,7 @@ namespace LayoutEditor
             _currentTool = "path";
             _isDrawingPath = true;
             StatusText.Text = "Click source node to start path";
-            ModeText.Text = "Mode: Draw Path";
+            if (ModeText != null) ModeText.Text = "Mode: Draw Path";
         }
 
         #endregion

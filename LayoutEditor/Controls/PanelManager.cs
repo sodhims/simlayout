@@ -12,9 +12,9 @@ namespace LayoutEditor.Controls
         private MainWindow _mainWindow;
         
         public ToolboxPanel Toolbox { get; private set; }
-        public PropertiesPanel Properties { get; private set; }
-        public ExplorerPanel Explorer { get; private set; }
-        public LayoutsPanel Layouts { get; private set; }
+        public PropertiesPanel Properties { get; private set; } = null!;
+        public ExplorerPanel Explorer { get; private set; } = null!;
+        public LayoutsPanel Layouts { get; private set; } = null!;
         
         // Note: LayersPanel is excluded - you already have one as a UserControl
         
@@ -24,15 +24,25 @@ namespace LayoutEditor.Controls
             
             // Create panels
             Toolbox = new ToolboxPanel();
-            Properties = new PropertiesPanel();
             Explorer = new ExplorerPanel();
             Layouts = new LayoutsPanel();
             
+            // Properties panel created on demand
+            CreatePropertiesPanel();
+            
             // Set ownership
             Toolbox.SetOwner(mainWindow);
-            Properties.SetOwner(mainWindow);
             Explorer.SetOwner(mainWindow);
             Layouts.SetOwner(mainWindow);
+        }
+        
+        private void CreatePropertiesPanel()
+        {
+            Properties = new PropertiesPanel();
+            Properties.SetOwner(_mainWindow);
+            Properties.ApplyRequested += () => _mainWindow.RefreshCanvas();
+            Properties.Closed += (s, e) => _propertiesClosed = true;
+            _propertiesClosed = false;
         }
         
         /// <summary>
@@ -102,7 +112,9 @@ namespace LayoutEditor.Controls
         
         public void LoadLayout(LayoutData layout)
         {
+            _currentLayout = layout;  // Store for panel recreation
             Explorer.LoadLayout(layout);
+            Properties.SetLayout(layout);
         }
         
         public void RefreshAll()
@@ -110,16 +122,75 @@ namespace LayoutEditor.Controls
             Explorer.RefreshTree();
         }
         
+        private bool _propertiesClosed = false;
+        private LayoutData? _currentLayout;
+        
+        private void EnsurePropertiesPanel()
+        {
+            // If panel was closed, recreate it
+            if (_propertiesClosed)
+            {
+                CreatePropertiesPanel();
+                // Restore the layout reference
+                if (_currentLayout != null)
+                {
+                    Properties.SetLayout(_currentLayout);
+                }
+            }
+        }
+        
         public void ShowNodeProperties(NodeData node)
         {
+            EnsurePropertiesPanel();
             Properties.ShowNodeProperties(node);
             if (!Properties.IsVisible)
                 Properties.Show();
+            Properties.Activate();
+        }
+        
+        public void ShowPathProperties(PathData path)
+        {
+            EnsurePropertiesPanel();
+            Properties.ShowPathProperties(path);
+            if (!Properties.IsVisible)
+                Properties.Show();
+            Properties.Activate();
+        }
+        
+        public void ShowGroupProperties(GroupData group)
+        {
+            EnsurePropertiesPanel();
+            Properties.ShowGroupProperties(group);
+            if (!Properties.IsVisible)
+                Properties.Show();
+            Properties.Activate();
         }
         
         public void ClearSelection()
         {
-            Properties.ClearSelection();
+            if (!_propertiesClosed)
+                Properties?.ClearSelection();
+        }
+        
+        public void ApplyVisibility(Models.EditorSettings settings)
+        {
+            // Floating panels - check if still valid before showing
+            try
+            {
+                if (Toolbox != null && !Toolbox.IsClosed)
+                {
+                    if (settings.ShowToolbox) Toolbox.Show(); else Toolbox.Hide();
+                }
+                if (Explorer != null && !Explorer.IsClosed)
+                {
+                    if (settings.ShowExplorer) Explorer.Show(); else Explorer.Hide();
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                // Window was closed, ignore
+            }
+            // Properties shown on demand, not always visible
         }
         
         /// <summary>

@@ -45,8 +45,8 @@ namespace LayoutEditor
                 UpdateSelectionVisuals();
             }
 
-            CanvasContextMenu.Items.Add(CreateMenuItem("Edit Properties", (s, e) => {
-                // Focus property panel
+            CanvasContextMenu.Items.Add(CreateMenuItem("Properties", (s, e) => {
+                _panelManager?.ShowNodeProperties(node);
             }));
 
             CanvasContextMenu.Items.Add(new Separator());
@@ -95,8 +95,8 @@ namespace LayoutEditor
             _selectionService.SelectPath(path.Id);
             UpdateSelectionVisuals();
 
-            CanvasContextMenu.Items.Add(CreateMenuItem("Edit Properties", (s, e) => {
-                UpdatePropertyPanel();
+            CanvasContextMenu.Items.Add(CreateMenuItem("Properties", (s, e) => {
+                _panelManager?.ShowPathProperties(path);
             }));
 
             CanvasContextMenu.Items.Add(new Separator());
@@ -138,12 +138,27 @@ namespace LayoutEditor
 
         private void BuildGroupContextMenu(GroupData group)
         {
-            _selectionService.SelectGroup(group.Id, group.Members);
+            // For cells, include internal paths in selection
+            if (group.IsCell)
+            {
+                SelectCellWithPaths(group);
+            }
+            else
+            {
+                _selectionService.SelectGroup(group.Id, group.Members);
+            }
             UpdateSelectionVisuals();
 
             var headerItem = CreateMenuItem($"Group: {group.Name}", null);
             headerItem.IsEnabled = false;
             CanvasContextMenu.Items.Add(headerItem);
+            CanvasContextMenu.Items.Add(new Separator());
+
+            // Properties option
+            CanvasContextMenu.Items.Add(CreateMenuItem("Properties", (s, e) => {
+                _panelManager?.ShowGroupProperties(group);
+            }));
+
             CanvasContextMenu.Items.Add(new Separator());
 
             CanvasContextMenu.Items.Add(CreateCheckedMenuItem("Is Cell", group.IsCell,

@@ -26,16 +26,16 @@ namespace LayoutEditor
         private bool _isDirty;
         private double _currentZoom = 1.0;
 
-        // Services
-        private readonly SelectionService _selectionService;
-        private readonly UndoService _undoService;
-        private readonly AlignmentService _alignmentService;
-        private readonly HitTestService _hitTestService;
-        private readonly GridRenderer _gridRenderer;
-        private readonly NodeRenderer _nodeRenderer;
-        private readonly PathRenderer _pathRenderer;
-        private readonly GroupRenderer _groupRenderer;
-        private readonly WallRenderer _wallRenderer;
+        // Services - initialized in constructor
+        private readonly SelectionService _selectionService = null!;
+        private readonly UndoService _undoService = null!;
+        private readonly AlignmentService _alignmentService = null!;
+        private readonly HitTestService _hitTestService = null!;
+        private readonly GridRenderer _gridRenderer = null!;
+        private readonly NodeRenderer _nodeRenderer = null!;
+        private readonly PathRenderer _pathRenderer = null!;
+        private readonly GroupRenderer _groupRenderer = null!;
+        private readonly WallRenderer _wallRenderer = null!;
 
         // Element tracking
         private readonly Dictionary<string, UIElement> _elementMap = new();
@@ -49,8 +49,8 @@ namespace LayoutEditor
             try
             {
                 InitializeComponent();
-            InitializeFloatingPanels();
-                LayersPanelControl.ActiveLayerChanged += (s, e) => UpdateActiveLayerDisplay();
+                InitializeFloatingPanels();
+                
                 // Initialize services
                 _selectionService = new SelectionService();
                 _undoService = new UndoService();
@@ -84,26 +84,14 @@ namespace LayoutEditor
             _isDirty = false;
 
             TryInitializeNodeTypeCombo();
-            InitializeLayers();
             RefreshAll();
             UpdateTitle();
         }
 
         private void TryInitializeNodeTypeCombo()
         {
-            if (PropNodeType == null) return;
-            
-            PropNodeType.Items.Clear();
-            PropNodeType.Items.Add(new ComboBoxItem { Content = "Source", Tag = NodeTypes.Source });
-            PropNodeType.Items.Add(new ComboBoxItem { Content = "Sink", Tag = NodeTypes.Sink });
-            PropNodeType.Items.Add(new ComboBoxItem { Content = "Machine", Tag = NodeTypes.Machine });
-            PropNodeType.Items.Add(new ComboBoxItem { Content = "Buffer", Tag = NodeTypes.Buffer });
-            PropNodeType.Items.Add(new ComboBoxItem { Content = "Workstation", Tag = NodeTypes.Workstation });
-            PropNodeType.Items.Add(new ComboBoxItem { Content = "Inspection", Tag = NodeTypes.Inspection });
-            PropNodeType.Items.Add(new ComboBoxItem { Content = "Storage", Tag = NodeTypes.Storage });
-            PropNodeType.Items.Add(new ComboBoxItem { Content = "Conveyor", Tag = NodeTypes.Conveyor });
-            PropNodeType.Items.Add(new ComboBoxItem { Content = "Junction", Tag = NodeTypes.Junction });
-            PropNodeType.Items.Add(new ComboBoxItem { Content = "AGV Station", Tag = NodeTypes.AgvStation });
+            // Docked properties panel has been removed.
+            // Node type combo is now in the floating PropertiesPanel.
         }
 
         #endregion
@@ -117,9 +105,18 @@ namespace LayoutEditor
             UpdateLayerCheckboxes();
             Redraw();
             UpdateNodeCount();
-            UpdateActiveLayerDisplay();
-            PopulateLayerCombo();  // Add this
+            UpdateNodeCountDisplay();
+            _panelManager?.LoadLayout(_layout);
+        }
 
+        /// <summary>
+        /// Public method for panels to request canvas refresh
+        /// </summary>
+        public void RefreshCanvas()
+        {
+            MarkDirty();
+            Redraw();
+            _panelManager?.RefreshAll();
         }
 
         private void Redraw()
@@ -315,7 +312,10 @@ namespace LayoutEditor
         private void SelectNodesInRectangle(Rect rect)
         {
             var nodeIds = new List<string>();
+            var wallIds = new List<string>();
+            var pathIds = new List<string>();
 
+            // Select nodes
             foreach (var node in _layout.Nodes)
             {
                 var nodeRect = new Rect(
@@ -328,8 +328,54 @@ namespace LayoutEditor
                 }
             }
 
-            _selectionService.SelectNodes(nodeIds);
+            // Select walls (check if either endpoint or center is in rect)
+            foreach (var wall in _layout.Walls)
+            {
+                var wallRect = new Rect(
+                    Math.Min(wall.X1, wall.X2), Math.Min(wall.Y1, wall.Y2),
+                    Math.Abs(wall.X2 - wall.X1) + wall.Thickness,
+                    Math.Abs(wall.Y2 - wall.Y1) + wall.Thickness);
+
+                if (rect.IntersectsWith(wallRect))
+                {
+                    wallIds.Add(wall.Id);
+                }
+            }
+
+            // Select paths (check if line intersects rect)
+            foreach (var path in _layout.Paths)
+            {
+                var fromNode = _layout.Nodes.FirstOrDefault(n => n.Id == path.From);
+                var toNode = _layout.Nodes.FirstOrDefault(n => n.Id == path.To);
+                if (fromNode != null && toNode != null)
+                {
+                    var pathRect = new Rect(
+                        Math.Min(fromNode.Visual.X, toNode.Visual.X),
+                        Math.Min(fromNode.Visual.Y, toNode.Visual.Y),
+                        Math.Abs(toNode.Visual.X - fromNode.Visual.X) + 10,
+                        Math.Abs(toNode.Visual.Y - fromNode.Visual.Y) + 10);
+
+                    if (rect.IntersectsWith(pathRect))
+                    {
+                        pathIds.Add(path.Id);
+                    }
+                }
+            }
+
+            _selectionService.SelectMultiple(nodeIds, wallIds, pathIds);
             UpdatePropertyPanel();
+            UpdateSelectionStatus(nodeIds.Count, wallIds.Count, pathIds.Count);
+        }
+
+        private void UpdateSelectionStatus(int nodes, int walls, int paths)
+        {
+            var parts = new List<string>();
+            if (nodes > 0) parts.Add($"{nodes} node(s)");
+            if (walls > 0) parts.Add($"{walls} wall(s)");
+            if (paths > 0) parts.Add($"{paths} path(s)");
+            
+            if (parts.Count > 0)
+                StatusText.Text = $"Selected: {string.Join(", ", parts)}";
         }
 
         private void ClearSelectionRectangle()
@@ -343,58 +389,29 @@ namespace LayoutEditor
 
         #endregion
 
+        #region Cell Helpers
 
-        #region layer selection
-        private void PopulateLayerCombo()
+        /// <summary>
+        /// Get paths that are internal to a cell (both From and To are members)
+        /// </summary>
+        private List<string> GetCellInternalPaths(GroupData cell)
         {
-            if (_layout?.LayerManager == null) return;
-
-            ActiveLayerCombo.SelectionChanged -= ActiveLayer_Changed;
-            ActiveLayerCombo.Items.Clear();
-
-            foreach (var layer in _layout.LayerManager.Layers)
-            {
-                var item = new ComboBoxItem
-                {
-                    Content = layer.Name,
-                    Tag = layer.Id
-                };
-                ActiveLayerCombo.Items.Add(item);
-
-                if (layer.Id == _layout.LayerManager.ActiveLayerId)
-                {
-                    ActiveLayerCombo.SelectedItem = item;
-                }
-            }
-
-            ActiveLayerCombo.SelectionChanged += ActiveLayer_Changed;
+            var memberSet = new HashSet<string>(cell.Members);
+            return _layout.Paths
+                .Where(p => memberSet.Contains(p.From) && memberSet.Contains(p.To))
+                .Select(p => p.Id)
+                .ToList();
         }
 
-        private void ActiveLayer_Changed(object sender, SelectionChangedEventArgs e)
+        /// <summary>
+        /// Select a cell/group with all its internal paths
+        /// </summary>
+        private void SelectCellWithPaths(GroupData cell, bool addToSelection = false)
         {
-            if (ActiveLayerCombo.SelectedItem is ComboBoxItem item && item.Tag is string layerId)
-            {
-                _layout?.LayerManager?.SetActiveLayer(layerId);
-                StatusText.Text = $"Active layer: {item.Content}";
-            }
+            var internalPaths = GetCellInternalPaths(cell);
+            _selectionService.SelectGroupWithPaths(cell.Id, cell.Members, internalPaths, addToSelection);
         }
 
-        private void UpdateActiveLayerDisplay()
-        {
-            if (_layout?.LayerManager == null) return;
-
-            var activeId = _layout.LayerManager.ActiveLayerId;
-            foreach (ComboBoxItem item in ActiveLayerCombo.Items)
-            {
-                if (item.Tag is string id && id == activeId)
-                {
-                    ActiveLayerCombo.SelectionChanged -= ActiveLayer_Changed;
-                    ActiveLayerCombo.SelectedItem = item;
-                    ActiveLayerCombo.SelectionChanged += ActiveLayer_Changed;
-                    break;
-                }
-            }
-        }
         #endregion
 
     }

@@ -225,4 +225,69 @@ namespace LayoutEditor.Models
             set => SetProperty(ref _measurements, value);
         }
     }
+
+    /// <summary>
+    /// Editor UI preferences (saved to user settings file)
+    /// </summary>
+    public class EditorSettings : NotifyBase
+    {
+        private static EditorSettings? _instance;
+        public static EditorSettings Instance => _instance ??= Load();
+
+        // Panel visibility
+        private bool _showToolbox = true;
+        private bool _showExplorer = true;
+        private bool _showProperties = true;
+        private bool _showLayersPanel = true;
+        private bool _showTemplates = true;
+
+        // UI sizing
+        private double _panelFontSize = 7;
+        private double _panelPadding = 2;
+        private double _lineThickness = 1.0;
+        private double _pathThickness = 1.5;
+
+        public bool ShowToolbox { get => _showToolbox; set => SetProperty(ref _showToolbox, value); }
+        public bool ShowExplorer { get => _showExplorer; set => SetProperty(ref _showExplorer, value); }
+        public bool ShowProperties { get => _showProperties; set => SetProperty(ref _showProperties, value); }
+        public bool ShowLayersPanel { get => _showLayersPanel; set => SetProperty(ref _showLayersPanel, value); }
+        public bool ShowTemplates { get => _showTemplates; set => SetProperty(ref _showTemplates, value); }
+
+        public double PanelFontSize { get => _panelFontSize; set => SetProperty(ref _panelFontSize, value); }
+        public double PanelPadding { get => _panelPadding; set => SetProperty(ref _panelPadding, value); }
+        public double LineThickness { get => _lineThickness; set => SetProperty(ref _lineThickness, value); }
+        public double PathThickness { get => _pathThickness; set => SetProperty(ref _pathThickness, value); }
+
+        private static string SettingsPath => System.IO.Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+            "LayoutEditor", "editor_settings.json");
+
+        public static EditorSettings Load()
+        {
+            try
+            {
+                var path = SettingsPath;
+                if (System.IO.File.Exists(path))
+                {
+                    var json = System.IO.File.ReadAllText(path);
+                    return System.Text.Json.JsonSerializer.Deserialize<EditorSettings>(json) ?? new EditorSettings();
+                }
+            }
+            catch { }
+            return new EditorSettings();
+        }
+
+        public void Save()
+        {
+            try
+            {
+                var dir = System.IO.Path.GetDirectoryName(SettingsPath);
+                if (!string.IsNullOrEmpty(dir) && !System.IO.Directory.Exists(dir))
+                    System.IO.Directory.CreateDirectory(dir);
+                var json = System.Text.Json.JsonSerializer.Serialize(this, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+                System.IO.File.WriteAllText(SettingsPath, json);
+            }
+            catch { }
+        }
+    }
 }

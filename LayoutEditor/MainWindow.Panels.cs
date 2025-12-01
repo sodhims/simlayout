@@ -224,38 +224,94 @@ namespace LayoutEditor
         #region Canvas Drop Handler
         
         /// <summary>
-        /// Add to EditorCanvas: AllowDrop="True" Drop="EditorCanvas_Drop"
+        /// Handle drag over to show drop is allowed
+        /// </summary>
+        private void EditorCanvas_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent("NodeType") || e.Data.GetDataPresent("NodeIcon"))
+            {
+                e.Effects = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effects = DragDropEffects.None;
+            }
+            e.Handled = true;
+        }
+        
+        /// <summary>
+        /// Handle drop of nodes from toolbox or palette
         /// </summary>
         private void EditorCanvas_Drop(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent("NodeType"))
+            Point position = e.GetPosition(EditorCanvas);
+            
+            // Snap to grid if enabled
+            if (SnapToGridMenu?.IsChecked == true || _layout?.Canvas.SnapToGrid == true)
+            {
+                double gridSize = _layout?.Canvas.GridSize ?? 20;
+                position = new Point(
+                    Math.Round(position.X / gridSize) * gridSize,
+                    Math.Round(position.Y / gridSize) * gridSize
+                );
+            }
+
+            // Check if dropped from Node Palette (has icon data)
+            if (e.Data.GetDataPresent("NodeIcon"))
+            {
+                string iconKey = (string)e.Data.GetData("NodeIcon");
+                string nodeType = e.Data.GetDataPresent("NodeType") 
+                    ? (string)e.Data.GetData("NodeType") 
+                    : Models.NodeTypes.Machine;
+                string color = e.Data.GetDataPresent("NodeColor") 
+                    ? (string)e.Data.GetData("NodeColor") 
+                    : "#4A90D9";
+
+                SaveUndoState();
+
+                var node = new Models.NodeData
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Type = nodeType,
+                    Name = $"{nodeType}_{(_layout?.Nodes?.Count ?? 0) + 1}",
+                    Visual = new Models.NodeVisual
+                    {
+                        X = position.X - 25,
+                        Y = position.Y - 30,
+                        Width = 50,
+                        Height = 60,
+                        Icon = iconKey,
+                        Color = color
+                    }
+                };
+
+                _layout?.Nodes?.Add(node);
+                MarkDirty();
+                RefreshAll();
+                _selectionService?.ClearSelection();
+                _selectionService?.SelectNode(node.Id);
+                StatusText.Text = $"Added {nodeType}: {node.Name} (icon: {iconKey})";
+            }
+            // Standard toolbox drop (NodeType only)
+            else if (e.Data.GetDataPresent("NodeType"))
             {
                 string nodeType = (string)e.Data.GetData("NodeType");
-                Point position = e.GetPosition(EditorCanvas);
                 
-                // Snap to grid if enabled
-                if (SnapToGridMenu?.IsChecked == true)
-                {
-                    double gridSize = 20;
-                    position = new Point(
-                        Math.Round(position.X / gridSize) * gridSize,
-                        Math.Round(position.Y / gridSize) * gridSize
-                    );
-                }
+                SaveUndoState();
                 
                 // Create node using factory
                 var node = Models.LayoutFactory.CreateNode(nodeType, position.X, position.Y);
                 node.Name = $"{node.Name} {(_layout?.Nodes?.Count ?? 0) + 1}";
                 
                 _layout?.Nodes?.Add(node);
-                
+                MarkDirty();
                 RefreshAll();
                 RefreshFloatingPanels();
-                
-                // Select the new node
                 _selectionService?.ClearSelection();
                 _selectionService?.SelectNode(node.Id);
+                StatusText.Text = $"Added {nodeType} - Icon: {node.Visual.Icon}";
             }
+            e.Handled = true;
         }
         
         #endregion

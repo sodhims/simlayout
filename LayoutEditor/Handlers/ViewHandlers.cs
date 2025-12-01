@@ -118,7 +118,6 @@ namespace LayoutEditor
 
             // Sync to LayerManager
             SyncCheckboxesToLayerManager();
-            RefreshLayersPanel();
             
             Redraw();
         }
@@ -159,7 +158,7 @@ namespace LayoutEditor
         {
             if (_layout == null) return;  // Not initialized yet
             
-            if (UnitsCombo.SelectedItem is System.Windows.Controls.ComboBoxItem item)
+            if (UnitsCombo?.SelectedItem is System.Windows.Controls.ComboBoxItem item)
             {
                 _layout.Metadata.Units = item.Content?.ToString()?.ToLower() ?? "meters";
             }

@@ -156,6 +156,11 @@ namespace LayoutEditor
                     e.Handled = true;
                     break;
 
+                case Key.A:
+                    SetTool("area");
+                    e.Handled = true;
+                    break;
+
                 case Key.P:
                     SetTool("path");
                     e.Handled = true;
@@ -178,7 +183,7 @@ namespace LayoutEditor
 
                 case Key.E:
                     // Toggle path edit mode
-                    PathEditMode.IsChecked = !PathEditMode.IsChecked;
+                    if (PathEditMode != null) PathEditMode.IsChecked = !PathEditMode.IsChecked;
                     e.Handled = true;
                     break;
 
@@ -225,7 +230,7 @@ namespace LayoutEditor
             }
             else if (_isPathEditMode)
             {
-                PathEditMode.IsChecked = false;
+                if (PathEditMode != null) PathEditMode.IsChecked = false;
             }
             else if (_selectionService.IsEditingCell)
             {

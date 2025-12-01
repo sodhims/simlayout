@@ -15,6 +15,11 @@ namespace LayoutEditor.Models
         public const string Conveyor = "conveyor";
         public const string Junction = "junction";
         public const string AgvStation = "agv_station";
+        public const string Agv = "agv";
+        public const string Robot = "robot";
+        public const string Assembly = "assembly";
+        public const string Crossdock = "crossdock";
+        public const string Packaging = "packaging";
     }
 
     /// <summary>

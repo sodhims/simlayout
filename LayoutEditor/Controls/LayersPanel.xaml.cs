@@ -98,6 +98,15 @@ namespace LayoutEditor.Controls
             if (layer == null)
             {
                 PropertiesGrid.IsEnabled = false;
+                // Clear property fields
+                PropName.Text = "";
+                PropStrokeColor.Text = "";
+                PropStrokeWidth.Value = 1.0;
+                StrokeWidthText.Text = "1.0";
+                PropOpacity.Value = 1.0;
+                OpacityText.Text = "100%";
+                PropFillOpacity.Value = 0;
+                _isUpdating = false;
                 return;
             }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using LayoutEditor.Models;
+using LayoutEditor.Services;
 
 namespace LayoutEditor
 {
@@ -27,7 +28,7 @@ namespace LayoutEditor
             // If node is in a cell and we're not editing that cell -> select cell
             if (cell != null && _selectionService.EditingCellId != cell.Id)
             {
-                _selectionService.SelectGroup(cell.Id, cell.Members);
+                SelectCellWithPaths(cell);
                 StatusText.Text = $"Selected cell: {cell.Name} (double-click to edit)";
             }
             else
@@ -92,6 +93,94 @@ namespace LayoutEditor
             }
         }
 
+        private void HandleTerminalClick(Services.HitTestResult hitResult)
+        {
+            if (hitResult.Node == null) return;
+            
+            var nodeId = hitResult.Node.Id;
+            var terminalType = hitResult.TerminalType; // "input" or "output"
+            
+            if (_pathStartNodeId == null)
+            {
+                // Starting a new path - should start from an OUTPUT terminal
+                if (terminalType == "output")
+                {
+                    _pathStartNodeId = nodeId;
+                    _isDrawingPath = true;
+                    StatusText.Text = $"Path started from {hitResult.Node.Name ?? nodeId} - click destination terminal";
+                }
+                else
+                {
+                    // Clicked on input terminal - can't start path from input
+                    StatusText.Text = "Click on an OUTPUT terminal (red) to start a path";
+                }
+            }
+            else
+            {
+                // Completing a path - should end at an INPUT terminal
+                if (terminalType == "input" && _pathStartNodeId != nodeId)
+                {
+                    CreatePath(_pathStartNodeId, nodeId);
+                    _pathStartNodeId = null;
+                    _isDrawingPath = false;
+                }
+                else if (terminalType == "output")
+                {
+                    StatusText.Text = "Click on an INPUT terminal (green) to complete the path";
+                }
+                else if (_pathStartNodeId == nodeId)
+                {
+                    StatusText.Text = "Cannot connect node to itself";
+                }
+            }
+        }
+
+        private void HandleCellTerminalClick(Services.HitTestResult hitResult)
+        {
+            if (hitResult.Group == null || !hitResult.Group.IsCell) return;
+            
+            var cell = hitResult.Group;
+            var terminalType = hitResult.TerminalType; // "input" or "output"
+            
+            // For cells, use entry/exit points
+            if (_pathStartNodeId == null)
+            {
+                // Starting path from cell's output
+                if (terminalType == "output")
+                {
+                    var exitNode = cell.ExitPoints.FirstOrDefault() ?? cell.Members.LastOrDefault();
+                    if (exitNode != null)
+                    {
+                        _pathStartNodeId = exitNode;
+                        _isDrawingPath = true;
+                        StatusText.Text = $"Path started from {cell.Name} - click destination terminal";
+                    }
+                }
+                else
+                {
+                    StatusText.Text = "Click on an OUTPUT terminal (red) to start a path";
+                }
+            }
+            else
+            {
+                // Completing path to cell's input
+                if (terminalType == "input")
+                {
+                    var entryNode = cell.EntryPoints.FirstOrDefault() ?? cell.Members.FirstOrDefault();
+                    if (entryNode != null && _pathStartNodeId != entryNode)
+                    {
+                        CreatePath(_pathStartNodeId, entryNode);
+                        _pathStartNodeId = null;
+                        _isDrawingPath = false;
+                    }
+                }
+                else
+                {
+                    StatusText.Text = "Click on an INPUT terminal (green) to complete the path";
+                }
+            }
+        }
+
         #endregion
 
         #region Group/Cell Click Handling
@@ -99,7 +188,17 @@ namespace LayoutEditor
         private void HandleGroupBorderClick(GroupData group)
         {
             bool addToSelection = Keyboard.Modifiers.HasFlag(ModifierKeys.Shift);
-            _selectionService.SelectGroup(group.Id, group.Members, addToSelection);
+            
+            // For cells, include internal paths in selection
+            if (group.IsCell)
+            {
+                SelectCellWithPaths(group, addToSelection);
+            }
+            else
+            {
+                _selectionService.SelectGroup(group.Id, group.Members, addToSelection);
+            }
+            
             UpdateSelectionVisuals();
             UpdatePropertyPanel();
             
@@ -236,6 +335,17 @@ namespace LayoutEditor
                 return;
             }
 
+            // Handle template placement
+            if (!string.IsNullOrEmpty(_pendingTemplateId))
+            {
+                var template = _layout.Templates.FirstOrDefault(t => t.Id == _pendingTemplateId);
+                if (template != null)
+                {
+                    PlaceTemplateAt(template, pos);
+                    return;
+                }
+            }
+
             // Exit cell edit mode if clicking outside
             if (_selectionService.IsEditingCell)
             {
@@ -252,6 +362,7 @@ namespace LayoutEditor
             }
 
             _isDragging = true;
+            _isDrawingSelectionRect = true;  // Starting area selection
             EditorCanvas.CaptureMouse();
         }
 

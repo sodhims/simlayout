@@ -68,7 +68,7 @@ namespace LayoutEditor
                         _layout.LayerManager = new Models.LayerManager();
                         _layout.LayerManager.InitializeDefaultLayers();
                     }
-                    InitializeLayers();
+
 
                     RefreshAll();
                     UpdateTitle();

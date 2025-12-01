@@ -63,6 +63,13 @@ namespace LayoutEditor.Models
             set => SetProperty(ref _color, value);
         }
 
+        private string _dashPattern = "";
+        public string DashPattern
+        {
+            get => _dashPattern;
+            set => SetProperty(ref _dashPattern, value);
+        }
+
         [JsonIgnore]
         public double Length => System.Math.Sqrt(
             (X2 - X1) * (X2 - X1) + (Y2 - Y1) * (Y2 - Y1));

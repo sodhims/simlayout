@@ -90,7 +90,6 @@ namespace LayoutEditor
         private void TopologyTree_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             if (_layout == null) return;  // Not initialized yet
-            if (_isUpdatingProperties) return;
             if (TopologyTree?.SelectedItem is not TreeViewItem item) return;
 
             var tag = item.Tag?.ToString();
@@ -106,7 +105,14 @@ namespace LayoutEditor
                 var group = _layout.Groups.FirstOrDefault(g => g.Id == groupId);
                 if (group != null)
                 {
-                    _selectionService.SelectGroup(group.Id, group.Members);
+                    if (group.IsCell)
+                    {
+                        SelectCellWithPaths(group);
+                    }
+                    else
+                    {
+                        _selectionService.SelectGroup(group.Id, group.Members);
+                    }
                 }
             }
             else

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using LayoutEditor.Models;
@@ -22,6 +23,7 @@ namespace LayoutEditor
 
             SaveUndoState();
             _alignmentService.AlignLeft(nodes, _layout);
+            UpdatePathsAfterNodeMove(nodes);
             MarkDirty();
             Redraw();
             StatusText.Text = $"Aligned {nodes.Count} nodes to left";
@@ -40,6 +42,7 @@ namespace LayoutEditor
 
             SaveUndoState();
             _alignmentService.AlignRight(nodes, _layout);
+            UpdatePathsAfterNodeMove(nodes);
             MarkDirty();
             Redraw();
             StatusText.Text = $"Aligned {nodes.Count} nodes to right";
@@ -58,6 +61,7 @@ namespace LayoutEditor
 
             SaveUndoState();
             _alignmentService.AlignTop(nodes, _layout);
+            UpdatePathsAfterNodeMove(nodes);
             MarkDirty();
             Redraw();
             StatusText.Text = $"Aligned {nodes.Count} nodes to top";
@@ -76,6 +80,7 @@ namespace LayoutEditor
 
             SaveUndoState();
             _alignmentService.AlignBottom(nodes, _layout);
+            UpdatePathsAfterNodeMove(nodes);
             MarkDirty();
             Redraw();
             StatusText.Text = $"Aligned {nodes.Count} nodes to bottom";
@@ -94,6 +99,7 @@ namespace LayoutEditor
 
             SaveUndoState();
             _alignmentService.AlignCenterHorizontal(nodes, _layout);
+            UpdatePathsAfterNodeMove(nodes);
             MarkDirty();
             Redraw();
             StatusText.Text = $"Centered {nodes.Count} nodes horizontally";
@@ -112,6 +118,7 @@ namespace LayoutEditor
 
             SaveUndoState();
             _alignmentService.AlignCenterVertical(nodes, _layout);
+            UpdatePathsAfterNodeMove(nodes);
             MarkDirty();
             Redraw();
             StatusText.Text = $"Centered {nodes.Count} nodes vertically";
@@ -124,6 +131,7 @@ namespace LayoutEditor
 
             SaveUndoState();
             _alignmentService.DistributeHorizontally(nodes, _layout);
+            UpdatePathsAfterNodeMove(nodes);
             MarkDirty();
             Redraw();
             StatusText.Text = $"Distributed {nodes.Count} nodes horizontally";
@@ -136,6 +144,7 @@ namespace LayoutEditor
 
             SaveUndoState();
             _alignmentService.DistributeVertically(nodes, _layout);
+            UpdatePathsAfterNodeMove(nodes);
             MarkDirty();
             Redraw();
             StatusText.Text = $"Distributed {nodes.Count} nodes vertically";
@@ -336,6 +345,27 @@ namespace LayoutEditor
             MarkDirty();
             Redraw();
             StatusText.Text = $"Centered {groups.Count} groups vertically";
+        }
+
+        #endregion
+
+        #region Path Update Helper
+
+        /// <summary>
+        /// Clear waypoints on paths connected to moved nodes so they re-route correctly
+        /// </summary>
+        private void UpdatePathsAfterNodeMove(IEnumerable<NodeData> movedNodes)
+        {
+            var movedIds = new HashSet<string>(movedNodes.Select(n => n.Id));
+            
+            foreach (var path in _layout.Paths)
+            {
+                // If path connects to any moved node, clear its waypoints
+                if (movedIds.Contains(path.From) || movedIds.Contains(path.To))
+                {
+                    path.Visual.Waypoints.Clear();
+                }
+            }
         }
 
         #endregion

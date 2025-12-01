@@ -76,20 +76,69 @@ namespace LayoutEditor.Services
                 Tag = $"wall:{wall.Id}"
             };
 
-            // Different styles for wall types
-            if (wall.WallType == WallTypes.Glass)
+            // Apply dash pattern from wall data if set
+            if (!string.IsNullOrEmpty(wall.DashPattern))
             {
-                line.StrokeDashArray = new DoubleCollection { 10, 5 };
-                line.StrokeThickness = wall.Thickness * 0.5;
+                try
+                {
+                    var parts = wall.DashPattern.Split(',');
+                    var dashes = new DoubleCollection();
+                    foreach (var part in parts)
+                    {
+                        if (double.TryParse(part.Trim(), out var val))
+                            dashes.Add(val);
+                    }
+                    if (dashes.Count > 0)
+                        line.StrokeDashArray = dashes;
+                }
+                catch { }
             }
-            else if (wall.WallType == WallTypes.Partition)
+            // Different visual styles for wall types (only if no custom dash set)
+            else if (wall.WallType == WallTypes.Glass)
             {
-                line.StrokeThickness = wall.Thickness * 0.6;
+                // Glass wall: thin dashed line with parallel lines
+                line.StrokeDashArray = new DoubleCollection { 10, 5 };
+                line.StrokeThickness = Math.Max(2, wall.Thickness * 0.5);
             }
             else if (wall.WallType == WallTypes.Safety)
             {
-                line.Stroke = new SolidColorBrush(Colors.Yellow);
+                // Safety barrier: yellow/black hazard pattern
+                line.Stroke = new SolidColorBrush(Colors.Orange);
                 line.StrokeDashArray = new DoubleCollection { 15, 10 };
+            }
+            else if (wall.WallType == WallTypes.Partition)
+            {
+                // Partition: slightly thinner
+                line.StrokeThickness = Math.Max(2, wall.Thickness * 0.8);
+            }
+
+            // For glass walls, add a second parallel line to show transparency
+            if (wall.WallType == WallTypes.Glass && !isSelected)
+            {
+                var container = new Canvas { Tag = $"wall:{wall.Id}" };
+                container.Children.Add(line);
+                
+                // Add light blue fill between glass panels
+                var dx = wall.X2 - wall.X1;
+                var dy = wall.Y2 - wall.Y1;
+                var len = Math.Sqrt(dx * dx + dy * dy);
+                if (len > 0)
+                {
+                    var perpX = -dy / len * wall.Thickness * 0.3;
+                    var perpY = dx / len * wall.Thickness * 0.3;
+                    
+                    var fill = new Line
+                    {
+                        X1 = wall.X1, Y1 = wall.Y1,
+                        X2 = wall.X2, Y2 = wall.Y2,
+                        Stroke = new SolidColorBrush(Color.FromArgb(60, 100, 180, 255)),
+                        StrokeThickness = wall.Thickness * 0.6,
+                        StrokeStartLineCap = PenLineCap.Square,
+                        StrokeEndLineCap = PenLineCap.Square
+                    };
+                    container.Children.Insert(0, fill);
+                }
+                return container;
             }
 
             return line;

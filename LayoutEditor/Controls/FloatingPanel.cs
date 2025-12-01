@@ -35,6 +35,11 @@ namespace LayoutEditor.Controls
         }
         
         /// <summary>
+        /// True if the panel has been permanently closed (not just hidden)
+        /// </summary>
+        public bool IsClosed => _forceClose;
+        
+        /// <summary>
         /// Force close the panel (used when app is exiting)
         /// </summary>
         public void ForceClose()

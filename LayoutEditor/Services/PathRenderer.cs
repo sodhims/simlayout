@@ -37,7 +37,8 @@ namespace LayoutEditor.Services
             var isSelected = _selection.IsPathSelected(path.Id);
             var showHandles = isSelected || IsEditMode;
             var brush = isSelected ? new SolidColorBrush(Colors.DodgerBlue) : GetPathBrush(path);
-            var thickness = isSelected ? 2.0 : 1.5;
+            var settings = EditorSettings.Instance;
+            var thickness = isSelected ? settings.PathThickness + 0.5 : settings.PathThickness;
 
             // Check if nodes are in cells - route to cell terminals if crossing cell boundary
             var fromCell = layout.Groups.FirstOrDefault(g => g.IsCell && g.Members.Contains(fromNode.Id));
@@ -65,17 +66,24 @@ namespace LayoutEditor.Services
             }
             else
             {
-                endPoint = GetNodeEdgePoint(toNode, fromNode);
+                // Use actual startPoint to determine which terminal of toNode to use
+                endPoint = GetNodeEdgePointFromStart(toNode, startPoint);
             }
+
+            // Determine terminal radius for arrow offset
+            double terminalRadius = (toCell != null && toCell != fromCell) 
+                ? RenderConstants.CellTerminalRadius 
+                : RenderConstants.NodeTerminalRadius;
 
             var container = new Canvas { Tag = $"path:{path.Id}" };
             var pathGeometry = CreatePathGeometry(path, startPoint, endPoint, fromCellBounds, toCellBounds);
             container.Children.Add(new Path { Data = pathGeometry, Stroke = brush, StrokeThickness = thickness });
 
-            // Arrow at final segment end
+            // Arrow at final segment end - offset by terminal radius so tip stops at edge
             var arrowEnd = GetLastSegmentEnd(pathGeometry);
             var arrowStart = GetLastSegmentStart(pathGeometry);
-            container.Children.Add(CreateArrowHead(arrowStart, arrowEnd, brush));
+            var offsetArrowEnd = OffsetPointTowardStart(arrowEnd, arrowStart, terminalRadius);
+            container.Children.Add(CreateArrowHead(arrowStart, offsetArrowEnd, brush));
 
             // Add waypoint handles when selected or in edit mode
             if (showHandles)
@@ -179,12 +187,14 @@ namespace LayoutEditor.Services
 
         private Point GetTerminalPoint(Rect bounds, string position)
         {
+            // Terminal sticks out from cell by 12 pixels (must match GroupRenderer.TerminalStickOut)
+            const double offset = 12;
             return position?.ToLower() switch
             {
-                "top" => new Point(bounds.X + bounds.Width / 2, bounds.Y),
-                "bottom" => new Point(bounds.X + bounds.Width / 2, bounds.Y + bounds.Height),
-                "right" => new Point(bounds.X + bounds.Width, bounds.Y + bounds.Height / 2),
-                _ => new Point(bounds.X, bounds.Y + bounds.Height / 2) // left default
+                "top" => new Point(bounds.X + bounds.Width / 2, bounds.Y - offset),
+                "bottom" => new Point(bounds.X + bounds.Width / 2, bounds.Y + bounds.Height + offset),
+                "right" => new Point(bounds.X + bounds.Width + offset, bounds.Y + bounds.Height / 2),
+                _ => new Point(bounds.X - offset, bounds.Y + bounds.Height / 2) // left default
             };
         }
 
@@ -286,16 +296,70 @@ namespace LayoutEditor.Services
         {
             var fc = new Point(from.Visual.X + from.Visual.Width / 2, from.Visual.Y + from.Visual.Height / 2);
             var tc = new Point(to.Visual.X + to.Visual.Width / 2, to.Visual.Y + to.Visual.Height / 2);
-            var angle = Math.Atan2(tc.Y - fc.Y, tc.X - fc.X);
-            var hw = from.Visual.Width / 2;
-            var hh = from.Visual.Height / 2;
-            double x, y;
-            if (Math.Abs(Math.Cos(angle)) * hh > Math.Abs(Math.Sin(angle)) * hw)
-            { x = Math.Sign(Math.Cos(angle)) * hw; y = Math.Tan(angle) * x; }
+            
+            // Determine if we should use input or output terminal based on relative position
+            if (tc.X > fc.X)
+            {
+                // Target is to the right - use output terminal
+                return TerminalHelper.GetNodeOutputTerminal(from);
+            }
+            else if (tc.X < fc.X)
+            {
+                // Target is to the left - use input terminal
+                return TerminalHelper.GetNodeInputTerminal(from);
+            }
+            else if (tc.Y > fc.Y)
+            {
+                // Target is below - use bottom edge
+                return new Point(from.Visual.X + from.Visual.Width / 2, from.Visual.Y + from.Visual.Height);
+            }
             else
-            { y = Math.Sign(Math.Sin(angle)) * hh; x = y / Math.Tan(angle); }
-            return new Point(fc.X + x, fc.Y + y);
+            {
+                // Target is above - use top edge
+                return new Point(from.Visual.X + from.Visual.Width / 2, from.Visual.Y);
+            }
         }
+
+        /// <summary>
+        /// Get the edge point of a node based on a source point (not a source node).
+        /// Used when the source is a cell terminal, not a node position.
+        /// </summary>
+        private Point GetNodeEdgePointFromStart(NodeData node, Point fromPoint)
+        {
+            var nodeCenter = new Point(node.Visual.X + node.Visual.Width / 2, node.Visual.Y + node.Visual.Height / 2);
+            
+            // Determine which terminal to use based on where the path is coming FROM
+            if (fromPoint.X < nodeCenter.X)
+            {
+                // Coming from the left - use input terminal (left side)
+                return TerminalHelper.GetNodeInputTerminal(node);
+            }
+            else if (fromPoint.X > nodeCenter.X)
+            {
+                // Coming from the right - use output terminal (right side)
+                return TerminalHelper.GetNodeOutputTerminal(node);
+            }
+            else if (fromPoint.Y < nodeCenter.Y)
+            {
+                // Coming from above - use top edge
+                return new Point(node.Visual.X + node.Visual.Width / 2, node.Visual.Y);
+            }
+            else
+            {
+                // Coming from below - use bottom edge
+                return new Point(node.Visual.X + node.Visual.Width / 2, node.Visual.Y + node.Visual.Height);
+            }
+        }
+        
+        /// <summary>
+        /// Get the output terminal position for a node (where paths start FROM)
+        /// </summary>
+        public static Point GetOutputTerminal(NodeData node) => TerminalHelper.GetNodeOutputTerminal(node);
+        
+        /// <summary>
+        /// Get the input terminal position for a node (where paths go TO)
+        /// </summary>
+        public static Point GetInputTerminal(NodeData node) => TerminalHelper.GetNodeInputTerminal(node);
 
         private Point GetLastSegmentEnd(PathGeometry geom)
         {
@@ -317,6 +381,23 @@ namespace LayoutEditor.Services
             if (prev is LineSegment ls) return ls.Point;
             if (prev is BezierSegment bs) return bs.Point3;
             return fig.StartPoint;
+        }
+
+        /// <summary>
+        /// Move a point back toward another point by a specified distance.
+        /// Used to offset arrow tip so it stops at terminal edge.
+        /// </summary>
+        private Point OffsetPointTowardStart(Point end, Point start, double offset)
+        {
+            var dx = start.X - end.X;
+            var dy = start.Y - end.Y;
+            var length = Math.Sqrt(dx * dx + dy * dy);
+            if (length < 0.001) return end;  // Points are same, can't determine direction
+            
+            // Normalize and scale by offset
+            var nx = dx / length;
+            var ny = dy / length;
+            return new Point(end.X + nx * offset, end.Y + ny * offset);
         }
 
         private Polygon CreateArrowHead(Point start, Point end, Brush brush)

@@ -12,14 +12,17 @@ namespace LayoutEditor.Services
         public NodeData? Node { get; set; }
         public PathData? Path { get; set; }
         public GroupData? Group { get; set; }
+        public string? TerminalType { get; set; }  // "input" or "output"
     }
 
     public enum HitType
     {
         None,
         Node,
+        NodeTerminal,
         Path,
         GroupBorder,
+        CellTerminal,
         CellInterior,
         Zone,
         Canvas
@@ -27,13 +30,19 @@ namespace LayoutEditor.Services
 
     public class HitTestService
     {
-        private const double NodeHitMargin = 4;
-        private const double PathHitMargin = 6;
-        private const double GroupBorderThickness = 12;  // Wider hit area for cell borders
-
         public HitTestResult HitTest(LayoutData layout, Point point)
         {
-            // Check nodes first (topmost layer)
+            // Check node terminals first (highest priority for path connections)
+            var terminalHit = HitTestNodeTerminals(layout, point);
+            if (terminalHit != null)
+                return terminalHit;
+
+            // Check cell terminals
+            var cellTerminalHit = HitTestCellTerminals(layout, point);
+            if (cellTerminalHit != null)
+                return cellTerminalHit;
+
+            // Check nodes
             var node = HitTestNodes(layout, point);
             if (node != null)
                 return new HitTestResult { Type = HitType.Node, Id = node.Id, Node = node };
@@ -43,7 +52,7 @@ namespace LayoutEditor.Services
             if (group != null)
                 return new HitTestResult { Type = HitType.GroupBorder, Id = group.Id, Group = group };
 
-            // Check cell interiors (for path drawing)
+            // Check cell interiors
             var cell = HitTestCellInterior(layout, point);
             if (cell != null)
                 return new HitTestResult { Type = HitType.CellInterior, Id = cell.Id, Group = cell };
@@ -56,13 +65,94 @@ namespace LayoutEditor.Services
             return new HitTestResult { Type = HitType.Canvas };
         }
 
+        private HitTestResult? HitTestNodeTerminals(LayoutData layout, Point point)
+        {
+            foreach (var node in layout.Nodes.Reverse<NodeData>())
+            {
+                // Use TerminalHelper for hit testing
+                if (TerminalHelper.HasInputTerminal(node.Type) && TerminalHelper.HitTestInputTerminal(node, point))
+                {
+                    return new HitTestResult 
+                    { 
+                        Type = HitType.NodeTerminal, 
+                        Id = node.Id, 
+                        Node = node,
+                        TerminalType = "input"
+                    };
+                }
+
+                if (TerminalHelper.HasOutputTerminal(node.Type) && TerminalHelper.HitTestOutputTerminal(node, point))
+                {
+                    return new HitTestResult 
+                    { 
+                        Type = HitType.NodeTerminal, 
+                        Id = node.Id, 
+                        Node = node,
+                        TerminalType = "output"
+                    };
+                }
+            }
+            return null;
+        }
+
+        private HitTestResult? HitTestCellTerminals(LayoutData layout, Point point)
+        {
+            foreach (var group in layout.Groups.Where(g => g.IsCell))
+            {
+                if (group.Members.Count == 0) continue;
+                var bounds = GetGroupBounds(layout, group);
+                if (bounds == null) continue;
+
+                var rect = bounds.Value;
+                const double terminalOffset = 12;
+
+                // Input terminal position
+                var inputPos = GetTerminalPosition(rect, group.InputTerminalPosition, terminalOffset);
+                if (Distance(point, inputPos) < RenderConstants.TerminalHitRadius)
+                {
+                    return new HitTestResult
+                    {
+                        Type = HitType.CellTerminal,
+                        Id = group.Id,
+                        Group = group,
+                        TerminalType = "input"
+                    };
+                }
+
+                // Output terminal position
+                var outputPos = GetTerminalPosition(rect, group.OutputTerminalPosition, terminalOffset);
+                if (Distance(point, outputPos) < RenderConstants.TerminalHitRadius)
+                {
+                    return new HitTestResult
+                    {
+                        Type = HitType.CellTerminal,
+                        Id = group.Id,
+                        Group = group,
+                        TerminalType = "output"
+                    };
+                }
+            }
+            return null;
+        }
+
+        private Point GetTerminalPosition(Rect bounds, string position, double offset)
+        {
+            return position?.ToLower() switch
+            {
+                "top" => new Point(bounds.X + bounds.Width / 2, bounds.Y - offset),
+                "bottom" => new Point(bounds.X + bounds.Width / 2, bounds.Y + bounds.Height + offset),
+                "right" => new Point(bounds.X + bounds.Width + offset, bounds.Y + bounds.Height / 2),
+                _ => new Point(bounds.X - offset, bounds.Y + bounds.Height / 2)
+            };
+        }
+
         private NodeData? HitTestNodes(LayoutData layout, Point point)
         {
             foreach (var node in layout.Nodes.Reverse<NodeData>())
             {
                 var rect = new Rect(
-                    node.Visual.X - NodeHitMargin, node.Visual.Y - NodeHitMargin,
-                    node.Visual.Width + NodeHitMargin * 2, node.Visual.Height + NodeHitMargin * 2);
+                    node.Visual.X - RenderConstants.NodeHitMargin, node.Visual.Y - RenderConstants.NodeHitMargin,
+                    node.Visual.Width + RenderConstants.NodeHitMargin * 2, node.Visual.Height + RenderConstants.NodeHitMargin * 2);
                 if (rect.Contains(point)) return node;
             }
             return null;
@@ -75,7 +165,7 @@ namespace LayoutEditor.Services
                 var fromNode = layout.Nodes.FirstOrDefault(n => n.Id == path.From);
                 var toNode = layout.Nodes.FirstOrDefault(n => n.Id == path.To);
                 if (fromNode == null || toNode == null) continue;
-                if (DistanceToLine(point, GetNodeCenter(fromNode), GetNodeCenter(toNode)) < PathHitMargin)
+                if (DistanceToLine(point, GetNodeCenter(fromNode), GetNodeCenter(toNode)) < RenderConstants.PathHitMargin)
                     return path;
             }
             return null;
@@ -90,10 +180,10 @@ namespace LayoutEditor.Services
                 if (bounds == null) continue;
 
                 var rect = bounds.Value;
-                var outerRect = new Rect(rect.X - GroupBorderThickness, rect.Y - GroupBorderThickness,
-                    rect.Width + GroupBorderThickness * 2, rect.Height + GroupBorderThickness * 2);
-                var innerRect = new Rect(rect.X + GroupBorderThickness, rect.Y + GroupBorderThickness,
-                    rect.Width - GroupBorderThickness * 2, rect.Height - GroupBorderThickness * 2);
+                var outerRect = new Rect(rect.X - RenderConstants.GroupBorderThickness, rect.Y - RenderConstants.GroupBorderThickness,
+                    rect.Width + RenderConstants.GroupBorderThickness * 2, rect.Height + RenderConstants.GroupBorderThickness * 2);
+                var innerRect = new Rect(rect.X + RenderConstants.GroupBorderThickness, rect.Y + RenderConstants.GroupBorderThickness,
+                    rect.Width - RenderConstants.GroupBorderThickness * 2, rect.Height - RenderConstants.GroupBorderThickness * 2);
 
                 if (outerRect.Contains(point) && !innerRect.Contains(point))
                     return group;
@@ -103,7 +193,6 @@ namespace LayoutEditor.Services
 
         private GroupData? HitTestCellInterior(LayoutData layout, Point point)
         {
-            // Check all groups - cells have priority (check first)
             foreach (var group in layout.Groups.OrderByDescending(g => g.IsCell))
             {
                 if (group.Members.Count == 0) continue;
@@ -113,9 +202,6 @@ namespace LayoutEditor.Services
             return null;
         }
 
-        /// <summary>
-        /// Public method to check if a point is inside any cell (for Shift+click multi-select)
-        /// </summary>
         public GroupData? HitTestCellAtPoint(LayoutData layout, Point point)
         {
             foreach (var group in layout.Groups.Where(g => g.IsCell))
@@ -145,11 +231,14 @@ namespace LayoutEditor.Services
         private Point GetNodeCenter(NodeData node) =>
             new Point(node.Visual.X + node.Visual.Width / 2, node.Visual.Y + node.Visual.Height / 2);
 
+        private double Distance(Point a, Point b) =>
+            Math.Sqrt((a.X - b.X) * (a.X - b.X) + (a.Y - b.Y) * (a.Y - b.Y));
+
         private double DistanceToLine(Point p, Point a, Point b)
         {
             var dx = b.X - a.X; var dy = b.Y - a.Y;
             var lengthSq = dx * dx + dy * dy;
-            if (lengthSq == 0) return Math.Sqrt((p.X - a.X) * (p.X - a.X) + (p.Y - a.Y) * (p.Y - a.Y));
+            if (lengthSq == 0) return Distance(p, a);
             var t = Math.Max(0, Math.Min(1, ((p.X - a.X) * dx + (p.Y - a.Y) * dy) / lengthSq));
             var projX = a.X + t * dx; var projY = a.Y + t * dy;
             return Math.Sqrt((p.X - projX) * (p.X - projX) + (p.Y - projY) * (p.Y - projY));

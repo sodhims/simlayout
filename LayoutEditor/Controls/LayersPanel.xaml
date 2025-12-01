@@ -52,11 +52,12 @@
         
         <!-- Small icon button -->
         <Style x:Key="SmallIconButton" TargetType="Button">
-            <Setter Property="Width" Value="22"/>
-            <Setter Property="Height" Value="22"/>
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="Height" Value="20"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="0"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -225,15 +226,19 @@
                              TextChanged="PropStrokeColor_Changed"/>
                 </StackPanel>
                 
-                <!-- Stroke Width -->
+        <!-- Stroke Width -->
                 <TextBlock Grid.Row="2" Grid.Column="0" Text="Width:" VerticalAlignment="Center" FontSize="11" Margin="0,2"/>
-                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="0,2">
-                    <Slider x:Name="PropStrokeWidth" Width="80" Minimum="0.5" Maximum="20" 
+                <Grid Grid.Row="2" Grid.Column="1" Margin="0,2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="35"/>
+                    </Grid.ColumnDefinitions>
+                    <Slider x:Name="PropStrokeWidth" Grid.Column="0" Minimum="0.5" Maximum="20" 
                             TickFrequency="0.5" IsSnapToTickEnabled="True"
                             ValueChanged="PropStrokeWidth_Changed"/>
-                    <TextBlock x:Name="StrokeWidthText" Text="1.0" Width="30" VerticalAlignment="Center" 
-                               FontSize="10" Margin="4,0"/>
-                </StackPanel>
+                    <TextBlock x:Name="StrokeWidthText" Grid.Column="1" Text="1.0" VerticalAlignment="Center" 
+                               FontSize="10" TextAlignment="Right"/>
+                </Grid>
                 
                 <!-- Dash Pattern -->
                 <TextBlock Grid.Row="3" Grid.Column="0" Text="Dash:" VerticalAlignment="Center" FontSize="11" Margin="0,2"/>
@@ -248,27 +253,35 @@
                 
                 <!-- Opacity -->
                 <TextBlock Grid.Row="4" Grid.Column="0" Text="Opacity:" VerticalAlignment="Center" FontSize="11" Margin="0,2"/>
-                <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Margin="0,2">
-                    <Slider x:Name="PropOpacity" Width="80" Minimum="0" Maximum="1" 
+                <Grid Grid.Row="4" Grid.Column="1" Margin="0,2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="35"/>
+                    </Grid.ColumnDefinitions>
+                    <Slider x:Name="PropOpacity" Grid.Column="0" Minimum="0" Maximum="1" 
                             TickFrequency="0.1" IsSnapToTickEnabled="True"
                             ValueChanged="PropOpacity_Changed"/>
-                    <TextBlock x:Name="OpacityText" Text="100%" Width="35" VerticalAlignment="Center" 
-                               FontSize="10" Margin="4,0"/>
-                </StackPanel>
+                    <TextBlock x:Name="OpacityText" Grid.Column="1" Text="100%" VerticalAlignment="Center" 
+                               FontSize="10" TextAlignment="Right"/>
+                </Grid>
                 
                 <!-- Fill (for areas) -->
                 <TextBlock Grid.Row="5" Grid.Column="0" Text="Fill:" VerticalAlignment="Center" FontSize="11" Margin="0,2"/>
-                <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Margin="0,2">
-                    <Border Width="22" Height="22" BorderBrush="#808080" BorderThickness="1" CornerRadius="2"
-                            MouseLeftButtonDown="FillColor_Click" Cursor="Hand" ToolTip="Click to change">
+                <Grid Grid.Row="5" Grid.Column="1" Margin="0,2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="24"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Width="22" Height="22" BorderBrush="#808080" BorderThickness="1" CornerRadius="2"
+                            MouseLeftButtonDown="FillColor_Click" Cursor="Hand" ToolTip="Click to change fill color">
                         <Border.Background>
                             <SolidColorBrush x:Name="FillColorPreview" Color="#FFFFFF"/>
                         </Border.Background>
                     </Border>
-                    <Slider x:Name="PropFillOpacity" Width="60" Minimum="0" Maximum="1" Margin="4,0"
+                    <Slider Grid.Column="1" x:Name="PropFillOpacity" Minimum="0" Maximum="1" Margin="4,0,0,0"
                             TickFrequency="0.1" IsSnapToTickEnabled="True"
-                            ValueChanged="PropFillOpacity_Changed"/>
-                </StackPanel>
+                            ValueChanged="PropFillOpacity_Changed" ToolTip="Fill opacity"/>
+                </Grid>
             </Grid>
         </Expander>
     </Grid>

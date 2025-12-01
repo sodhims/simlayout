@@ -12,6 +12,11 @@ namespace LayoutEditor
         private string _currentTool = "select";
         private bool _isPathEditMode = false;
 
+        private void ToolButton_Click(object sender, RoutedEventArgs e)
+        {
+            Tool_Checked(sender, e);
+        }
+
         private void Tool_Checked(object sender, RoutedEventArgs e)
         {
             if (_selectionService == null) return;  // Not initialized yet
@@ -37,12 +42,14 @@ namespace LayoutEditor
                     "wall" => System.Windows.Input.Cursors.Cross,
                     "column" => System.Windows.Input.Cursors.Cross,
                     "measure" => System.Windows.Input.Cursors.Cross,
+                    "area" => System.Windows.Input.Cursors.Cross,
                     _ => System.Windows.Input.Cursors.Arrow
                 };
             }
 
             // Update radio buttons
             if (SelectTool != null) SelectTool.IsChecked = (tool == "select");
+            if (AreaSelectTool != null) AreaSelectTool.IsChecked = (tool == "area");
             if (MoveTool != null) MoveTool.IsChecked = (tool == "move");
             if (PanTool != null) PanTool.IsChecked = (tool == "pan");
             if (PathTool != null) PathTool.IsChecked = (tool == "path");
@@ -64,6 +71,7 @@ namespace LayoutEditor
                     "wall" => "Wall tool: Click to start, click again to end (Shift for H/V constraint)",
                     "column" => "Column tool: Click to place column (Shift for round)",
                     "measure" => "Measure tool: Click two points to measure distance",
+                    "area" => "Area Select: Drag rectangle to select multiple items",
                     _ => ""
                 };
             }

@@ -87,45 +87,67 @@ namespace LayoutEditor.Models
 
         private static string GetDefaultName(string type) => type switch
         {
-            NodeTypes.Source => "Source",
-            NodeTypes.Sink => "Sink",
-            NodeTypes.Machine => "Machine",
-            NodeTypes.Buffer => "Buffer",
-            NodeTypes.Workstation => "Workstation",
-            NodeTypes.Inspection => "Inspection",
-            NodeTypes.Storage => "Storage",
+            "source" => "Source",
+            "sink" => "Sink",
+            "machine" => "Machine",
+            "buffer" => "Buffer",
+            "workstation" => "Workstation",
+            "inspection" => "Inspection",
+            "storage" => "Storage",
+            "conveyor" => "Conveyor",
+            "junction" => "Junction",
+            "agv" => "AGV",
+            "robot" => "Robot",
+            "assembly" => "Assembly",
+            "crossdock" => "Crossdock",
+            "packaging" => "Packaging",
             _ => "Node"
         };
 
         private static string GetDefaultLabel(string type) => type switch
         {
-            NodeTypes.Source => "IN",
-            NodeTypes.Sink => "OUT",
+            "source" => "IN",
+            "sink" => "OUT",
             _ => ""
         };
 
         private static string GetDefaultColor(string type) => type switch
         {
-            NodeTypes.Source => "#2ECC71",
-            NodeTypes.Sink => "#E74C3C",
-            NodeTypes.Machine => "#3498DB",
-            NodeTypes.Buffer => "#F5A623",
-            NodeTypes.Workstation => "#9B59B6",
-            NodeTypes.Inspection => "#1ABC9C",
-            NodeTypes.Storage => "#95A5A6",
+            "source" => "#2ECC71",
+            "sink" => "#E74C3C",
+            "machine" => "#3498DB",
+            "buffer" => "#F5A623",
+            "workstation" => "#9B59B6",
+            "inspection" => "#1ABC9C",
+            "storage" => "#95A5A6",
+            "conveyor" => "#7F8C8D",
+            "junction" => "#3498DB",
+            "agv" => "#34495E",
+            "robot" => "#9B59B6",
+            "assembly" => "#2980B9",
+            "crossdock" => "#16A085",
+            "packaging" => "#C0392B",
             _ => "#4A90D9"
         };
 
         private static string GetDefaultIcon(string type) => type switch
         {
-            NodeTypes.Source => "source_arrow",
-            NodeTypes.Sink => "sink_arrow",
-            NodeTypes.Machine => "machine_generic",
-            NodeTypes.Buffer => "buffer_queue",
-            NodeTypes.Workstation => "workstation",
-            NodeTypes.Inspection => "inspection",
-            NodeTypes.Storage => "storage_rack",
-            _ => "machine_generic"
+            "source" => "source_arrow",
+            "sink" => "sink_arrow",
+            "machine" => "press_hydraulic",      // Two rectangles stacked - distinct!
+            "buffer" => "buffer_fifo",           // Rectangle with horizontal lines
+            "workstation" => "workstation_manual",
+            "inspection" => "inspection_visual",  // Eye-like shape
+            "storage" => "shelf_unit",           // Shelves
+            "conveyor" => "conveyor_belt",       // Belt with rollers
+            "junction" => "transfer_diverter",   // Branching lines
+            "agv_station" => "agv",
+            "agv" => "agv",                      // Vehicle shape
+            "robot" => "robot_scara",            // Arm shape - distinct!
+            "assembly" => "welder_mig",          // Distinct welding shape
+            "crossdock" => "crossover",          // Cross pattern
+            "packaging" => "container",          // Box with lid
+            _ => "cnc_mill"
         };
     }
 
@@ -139,6 +161,7 @@ namespace LayoutEditor.Models
         public string Description { get; set; } = "";
         public List<NodeData> Nodes { get; set; } = new();
         public List<PathData> Paths { get; set; } = new();
+        public List<GroupData> Groups { get; set; } = new();  // For cells
     }
 
     /// <summary>

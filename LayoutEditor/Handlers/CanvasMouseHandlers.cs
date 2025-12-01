@@ -21,6 +21,7 @@ namespace LayoutEditor
         private bool _isPanning;
         private bool _isDrawingPath;
         private bool _isDraggingWaypoint;
+        private bool _isDrawingSelectionRect;  // True when drawing area selection
         private string? _draggingPathId;
         private int _draggingWaypointIndex = -1;
         private const double DragThreshold = 5.0;
@@ -35,6 +36,7 @@ namespace LayoutEditor
             _lastMousePos = pos;
             _dragStart = pos;
             _isDragStarted = false;
+            _isDrawingSelectionRect = false;  // Reset at start
 
             if (_pendingNodeType != null)
             {
@@ -48,6 +50,17 @@ namespace LayoutEditor
             {
                 _isPanning = true;
                 EditorCanvas.Cursor = Cursors.Hand;
+                EditorCanvas.CaptureMouse();
+                return;
+            }
+
+            // Area select tool - always draw selection rectangle, ignore nodes
+            if (_currentTool == "area")
+            {
+                _selectionService.ClearSelection();
+                UpdateSelectionVisuals();
+                _isDragging = true;
+                _isDrawingSelectionRect = true;
                 EditorCanvas.CaptureMouse();
                 return;
             }
@@ -77,6 +90,14 @@ namespace LayoutEditor
 
             switch (hitResult.Type)
             {
+                case HitType.NodeTerminal:
+                    // Clicking on a terminal - use for path drawing
+                    HandleTerminalClick(hitResult);
+                    break;
+                case HitType.CellTerminal:
+                    // Clicking on a cell terminal - use for path drawing
+                    HandleCellTerminalClick(hitResult);
+                    break;
                 case HitType.Node:
                     if (shiftHeld && hitResult.Node != null)
                     {
@@ -194,10 +215,11 @@ namespace LayoutEditor
                     SaveUndoState();
                 }
 
-                if (_selectionService.HasSelection)
-                    DragSelectedNodes(pos);
-                else
+                // If drawing selection rectangle OR no selection, draw rectangle
+                if (_isDrawingSelectionRect || !_selectionService.HasSelection)
                     UpdateSelectionRectangle(pos);
+                else
+                    DragSelectedNodes(pos);
             }
 
             if (_isDrawingPath && _pathStartNodeId != null)

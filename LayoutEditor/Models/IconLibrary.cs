@@ -88,6 +88,13 @@ namespace LayoutEditor.Models
             return Geometry.Parse("M4,4 L20,4 L20,20 L4,20 Z");
         }
 
+        public static bool GetIsFilled(string iconKey)
+        {
+            if (Icons.TryGetValue(iconKey, out var icon))
+                return icon.IsFilled;
+            return false;
+        }
+
         public static IEnumerable<string> GetSuggestedIcons(string nodeType)
         {
             var category = nodeType switch

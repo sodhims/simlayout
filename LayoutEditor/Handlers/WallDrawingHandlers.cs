@@ -82,7 +82,9 @@ namespace LayoutEditor
                     X2 = snapped.X,
                     Y2 = snapped.Y,
                     WallType = _currentWallType,
-                    Thickness = GetWallThickness(_currentWallType)
+                    Thickness = GetWallThickness(_currentWallType),
+                    Color = GetWallColor(_currentWallType),
+                    DashPattern = ""
                 };
                 _layout.Walls.Add(_currentWall);
                 _isDrawingWall = true;
@@ -147,6 +149,18 @@ namespace LayoutEditor
                 WallTypes.Glass => 3,
                 WallTypes.Safety => 4,
                 _ => 6
+            };
+        }
+
+        private string GetWallColor(string wallType)
+        {
+            return wallType switch
+            {
+                WallTypes.Exterior => "#2C3E50",
+                WallTypes.Glass => "#3498DB",
+                WallTypes.Safety => "#E74C3C",
+                WallTypes.Partition => "#7F8C8D",
+                _ => "#2C3E50"
             };
         }
 
