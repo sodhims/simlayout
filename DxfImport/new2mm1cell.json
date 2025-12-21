@@ -1,0 +1,863 @@
+{
+  "version": "2.3",
+  "metadata": {
+    "name": "New Layout",
+    "author": "sodhi",
+    "created": "2025-12-02T21:26:50.1362168-05:00",
+    "modified": "2025-12-02T21:26:50.1363493-05:00",
+    "description": "",
+    "units": "meters",
+    "pixelsPerUnit": 20
+  },
+  "canvas": {
+    "width": 1200,
+    "height": 800,
+    "gridSize": 20,
+    "snapToGrid": true,
+    "showGrid": true
+  },
+  "display": {
+    "showGrid": true,
+    "showRulers": true,
+    "showMinimap": false,
+    "showLabels": true,
+    "pathRoutingDefault": "direct",
+    "layers": {
+      "backgroundImage": true,
+      "background": true,
+      "walls": true,
+      "corridors": true,
+      "zones": true,
+      "paths": true,
+      "nodes": true,
+      "labels": true,
+      "measurements": true
+    }
+  },
+  "layerManager": {
+    "layers": [
+      {
+        "id": "44854c02-058d-4541-a2f5-3827aef2a07f",
+        "name": "Background Image",
+        "isVisible": true,
+        "isLocked": false,
+        "isExpanded": true,
+        "opacity": 1,
+        "zOrder": 1,
+        "style": {
+          "strokeColor": "#808080",
+          "strokeWidth": 0.1,
+          "strokeDashArray": "",
+          "fillColor": "#FFFFFF",
+          "fillOpacity": 0,
+          "lineCapStyle": "Flat",
+          "lineJoinStyle": "Miter"
+        },
+        "layerType": "background_image"
+      },
+      {
+        "id": "a68f219b-f82e-49a8-b5fd-4ef79acaa635",
+        "name": "Grid",
+        "isVisible": true,
+        "isLocked": true,
+        "isExpanded": true,
+        "opacity": 1,
+        "zOrder": 2,
+        "style": {
+          "strokeColor": "#E0E0E0",
+          "strokeWidth": 0.5,
+          "strokeDashArray": "",
+          "fillColor": "#FFFFFF",
+          "fillOpacity": 0,
+          "lineCapStyle": "Flat",
+          "lineJoinStyle": "Miter"
+        },
+        "layerType": "grid"
+      },
+      {
+        "id": "e9b0ae4c-837c-441e-9108-a07a2a683d25",
+        "name": "Zones",
+        "isVisible": true,
+        "isLocked": false,
+        "isExpanded": true,
+        "opacity": 1,
+        "zOrder": 3,
+        "style": {
+          "strokeColor": "#3498DB",
+          "strokeWidth": 2,
+          "strokeDashArray": "",
+          "fillColor": "#FFFFFF",
+          "fillOpacity": 0.1,
+          "lineCapStyle": "Flat",
+          "lineJoinStyle": "Miter"
+        },
+        "layerType": "zones"
+      },
+      {
+        "id": "06035cd0-796d-4819-b147-924828eaaf0d",
+        "name": "Corridors",
+        "isVisible": true,
+        "isLocked": false,
+        "isExpanded": true,
+        "opacity": 1,
+        "zOrder": 4,
+        "style": {
+          "strokeColor": "#95A5A6",
+          "strokeWidth": 1,
+          "strokeDashArray": "5,5",
+          "fillColor": "#FFFFFF",
+          "fillOpacity": 0,
+          "lineCapStyle": "Flat",
+          "lineJoinStyle": "Miter"
+        },
+        "layerType": "corridors"
+      },
+      {
+        "id": "15272369-cef6-4102-bdc1-5c93e57bbf40",
+        "name": "Walls",
+        "isVisible": true,
+        "isLocked": false,
+        "isExpanded": true,
+        "opacity": 1,
+        "zOrder": 5,
+        "style": {
+          "strokeColor": "#505050",
+          "strokeWidth": 6,
+          "strokeDashArray": "",
+          "fillColor": "#FFFFFF",
+          "fillOpacity": 0,
+          "lineCapStyle": "Flat",
+          "lineJoinStyle": "Miter"
+        },
+        "layerType": "walls"
+      },
+      {
+        "id": "39fe3107-a788-4306-b7af-276db2111620",
+        "name": "Columns",
+        "isVisible": true,
+        "isLocked": false,
+        "isExpanded": true,
+        "opacity": 1,
+        "zOrder": 6,
+        "style": {
+          "strokeColor": "#606060",
+          "strokeWidth": 1,
+          "strokeDashArray": "",
+          "fillColor": "#808080",
+          "fillOpacity": 1,
+          "lineCapStyle": "Flat",
+          "lineJoinStyle": "Miter"
+        },
+        "layerType": "columns"
+      },
+      {
+        "id": "589f399c-cb60-4284-8da7-6d722df4d629",
+        "name": "Paths",
+        "isVisible": true,
+        "isLocked": false,
+        "isExpanded": true,
+        "opacity": 1,
+        "zOrder": 7,
+        "style": {
+          "strokeColor": "#27AE60",
+          "strokeWidth": 2,
+          "strokeDashArray": "",
+          "fillColor": "#FFFFFF",
+          "fillOpacity": 0,
+          "lineCapStyle": "Flat",
+          "lineJoinStyle": "Miter"
+        },
+        "layerType": "paths"
+      },
+      {
+        "id": "45e07151-8f0e-4448-a206-a4bb80bcbeaf",
+        "name": "Nodes",
+        "isVisible": true,
+        "isLocked": false,
+        "isExpanded": true,
+        "opacity": 1,
+        "zOrder": 8,
+        "style": {
+          "strokeColor": "#2C3E50",
+          "strokeWidth": 1,
+          "strokeDashArray": "",
+          "fillColor": "#FFFFFF",
+          "fillOpacity": 0,
+          "lineCapStyle": "Flat",
+          "lineJoinStyle": "Miter"
+        },
+        "layerType": "nodes"
+      },
+      {
+        "id": "f0d4ca5c-713f-452c-b6d2-b269ab747116",
+        "name": "Cells",
+        "isVisible": true,
+        "isLocked": false,
+        "isExpanded": true,
+        "opacity": 1,
+        "zOrder": 9,
+        "style": {
+          "strokeColor": "#E67E22",
+          "strokeWidth": 2,
+          "strokeDashArray": "8,4",
+          "fillColor": "#FFFFFF",
+          "fillOpacity": 0,
+          "lineCapStyle": "Flat",
+          "lineJoinStyle": "Miter"
+        },
+        "layerType": "cells"
+      },
+      {
+        "id": "0bb9e467-06da-4a5d-95a2-fca732464f72",
+        "name": "Measurements",
+        "isVisible": true,
+        "isLocked": false,
+        "isExpanded": true,
+        "opacity": 1,
+        "zOrder": 10,
+        "style": {
+          "strokeColor": "#E74C3C",
+          "strokeWidth": 1,
+          "strokeDashArray": "",
+          "fillColor": "#FFFFFF",
+          "fillOpacity": 0,
+          "lineCapStyle": "Flat",
+          "lineJoinStyle": "Miter"
+        },
+        "layerType": "measurements"
+      },
+      {
+        "id": "be49b373-2db2-469a-a229-d6dc5135f036",
+        "name": "Annotations",
+        "isVisible": true,
+        "isLocked": false,
+        "isExpanded": true,
+        "opacity": 1,
+        "zOrder": 11,
+        "style": {
+          "strokeColor": "#9B59B6",
+          "strokeWidth": 1,
+          "strokeDashArray": "",
+          "fillColor": "#FFFFFF",
+          "fillOpacity": 0,
+          "lineCapStyle": "Flat",
+          "lineJoinStyle": "Miter"
+        },
+        "layerType": "annotations"
+      }
+    ],
+    "activeLayerId": "15272369-cef6-4102-bdc1-5c93e57bbf40",
+    "activeLayer": {
+      "id": "15272369-cef6-4102-bdc1-5c93e57bbf40",
+      "name": "Walls",
+      "isVisible": true,
+      "isLocked": false,
+      "isExpanded": true,
+      "opacity": 1,
+      "zOrder": 5,
+      "style": {
+        "strokeColor": "#505050",
+        "strokeWidth": 6,
+        "strokeDashArray": "",
+        "fillColor": "#FFFFFF",
+        "fillOpacity": 0,
+        "lineCapStyle": "Flat",
+        "lineJoinStyle": "Miter"
+      },
+      "layerType": "walls"
+    }
+  },
+  "templates": [
+    {
+      "id": "79be9d46-294d-4852-986a-2e46803d8d1a",
+      "name": "Template_1",
+      "description": "",
+      "nodes": [
+        {
+          "id": "78ec38b7-c75e-4a7d-bd04-5056d1b79b62",
+          "type": "workstation",
+          "name": "Workstation 1",
+          "label": "",
+          "visual": {
+            "x": 480,
+            "y": 245,
+            "width": 80,
+            "height": 60,
+            "rotation": 0,
+            "icon": "workstation_manual",
+            "color": "#9B59B6",
+            "labelPosition": "bottom",
+            "labelVisible": true,
+            "queueDirection": "horizontal",
+            "entitySpacing": 12,
+            "serverArrangement": "horizontal",
+            "serverSpacing": 25,
+            "inputTerminalPosition": "left",
+            "outputTerminalPosition": "right"
+          },
+          "simulation": {
+            "servers": 1,
+            "capacity": 1,
+            "initialLevel": 0,
+            "priority": 1,
+            "queueDiscipline": "FIFO",
+            "blockingMode": "block_upstream",
+            "entityType": "part",
+            "batchSize": 1,
+            "collectStatistics": true,
+            "customProperties": {}
+          },
+          "indexInCell": -1
+        },
+        {
+          "id": "00881f89-fb3c-4150-9356-2fff99509b27",
+          "type": "buffer",
+          "name": "Buffer 1",
+          "label": "",
+          "visual": {
+            "x": 280,
+            "y": 245,
+            "width": 80,
+            "height": 60,
+            "rotation": 0,
+            "icon": "buffer_fifo",
+            "color": "#F5A623",
+            "labelPosition": "bottom",
+            "labelVisible": true,
+            "queueDirection": "horizontal",
+            "entitySpacing": 12,
+            "serverArrangement": "horizontal",
+            "serverSpacing": 25,
+            "inputTerminalPosition": "left",
+            "outputTerminalPosition": "right"
+          },
+          "simulation": {
+            "servers": 1,
+            "capacity": 1,
+            "initialLevel": 0,
+            "priority": 1,
+            "queueDiscipline": "FIFO",
+            "blockingMode": "block_upstream",
+            "entityType": "part",
+            "batchSize": 1,
+            "collectStatistics": true,
+            "customProperties": {}
+          },
+          "indexInCell": -1
+        }
+      ],
+      "paths": [
+        {
+          "id": "db7e941c-e397-41a0-8bf8-e959e694aec9",
+          "from": "00881f89-fb3c-4150-9356-2fff99509b27",
+          "to": "78ec38b7-c75e-4a7d-bd04-5056d1b79b62",
+          "fromTerminal": "output",
+          "toTerminal": "input",
+          "pathType": "single",
+          "routingMode": "direct",
+          "visual": {
+            "color": "#666666",
+            "thickness": 2,
+            "style": "solid",
+            "arrowSize": 8,
+            "laneSpacing": 6,
+            "waypoints": []
+          },
+          "simulation": {
+            "distance": 200,
+            "transportType": "conveyor",
+            "speed": 1,
+            "capacity": 10,
+            "lanes": 1,
+            "bidirectional": false
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "625297ff-ba94-4fa9-8799-eab74013054a",
+          "name": "Cell_1",
+          "cellType": "simple",
+          "cellIndex": 1,
+          "members": [
+            "00881f89-fb3c-4150-9356-2fff99509b27",
+            "78ec38b7-c75e-4a7d-bd04-5056d1b79b62"
+          ],
+          "internalPaths": [
+            "db7e941c-e397-41a0-8bf8-e959e694aec9"
+          ],
+          "internalRouting": {
+            "00881f89-fb3c-4150-9356-2fff99509b27": [
+              {
+                "to": "78ec38b7-c75e-4a7d-bd04-5056d1b79b62",
+                "priority": 1,
+                "probability": 1
+              }
+            ]
+          },
+          "entryPoints": [
+            "00881f89-fb3c-4150-9356-2fff99509b27"
+          ],
+          "exitPoints": [
+            "78ec38b7-c75e-4a7d-bd04-5056d1b79b62"
+          ],
+          "color": "#9B59B6",
+          "collapsed": false,
+          "isCell": true,
+          "inputTerminalPosition": "left",
+          "outputTerminalPosition": "right"
+        }
+      ]
+    }
+  ],
+  "resourcePools": [],
+  "partTypes": [],
+  "corridors": [],
+  "nodes": [
+    {
+      "id": "b349f27a-c649-4b67-8935-5f89b9b7bfde",
+      "type": "sink",
+      "name": "Sink1 1",
+      "label": "OUT",
+      "visual": {
+        "x": 780,
+        "y": 245,
+        "width": 80,
+        "height": 60,
+        "rotation": 0,
+        "icon": "sink",
+        "color": "#E74C3C",
+        "labelPosition": "bottom",
+        "labelVisible": true,
+        "queueDirection": "horizontal",
+        "entitySpacing": 12,
+        "serverArrangement": "horizontal",
+        "serverSpacing": 25,
+        "inputTerminalPosition": "left",
+        "outputTerminalPosition": "right"
+      },
+      "simulation": {
+        "servers": 1,
+        "capacity": 1,
+        "initialLevel": 0,
+        "priority": 1,
+        "queueDiscipline": "FIFO",
+        "blockingMode": "block_upstream",
+        "entityType": "part",
+        "batchSize": 1,
+        "collectStatistics": true,
+        "customProperties": {}
+      },
+      "indexInCell": -1
+    },
+    {
+      "id": "361a3bf3-6c1d-4815-b324-98b0d145fe2f",
+      "type": "source",
+      "name": "Source 1",
+      "label": "IN",
+      "visual": {
+        "x": 80,
+        "y": 245,
+        "width": 80,
+        "height": 60,
+        "rotation": 0,
+        "icon": "source_arrow",
+        "color": "#2ECC71",
+        "labelPosition": "bottom",
+        "labelVisible": true,
+        "queueDirection": "horizontal",
+        "entitySpacing": 12,
+        "serverArrangement": "horizontal",
+        "serverSpacing": 25,
+        "inputTerminalPosition": "left",
+        "outputTerminalPosition": "right"
+      },
+      "simulation": {
+        "servers": 1,
+        "capacity": 1,
+        "initialLevel": 0,
+        "priority": 1,
+        "queueDiscipline": "FIFO",
+        "blockingMode": "block_upstream",
+        "entityType": "part",
+        "batchSize": 1,
+        "collectStatistics": true,
+        "customProperties": {}
+      },
+      "indexInCell": -1
+    },
+    {
+      "id": "78ec38b7-c75e-4a7d-bd04-5056d1b79b62",
+      "type": "workstation",
+      "name": "Workstation 1",
+      "label": "",
+      "visual": {
+        "x": 480,
+        "y": 245,
+        "width": 80,
+        "height": 60,
+        "rotation": 0,
+        "icon": "workstation_manual",
+        "color": "#9B59B6",
+        "labelPosition": "bottom",
+        "labelVisible": true,
+        "queueDirection": "horizontal",
+        "entitySpacing": 12,
+        "serverArrangement": "horizontal",
+        "serverSpacing": 25,
+        "inputTerminalPosition": "left",
+        "outputTerminalPosition": "right"
+      },
+      "simulation": {
+        "servers": 1,
+        "capacity": 1,
+        "initialLevel": 0,
+        "priority": 1,
+        "queueDiscipline": "FIFO",
+        "blockingMode": "block_upstream",
+        "entityType": "part",
+        "batchSize": 1,
+        "collectStatistics": true,
+        "customProperties": {}
+      },
+      "indexInCell": -1
+    },
+    {
+      "id": "00881f89-fb3c-4150-9356-2fff99509b27",
+      "type": "buffer",
+      "name": "Buffer 1",
+      "label": "",
+      "visual": {
+        "x": 280,
+        "y": 245,
+        "width": 80,
+        "height": 60,
+        "rotation": 0,
+        "icon": "buffer_fifo",
+        "color": "#F5A623",
+        "labelPosition": "bottom",
+        "labelVisible": true,
+        "queueDirection": "horizontal",
+        "entitySpacing": 12,
+        "serverArrangement": "horizontal",
+        "serverSpacing": 25,
+        "inputTerminalPosition": "left",
+        "outputTerminalPosition": "right"
+      },
+      "simulation": {
+        "servers": 1,
+        "capacity": 1,
+        "initialLevel": 0,
+        "priority": 1,
+        "queueDiscipline": "FIFO",
+        "blockingMode": "block_upstream",
+        "entityType": "part",
+        "batchSize": 1,
+        "collectStatistics": true,
+        "customProperties": {}
+      },
+      "indexInCell": -1
+    },
+    {
+      "id": "7f463b62-cffa-456b-9a28-e93d7165a1ed",
+      "type": "workstation",
+      "name": "Workstation 1_2",
+      "label": "",
+      "visual": {
+        "x": 480,
+        "y": 460,
+        "width": 80,
+        "height": 60,
+        "rotation": 0,
+        "icon": "workstation_manual",
+        "color": "#9B59B6",
+        "labelPosition": "bottom",
+        "labelVisible": true,
+        "queueDirection": "horizontal",
+        "entitySpacing": 12,
+        "serverArrangement": "horizontal",
+        "serverSpacing": 25,
+        "inputTerminalPosition": "left",
+        "outputTerminalPosition": "right"
+      },
+      "simulation": {
+        "servers": 1,
+        "capacity": 1,
+        "initialLevel": 0,
+        "priority": 1,
+        "queueDiscipline": "FIFO",
+        "blockingMode": "block_upstream",
+        "entityType": "part",
+        "batchSize": 1,
+        "collectStatistics": true,
+        "customProperties": {}
+      },
+      "indexInCell": -1
+    },
+    {
+      "id": "53f7cdd8-fcc2-4bf1-a4a6-cecfa1d1c12d",
+      "type": "buffer",
+      "name": "Buffer 1_2",
+      "label": "",
+      "visual": {
+        "x": 280,
+        "y": 460,
+        "width": 80,
+        "height": 60,
+        "rotation": 0,
+        "icon": "buffer_fifo",
+        "color": "#F5A623",
+        "labelPosition": "bottom",
+        "labelVisible": true,
+        "queueDirection": "horizontal",
+        "entitySpacing": 12,
+        "serverArrangement": "horizontal",
+        "serverSpacing": 25,
+        "inputTerminalPosition": "left",
+        "outputTerminalPosition": "right"
+      },
+      "simulation": {
+        "servers": 1,
+        "capacity": 1,
+        "initialLevel": 0,
+        "priority": 1,
+        "queueDiscipline": "FIFO",
+        "blockingMode": "block_upstream",
+        "entityType": "part",
+        "batchSize": 1,
+        "collectStatistics": true,
+        "customProperties": {}
+      },
+      "indexInCell": -1
+    }
+  ],
+  "paths": [
+    {
+      "id": "f6513138-c6a5-420e-aaec-b33ba2cd9f26",
+      "from": "361a3bf3-6c1d-4815-b324-98b0d145fe2f",
+      "to": "00881f89-fb3c-4150-9356-2fff99509b27",
+      "fromTerminal": "output",
+      "toTerminal": "input",
+      "pathType": "single",
+      "routingMode": "direct",
+      "visual": {
+        "color": "#666666",
+        "thickness": 2,
+        "style": "solid",
+        "arrowSize": 8,
+        "laneSpacing": 6,
+        "waypoints": []
+      },
+      "simulation": {
+        "distance": 349.28498393145964,
+        "transportType": "conveyor",
+        "speed": 1,
+        "capacity": 10,
+        "lanes": 1,
+        "bidirectional": false
+      }
+    },
+    {
+      "id": "db7e941c-e397-41a0-8bf8-e959e694aec9",
+      "from": "00881f89-fb3c-4150-9356-2fff99509b27",
+      "to": "78ec38b7-c75e-4a7d-bd04-5056d1b79b62",
+      "fromTerminal": "output",
+      "toTerminal": "input",
+      "pathType": "single",
+      "routingMode": "direct",
+      "visual": {
+        "color": "#666666",
+        "thickness": 2,
+        "style": "solid",
+        "arrowSize": 8,
+        "laneSpacing": 6,
+        "waypoints": []
+      },
+      "simulation": {
+        "distance": 200,
+        "transportType": "conveyor",
+        "speed": 1,
+        "capacity": 10,
+        "lanes": 1,
+        "bidirectional": false
+      }
+    },
+    {
+      "id": "53f3fdd4-e987-42fe-99c6-22f9fe9caf40",
+      "from": "78ec38b7-c75e-4a7d-bd04-5056d1b79b62",
+      "to": "b349f27a-c649-4b67-8935-5f89b9b7bfde",
+      "fromTerminal": "output",
+      "toTerminal": "input",
+      "pathType": "single",
+      "routingMode": "direct",
+      "visual": {
+        "color": "#666666",
+        "thickness": 2,
+        "style": "solid",
+        "arrowSize": 8,
+        "laneSpacing": 6,
+        "waypoints": []
+      },
+      "simulation": {
+        "distance": 313.04951684997053,
+        "transportType": "conveyor",
+        "speed": 1,
+        "capacity": 10,
+        "lanes": 1,
+        "bidirectional": false
+      }
+    },
+    {
+      "id": "3bd82e49-74d0-4411-af32-65129ef0194d",
+      "from": "53f7cdd8-fcc2-4bf1-a4a6-cecfa1d1c12d",
+      "to": "7f463b62-cffa-456b-9a28-e93d7165a1ed",
+      "fromTerminal": "output",
+      "toTerminal": "input",
+      "pathType": "single",
+      "routingMode": "direct",
+      "visual": {
+        "color": "#666666",
+        "thickness": 2,
+        "style": "solid",
+        "arrowSize": 8,
+        "laneSpacing": 6,
+        "waypoints": []
+      },
+      "simulation": {
+        "distance": 200,
+        "transportType": "conveyor",
+        "speed": 1,
+        "capacity": 10,
+        "lanes": 1,
+        "bidirectional": false
+      }
+    },
+    {
+      "id": "4c6f1899-1f5e-43a8-b03d-23c553acca7b",
+      "from": "7f463b62-cffa-456b-9a28-e93d7165a1ed",
+      "to": "b349f27a-c649-4b67-8935-5f89b9b7bfde",
+      "fromTerminal": "output",
+      "toTerminal": "input",
+      "pathType": "single",
+      "routingMode": "direct",
+      "visual": {
+        "color": "#666666",
+        "thickness": 2,
+        "style": "solid",
+        "arrowSize": 8,
+        "laneSpacing": 6,
+        "waypoints": []
+      },
+      "simulation": {
+        "distance": 369.08671067921154,
+        "transportType": "conveyor",
+        "speed": 1,
+        "capacity": 10,
+        "lanes": 1,
+        "bidirectional": false
+      }
+    },
+    {
+      "id": "583fcbc4-3b62-410a-8a62-02929b3c93d1",
+      "from": "361a3bf3-6c1d-4815-b324-98b0d145fe2f",
+      "to": "53f7cdd8-fcc2-4bf1-a4a6-cecfa1d1c12d",
+      "fromTerminal": "output",
+      "toTerminal": "input",
+      "pathType": "single",
+      "routingMode": "direct",
+      "visual": {
+        "color": "#666666",
+        "thickness": 2,
+        "style": "solid",
+        "arrowSize": 8,
+        "laneSpacing": 6,
+        "waypoints": []
+      },
+      "simulation": {
+        "distance": 293.64093720052045,
+        "transportType": "conveyor",
+        "speed": 1,
+        "capacity": 10,
+        "lanes": 1,
+        "bidirectional": false
+      }
+    }
+  ],
+  "zones": [],
+  "groups": [
+    {
+      "id": "625297ff-ba94-4fa9-8799-eab74013054a",
+      "name": "Cell_1",
+      "cellType": "simple",
+      "cellIndex": 1,
+      "members": [
+        "00881f89-fb3c-4150-9356-2fff99509b27",
+        "78ec38b7-c75e-4a7d-bd04-5056d1b79b62"
+      ],
+      "internalPaths": [
+        "db7e941c-e397-41a0-8bf8-e959e694aec9"
+      ],
+      "internalRouting": {
+        "00881f89-fb3c-4150-9356-2fff99509b27": [
+          {
+            "to": "78ec38b7-c75e-4a7d-bd04-5056d1b79b62",
+            "priority": 1,
+            "probability": 1
+          }
+        ]
+      },
+      "entryPoints": [
+        "00881f89-fb3c-4150-9356-2fff99509b27"
+      ],
+      "exitPoints": [
+        "78ec38b7-c75e-4a7d-bd04-5056d1b79b62"
+      ],
+      "color": "#9B59B6",
+      "collapsed": false,
+      "isCell": true,
+      "inputTerminalPosition": "left",
+      "outputTerminalPosition": "right"
+    },
+    {
+      "id": "b668a2bd-3c2a-4e49-a279-9fb062e7839a",
+      "name": "Cell_1_2",
+      "cellType": "simple",
+      "cellIndex": 1,
+      "members": [
+        "53f7cdd8-fcc2-4bf1-a4a6-cecfa1d1c12d",
+        "7f463b62-cffa-456b-9a28-e93d7165a1ed"
+      ],
+      "internalPaths": [
+        "db7e941c-e397-41a0-8bf8-e959e694aec9"
+      ],
+      "internalRouting": {
+        "00881f89-fb3c-4150-9356-2fff99509b27": [
+          {
+            "to": "78ec38b7-c75e-4a7d-bd04-5056d1b79b62",
+            "priority": 1,
+            "probability": 1
+          }
+        ]
+      },
+      "entryPoints": [
+        "53f7cdd8-fcc2-4bf1-a4a6-cecfa1d1c12d"
+      ],
+      "exitPoints": [
+        "7f463b62-cffa-456b-9a28-e93d7165a1ed"
+      ],
+      "color": "#9B59B6",
+      "collapsed": false,
+      "isCell": true,
+      "inputTerminalPosition": "left",
+      "outputTerminalPosition": "right"
+    }
+  ],
+  "walls": [],
+  "doors": [],
+  "columns": [],
+  "measurements": [],
+  "transportStations": [],
+  "waypoints": [],
+  "transporterTracks": [],
+  "transporters": []
+}

@@ -1,0 +1,38 @@
+<Window x:Class="LayoutEditor.Dialogs.IconEditorDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Icon Editor" Height="420" Width="700" WindowStartupLocation="CenterOwner">
+    <Grid Margin="8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <Button x:Name="ImportBtn" Content="Import Icon..." Margin="0,0,0,8" Click="ImportBtn_Click"/>
+            <ListBox x:Name="IconList" DisplayMemberPath="Key" Height="320" SelectionChanged="IconList_SelectionChanged"/>
+        </StackPanel>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Border BorderBrush="#CCC" BorderThickness="1" Margin="8">
+                <Viewbox Stretch="Uniform">
+                    <Grid>
+                        <Image x:Name="PreviewImage" Width="200" Height="200" MouseLeftButtonDown="PreviewImage_MouseLeftButtonDown"/>
+                        <Canvas x:Name="PreviewCanvas" Width="200" Height="200" IsHitTestVisible="False"/>
+                    </Grid>
+                </Viewbox>
+            </Border>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="8">
+                <Button Content="Set In Terminal" Click="SetIn_Click" Margin="4"/>
+                <Button Content="Set Out Terminal" Click="SetOut_Click" Margin="4"/>
+                <Button Content="Close" Click="Close_Click" Margin="4"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

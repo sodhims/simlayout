@@ -1,0 +1,59 @@
+{
+  "Global": {
+    "RunLengthMinutes": 480,
+    "WarmupMinutes": 0,
+    "RandomSeed": 42,
+    "TransportSpeed": 320,
+    "PixelsPerMeter": 20
+  },
+  "PartTypes": [
+    {
+      "Name": "Part",
+      "Color": "#3498DB",
+      "Probability": 0.3333333333333333,
+      "Priority": 1
+    },
+    {
+      "Name": "Part2",
+      "Color": "#E74C3C",
+      "Probability": 0.3333333333333333,
+      "Priority": 1
+    },
+    {
+      "Name": "Part3",
+      "Color": "#2ECC71",
+      "Probability": 0.3333333333333333,
+      "Priority": 1
+    }
+  ],
+  "Sources": [
+    {
+      "NodeId": "489f398a-057c-475f-8c3e-87a8261db4a6",
+      "NodeName": "Source",
+      "InterArrivalTime": "Exp(\u03BC=3)"
+    }
+  ],
+  "Buffers": [
+    {
+      "NodeId": "61352a5b-5fcf-461d-a142-ad68f1694fe9",
+      "NodeName": "Buffer",
+      "Capacity": 20,
+      "Discipline": "FIFO"
+    }
+  ],
+  "Machines": [
+    {
+      "NodeId": "5a6d4f3a-3939-45a2-a388-46fcefc63dd4",
+      "NodeName": "Machine",
+      "Servers": 2,
+      "ProcessTime": "Exp(\u03BC=4)",
+      "BreakdownsEnabled": false,
+      "ProcessTimeByPartType": {
+        "Part": "Exp(\u03BC=4)",
+        "Part2": "Exp(\u03BC=5)",
+        "Part3": "Exp(\u03BC=6)",
+        "Part4": "Exp(\u03BC=4)"
+      }
+    }
+  ]
+}

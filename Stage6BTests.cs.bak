@@ -1,0 +1,505 @@
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using LayoutEditor.Data;
+using LayoutEditor.Data.DTOs;
+using LayoutEditor.Data.Repositories;
+using LayoutEditor.Data.Serialization;
+using LayoutEditor.Models;
+
+namespace LayoutEditor.Tests
+{
+    /// <summary>
+    /// Tests for Stage 6B: Element Repository
+    /// </summary>
+    public static class Stage6BTests
+    {
+        private static string _testDbPath = "";
+
+        /// <summary>
+        /// Helper method to create a test layout in the database
+        /// </summary>
+        private static async Task CreateTestLayoutAsync(DatabaseManager dbManager, string layoutId = "layout1")
+        {
+            using var connection = dbManager.GetConnection();
+            using var command = connection.CreateCommand();
+            command.CommandText = @"
+                INSERT INTO Layouts (Id, Name, Width, Height, Unit, CreatedDate, ModifiedDate, Version)
+                VALUES (@id, @name, @width, @height, @unit, @createdDate, @modifiedDate, @version)";
+
+            command.Parameters.AddWithValue("@id", layoutId);
+            command.Parameters.AddWithValue("@name", "Test Layout");
+            command.Parameters.AddWithValue("@width", 100.0);
+            command.Parameters.AddWithValue("@height", 100.0);
+            command.Parameters.AddWithValue("@unit", "meters");
+            command.Parameters.AddWithValue("@createdDate", DateTime.UtcNow.ToString("o"));
+            command.Parameters.AddWithValue("@modifiedDate", DateTime.UtcNow.ToString("o"));
+            command.Parameters.AddWithValue("@version", 1);
+
+            await command.ExecuteNonQueryAsync();
+        }
+
+        public static void RunAllTests()
+        {
+            Console.WriteLine("=== Stage 6B: Element Repository Tests ===\n");
+            int passed = 0, failed = 0;
+
+            // T6B.1: Insert and retrieve element
+            if (Test_T6B_1_InsertAndRetrieveElement().Result) passed++; else failed++;
+
+            // T6B.2: Update element
+            if (Test_T6B_2_UpdateElement().Result) passed++; else failed++;
+
+            // T6B.3: Delete element
+            if (Test_T6B_3_DeleteElement().Result) passed++; else failed++;
+
+            // T6B.4: Get elements by layout
+            if (Test_T6B_4_GetElementsByLayout().Result) passed++; else failed++;
+
+            // T6B.5: Get elements by type
+            if (Test_T6B_5_GetElementsByType().Result) passed++; else failed++;
+
+            // T6B.6: Get elements by layer
+            if (Test_T6B_6_GetElementsByLayer().Result) passed++; else failed++;
+
+            // T6B.7: Batch insert elements
+            if (Test_T6B_7_BatchInsertElements().Result) passed++; else failed++;
+
+            // T6B.8: JSON serialization of conveyor
+            if (Test_T6B_8_JsonSerializationConveyor()) passed++; else failed++;
+
+            // T6B.9: JSON serialization of crane
+            if (Test_T6B_9_JsonSerializationCrane()) passed++; else failed++;
+
+            // T6B.10: Element count and exists
+            if (Test_T6B_10_ElementCountAndExists().Result) passed++; else failed++;
+
+            Console.WriteLine($"\n=== Test Results ===");
+            Console.WriteLine($"Passed: {passed}/10");
+            Console.WriteLine($"Failed: {failed}/10");
+            Console.WriteLine($"Status: {(failed == 0 ? "✓ ALL TESTS PASSED" : "✗ SOME TESTS FAILED")}");
+        }
+
+        private static async Task<bool> Test_T6B_1_InsertAndRetrieveElement()
+        {
+            _testDbPath = Path.Combine(Path.GetTempPath(), $"test_layout_{Guid.NewGuid()}.db");
+
+            try
+            {
+                var dbManager = new DatabaseManager(_testDbPath);
+                dbManager.EnsureCreated();
+                var repo = new SQLiteElementRepository(dbManager);
+n                // Create test layout first (for foreign key)
+                await CreateTestLayoutAsync(dbManager);
+
+                // Create test layout first (for foreign key)
+                await CreateTestLayoutAsync(dbManager);
+
+                // Create test element
+                var element = new ElementDto
+                {
+                    Id = "elem1",
+                    LayoutId = "layout1",
+                    ElementType = DbElementType.Conveyor,
+                    Layer = (int)LayerType.Equipment,
+                    Name = "Test Conveyor",
+                    PropertiesJson = "{\"Length\": 10.0}"
+                };
+
+                // Insert
+                var inserted = await repo.InsertAsync(element);
+
+                // Retrieve
+                var retrieved = await repo.GetByIdAsync("elem1");
+
+                var result = inserted && retrieved != null &&
+                            retrieved.Id == "elem1" &&
+                            retrieved.ElementType == DbElementType.Conveyor &&
+                            retrieved.Name == "Test Conveyor";
+
+                Console.WriteLine($"T6B.1 - Insert and retrieve element: {(result ? "✓ PASS" : "✗ FAIL")} " +
+                                 $"(Inserted: {inserted}, Retrieved: {retrieved != null})");
+
+                dbManager.DeleteDatabase();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"T6B.1 - Insert and retrieve element: ✗ FAIL (Exception: {ex.Message})");
+                return false;
+            }
+        }
+
+        private static async Task<bool> Test_T6B_2_UpdateElement()
+        {
+            _testDbPath = Path.Combine(Path.GetTempPath(), $"test_layout_{Guid.NewGuid()}.db");
+
+            try
+            {
+                var dbManager = new DatabaseManager(_testDbPath);
+                dbManager.EnsureCreated();
+                var repo = new SQLiteElementRepository(dbManager);
+n                // Create test layout first (for foreign key)
+                await CreateTestLayoutAsync(dbManager);
+
+                // Create and insert
+                var element = new ElementDto
+                {
+                    Id = "elem1",
+                    LayoutId = "layout1",
+                    ElementType = DbElementType.Conveyor,
+                    Layer = (int)LayerType.Equipment,
+                    Name = "Original Name",
+                    PropertiesJson = "{\"Length\": 10.0}"
+                };
+                await repo.InsertAsync(element);
+
+                // Update
+                element.Name = "Updated Name";
+                element.PropertiesJson = "{\"Length\": 15.0}";
+                var updated = await repo.UpdateAsync(element);
+
+                // Retrieve and verify
+                var retrieved = await repo.GetByIdAsync("elem1");
+
+                var result = updated && retrieved != null &&
+                            retrieved.Name == "Updated Name" &&
+                            retrieved.PropertiesJson.Contains("15.0");
+
+                Console.WriteLine($"T6B.2 - Update element: {(result ? "✓ PASS" : "✗ FAIL")} " +
+                                 $"(Updated: {updated}, Name changed: {retrieved?.Name == "Updated Name"})");
+
+                dbManager.DeleteDatabase();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"T6B.2 - Update element: ✗ FAIL (Exception: {ex.Message})");
+                return false;
+            }
+        }
+
+        private static async Task<bool> Test_T6B_3_DeleteElement()
+        {
+            _testDbPath = Path.Combine(Path.GetTempPath(), $"test_layout_{Guid.NewGuid()}.db");
+
+            try
+            {
+                var dbManager = new DatabaseManager(_testDbPath);
+                dbManager.EnsureCreated();
+                var repo = new SQLiteElementRepository(dbManager);
+n                // Create test layout first (for foreign key)
+                await CreateTestLayoutAsync(dbManager);
+
+                // Create and insert
+                var element = new ElementDto
+                {
+                    Id = "elem1",
+                    LayoutId = "layout1",
+                    ElementType = DbElementType.Conveyor,
+                    Layer = (int)LayerType.Equipment,
+                    PropertiesJson = "{}"
+                };
+                await repo.InsertAsync(element);
+
+                // Delete
+                var deleted = await repo.DeleteAsync("elem1");
+
+                // Verify deletion
+                var retrieved = await repo.GetByIdAsync("elem1");
+                var exists = await repo.ExistsAsync("elem1");
+
+                var result = deleted && retrieved == null && !exists;
+
+                Console.WriteLine($"T6B.3 - Delete element: {(result ? "✓ PASS" : "✗ FAIL")} " +
+                                 $"(Deleted: {deleted}, Still exists: {exists})");
+
+                dbManager.DeleteDatabase();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"T6B.3 - Delete element: ✗ FAIL (Exception: {ex.Message})");
+                return false;
+            }
+        }
+
+        private static async Task<bool> Test_T6B_4_GetElementsByLayout()
+        {
+            _testDbPath = Path.Combine(Path.GetTempPath(), $"test_layout_{Guid.NewGuid()}.db");
+
+            try
+            {
+                var dbManager = new DatabaseManager(_testDbPath);
+                dbManager.EnsureCreated();
+                var repo = new SQLiteElementRepository(dbManager);
+n                // Create test layout first (for foreign key)
+                await CreateTestLayoutAsync(dbManager);
+
+                // Insert elements for layout1
+                await repo.InsertAsync(new ElementDto { Id = "e1", LayoutId = "layout1", ElementType = DbElementType.Conveyor, Layer = 2, PropertiesJson = "{}" });
+                await repo.InsertAsync(new ElementDto { Id = "e2", LayoutId = "layout1", ElementType = DbElementType.AGVPath, Layer = 1, PropertiesJson = "{}" });
+                await repo.InsertAsync(new ElementDto { Id = "e3", LayoutId = "layout1", ElementType = DbElementType.Wall, Layer = 0, PropertiesJson = "{}" });
+
+                // Insert element for different layout
+                await repo.InsertAsync(new ElementDto { Id = "e4", LayoutId = "layout2", ElementType = DbElementType.Conveyor, Layer = 2, PropertiesJson = "{}" });
+
+                // Get elements for layout1
+                var elements = (await repo.GetByLayoutIdAsync("layout1")).ToList();
+
+                var result = elements.Count == 3 &&
+                            elements.Any(e => e.Id == "e1") &&
+                            elements.Any(e => e.Id == "e2") &&
+                            elements.Any(e => e.Id == "e3") &&
+                            !elements.Any(e => e.Id == "e4");
+
+                Console.WriteLine($"T6B.4 - Get elements by layout: {(result ? "✓ PASS" : "✗ FAIL")} " +
+                                 $"(Count: {elements.Count}, Expected: 3)");
+
+                dbManager.DeleteDatabase();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"T6B.4 - Get elements by layout: ✗ FAIL (Exception: {ex.Message})");
+                return false;
+            }
+        }
+
+        private static async Task<bool> Test_T6B_5_GetElementsByType()
+        {
+            _testDbPath = Path.Combine(Path.GetTempPath(), $"test_layout_{Guid.NewGuid()}.db");
+
+            try
+            {
+                var dbManager = new DatabaseManager(_testDbPath);
+                dbManager.EnsureCreated();
+                var repo = new SQLiteElementRepository(dbManager);
+n                // Create test layout first (for foreign key)
+                await CreateTestLayoutAsync(dbManager);
+
+                // Insert elements
+                await repo.InsertAsync(new ElementDto { Id = "c1", LayoutId = "layout1", ElementType = DbElementType.Conveyor, Layer = 2, PropertiesJson = "{}" });
+                await repo.InsertAsync(new ElementDto { Id = "c2", LayoutId = "layout1", ElementType = DbElementType.Conveyor, Layer = 2, PropertiesJson = "{}" });
+                await repo.InsertAsync(new ElementDto { Id = "a1", LayoutId = "layout1", ElementType = DbElementType.AGVPath, Layer = 1, PropertiesJson = "{}" });
+
+                // Get conveyors
+                var conveyors = (await repo.GetByLayoutAndTypeAsync("layout1", DbElementType.Conveyor)).ToList();
+
+                var result = conveyors.Count == 2 &&
+                            conveyors.All(e => e.ElementType == DbElementType.Conveyor);
+
+                Console.WriteLine($"T6B.5 - Get elements by type: {(result ? "✓ PASS" : "✗ FAIL")} " +
+                                 $"(Conveyors: {conveyors.Count}, Expected: 2)");
+
+                dbManager.DeleteDatabase();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"T6B.5 - Get elements by type: ✗ FAIL (Exception: {ex.Message})");
+                return false;
+            }
+        }
+
+        private static async Task<bool> Test_T6B_6_GetElementsByLayer()
+        {
+            _testDbPath = Path.Combine(Path.GetTempPath(), $"test_layout_{Guid.NewGuid()}.db");
+
+            try
+            {
+                var dbManager = new DatabaseManager(_testDbPath);
+                dbManager.EnsureCreated();
+                var repo = new SQLiteElementRepository(dbManager);
+n                // Create test layout first (for foreign key)
+                await CreateTestLayoutAsync(dbManager);
+
+                // Insert elements on different layers
+                await repo.InsertAsync(new ElementDto { Id = "l0_1", LayoutId = "layout1", ElementType = DbElementType.Wall, Layer = 0, PropertiesJson = "{}" });
+                await repo.InsertAsync(new ElementDto { Id = "l1_1", LayoutId = "layout1", ElementType = DbElementType.AGVPath, Layer = 1, PropertiesJson = "{}" });
+                await repo.InsertAsync(new ElementDto { Id = "l2_1", LayoutId = "layout1", ElementType = DbElementType.Conveyor, Layer = 2, PropertiesJson = "{}" });
+                await repo.InsertAsync(new ElementDto { Id = "l2_2", LayoutId = "layout1", ElementType = DbElementType.Conveyor, Layer = 2, PropertiesJson = "{}" });
+
+                // Get layer 2 elements
+                var layer2Elements = (await repo.GetByLayoutAndLayerAsync("layout1", 2)).ToList();
+
+                var result = layer2Elements.Count == 2 &&
+                            layer2Elements.All(e => e.Layer == 2);
+
+                Console.WriteLine($"T6B.6 - Get elements by layer: {(result ? "✓ PASS" : "✗ FAIL")} " +
+                                 $"(Layer 2 count: {layer2Elements.Count}, Expected: 2)");
+
+                dbManager.DeleteDatabase();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"T6B.6 - Get elements by layer: ✗ FAIL (Exception: {ex.Message})");
+                return false;
+            }
+        }
+
+        private static async Task<bool> Test_T6B_7_BatchInsertElements()
+        {
+            _testDbPath = Path.Combine(Path.GetTempPath(), $"test_layout_{Guid.NewGuid()}.db");
+
+            try
+            {
+                var dbManager = new DatabaseManager(_testDbPath);
+                dbManager.EnsureCreated();
+                var repo = new SQLiteElementRepository(dbManager);
+n                // Create test layout first (for foreign key)
+                await CreateTestLayoutAsync(dbManager);
+
+                // Create batch of elements
+                var elements = new[]
+                {
+                    new ElementDto { Id = "b1", LayoutId = "layout1", ElementType = DbElementType.Conveyor, Layer = 2, PropertiesJson = "{}" },
+                    new ElementDto { Id = "b2", LayoutId = "layout1", ElementType = DbElementType.Conveyor, Layer = 2, PropertiesJson = "{}" },
+                    new ElementDto { Id = "b3", LayoutId = "layout1", ElementType = DbElementType.AGVPath, Layer = 1, PropertiesJson = "{}" }
+                };
+
+                // Batch insert
+                var insertedCount = await repo.BatchInsertAsync(elements);
+
+                // Verify
+                var count = await repo.GetCountAsync("layout1");
+
+                var result = insertedCount == 3 && count == 3;
+
+                Console.WriteLine($"T6B.7 - Batch insert elements: {(result ? "✓ PASS" : "✗ FAIL")} " +
+                                 $"(Inserted: {insertedCount}, Count: {count})");
+
+                dbManager.DeleteDatabase();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"T6B.7 - Batch insert elements: ✗ FAIL (Exception: {ex.Message})");
+                return false;
+            }
+        }
+
+        private static bool Test_T6B_8_JsonSerializationConveyor()
+        {
+            try
+            {
+                // Create a conveyor
+                var conveyor = new ConveyorData
+                {
+                    Id = "conv1",
+                    Name = "Main Conveyor",
+                    Path = new System.Collections.Generic.List<PointData>
+                    {
+                        new PointData(0, 0),
+                        new PointData(100, 0)
+                    },
+                    Width = 0.6,
+                    Speed = 0.5,
+                    Direction = ConveyorDirections.Bidirectional
+                };
+
+                // Serialize
+                var json = JsonSerializationHelper.Serialize(conveyor);
+
+                // Deserialize
+                var deserialized = JsonSerializationHelper.Deserialize<ConveyorData>(json);
+
+                var result = deserialized != null &&
+                            deserialized.Id == "conv1" &&
+                            deserialized.Name == "Main Conveyor" &&
+                            deserialized.Speed == 0.5 &&
+                            deserialized.Direction == ConveyorDirections.Bidirectional;
+
+                Console.WriteLine($"T6B.8 - JSON serialization of conveyor: {(result ? "✓ PASS" : "✗ FAIL")} " +
+                                 $"(Roundtrip successful: {result})");
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"T6B.8 - JSON serialization of conveyor: ✗ FAIL (Exception: {ex.Message})");
+                return false;
+            }
+        }
+
+        private static bool Test_T6B_9_JsonSerializationCrane()
+        {
+            try
+            {
+                // Create a crane
+                var crane = new EOTCraneData
+                {
+                    Id = "crane1",
+                    Name = "Overhead Crane 1",
+                    RunwayId = "runway1",
+                    ReachLeft = 10.0,
+                    ReachRight = 10.0,
+                    SpeedBridge = 1.5,
+                    SpeedTrolley = 0.8
+                };
+
+                // Serialize
+                var json = JsonSerializationHelper.Serialize(crane);
+
+                // Deserialize
+                var deserialized = JsonSerializationHelper.Deserialize<EOTCraneData>(json);
+
+                var result = deserialized != null &&
+                            deserialized.Id == "crane1" &&
+                            deserialized.Name == "Overhead Crane 1" &&
+                            deserialized.ReachLeft == 10.0 &&
+                            deserialized.SpeedBridge == 1.5;
+
+                Console.WriteLine($"T6B.9 - JSON serialization of crane: {(result ? "✓ PASS" : "✗ FAIL")} " +
+                                 $"(Roundtrip successful: {result})");
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"T6B.9 - JSON serialization of crane: ✗ FAIL (Exception: {ex.Message})");
+                return false;
+            }
+        }
+
+        private static async Task<bool> Test_T6B_10_ElementCountAndExists()
+        {
+            _testDbPath = Path.Combine(Path.GetTempPath(), $"test_layout_{Guid.NewGuid()}.db");
+
+            try
+            {
+                var dbManager = new DatabaseManager(_testDbPath);
+                dbManager.EnsureCreated();
+                var repo = new SQLiteElementRepository(dbManager);
+n                // Create test layout first (for foreign key)
+                await CreateTestLayoutAsync(dbManager);
+
+                // Insert elements
+                await repo.InsertAsync(new ElementDto { Id = "e1", LayoutId = "layout1", ElementType = DbElementType.Conveyor, Layer = 2, PropertiesJson = "{}" });
+                await repo.InsertAsync(new ElementDto { Id = "e2", LayoutId = "layout1", ElementType = DbElementType.Conveyor, Layer = 2, PropertiesJson = "{}" });
+
+                // Test count
+                var count = await repo.GetCountAsync("layout1");
+
+                // Test exists
+                var exists1 = await repo.ExistsAsync("e1");
+                var existsNot = await repo.ExistsAsync("nonexistent");
+
+                var result = count == 2 && exists1 && !existsNot;
+
+                Console.WriteLine($"T6B.10 - Element count and exists: {(result ? "✓ PASS" : "✗ FAIL")} " +
+                                 $"(Count: {count}, Exists e1: {exists1}, Exists nonexistent: {existsNot})");
+
+                dbManager.DeleteDatabase();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"T6B.10 - Element count and exists: ✗ FAIL (Exception: {ex.Message})");
+                return false;
+            }
+        }
+    }
+}

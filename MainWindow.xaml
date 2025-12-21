@@ -1,0 +1,670 @@
+<Window x:Class="LayoutEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:LayoutEditor.Controls"
+xmlns:ad="https://github.com/Dirkster99/AvalonDock"
+        Title="Simulation Layout Editor" Height="800" Width="1400"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        KeyDown="Window_KeyDown" Closing="Window_Closing">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="PanelBg" Color="#F5F5F5"/>
+        <SolidColorBrush x:Key="HeaderBg" Color="#E8E8E8"/>
+        <SolidColorBrush x:Key="Border" Color="#CCCEDB"/>
+        <SolidColorBrush x:Key="Accent" Color="#007ACC"/>
+        <SolidColorBrush x:Key="TextMuted" Color="#6E6E6E"/>
+        
+        <Style x:Key="Btn" TargetType="Button">
+            <Setter Property="Width" Value="24"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        
+        <Style x:Key="ToolBtn" TargetType="RadioButton">
+            <Setter Property="Width" Value="28"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="bd" Background="Transparent" BorderThickness="1" CornerRadius="2" ToolTip="{TemplateBinding ToolTip}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="bd" Property="Background" Value="#E5E5E5"/></Trigger>
+                            <Trigger Property="IsChecked" Value="True"><Setter TargetName="bd" Property="Background" Value="#CCE8FF"/><Setter TargetName="bd" Property="BorderBrush" Value="{StaticResource Accent}"/></Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="ToolToggleBtn" TargetType="ToggleButton">
+            <Setter Property="Width" Value="28"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="2" ToolTip="{TemplateBinding ToolTip}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#E5E5E5"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#CCE8FF"/>
+                                <Setter TargetName="bd" Property="BorderBrush" Value="{StaticResource Accent}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="NodeBtn" TargetType="Button">
+            <Setter Property="Width" Value="32"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#DDD"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        
+        <Style x:Key="SmallNodeBtn" TargetType="Button">
+            <Setter Property="Width" Value="24"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#DDD"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="2"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#E8F4FD"/>
+                    <Setter Property="BorderBrush" Value="#007ACC"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <Style x:Key="LayerCheckBox" TargetType="CheckBox">
+            <Setter Property="Margin" Value="0,2"/>
+            <Setter Property="FontSize" Value="10"/>
+        </Style>
+        
+        <Style x:Key="PanelToggle" TargetType="ToggleButton">
+            <Setter Property="Width" Value="16"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Menu -->
+        <Menu Grid.Row="0" Background="White" BorderBrush="#DEE2E6" BorderThickness="0,0,0,1">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Click="New_Click" InputGestureText="Ctrl+N"/>
+                <MenuItem Header="_Open..." Click="Open_Click" InputGestureText="Ctrl+O"/>
+                <MenuItem Header="Open from _Database..." Click="OpenFromDatabase_Click"/>
+                <MenuItem Header="Import _SQL File..." Click="ImportSqlFile_Click"/>
+                <Separator/>
+                <MenuItem Header="_Save" Click="Save_Click" InputGestureText="Ctrl+S"/>
+                <MenuItem Header="Save _As..." Click="SaveAs_Click"/>
+                <MenuItem Header="Save to Database..." Click="SaveToDatabase_Click"/>
+                <Separator/>
+                <MenuItem Header="_Import">
+                    <MenuItem Header="Background Image..." Click="ImportBackground_Click"/>
+                    <MenuItem Header="CAD (DXF/DWG)..." Click="ImportDxf_Click"/>
+                    <MenuItem Header="Layout onto Floor Plan..." Click="ImportJsonLayout_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Clear Background" Click="ClearBackground_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Export">
+                    <MenuItem Header="Simulation JSON..." Click="ExportSimulation_Click"/>
+                    <MenuItem Header="Image (PNG)..." Click="ExportImage_Click"/>
+                    <MenuItem Header="SVG..." Click="ExportSvg_Click"/>
+                    <MenuItem Header="DXF..." Click="ExportDxf_Click"/>
+                    <MenuItem Header="BOM CSV..." Click="ExportBomCsv_Click"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="E_xit" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Undo" Click="Undo_Click" InputGestureText="Ctrl+Z"/>
+                <MenuItem Header="_Redo" Click="Redo_Click" InputGestureText="Ctrl+Y"/>
+                <Separator/>
+                <MenuItem Header="Cu_t" Click="Cut_Click" InputGestureText="Ctrl+X"/>
+                <MenuItem Header="_Copy" Click="Copy_Click" InputGestureText="Ctrl+C"/>
+                <MenuItem Header="_Paste" Click="Paste_Click" InputGestureText="Ctrl+V"/>
+                <MenuItem Header="_Duplicate" Click="Duplicate_Click" InputGestureText="Ctrl+D"/>
+                <MenuItem Header="Delete" Click="Delete_Click" InputGestureText="Del"/>
+                <Separator/>
+                <MenuItem Header="Select All" Click="SelectAll_Click" InputGestureText="Ctrl+A"/>
+                <MenuItem Header="Group" Click="Group_Click" InputGestureText="Ctrl+G"/>
+                <MenuItem Header="Ungroup" Click="Ungroup_Click" InputGestureText="Ctrl+Shift+G"/>
+                <MenuItem Header="Define as Cell" Click="DefineCell_Click" InputGestureText="Ctrl+Shift+C"/>
+                <MenuItem Header="Ungroup Cell" Click="UngroupCell_Click"/>
+                <MenuItem Header="Refresh Cell Entry/Exit" Click="RefreshCellEntryExit_Click"/>
+                <Separator/>
+                <MenuItem Header="Align">
+                    <MenuItem Header="Left" Click="AlignLeft_Click"/>
+                    <MenuItem Header="Right" Click="AlignRight_Click"/>
+                    <MenuItem Header="Top" Click="AlignTop_Click"/>
+                    <MenuItem Header="Bottom" Click="AlignBottom_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Center H" Click="AlignCenterH_Click"/>
+                    <MenuItem Header="Center V" Click="AlignCenterV_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Distribute H" Click="DistributeH_Click"/>
+                    <MenuItem Header="Distribute V" Click="DistributeV_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Same Width" Click="SameWidth_Click"/>
+                    <MenuItem Header="Same Height" Click="SameHeight_Click"/>
+                    <MenuItem Header="Same Size" Click="SameSize_Click"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Editor Settings..." Click="EditorSettings_Click"/>
+            </MenuItem>
+            <MenuItem Header="_View">
+                <MenuItem Header="Zoom In" Click="ZoomIn_Click" InputGestureText="Ctrl++"/>
+                <MenuItem Header="Zoom Out" Click="ZoomOut_Click" InputGestureText="Ctrl+-"/>
+                <MenuItem Header="Zoom to Fit" Click="ZoomFit_Click" InputGestureText="Ctrl+0"/>
+                <MenuItem Header="Reset Zoom" Click="ZoomReset_Click"/>
+                <Separator/>
+                <MenuItem Header="Show Grid" x:Name="ShowGridMenu" IsCheckable="True" IsChecked="True" Click="ToggleGrid_Click"/>
+                <MenuItem Header="Show Rulers" x:Name="ShowRulersMenu" IsCheckable="True" IsChecked="True" Click="ToggleRulers_Click"/>
+                <MenuItem Header="Show Minimap" x:Name="ShowMinimapMenu" IsCheckable="True" IsChecked="False" Click="ToggleMinimap_Click"/>
+                <MenuItem Header="Show Labels" x:Name="ShowLabelsMenu" IsCheckable="True" IsChecked="True" Click="ToggleLabels_Click"/>
+                <Separator/>
+                <MenuItem Header="Show Operational Clearance" x:Name="ShowOperationalClearanceMenu" IsCheckable="True" IsChecked="False" Click="ToggleOperationalClearance_Click"/>
+                <MenuItem Header="Show Maintenance Clearance" x:Name="ShowMaintenanceClearanceMenu" IsCheckable="True" IsChecked="False" Click="ToggleMaintenanceClearance_Click"/>
+                <Separator/>
+                <MenuItem Header="Snap to Grid" x:Name="SnapToGridMenu" IsCheckable="True" IsChecked="True"/>
+                <MenuItem Header="Show Guides" x:Name="ShowGuidesMenu" IsCheckable="True" IsChecked="True"/>
+                <Separator/>
+                <MenuItem Header="Panels">
+                    <MenuItem Header="Toolbox" Click="ToggleToolboxPanel_Click" InputGestureText="F2"/>
+                    <MenuItem Header="Explorer" Click="ToggleExplorerPanel_Click" InputGestureText="F3"/>
+                    <MenuItem Header="Transport Layers" Click="ToggleTransportLayersPanel_Click" InputGestureText="F4"/>
+                    <MenuItem Header="Transport" Click="ToggleTransportPanel_Click" InputGestureText="F5"/>
+                    <MenuItem Header="Validation" Click="ToggleValidationPanel_Click" InputGestureText="F6"/>
+                    <Separator/>
+                    <MenuItem Header="Show All Panels" Click="ResetDockLayout_Click"/>
+                </MenuItem>
+                <MenuItem Header="Sections">
+                    <MenuItem Header="Floor Selector" x:Name="ShowFloorSection" IsCheckable="True" IsChecked="True" Click="ToggleFloorSection_Click"/>
+                    <MenuItem Header="Node Icons" x:Name="ShowNodeToolbox" IsCheckable="True" IsChecked="True" Click="ToggleNodeToolbox_Click"/>
+                    <MenuItem Header="Templates" x:Name="ShowTemplatesSection" IsCheckable="True" IsChecked="True" Click="ToggleTemplatesSection_Click"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Generate">
+                <MenuItem Header="Warehouse Layout..." Click="GenerateWarehouseLayout_Click" ToolTip="Generate warehouse with racks and aisles"/>
+                <MenuItem Header="Assembly Line..." Click="GenerateAssemblyLine_Click" ToolTip="Generate linear production line"/>
+                <MenuItem Header="Storage Grid..." Click="GenerateStorageGrid_Click" ToolTip="Generate dense storage cell grid"/>
+                <Separator/>
+                <MenuItem Header="Auto-Place Cranes" Click="AutoPlaceCranes_Click" ToolTip="Automatically place cranes over equipment zones"/>
+                <MenuItem Header="Auto-Generate AGV Network" Click="AutoGenerateAGVNetwork_Click" ToolTip="Generate AGV waypoints and paths"/>
+            </MenuItem>
+            <MenuItem Header="_Tools">
+                <MenuItem Header="Apply Canonical Names" Click="ApplyCanonicalNames_Click"/>
+                <MenuItem Header="Rename Nodes Only" Click="ApplyCanonicalNamesNodes_Click"/>
+                <MenuItem Header="Rename Cells Only" Click="ApplyCanonicalNamesCells_Click"/>
+                <MenuItem Header="Reset Names" Click="ResetNames_Click"/>
+                <Separator/>
+                <MenuItem Header="Auto-Generate Paths" Click="AutoGeneratePaths_Click"/>
+                <MenuItem Header="Re-route All Paths" Click="RerouteAllPaths_Click"/>
+                <MenuItem Header="Clear All Paths" Click="ClearPaths_Click"/>
+                <Separator/>
+                <MenuItem Header="Draw Conveyor" Click="DrawConveyor_Click" ToolTip="Draw a conveyor between equipment nodes"/>
+                <Separator/>
+                <MenuItem Header="Recover Off-Screen Nodes" Click="RecoverOffScreenNodes_Click" ToolTip="Move nodes with negative coordinates back to visible area"/>
+                <Separator/>
+                <MenuItem Header="Place Opening">
+                    <MenuItem Header="🚪 Door" Click="PlaceDoor_Click" ToolTip="Place a door opening"/>
+                    <MenuItem Header="⬜ Hatch" Click="PlaceHatch_Click" ToolTip="Place a hatch opening"/>
+                    <MenuItem Header="🚧 Gate" Click="PlaceGate_Click" ToolTip="Place a gate opening"/>
+                    <MenuItem Header="⚫ Manhole" Click="PlaceManhole_Click" ToolTip="Place a manhole opening"/>
+                    <MenuItem Header="↔ Aisle" Click="PlaceAisle_Click" ToolTip="Place an unconstrained aisle"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Regenerate Pedestrian Mesh" Click="RegeneratePedestrianMesh_Click" InputGestureText="Ctrl+Shift+P"/>
+                <MenuItem Header="Regenerate Crane Coverage" Click="RegenerateCraneCoverage_Click" InputGestureText="Ctrl+Shift+C"/>
+                <MenuItem Header="Regenerate AGV Network" Click="RegenerateAGVNetwork_Click" InputGestureText="Ctrl+Shift+A"/>
+                <MenuItem Header="Regenerate Forklift Aisles" Click="RegenerateForkliftAisles_Click" InputGestureText="Ctrl+Shift+F"/>
+                <MenuItem Header="Auto-Link Openings" Click="AutoLinkOpenings_Click" InputGestureText="Ctrl+Shift+O"/>
+                <MenuItem Header="Regenerate All Derived" Click="RegenerateAll_Click" InputGestureText="Ctrl+Shift+R"/>
+                <Separator/>
+                <MenuItem Header="Resource Pools..." Click="ResourcePools_Click"/>
+                <MenuItem Header="Templates Manager..." Click="TemplatesManager_Click"/>
+                <MenuItem Header="Layout Properties..." Click="LayoutProperties_Click"/>
+                <MenuItem Header="Configure Node Types..." Click="ConfigureNodeTypes_Click"/>
+                <MenuItem Header="Configure Icons..." Click="ConfigureIcons_Click"/>
+            </MenuItem>
+            <!-- ═══════════════════════════════════════════════ -->
+            <!-- TRANSPORT MENU (NEW) -->
+            <!-- ═══════════════════════════════════════════════ -->
+            <MenuItem Header="_Transport">
+                <MenuItem Header="◆ Place _Marker" Click="PlaceMarker_Click" InputGestureText="K"/>
+                <MenuItem Header="Auto-Connect Markers" Click="AutoConnectMarkers_Click"/>
+                <MenuItem Header="Create Loop" Click="CreateLoop_Click"/>
+                <Separator/>
+                <MenuItem Header="🔗 Link Nearest Mode" Click="ToggleLinkMode_Click" InputGestureText="L"/>
+                <Separator/>
+                <MenuItem Header="+ New Group" Click="NewTransportGroup_Click"/>
+                <MenuItem Header="Assign to Group..." Click="AssignPathToGroup_Click"/>
+                <Separator/>
+                <MenuItem Header="Insert Waypoint" Click="InsertWaypoint_Click"/>
+                <Separator/>
+                <MenuItem Header="AGV Tools">
+                    <MenuItem Header="🛤️ Draw AGV Path" Click="DrawAGVPath_Click" ToolTip="Create AGV waypoints and paths (Shift+Click for bidirectional)"/>
+                    <MenuItem Header="🏭 Place AGV Station" Click="PlaceAGVStation_Click" ToolTip="Place AGV station (auto-links to nearest waypoint)"/>
+                    <MenuItem Header="🚧 Draw Traffic Zone" Click="DrawTrafficZone_Click" ToolTip="Define traffic control zone polygon"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="● Show Legend" x:Name="ShowLegendMenu" IsCheckable="True" IsChecked="True" Click="ToggleLegend_Click"/>
+                <Separator/>
+                <MenuItem Header="Station">
+                    <MenuItem Header="Auto-Connect Group" Click="AutoConnectGroup_Click"/>
+                    <MenuItem Header="Assign Stations to Group..." Click="AssignStationsToGroup_Click"/>
+                    <MenuItem Header="Add Blind Path" Click="AddBlindPath_Click"/>
+                    <MenuItem Header="Connect to Nearest" Click="ConnectToNearest_Click"/>
+                    <MenuItem Header="Recreate Loop" Click="RecreateLoop_Click"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Validate">
+                <MenuItem Header="Validate Layout" Click="Validate_Click" InputGestureText="F5"/>
+                <MenuItem Header="Show Validation Panel" x:Name="ShowValidationMenu" IsCheckable="True" Click="ToggleValidation_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="Keyboard Shortcuts" Click="Shortcuts_Click"/>
+                <MenuItem Header="User Guide" Click="UserGuide_Click"/>
+                <Separator/>
+                <MenuItem Header="About" Click="About_Click"/>
+            </MenuItem>
+            <MenuItem Header="PostgreSQL Database..." Click="ExportPostgres_Click"/>
+        </Menu>
+
+        <!-- Toolbar -->
+        <Border Grid.Row="1" Background="White" BorderBrush="#DEE2E6" BorderThickness="0,0,0,1" Padding="4,2">
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource Btn}" ToolTip="New" Click="New_Click"><TextBlock Text="📄" FontSize="14"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Open" Click="Open_Click"><TextBlock Text="📂" FontSize="14"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Save" Click="Save_Click"><TextBlock Text="💾" FontSize="14"/></Button>
+                <Separator Margin="4,4"/>
+                <Button Style="{StaticResource Btn}" ToolTip="Undo" Click="Undo_Click"><TextBlock Text="↩" FontSize="14"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Redo" Click="Redo_Click"><TextBlock Text="↪" FontSize="14"/></Button>
+                <Separator Margin="4,4"/>
+                <RadioButton x:Name="SelectTool" Style="{StaticResource ToolBtn}" IsChecked="True" ToolTip="Select (V)" GroupName="Tools" Click="ToolButton_Click" Tag="select"><TextBlock Text="⬚" FontSize="14"/></RadioButton>
+                <RadioButton x:Name="AreaSelectTool" Style="{StaticResource ToolBtn}" ToolTip="Area Select (A) - drag rectangle to select multiple" GroupName="Tools" Click="ToolButton_Click" Tag="area"><TextBlock Text="⬒" FontSize="14"/></RadioButton>
+                <RadioButton x:Name="MoveTool" Style="{StaticResource ToolBtn}" ToolTip="Move (M)" GroupName="Tools" Click="ToolButton_Click" Tag="move"><TextBlock Text="✥" FontSize="14"/></RadioButton>
+                <RadioButton x:Name="PanTool" Style="{StaticResource ToolBtn}" ToolTip="Pan (H)" GroupName="Tools" Click="ToolButton_Click" Tag="pan"><TextBlock Text="✋" FontSize="12"/></RadioButton>
+                <RadioButton x:Name="PathTool" Style="{StaticResource ToolBtn}" ToolTip="Path (P)" GroupName="Tools" Click="ToolButton_Click" Tag="path"><TextBlock Text="↗" FontSize="14"/></RadioButton>
+                <RadioButton x:Name="WallTool" Style="{StaticResource ToolBtn}" ToolTip="Wall (W)" GroupName="Tools" Click="ToolButton_Click" Tag="wall"><TextBlock Text="▭" FontSize="14"/></RadioButton>
+                <RadioButton x:Name="TrackTool" Style="{StaticResource ToolBtn}" ToolTip="Track (T) - Connect AGV stations" GroupName="Tools" Click="ToolButton_Click" Tag="track"><TextBlock Text="⟿" FontSize="14"/></RadioButton>
+                <RadioButton x:Name="CorridorTool" Style="{StaticResource ToolBtn}" ToolTip="Corridor (C)" GroupName="Tools" Click="ToolButton_Click" Tag="corridor"><TextBlock Text="═" FontSize="14"/></RadioButton>
+                <RadioButton x:Name="ZoneTool" Style="{StaticResource ToolBtn}" ToolTip="Zone (Z)" GroupName="Tools" Click="ToolButton_Click" Tag="zone"><TextBlock Text="▢" FontSize="14"/></RadioButton>
+                <RadioButton x:Name="MeasureTool" Style="{StaticResource ToolBtn}" ToolTip="Measure (R)" GroupName="Tools" Click="ToolButton_Click" Tag="measure"><TextBlock Text="📏" FontSize="12"/></RadioButton>
+                <RadioButton x:Name="ColumnTool" Style="{StaticResource ToolBtn}" ToolTip="Column" GroupName="Tools" Click="ToolButton_Click" Tag="column"><TextBlock Text="⬤" FontSize="12"/></RadioButton>
+                <Separator Margin="4,4"/>
+                <!-- Transport Tools (NEW) -->
+                <RadioButton x:Name="MarkerTool" Style="{StaticResource ToolBtn}" ToolTip="Place Marker (K)" GroupName="Tools" Click="ToolButton_Click" Tag="marker">
+                    <TextBlock Text="◆" FontSize="14" Foreground="#E67E22"/>
+                </RadioButton>
+                <ToggleButton x:Name="PathEditMode" Style="{StaticResource ToolToggleBtn}" ToolTip="Path Edit Mode" Visibility="Collapsed"><TextBlock Text="✎" FontSize="12"/></ToggleButton>
+                <ToggleButton x:Name="LinkModeToggle" Style="{StaticResource ToolToggleBtn}" ToolTip="Link Nearest (L)" Click="ToggleLinkMode_Click">
+                    <TextBlock Text="🔗" FontSize="12"/>
+                </ToggleButton>
+                <ToggleButton x:Name="FrictionlessModeToggle" Style="{StaticResource ToolToggleBtn}" ToolTip="Frictionless Mode (F) - Constrained movement for cranes, AGVs, zones" Click="ToggleFrictionlessMode_Click">
+                    <TextBlock Text="🎯" FontSize="12"/>
+                </ToggleButton>
+                <Separator Margin="4,4"/>
+                <!-- Alignment Tools -->
+                <Button Style="{StaticResource Btn}" ToolTip="Align Left" Click="AlignLeft_Click"><TextBlock Text="⫷" FontSize="14"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Align Center H" Click="AlignCenterH_Click"><TextBlock Text="⫿" FontSize="14"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Align Right" Click="AlignRight_Click"><TextBlock Text="⫸" FontSize="14"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Align Top" Click="AlignTop_Click"><TextBlock Text="⫠" FontSize="14"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Align Center V" Click="AlignCenterV_Click"><TextBlock Text="⫶" FontSize="14"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Align Bottom" Click="AlignBottom_Click"><TextBlock Text="⫡" FontSize="14"/></Button>
+                <Separator Margin="4,4"/>
+                <Button Style="{StaticResource Btn}" ToolTip="Zoom In" Click="ZoomIn_Click"><TextBlock Text="🔍" FontSize="14"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Zoom Out" Click="ZoomOut_Click"><TextBlock Text="🔎" FontSize="14"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Zoom to Fit" Click="ZoomFit_Click"><TextBlock Text="⬜" FontSize="14"/></Button>
+                <ComboBox x:Name="SnapModeCombo" Width="120" Height="24" Margin="8,0,0,0" VerticalAlignment="Center" SelectedIndex="1" SelectionChanged="SnapModeCombo_SelectionChanged">
+                    <ComboBoxItem Tag="None">Snap: None</ComboBoxItem>
+                    <ComboBoxItem Tag="Grid">Snap: Grid</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </Border>
+        
+        
+
+        <!-- Docking shell -->
+        <ad:DockingManager Grid.Row="2" x:Name="DockManager">
+
+            <ad:LayoutRoot>
+
+                <!-- RIGHT: AutoHide Explorer + Layers -->
+                <ad:LayoutRoot.RightSide>
+                    <ad:LayoutAnchorSide>
+                        <ad:LayoutAnchorGroup>
+                            <ad:LayoutAnchorable Title="Explorer" ContentId="explorer" CanClose="False">
+                                <Border x:Name="RightPanel" Grid.Column="4" Background="{StaticResource PanelBg}" BorderBrush="{StaticResource Border}" BorderThickness="0.5,0,0,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Border Grid.Row="0" Background="{StaticResource HeaderBg}" BorderBrush="{StaticResource Border}" BorderThickness="0,0,0,1">
+                        <StackPanel Orientation="Horizontal" Margin="6,4">
+                            <TextBlock Text="Explorer" FontWeight="SemiBold" FontSize="11"/>
+                            <TextBlock x:Name="NodeCountLabel" Text=" (0 nodes)" FontSize="10" Foreground="{StaticResource TextMuted}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                                    </Grid>
+            </Border>
+                    
+                            </ad:LayoutAnchorable>
+                        </ad:LayoutAnchorGroup>
+
+                        <ad:LayoutAnchorGroup>
+                            <ad:LayoutAnchorable Title="Transport Layers" ContentId="transport_layers" CanClose="False">
+                                <controls:TransportLayersPanel x:Name="TransportLayersPanel"/>
+                            </ad:LayoutAnchorable>
+                        </ad:LayoutAnchorGroup>
+                    </ad:LayoutAnchorSide>
+                </ad:LayoutRoot.RightSide>
+
+                <!-- BOTTOM: AutoHide Validation -->
+                <ad:LayoutRoot.BottomSide>
+                    <ad:LayoutAnchorSide>
+                        <ad:LayoutAnchorGroup>
+                            <ad:LayoutAnchorable Title="Validation" ContentId="validation" CanClose="False">
+                                <Border Background="{StaticResource PanelBg}" Padding="6">
+                                    <ListBox x:Name="ValidationList" FontSize="9" BorderThickness="0" SelectionChanged="ValidationList_Changed"/>
+                                </Border>
+                            </ad:LayoutAnchorable>
+                        </ad:LayoutAnchorGroup>
+                    </ad:LayoutAnchorSide>
+                </ad:LayoutRoot.BottomSide>
+
+                <!-- MAIN: Docked Toolbox + Document tabs + Docked Transport -->
+                <ad:LayoutPanel Orientation="Horizontal">
+
+                    <!-- LEFT: Docked Toolbox (and Cranes/Templates/etc) -->
+                    <ad:LayoutAnchorablePane DockWidth="280">
+                        <ad:LayoutAnchorable Title="Toolbox" ContentId="toolbox" CanClose="False">
+                            <Border x:Name="LeftPanel" Background="{StaticResource PanelBg}" BorderBrush="{StaticResource Border}" BorderThickness="0,0,0.5,0">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <StackPanel>
+                                        <!-- Floor Selector -->
+                                        <Border x:Name="FloorSection" Background="{StaticResource HeaderBg}" Padding="4" BorderBrush="{StaticResource Border}" BorderThickness="0,0,0,1">
+                                            <StackPanel>
+                                                <DockPanel>
+                                                    <Button DockPanel.Dock="Right" Content="✕" Width="16" Height="16" FontSize="9" Padding="0" 
+                                                            Background="Transparent" BorderThickness="0" Cursor="Hand"
+                                                            Click="CloseFloorSection_Click" ToolTip="Hide Floor Selector"/>
+                                                    <TextBlock Text="Floor" FontWeight="SemiBold" FontSize="10" Margin="0,0,0,4"/>
+                                                </DockPanel>
+                                                <ComboBox x:Name="FloorCombo" Height="22" FontSize="10" SelectionChanged="Floor_Changed">
+                                                    <ComboBoxItem Content="All Floors" Tag="all" IsSelected="True"/>
+                                                    <ComboBoxItem Content="Ground" Tag="F1"/>
+                                                </ComboBox>
+                                                <Button Content="Manage Floors..." Click="ManageFloors_Click" Height="18" FontSize="8" Margin="0,4,0,0" HorizontalAlignment="Left" Padding="8,1"/>
+                                            </StackPanel>
+                                        </Border>
+                                        
+                                        <!-- THE ACTUAL TOOLBOX WITH NODE ICONS -->
+                                        <controls:DynamicToolbox x:Name="NodeToolbox" />
+                                        
+                                        <!-- Templates Section -->
+                                        <Border x:Name="TemplatesSection" Background="{StaticResource HeaderBg}" Padding="4" BorderBrush="{StaticResource Border}" BorderThickness="0,1,0,1" Margin="0,8,0,0">
+                                            <StackPanel>
+                                                <DockPanel Margin="0,0,0,4">
+                                                    <Button DockPanel.Dock="Right" Content="✕" Width="16" Height="16" FontSize="9" Padding="0" 
+                                                            Background="Transparent" BorderThickness="0" Cursor="Hand"
+                                                            Click="CloseTemplatesSection_Click" ToolTip="Hide Templates"/>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Templates" FontWeight="SemiBold" FontSize="10" VerticalAlignment="Center"/>
+                                                        <Button Content="+ Add" Click="AddTemplate_Click" Height="16" FontSize="8" Margin="8,0,0,0" Padding="4,0" ToolTip="Save selected nodes as a reusable template"/>
+                                                        <Button Content="Del" Click="DeleteTemplate_Click" Height="16" FontSize="8" Margin="4,0,0,0" Padding="4,0" ToolTip="Delete selected template"/>
+                                                    </StackPanel>
+                                                </DockPanel>
+                                                <ListBox x:Name="TemplateList" Height="120" Margin="0,4,0,0" FontSize="10" 
+                                                         SelectionChanged="Template_SelectionChanged"
+                                                         BorderThickness="1" BorderBrush="#CCC">
+                                                    <ListBox.ItemContainerStyle>
+                                                        <Style TargetType="ListBoxItem">
+                                                            <Setter Property="Padding" Value="4,2"/>
+                                                            <Setter Property="Cursor" Value="Hand"/>
+                                                        </Style>
+                                                    </ListBox.ItemContainerStyle>
+                                                </ListBox>
+                                                <TextBlock Text="Double-click to place, or select and click canvas" FontSize="8" Foreground="#888" Margin="0,2,0,0" TextWrapping="Wrap"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Border>
+                        </ad:LayoutAnchorable>
+                    </ad:LayoutAnchorablePane>
+
+                    <ad:LayoutPanel Orientation="Vertical">
+
+                        <!-- DOCUMENTS: tabs -->
+                        <ad:LayoutDocumentPane x:Name="DocumentsPane">
+                            <ad:LayoutDocument Title="Layout" ContentId="doc.layout" CanClose="False">
+                                <!-- Document content: keep your canvas surface + rulers/minimap/guide canvas.
+                                     This is pulled from your original canvas area (minus the TransportGroupPanel). -->
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Rulers -->
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Rectangle Fill="#F8F9FA"/>
+                                        <Canvas x:Name="HorizontalRuler" Grid.Column="1" Height="20" Background="#F8F9FA" ClipToBounds="True"/>
+                                    </Grid>
+
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Canvas x:Name="VerticalRuler" Background="#F8F9FA" ClipToBounds="True"/>
+
+                                        <Border Grid.Column="1" Background="#FFFFFF" BorderBrush="{StaticResource Border}" BorderThickness="0.5" ClipToBounds="True">
+                                            <Grid>
+                                                <ScrollViewer x:Name="CanvasScroller" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" PreviewMouseWheel="Canvas_PreviewMouseWheel">
+                                                    <Canvas x:Name="EditorCanvas" Width="2000" Height="1500" Background="White" AllowDrop="True"
+                                                            Drop="EditorCanvas_Drop" DragOver="EditorCanvas_DragOver"
+                                                            PreviewMouseLeftButtonDown="Canvas_PreviewMouseLeftButtonDown"
+                                                            MouseLeftButtonDown="Canvas_MouseLeftButtonDown"
+                                                            MouseRightButtonDown="Canvas_MouseRightButtonDown"
+                                                            MouseMove="Canvas_MouseMove" MouseLeftButtonUp="Canvas_MouseLeftButtonUp" ClipToBounds="True">
+                                                        <Canvas.LayoutTransform>
+                                                            <ScaleTransform x:Name="CanvasScale" ScaleX="1" ScaleY="1"/>
+                                                        </Canvas.LayoutTransform>
+                                                        <Canvas.ContextMenu>
+                                                            <ContextMenu x:Name="CanvasContextMenu"/>
+                                                        </Canvas.ContextMenu>
+                                                    </Canvas>
+                                                </ScrollViewer>
+
+                                                <Border x:Name="MinimapBorder" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10"
+                                                        Width="150" Height="100" Background="#F8F9FA" BorderBrush="{StaticResource Border}" BorderThickness="1" CornerRadius="4" Opacity="0.9">
+                                                    <Grid>
+                                                        <Canvas x:Name="MinimapCanvas" ClipToBounds="True"/>
+                                                        <Rectangle x:Name="MinimapViewport" Stroke="{StaticResource Accent}" StrokeThickness="2" Fill="#4A90D920"
+                                                                   HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                                    </Grid>
+                                                </Border>
+
+                                                <Canvas x:Name="GuideCanvas" IsHitTestVisible="False"/>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </Grid>
+                            </ad:LayoutDocument>
+                        </ad:LayoutDocumentPane>
+
+                        <!-- DOCKED: Transport -->
+                        <ad:LayoutAnchorablePane DockHeight="220">
+                            <ad:LayoutAnchorable Title="Transport" ContentId="transport" CanClose="False">
+                                <controls:TransportGroupPanel x:Name="TransportGroupPanel"/>
+                            </ad:LayoutAnchorable>
+                        </ad:LayoutAnchorablePane>
+
+                    </ad:LayoutPanel>
+                </ad:LayoutPanel>
+
+            </ad:LayoutRoot>
+        </ad:DockingManager>
+
+        <!-- Status Bar -->
+        <StatusBar Grid.Row="3" Background="White" BorderBrush="#DEE2E6" BorderThickness="0,1,0,0">
+            <StatusBarItem><TextBlock x:Name="StatusText" Text="Ready" FontSize="11"/></StatusBarItem>
+            <Separator/>
+            <StatusBarItem><TextBlock x:Name="ModeText" Text="Mode: Select" FontSize="10" Foreground="#666"/></StatusBarItem>
+            <StatusBarItem><TextBlock x:Name="ValidationStatus" Text="" FontSize="10" Foreground="#E74C3C"/></StatusBarItem>
+            <Separator/>
+            <StatusBarItem><TextBlock x:Name="FileText" Text="" FontSize="10"/></StatusBarItem>
+            <Separator/>
+            <StatusBarItem><TextBlock x:Name="NodeCountText" Text="Nodes: 0  Paths: 0  Walls: 0" FontSize="10"/></StatusBarItem>
+            <Separator/>
+            <StatusBarItem>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Wall:" FontSize="10" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                    <ComboBox x:Name="WallTypeCombo" Width="70" Height="20" FontSize="9">
+                        <ComboBoxItem Content="Solid" IsSelected="True"/>
+                        <ComboBoxItem Content="Glass"/>
+                        <ComboBoxItem Content="Partition"/>
+                        <ComboBoxItem Content="Fence"/>
+                    </ComboBox>
+                </StackPanel>
+            </StatusBarItem>
+            <StatusBarItem>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Units:" FontSize="10" VerticalAlignment="Center" Margin="8,0,4,0"/>
+                    <ComboBox x:Name="UnitsCombo" Width="50" Height="20" FontSize="9">
+                        <ComboBoxItem Content="m" IsSelected="True"/>
+                        <ComboBoxItem Content="ft"/>
+                        <ComboBoxItem Content="px"/>
+                    </ComboBox>
+                </StackPanel>
+            </StatusBarItem>
+            <StatusBarItem>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Grid:" FontSize="10" VerticalAlignment="Center" Margin="8,0,4,0"/>
+                    <ComboBox x:Name="GridSizeCombo" Width="50" Height="20" FontSize="9" SelectionChanged="GridSize_Changed">
+                        <ComboBoxItem Content="10" Tag="10"/>
+                        <ComboBoxItem Content="20" Tag="20" IsSelected="True"/>
+                        <ComboBoxItem Content="50" Tag="50"/>
+                        <ComboBoxItem Content="100" Tag="100"/>
+                    </ComboBox>
+                </StackPanel>
+            </StatusBarItem>
+            <Separator/>
+            <StatusBarItem HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="ZoomText" Text="100%" FontSize="10" Margin="0,0,4,0"/><TextBlock x:Name="ZoomLabel" Text="" FontSize="10" Margin="0,0,12,0" Visibility="Collapsed"/>
+                    <TextBlock x:Name="MousePosText" Text="X: 0  Y: 0" FontSize="10"/>
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
+
+        <!-- Hidden legacy placeholders to keep older handler code compiling while we refactor to AvalonDock -->
+        <Grid Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftPanelColumn" Width="0"/>
+                <ColumnDefinition/>
+                <ColumnDefinition x:Name="RightPanelColumn" Width="0"/>
+            </Grid.ColumnDefinitions>
+            <ToggleButton x:Name="LeftPanelToggle"/>
+            <ToggleButton x:Name="RightPanelToggle"/>
+        </Grid>
+    
+        <!-- Temporary: legacy named controls host (AvalonDock migration).
+             Keeps existing handler partials compiling while panes are moved into AvalonDock.
+             Safe to delete once Crane/Template/Explorer/Toolbox UI is fully hosted in dock panes. -->
+        <Grid Visibility="Collapsed">
+            <!-- Toolbox is now in AvalonDock Toolbox pane above -->
+
+            <!-- Templates now in AvalonDock Toolbox pane -->
+
+            <!-- Explorer -->
+            <TreeView x:Name="TopologyTree" />
+
+            <!-- Cranes: Runways -->
+            <ListView x:Name="RunwayList" />
+            <StackPanel x:Name="RunwayPropsPanel" />
+            <TextBox x:Name="RunwayNameBox" />
+            <TextBox x:Name="RunwayStartXBox" />
+            <TextBox x:Name="RunwayStartYBox" />
+            <TextBox x:Name="RunwayEndXBox" />
+            <TextBox x:Name="RunwayEndYBox" />
+            <TextBox x:Name="RunwayHeightBox" />
+            <TextBlock x:Name="RunwayLengthText" />
+            <Rectangle x:Name="RunwayColorPreview" Width="16" Height="16" />
+
+            <!-- Cranes: EOT -->
+            <ListView x:Name="CraneList" />
+            <ScrollViewer x:Name="CranePropsPanel" />
+            <StackPanel x:Name="HandoffPanel" />
+            <TextBox x:Name="CraneNameBox" />
+            <ComboBox x:Name="CraneRunwayCombo" />
+            <TextBox x:Name="CraneReachLeftBox" />
+            <TextBox x:Name="CraneReachRightBox" />
+            <Slider x:Name="CraneZoneMinSlider" />
+            <Slider x:Name="CraneZoneMaxSlider" />
+            <TextBox x:Name="CraneSpeedBridgeBox" />
+            <TextBox x:Name="CraneSpeedTrolleyBox" />
+            <TextBox x:Name="CraneSpeedHoistBox" />
+            <Rectangle x:Name="CraneColorPreview" Width="16" Height="16" />
+            <ListView x:Name="HandoffList" />
+
+            <!-- Cranes: Jib -->
+            <ListView x:Name="JibList" />
+            <StackPanel x:Name="JibPropsPanel" />
+            <TextBox x:Name="JibNameBox" />
+            <TextBox x:Name="JibCenterXBox" />
+            <TextBox x:Name="JibCenterYBox" />
+            <TextBox x:Name="JibRadiusBox" />
+            <TextBox x:Name="JibArcStartBox" />
+            <TextBox x:Name="JibArcEndBox" />
+            <TextBox x:Name="JibSpeedSlewBox" />
+            <TextBox x:Name="JibSpeedHoistBox" />
+            <Rectangle x:Name="JibColorPreview" Width="16" Height="16" />
+        </Grid>
+
+</Grid>
+</Window>

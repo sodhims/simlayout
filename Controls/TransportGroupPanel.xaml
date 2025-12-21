@@ -1,0 +1,89 @@
+<UserControl x:Class="LayoutEditor.Controls.TransportGroupPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="800"
+             AllowDrop="True"
+             Background="#F5F5F5">
+    
+    <UserControl.Resources>
+        <!-- Toolbar Button Style -->
+        <Style x:Key="ToolbarBtn" TargetType="Button">
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#CCC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#E5F3FF"/>
+                    <Setter Property="BorderBrush" Value="#007ACC"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <Style x:Key="ToolbarToggle" TargetType="ToggleButton">
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#CCC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#E5F3FF"/>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background" Value="#CCE8FF"/>
+                    <Setter Property="BorderBrush" Value="#007ACC"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Toolbar -->
+        <Border Grid.Row="0" Background="White" BorderBrush="#DDD" BorderThickness="0,0,0,1" Padding="8">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="AddGroupBtn" Content="+ Group" Click="AddGroup_Click" 
+                        Style="{StaticResource ToolbarBtn}" ToolTip="Add new transport group"/>
+                <Button x:Name="AddMarkerBtn" Content="◆ Marker" Click="AddMarker_Click" 
+                        Style="{StaticResource ToolbarBtn}" ToolTip="Add transport marker to canvas"/>
+                <Rectangle Width="1" Fill="#CCC" Margin="8,2"/>
+                <ToggleButton x:Name="LinkModeBtn" Content="🔗 Link Nearest" 
+                              Checked="LinkMode_Checked" Unchecked="LinkMode_Unchecked"
+                              Style="{StaticResource ToolbarToggle}" 
+                              ToolTip="Click machine terminals to link to nearest transport path"/>
+                <ToggleButton x:Name="AutoConnectBtn" Content="⟳ Auto-Connect" 
+                              Checked="AutoConnect_Checked" Unchecked="AutoConnect_Unchecked"
+                              Style="{StaticResource ToolbarToggle}" 
+                              ToolTip="Automatically connect markers as you place them"/>
+                <Rectangle Width="1" Fill="#CCC" Margin="8,2"/>
+                <ToggleButton x:Name="ShowLegendBtn" Content="● Legend" IsChecked="True"
+                              Checked="ShowLegend_Checked" Unchecked="ShowLegend_Unchecked"
+                              Style="{StaticResource ToolbarToggle}" ToolTip="Show/hide group legend at markers"/>
+                <Rectangle Width="1" Fill="#CCC" Margin="8,2"/>
+                <Button Content="↺ Reset View" Click="ResetView_Click" 
+                        Style="{StaticResource ToolbarBtn}" ToolTip="Reset canvas view"/>
+            </StackPanel>
+        </Border>
+        
+        <!-- Group Boxes Container -->
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" 
+                      VerticalScrollBarVisibility="Disabled" Padding="4">
+            <StackPanel x:Name="GroupsPanel" Orientation="Horizontal">
+                <!-- Groups are added dynamically in code-behind -->
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

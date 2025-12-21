@@ -1,0 +1,627 @@
+{
+  "version": "2.0",
+  "lastModified": "2025-12-13T00:00:00Z",
+  "settings": {
+    "iconSize": 24,
+    "buttonWidth": 56,
+    "buttonHeight": 56
+  },
+  "nodeTypes": [
+    {
+      "key": "source",
+      "displayName": "Source",
+      "label": "IN",
+      "color": "#27AE60",
+      "icon": "source_arrow",
+      "category": "Flow",
+      "description": "Material entry point",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "sink",
+      "displayName": "Sink",
+      "label": "OUT",
+      "color": "#E74C3C",
+      "icon": "sink_arrow",
+      "category": "Flow",
+      "description": "Material exit point",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "dock_in",
+      "displayName": "Receiving",
+      "label": "IN",
+      "color": "#2980B9",
+      "icon": "dock_door",
+      "category": "Flow",
+      "description": "Receiving dock",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "dock_out",
+      "displayName": "Shipping",
+      "label": "OUT",
+      "color": "#27AE60",
+      "icon": "dock_door",
+      "category": "Flow",
+      "description": "Shipping dock",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+
+    {
+      "key": "cnc_mill",
+      "displayName": "CNC Mill",
+      "label": "",
+      "color": "#3498DB",
+      "icon": "cnc_mill",
+      "category": "Machining",
+      "description": "CNC milling machine",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "cnc_lathe",
+      "displayName": "CNC Lathe",
+      "label": "",
+      "color": "#3498DB",
+      "icon": "lathe_turning",
+      "category": "Machining",
+      "description": "CNC lathe/turning center",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "drill_press",
+      "displayName": "Drill Press",
+      "label": "",
+      "color": "#2980B9",
+      "icon": "drill_press",
+      "category": "Machining",
+      "description": "Drilling machine",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "grinder",
+      "displayName": "Grinder",
+      "label": "",
+      "color": "#3498DB",
+      "icon": "grinder_surface",
+      "category": "Machining",
+      "description": "Surface grinder",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "saw",
+      "displayName": "Saw",
+      "label": "",
+      "color": "#2980B9",
+      "icon": "saw_band",
+      "category": "Machining",
+      "description": "Band saw / cut-off saw",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "edm",
+      "displayName": "EDM",
+      "label": "",
+      "color": "#1ABC9C",
+      "icon": "edm_wire",
+      "category": "Machining",
+      "description": "Electrical discharge machine",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+
+    {
+      "key": "press",
+      "displayName": "Press",
+      "label": "",
+      "color": "#E67E22",
+      "icon": "press_hydraulic",
+      "category": "Forming",
+      "description": "Hydraulic/mechanical press",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "brake",
+      "displayName": "Press Brake",
+      "label": "",
+      "color": "#E67E22",
+      "icon": "press_brake",
+      "category": "Forming",
+      "description": "Sheet metal brake",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "roll_former",
+      "displayName": "Roll Former",
+      "label": "",
+      "color": "#D35400",
+      "icon": "roller_conveyor",
+      "category": "Forming",
+      "description": "Roll forming machine",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "injection",
+      "displayName": "Injection",
+      "label": "",
+      "color": "#1ABC9C",
+      "icon": "injection_mold",
+      "category": "Forming",
+      "description": "Injection molding machine",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "extruder",
+      "displayName": "Extruder",
+      "label": "",
+      "color": "#16A085",
+      "icon": "extruder",
+      "category": "Forming",
+      "description": "Extrusion machine",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+
+    {
+      "key": "welder_spot",
+      "displayName": "Spot Welder",
+      "label": "",
+      "color": "#E74C3C",
+      "icon": "welder_spot",
+      "category": "Welding",
+      "description": "Spot welding machine",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "welder_mig",
+      "displayName": "MIG Welder",
+      "label": "",
+      "color": "#E74C3C",
+      "icon": "welder_mig",
+      "category": "Welding",
+      "description": "MIG welding station",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "welder_tig",
+      "displayName": "TIG Welder",
+      "label": "",
+      "color": "#C0392B",
+      "icon": "welder_tig",
+      "category": "Welding",
+      "description": "TIG welding station",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "laser_cutter",
+      "displayName": "Laser Cutter",
+      "label": "",
+      "color": "#E74C3C",
+      "icon": "laser_cutter",
+      "category": "Welding",
+      "description": "Laser cutting machine",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "plasma_cutter",
+      "displayName": "Plasma",
+      "label": "",
+      "color": "#C0392B",
+      "icon": "plasma_cutter",
+      "category": "Welding",
+      "description": "Plasma cutting table",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+
+    {
+      "key": "robot_scara",
+      "displayName": "SCARA",
+      "label": "",
+      "color": "#9B59B6",
+      "icon": "robot_scara",
+      "category": "Robots",
+      "description": "SCARA robot",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "robot_6axis",
+      "displayName": "6-Axis",
+      "label": "",
+      "color": "#8E44AD",
+      "icon": "robot_articulated",
+      "category": "Robots",
+      "description": "6-axis articulated robot",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "robot_delta",
+      "displayName": "Delta",
+      "label": "",
+      "color": "#9B59B6",
+      "icon": "robot_delta",
+      "category": "Robots",
+      "description": "Delta/parallel robot",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "robot_cartesian",
+      "displayName": "Gantry",
+      "label": "",
+      "color": "#8E44AD",
+      "icon": "robot_cartesian",
+      "category": "Robots",
+      "description": "Cartesian/gantry robot",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "cobot",
+      "displayName": "Cobot",
+      "label": "",
+      "color": "#9B59B6",
+      "icon": "robot_cobot",
+      "category": "Robots",
+      "description": "Collaborative robot",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+
+    {
+      "key": "workstation",
+      "displayName": "Workstation",
+      "label": "",
+      "color": "#3498DB",
+      "icon": "workstation_manual",
+      "category": "Assembly",
+      "description": "Manual workstation",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "assembly",
+      "displayName": "Assembly",
+      "label": "",
+      "color": "#2980B9",
+      "icon": "assembly_station",
+      "category": "Assembly",
+      "description": "Assembly station",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "test_station",
+      "displayName": "Test Station",
+      "label": "",
+      "color": "#1ABC9C",
+      "icon": "inspection_visual",
+      "category": "Assembly",
+      "description": "Functional test station",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "packaging",
+      "displayName": "Packaging",
+      "label": "",
+      "color": "#795548",
+      "icon": "container",
+      "category": "Assembly",
+      "description": "Packaging station",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+
+    {
+      "key": "inspection",
+      "displayName": "Inspection",
+      "label": "",
+      "color": "#1ABC9C",
+      "icon": "inspection_visual",
+      "category": "Quality",
+      "description": "Visual inspection",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "cmm",
+      "displayName": "CMM",
+      "label": "",
+      "color": "#16A085",
+      "icon": "inspection_cmm",
+      "category": "Quality",
+      "description": "Coordinate measuring machine",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "vision",
+      "displayName": "Vision",
+      "label": "",
+      "color": "#1ABC9C",
+      "icon": "inspection_camera",
+      "category": "Quality",
+      "description": "Machine vision system",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "xray",
+      "displayName": "X-Ray",
+      "label": "",
+      "color": "#8E44AD",
+      "icon": "inspection_xray",
+      "category": "Quality",
+      "description": "X-ray inspection",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+
+    {
+      "key": "furnace",
+      "displayName": "Furnace",
+      "label": "",
+      "color": "#E74C3C",
+      "icon": "furnace_induction",
+      "category": "Thermal",
+      "description": "Heat treatment furnace",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "oven",
+      "displayName": "Oven",
+      "label": "",
+      "color": "#E67E22",
+      "icon": "oven_curing",
+      "category": "Thermal",
+      "description": "Curing/drying oven",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "quench",
+      "displayName": "Quench",
+      "label": "",
+      "color": "#3498DB",
+      "icon": "quench_tank",
+      "category": "Thermal",
+      "description": "Quench tank",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+
+    {
+      "key": "washer",
+      "displayName": "Washer",
+      "label": "",
+      "color": "#3498DB",
+      "icon": "washer_parts",
+      "category": "Finishing",
+      "description": "Parts washer",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "paint_booth",
+      "displayName": "Paint Booth",
+      "label": "",
+      "color": "#E67E22",
+      "icon": "paint_booth",
+      "category": "Finishing",
+      "description": "Paint/powder coating booth",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "plating",
+      "displayName": "Plating",
+      "label": "",
+      "color": "#BDC3C7",
+      "icon": "plating_tank",
+      "category": "Finishing",
+      "description": "Plating/anodizing tank",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "deburr",
+      "displayName": "Deburr",
+      "label": "",
+      "color": "#7F8C8D",
+      "icon": "deburr_tumbler",
+      "category": "Finishing",
+      "description": "Deburring/tumbling",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+
+    {
+      "key": "buffer",
+      "displayName": "Buffer",
+      "label": "",
+      "color": "#F5A623",
+      "icon": "buffer_fifo",
+      "category": "Storage",
+      "description": "FIFO buffer queue",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "storage",
+      "displayName": "Storage",
+      "label": "",
+      "color": "#95A5A6",
+      "icon": "shelf_unit",
+      "category": "Storage",
+      "description": "General storage area",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "rack",
+      "displayName": "Rack",
+      "label": "",
+      "color": "#795548",
+      "icon": "pallet_rack",
+      "category": "Storage",
+      "description": "Pallet rack",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "asrs",
+      "displayName": "AS/RS",
+      "label": "",
+      "color": "#34495E",
+      "icon": "asrs",
+      "category": "Storage",
+      "description": "Automated storage/retrieval",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "carousel",
+      "displayName": "Carousel",
+      "label": "",
+      "color": "#7F8C8D",
+      "icon": "carousel",
+      "category": "Storage",
+      "description": "Vertical/horizontal carousel",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+
+    {
+      "key": "conveyor",
+      "displayName": "Conveyor",
+      "label": "",
+      "color": "#7F8C8D",
+      "icon": "conveyor_belt",
+      "category": "Transport",
+      "description": "Belt conveyor",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "roller",
+      "displayName": "Roller",
+      "label": "",
+      "color": "#95A5A6",
+      "icon": "roller_conveyor",
+      "category": "Transport",
+      "description": "Roller conveyor",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "agv",
+      "displayName": "AGV",
+      "label": "",
+      "color": "#34495E",
+      "icon": "agv",
+      "category": "Transport",
+      "description": "Automated guided vehicle",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "agv_station",
+      "displayName": "AGV Station",
+      "label": "",
+      "color": "#9B59B6",
+      "icon": "agv",
+      "category": "Transport",
+      "description": "AGV pickup/dropoff station",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "forklift",
+      "displayName": "Forklift",
+      "label": "",
+      "color": "#FF9800",
+      "icon": "forklift",
+      "category": "Transport",
+      "description": "Forklift truck",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "crane",
+      "displayName": "Crane",
+      "label": "",
+      "color": "#455A64",
+      "icon": "crane_overhead",
+      "category": "Transport",
+      "description": "Overhead crane",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "hoist",
+      "displayName": "Hoist",
+      "label": "",
+      "color": "#607D8B",
+      "icon": "hoist",
+      "category": "Transport",
+      "description": "Chain/wire hoist",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+
+    {
+      "key": "operator",
+      "displayName": "Operator",
+      "label": "",
+      "color": "#E91E63",
+      "icon": "operator",
+      "category": "People",
+      "description": "Machine operator",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "technician",
+      "displayName": "Technician",
+      "label": "",
+      "color": "#9C27B0",
+      "icon": "technician",
+      "category": "People",
+      "description": "Maintenance technician",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    },
+    {
+      "key": "inspector",
+      "displayName": "Inspector",
+      "label": "",
+      "color": "#1ABC9C",
+      "icon": "inspector",
+      "category": "People",
+      "description": "Quality inspector",
+      "defaultWidth": 80,
+      "defaultHeight": 60
+    }
+  ]
+}

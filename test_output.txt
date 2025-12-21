@@ -1,0 +1,167 @@
+=== Transport Layer Infrastructure Tests ===
+
+T1.1 - Layer enum has 8 values: ? PASS (Count: 8)
+T1.2 - Infrastructure is value 0: ? PASS (Value: 0)
+T1.3 - Pedestrian is value 7: ? PASS (Value: 7)
+T1.4 - All layers visible by default: ? PASS
+T1.5 - Active layer default is Equipment: ? PASS (Active: Equipment)
+T1.6 - Visibility change fires event: ? PASS
+T1.7 - Locked layer not editable: ? PASS
+T1.8 - Model classes have TransportLayer property: ? PASS
+T1.9 - Metadata is correct: ? PASS
+
+=== Test Results ===
+Passed: 9/9
+Failed: 0/9
+Status: ? ALL TESTS PASSED
+
+
+=== Week 2: Infrastructure & Spatial Layers Tests ===
+
+T2.1 - DoorData has Infrastructure layer: ? PASS (Layer: Infrastructure)
+T2.2 - RunwayData has Infrastructure layer: ? PASS (Layer: Infrastructure)
+T2.3 - Opening base has Infrastructure layer: ? PASS (Layer: Infrastructure)
+T2.4 - Unconstrained opening has capacity 0: ? PASS (Capacity: 0)
+T2.5 - Constrained opening has capacity >= 1: ? PASS (Capacity: 1)
+T2.6 - Opening state defaults to Open: ? PASS (State: open)
+T2.7 - State machine transitions work: ? PASS
+T2.8 - Closed opening has Closed state: ? PASS (State: closed)
+T2.9 - Door subtype has SwingDirection: ? PASS (Direction: outward)
+T2.10 - Hatch subtype has LadderTime: ? PASS (LadderTime: 10s)
+T2.11 - Opening tool creates correct subtype: ? SKIP (Tool not yet implemented - manual test required)
+T2.12 - Opening auto-links zones: ? SKIP (Tool not yet implemented - manual test required)
+T2.13 - PrimaryAisleData has Spatial layer: ? PASS (Layer: Spatial)
+T2.14 - RestrictedAreaData has Spatial layer: ? PASS (Layer: Spatial)
+T2.15 - InfrastructureRenderer exists and implements interface: ? PASS
+T2.16 - SpatialRenderer exists and implements interface: ? PASS
+T2.17 - Layer renderers integrated (GetVisibleLayers works): ? PASS
+T2.18 - LayoutData has Openings collection: ? PASS
+T2.19 - TemporaryOpening has state-dependent existence: ? FAIL
+  Exists in State_A: ?
+  Exists in State_B: ?
+  Exists in State_C: ?
+  Not exists in State_0: ?
+  Not exists in State_D: ?
+T2.20 - Opening can connect two zones: ? PASS
+
+=== Test Results ===
+Passed: 19/20
+Failed: 1/20
+Status: ? SOME TESTS FAILED
+
+
+=== Week 3: Equipment & Local Flow Layers Tests ===
+
+T3.1 - Equipment has clearance properties with correct defaults: ? PASS
+T3.2 - Clearance toggles work (operational & maintenance): ? PASS
+T3.3 - Clearance hidden when toggled off: ? PASS
+T3.4 - ConveyorData has LocalFlow layer: ? PASS
+T3.5 - DirectPathData has LocalFlow layer: ? PASS
+T3.6 - Conveyor has direction and path: ? PASS
+T3.7 - Cell boundary calculation setup valid: ? PASS
+T3.8 - Conveyor snaps to terminals (placeholder): ? PASS
+T3.9 - Hide LocalFlow layer works: ? PASS
+T3.10 - Conveyor data model works: ? PASS
+
+=== Test Results ===
+Passed: 10/10
+Failed: 0/10
+Status: ? ALL TESTS PASSED
+
+
+=== Week 4: Guided Transport (AGV) Layer Tests ===
+
+T4.1 - Waypoint types have distinct values: ? PASS
+T4.2 - Path connects two waypoints: ? PASS
+T4.3 - Unidirectional path has direction set: ? PASS
+T4.4 - Bidirectional path has correct direction: ? PASS
+T4.5 - Station links to waypoint: ? PASS
+T4.6 - Station links to equipment: ? PASS
+T4.7 - Traffic zone has polygon boundary: ? PASS
+T4.8 - Hide GuidedTransport layer works: ? PASS
+T4.9 - Path tool creates network (placeholder): ? PASS
+T4.10 - Validation warns on disconnect (placeholder): ? PASS
+
+=== Test Results ===
+Passed: 10/10
+Failed: 0/10
+Status: ? ALL TESTS PASSED
+
+
+=== Stage 5A: Crane Coverage Models Tests ===
+
+T5A.1 - EOT coverage returns rectangle: ? PASS (Points: 4, Expected: 4)
+T5A.2 - Jib coverage returns arc polygon: ? PASS (Points: 19, Arc shape: valid)
+T5A.3 - Layer property correct: ? PASS (EOT: OverheadTransport, Jib: OverheadTransport)
+
+=== Test Results ===
+Passed: 3/3
+Failed: 0/3
+Status: ? ALL TESTS PASSED
+
+
+=== Stage 5B: Handoff & Drop Zone Models Tests ===
+
+T5B.1 - HandoffPoint serializes/deserializes: ? PASS (Round-trip: success)
+T5B.2 - DropZone serializes/deserializes: ? PASS (Round-trip: success, Boundary points: 4)
+T5B.3 - Collections added to LayoutData: ? PASS (HandoffPoints: ?, DropZones: ?, Remove: ?)
+
+=== Test Results ===
+Passed: 3/3
+Failed: 0/3
+Status: ? ALL TESTS PASSED
+
+
+=== Stage 5C: Overhead Transport Renderer Tests ===
+
+T5C.1 - Crane coverage renders: ? PASS (Elements: 4, Expected: =4)
+T5C.2 - Handoff points render: ? PASS (Elements: 4, Expected: =4)
+T5C.3 - Drop zones render: ? PASS (Elements: 2, Expected: =2)
+T5C.4 - Layer property correct: ? PASS (Layer: OverheadTransport, ZOrder: 500)
+
+=== Test Results ===
+Passed: 4/4
+Failed: 0/4
+Status: ? ALL TESTS PASSED
+
+
+=== Stage 5D: Forklift Models Tests ===
+
+T5D.1 - ForkliftAisle serializes/deserializes: ? PASS (Round-trip: success, Centerline points: 3)
+T5D.2 - StagingArea serializes/deserializes: ? PASS (Round-trip: success, Capacity: 20)
+T5D.3 - CrossingZone serializes/deserializes: ? PASS (Round-trip: success, Type: signal_controlled)
+
+=== Test Results ===
+Passed: 3/3
+Failed: 0/3
+Status: ? ALL TESTS PASSED
+
+
+=== Stage 5E: Flexible Transport Renderer Tests ===
+
+T5E.1 - Forklift aisles render: ? PASS (Elements: 7, Expected: =6)
+T5E.2 - Staging areas render: ? PASS (Elements: 2, Expected: =2)
+T5E.3 - Crossing zones render: ? PASS (Elements: 2, Expected: =2)
+T5E.4 - Layer property correct: ? PASS (Layer: FlexibleTransport, ZOrder: 600)
+
+=== Test Results ===
+Passed: 4/4
+Failed: 0/4
+Status: ? ALL TESTS PASSED
+
+
+=== Stage 6A: Schema Creation Tests ===
+
+T6A.1 - DatabaseManager creates database file: ? PASS (Before: False, After: True, File: True)
+T6A.2 - Schema tables created correctly: ? PASS (Layouts: True, Elements: True, Connections: True, Zones: True, ElementZones: True)
+T6A.2 - Schema tables created correctly: ? FAIL (Exception: The process cannot access the file 'C:\Users\sodhi\AppData\Local\Temp\test_layout_e1c2cc0a-0985-44ce-874a-27a22bd3297d.db' because it is being used by another process.)
+T6A.3 - Schema indexes created correctly: ? PASS (Found 7 indexes, Key indexes present: True)
+T6A.3 - Schema indexes created correctly: ? FAIL (Exception: The process cannot access the file 'C:\Users\sodhi\AppData\Local\Temp\test_layout_369f8173-5793-41fd-a6a9-51a22932f3fe.db' because it is being used by another process.)
+T6A.4 - Migration system tracks version: ? PASS (Before: 0, After: 1, Record exists: True)
+T6A.4 - Migration system tracks version: ? FAIL (Exception: The process cannot access the file 'C:\Users\sodhi\AppData\Local\Temp\test_layout_6a546147-d1e0-4b3a-8ac6-cf79c73fc110.db' because it is being used by another process.)
+T6A.5 - Connection pooling works: ? PASS (All open: True, All query: True)
+
+=== Test Results ===
+Passed: 2/5
+Failed: 3/5
+Status: ? SOME TESTS FAILED
