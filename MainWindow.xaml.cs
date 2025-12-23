@@ -52,6 +52,19 @@ namespace LayoutEditor
         private readonly FlexibleTransportRenderer _flexibleTransportRenderer = null!;
         private readonly PedestrianRenderer _pedestrianRenderer = null!;
 
+        // Frictionless mode handle rendering
+        private FrictionlessHandleRenderer? _handleRenderer;
+        private System.Windows.Threading.DispatcherTimer? _handleBlinkTimer;
+
+        // Design mode rendering
+        private DesignModeRenderer? _designModeRenderer;
+
+        // Animation service for F mode demonstrations
+        private AnimationService? _animationService;
+
+        // Selection indicator for Equipment Browser highlights
+        private SelectionIndicatorService? _selectionIndicator;
+
         // Element tracking
         private readonly Dictionary<string, UIElement> _elementMap = new();
 
@@ -63,7 +76,9 @@ namespace LayoutEditor
         {
             try
             {
+                System.Console.WriteLine("[DEBUG] MainWindow constructor starting...");
                 InitializeComponent();
+                System.Console.WriteLine("[DEBUG] InitializeComponent completed");
                 
                 // Initialize services
                 _selectionService = new SelectionService();
@@ -111,16 +126,38 @@ namespace LayoutEditor
                 InitializeTransportMarkerSystem();
                 InitializeTransportGroupPanelEvents();
                 InitializeToolbox();
+                InitializeFrictionlessHandles();
 
                 // Wire up Transport Layers Panel
                 if (TransportLayersPanel != null)
                 {
                     TransportLayersPanel.SetArchitectureLayerManager(_transportArchitectureLayerManager);
                 }
+
+                // Wire up Equipment Browser Panel
+                if (EquipmentBrowserPanel != null)
+                {
+                    EquipmentBrowserPanel.SetLayout(_layout);
+                    EquipmentBrowserPanel.ItemSelected += EquipmentBrowser_ItemSelected;
+                    EquipmentBrowserPanel.ItemDoubleClicked += EquipmentBrowser_ItemDoubleClicked;
+                    EquipmentBrowserPanel.EditRequested += EquipmentBrowser_EditRequested;
+                    EquipmentBrowserPanel.DataChanged += EquipmentBrowser_DataChanged;
+                }
+
+                DebugLogger.Log("MainWindow constructor completed successfully");
+                DebugLogger.Log("Window should be visible now");
+
+                // Show debug log location on startup
+                Loaded += (s, e) =>
+                {
+                    StatusText.Text = $"Debug log: {DebugLogger.GetLogPath()}";
+                };
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Startup error: {ex.Message}\n\n{ex.StackTrace}", "Error", 
+                System.Console.WriteLine($"[DEBUG] ERROR in MainWindow constructor: {ex.Message}");
+                System.Console.WriteLine($"[DEBUG] Stack trace: {ex.StackTrace}");
+                MessageBox.Show($"Startup error: {ex.Message}\n\n{ex.StackTrace}", "Error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -129,6 +166,20 @@ namespace LayoutEditor
         {
             _layout = LayoutFactory.CreateDefault();
             _isDirty = false;
+
+            // Initialize animation service for F mode demonstrations
+            _animationService = new AnimationService(
+                _layout,
+                () => Redraw(),
+                status => StatusText.Text = status
+            );
+
+            // Initialize selection indicator for Equipment Browser highlights
+            _selectionIndicator = new SelectionIndicatorService(
+                EditorCanvas,
+                _layout,
+                () => { } // No redraw needed - indicator manages itself
+            );
 
             TryInitializeNodeTypeCombo();
             RefreshAll();
@@ -194,6 +245,8 @@ namespace LayoutEditor
             UpdateNodeCount();
             UpdateNodeCountDisplay();
             _panelManager?.LoadLayout(_layout);
+            // Update the EquipmentBrowserPanel with current layout (important when loading files)
+            EquipmentBrowserPanel?.SetLayout(_layout);
         }
 
         /// <summary>
@@ -246,9 +299,9 @@ namespace LayoutEditor
             // Legacy rendering (temporary - will be migrated to layer renderers)
             // These checks use old Display.Layers flags for backward compatibility
 
-            // Zones (will move to Spatial renderer fully)
-            if (_layout.Display.Layers.Zones)
-                _groupRenderer.DrawZones(EditorCanvas, _layout);
+            // Zones - NOW handled by SpatialRenderer (no longer duplicate legacy call)
+            // if (_layout.Display.Layers.Zones)
+            //     _groupRenderer.DrawZones(EditorCanvas, _layout);
 
             // Paths (future: LocalFlow layer)
             if (_layout.Display.Layers.Paths)
@@ -281,6 +334,97 @@ namespace LayoutEditor
 
             // Transport markers (always draw for now - controlled by layer visibility)
             DrawTransportMarkerElements();
+
+            // Draw handles LAST so they appear on top of everything (frictionless mode only)
+            if (_layout.FrictionlessMode)
+            {
+                if (_handleRenderer == null)
+                    _handleRenderer = new FrictionlessHandleRenderer(_layout);
+
+                _handleRenderer.DrawHandles(EditorCanvas);
+            }
+
+            // Draw design mode overlays (vertex handles, grid, etc.)
+            if (_layout.DesignMode)
+            {
+                if (_designModeRenderer == null)
+                    _designModeRenderer = new DesignModeRenderer(_layout, _transportArchitectureLayerManager);
+
+                _designModeRenderer.DrawDesignModeOverlay(EditorCanvas, _selectedZoneId);
+            }
+
+            // Draw test vehicle if active (for track validation)
+            DrawTestVehicle();
+
+            // Restore selection indicator if active (must be after canvas clear)
+            if (_selectionIndicator?.IsActive == true)
+            {
+                _selectionIndicator.RestoreVisuals();
+            }
+        }
+
+        /// <summary>
+        /// Draw the test vehicle for track validation
+        /// </summary>
+        private void DrawTestVehicle()
+        {
+            if (!HasTestVehicle || TestVehicle == null) return;
+
+            var vehicle = TestVehicle;
+            double size = vehicle.TransporterType == TransporterTypes.Forklift ? 24 : 20;
+
+            // Vehicle body (rotated rectangle)
+            var body = new System.Windows.Shapes.Rectangle
+            {
+                Width = size * 1.5,
+                Height = size,
+                Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(vehicle.Color)),
+                Stroke = Brushes.Black,
+                StrokeThickness = 2,
+                RadiusX = 3,
+                RadiusY = 3
+            };
+
+            // Apply rotation for heading
+            var rotateTransform = new RotateTransform(vehicle.Heading, size * 0.75, size * 0.5);
+            body.RenderTransform = rotateTransform;
+
+            Canvas.SetLeft(body, vehicle.CurrentX - size * 0.75);
+            Canvas.SetTop(body, vehicle.CurrentY - size * 0.5);
+            Canvas.SetZIndex(body, 9500);
+            EditorCanvas.Children.Add(body);
+
+            // Direction indicator (small triangle at front)
+            double arrowLength = size * 0.5;
+            double radians = vehicle.Heading * Math.PI / 180;
+            double tipX = vehicle.CurrentX + Math.Cos(radians) * (size * 0.75 + arrowLength);
+            double tipY = vehicle.CurrentY + Math.Sin(radians) * (size * 0.75 + arrowLength);
+
+            var arrow = new System.Windows.Shapes.Polygon
+            {
+                Points = new PointCollection
+                {
+                    new Point(tipX, tipY),
+                    new Point(tipX - arrowLength * 0.6 * Math.Cos(radians - 0.5), tipY - arrowLength * 0.6 * Math.Sin(radians - 0.5)),
+                    new Point(tipX - arrowLength * 0.6 * Math.Cos(radians + 0.5), tipY - arrowLength * 0.6 * Math.Sin(radians + 0.5))
+                },
+                Fill = Brushes.Black
+            };
+            Canvas.SetZIndex(arrow, 9501);
+            EditorCanvas.Children.Add(arrow);
+
+            // Vehicle label
+            var label = new TextBlock
+            {
+                Text = vehicle.TransporterType == TransporterTypes.Forklift ? "FL" : "AGV",
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Foreground = Brushes.White
+            };
+            Canvas.SetLeft(label, vehicle.CurrentX - 8);
+            Canvas.SetTop(label, vehicle.CurrentY - 6);
+            Canvas.SetZIndex(label, 9502);
+            EditorCanvas.Children.Add(label);
         }
 
         private void DrawBackgroundImage()
@@ -841,13 +985,15 @@ namespace LayoutEditor
 
             if (_layout.FrictionlessMode)
             {
-                StatusText.Text = "Frictionless Mode: ON - Only constrained entities selectable";
+                StatusText.Text = "Animation Mode: ON - Click cranes to animate";
                 // Visual feedback
                 FrictionlessModeToggle.Background = new SolidColorBrush(Color.FromRgb(204, 232, 255));
             }
             else
             {
-                StatusText.Text = "Frictionless Mode: OFF";
+                // Stop any running animation when exiting F mode
+                _animationService?.StopAnimation();
+                StatusText.Text = "Animation Mode: OFF";
                 FrictionlessModeToggle.Background = new SolidColorBrush(Colors.Transparent);
             }
 

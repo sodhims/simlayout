@@ -66,5 +66,33 @@ namespace LayoutEditor
         }
 
         #endregion
+
+        #region Test Vehicle (Track Validation)
+
+        /// <summary>
+        /// Create a test AGV to validate path connectivity
+        /// </summary>
+        private void TestAGV_Click(object sender, RoutedEventArgs e)
+        {
+            CreateTestAGV();
+        }
+
+        /// <summary>
+        /// Create a test forklift to validate aisle connectivity
+        /// </summary>
+        private void TestForklift_Click(object sender, RoutedEventArgs e)
+        {
+            CreateTestForklift();
+        }
+
+        /// <summary>
+        /// Remove the current test vehicle
+        /// </summary>
+        private void RemoveTestVehicle_Click(object sender, RoutedEventArgs e)
+        {
+            RemoveTestVehicle();
+        }
+
+        #endregion
     }
 }

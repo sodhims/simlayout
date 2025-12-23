@@ -15,6 +15,13 @@
     <None Remove="**\*.json" />
   </ItemGroup>
   <ItemGroup>
+    <!-- Exclude Tools folder from main project -->
+    <Compile Remove="Tools\**" />
+    <None Remove="Tools\**" />
+    <Page Remove="Tools\**" />
+    <Resource Remove="Tools\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="ACadSharp" Version="1.1.19" />
     <PackageReference Include="Dirkster.AvalonDock" Version="4.72.1" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.1" />

@@ -1,0 +1,746 @@
+=== LayoutEditor Debug Log Started at 12/21/2025 4:39:21 PM ===
+[16:39:21.300] [SpatialRenderer] RenderZones called, zone count: 0
+[16:39:21.311] MainWindow constructor completed successfully
+[16:39:21.312] Window should be visible now
+[16:39:30.503] [SpatialRenderer] RenderZones called, zone count: 1
+[16:39:30.504] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:39:30.505]     Point: (50, 50)
+[16:39:30.505]     Point: (1950, 50)
+[16:39:30.505]     Point: (1950, 1400)
+[16:39:30.505]     Point: (50, 1400)
+[16:39:30.506] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:13.442] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:13.443] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:13.443]     Point: (50, 50)
+[16:40:13.443]     Point: (1950, 50)
+[16:40:13.443]     Point: (1950, 1400)
+[16:40:13.444]     Point: (50, 1400)
+[16:40:13.444] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:13.790] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:13.790] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:13.791]     Point: (50, 50)
+[16:40:13.791]     Point: (1950, 50)
+[16:40:13.791]     Point: (1950, 1400)
+[16:40:13.791]     Point: (50, 1400)
+[16:40:13.791] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:14.285] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:14.286] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:14.286]     Point: (50, 50)
+[16:40:14.286]     Point: (1950, 50)
+[16:40:14.286]     Point: (1950, 1400)
+[16:40:14.286]     Point: (50, 1400)
+[16:40:14.287] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:14.788] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:14.788] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:14.789]     Point: (50, 50)
+[16:40:14.789]     Point: (1950, 50)
+[16:40:14.789]     Point: (1950, 1400)
+[16:40:14.789]     Point: (50, 1400)
+[16:40:14.789] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:15.286] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:15.286] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:15.286]     Point: (50, 50)
+[16:40:15.287]     Point: (1950, 50)
+[16:40:15.287]     Point: (1950, 1400)
+[16:40:15.287]     Point: (50, 1400)
+[16:40:15.287] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:15.862] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:15.863] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:15.863]     Point: (50, 50)
+[16:40:15.863]     Point: (1950, 50)
+[16:40:15.863]     Point: (1950, 1400)
+[16:40:15.863]     Point: (50, 1400)
+[16:40:15.864] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:16.381] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:16.382] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:16.382]     Point: (50, 50)
+[16:40:16.382]     Point: (1950, 50)
+[16:40:16.382]     Point: (1950, 1400)
+[16:40:16.382]     Point: (50, 1400)
+[16:40:16.383] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:16.893] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:16.894] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:16.894]     Point: (50, 50)
+[16:40:16.894]     Point: (1950, 50)
+[16:40:16.894]     Point: (1950, 1400)
+[16:40:16.894]     Point: (50, 1400)
+[16:40:16.894] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:17.397] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:17.398] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:17.398]     Point: (50, 50)
+[16:40:17.398]     Point: (1950, 50)
+[16:40:17.398]     Point: (1950, 1400)
+[16:40:17.398]     Point: (50, 1400)
+[16:40:17.399] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:17.895] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:17.895] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:17.896]     Point: (50, 50)
+[16:40:17.896]     Point: (1950, 50)
+[16:40:17.896]     Point: (1950, 1400)
+[16:40:17.896]     Point: (50, 1400)
+[16:40:17.896] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:18.393] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:18.394] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:18.394]     Point: (50, 50)
+[16:40:18.394]     Point: (1950, 50)
+[16:40:18.394]     Point: (1950, 1400)
+[16:40:18.394]     Point: (50, 1400)
+[16:40:18.394] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:18.914] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:18.914] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:18.915]     Point: (50, 50)
+[16:40:18.915]     Point: (1950, 50)
+[16:40:18.915]     Point: (1950, 1400)
+[16:40:18.915]     Point: (50, 1400)
+[16:40:18.915] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:19.410] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:19.411] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:19.411]     Point: (50, 50)
+[16:40:19.411]     Point: (1950, 50)
+[16:40:19.411]     Point: (1950, 1400)
+[16:40:19.412]     Point: (50, 1400)
+[16:40:19.412] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:19.933] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:19.933] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:19.933]     Point: (50, 50)
+[16:40:19.933]     Point: (1950, 50)
+[16:40:19.933]     Point: (1950, 1400)
+[16:40:19.933]     Point: (50, 1400)
+[16:40:19.934] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:20.441] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:20.442] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:20.443]     Point: (50, 50)
+[16:40:20.443]     Point: (1950, 50)
+[16:40:20.443]     Point: (1950, 1400)
+[16:40:20.443]     Point: (50, 1400)
+[16:40:20.443] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:20.947] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:20.947] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:20.947]     Point: (50, 50)
+[16:40:20.948]     Point: (1950, 50)
+[16:40:20.948]     Point: (1950, 1400)
+[16:40:20.948]     Point: (50, 1400)
+[16:40:20.948] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:21.445] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:21.445] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:21.445]     Point: (50, 50)
+[16:40:21.446]     Point: (1950, 50)
+[16:40:21.446]     Point: (1950, 1400)
+[16:40:21.446]     Point: (50, 1400)
+[16:40:21.446] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:21.957] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:21.958] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:21.958]     Point: (50, 50)
+[16:40:21.958]     Point: (1950, 50)
+[16:40:21.958]     Point: (1950, 1400)
+[16:40:21.958]     Point: (50, 1400)
+[16:40:21.959] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:22.460] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:22.460] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:22.460]     Point: (50, 50)
+[16:40:22.460]     Point: (1950, 50)
+[16:40:22.461]     Point: (1950, 1400)
+[16:40:22.461]     Point: (50, 1400)
+[16:40:22.461] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:22.970] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:22.971] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:22.971]     Point: (50, 50)
+[16:40:22.971]     Point: (1950, 50)
+[16:40:22.971]     Point: (1950, 1400)
+[16:40:22.972]     Point: (50, 1400)
+[16:40:22.972] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:23.485] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:23.485] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:23.486]     Point: (50, 50)
+[16:40:23.486]     Point: (1950, 50)
+[16:40:23.486]     Point: (1950, 1400)
+[16:40:23.486]     Point: (50, 1400)
+[16:40:23.487] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:23.994] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:23.994] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:23.994]     Point: (50, 50)
+[16:40:23.994]     Point: (1950, 50)
+[16:40:23.994]     Point: (1950, 1400)
+[16:40:23.995]     Point: (50, 1400)
+[16:40:23.995] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:24.495] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:24.495] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:24.495]     Point: (50, 50)
+[16:40:24.496]     Point: (1950, 50)
+[16:40:24.497]     Point: (1950, 1400)
+[16:40:24.497]     Point: (50, 1400)
+[16:40:24.497] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:25.008] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:25.008] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:25.009]     Point: (50, 50)
+[16:40:25.009]     Point: (1950, 50)
+[16:40:25.009]     Point: (1950, 1400)
+[16:40:25.009]     Point: (50, 1400)
+[16:40:25.009] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:25.508] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:25.508] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:25.509]     Point: (50, 50)
+[16:40:25.509]     Point: (1950, 50)
+[16:40:25.509]     Point: (1950, 1400)
+[16:40:25.509]     Point: (50, 1400)
+[16:40:25.509] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:26.011] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:26.012] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:26.012]     Point: (50, 50)
+[16:40:26.012]     Point: (1950, 50)
+[16:40:26.012]     Point: (1950, 1400)
+[16:40:26.012]     Point: (50, 1400)
+[16:40:26.013] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:26.522] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:26.523] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:26.523]     Point: (50, 50)
+[16:40:26.523]     Point: (1950, 50)
+[16:40:26.523]     Point: (1950, 1400)
+[16:40:26.523]     Point: (50, 1400)
+[16:40:26.524] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:26.794] === HitTest START at (1731.6, 12.5), frictionless=False, design=True ===
+[16:40:26.794] Checking node terminals...
+[16:40:26.797] Checking GuidedTransport layer, visible=True
+[16:40:26.798] Checking AGV stations (count=4)...
+[16:40:26.798] HitTestAGVStations at (1731.6, 12.5), designMode=True, radius=25
+[16:40:26.798] Checking 4 AGV stations
+[16:40:26.799]   Station 'AGV Station 1' at (50.0, 100.0), distance=1683.9
+[16:40:26.799]   Station 'AGV Station 2' at (1950.0, 100.0), distance=235.3
+[16:40:26.799]   Station 'AGV Station 3' at (50.0, 200.0), distance=1692.0
+[16:40:26.799]   Station 'AGV Station 4' at (1950.0, 200.0), distance=287.8
+[16:40:26.799]   No AGV station within hit radius
+[16:40:26.800] No AGV station hit
+[16:40:26.801] >>> CLICK RESULT: Hit type = Canvas at (1731.6, 12.5)
+[16:40:26.801]     FrictionlessMode=False, DesignMode=True
+[16:40:26.807] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:26.807] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:26.808]     Point: (50, 50)
+[16:40:26.808]     Point: (1950, 50)
+[16:40:26.808]     Point: (1950, 1400)
+[16:40:26.808]     Point: (50, 1400)
+[16:40:26.808] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:26.816] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:26.816] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:26.816]     Point: (50, 50)
+[16:40:26.817]     Point: (1950, 50)
+[16:40:26.817]     Point: (1950, 1400)
+[16:40:26.817]     Point: (50, 1400)
+[16:40:26.817] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:26.916] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:26.916] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:26.917]     Point: (50, 50)
+[16:40:26.917]     Point: (1950, 50)
+[16:40:26.917]     Point: (1950, 1400)
+[16:40:26.917]     Point: (50, 1400)
+[16:40:26.917] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:27.020] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:27.021] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:27.021]     Point: (50, 50)
+[16:40:27.021]     Point: (1950, 50)
+[16:40:27.022]     Point: (1950, 1400)
+[16:40:27.022]     Point: (50, 1400)
+[16:40:27.022] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:27.525] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:27.525] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:27.526]     Point: (50, 50)
+[16:40:27.526]     Point: (1950, 50)
+[16:40:27.526]     Point: (1950, 1400)
+[16:40:27.526]     Point: (50, 1400)
+[16:40:27.526] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:28.047] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:28.047] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:28.047]     Point: (50, 50)
+[16:40:28.047]     Point: (1950, 50)
+[16:40:28.048]     Point: (1950, 1400)
+[16:40:28.048]     Point: (50, 1400)
+[16:40:28.048] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:28.563] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:28.563] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:28.563]     Point: (50, 50)
+[16:40:28.563]     Point: (1950, 50)
+[16:40:28.563]     Point: (1950, 1400)
+[16:40:28.564]     Point: (50, 1400)
+[16:40:28.564] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:29.076] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:29.077] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:29.077]     Point: (50, 50)
+[16:40:29.077]     Point: (1950, 50)
+[16:40:29.077]     Point: (1950, 1400)
+[16:40:29.077]     Point: (50, 1400)
+[16:40:29.077] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:29.591] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:29.592] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:29.592]     Point: (50, 50)
+[16:40:29.592]     Point: (1950, 50)
+[16:40:29.592]     Point: (1950, 1400)
+[16:40:29.593]     Point: (50, 1400)
+[16:40:29.593] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:30.102] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:30.103] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:30.103]     Point: (50, 50)
+[16:40:30.103]     Point: (1950, 50)
+[16:40:30.103]     Point: (1950, 1400)
+[16:40:30.103]     Point: (50, 1400)
+[16:40:30.104] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:30.600] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:30.600] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:30.600]     Point: (50, 50)
+[16:40:30.600]     Point: (1950, 50)
+[16:40:30.600]     Point: (1950, 1400)
+[16:40:30.600]     Point: (50, 1400)
+[16:40:30.601] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:31.162] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:31.163] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:31.163]     Point: (50, 50)
+[16:40:31.163]     Point: (1950, 50)
+[16:40:31.163]     Point: (1950, 1400)
+[16:40:31.163]     Point: (50, 1400)
+[16:40:31.163] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:31.660] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:31.660] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:31.660]     Point: (50, 50)
+[16:40:31.660]     Point: (1950, 50)
+[16:40:31.661]     Point: (1950, 1400)
+[16:40:31.661]     Point: (50, 1400)
+[16:40:31.661] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:32.170] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:32.170] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:32.171]     Point: (50, 50)
+[16:40:32.171]     Point: (1950, 50)
+[16:40:32.171]     Point: (1950, 1400)
+[16:40:32.171]     Point: (50, 1400)
+[16:40:32.171] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:32.674] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:32.675] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:32.675]     Point: (50, 50)
+[16:40:32.675]     Point: (1950, 50)
+[16:40:32.675]     Point: (1950, 1400)
+[16:40:32.675]     Point: (50, 1400)
+[16:40:32.676] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:33.181] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:33.182] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:33.182]     Point: (50, 50)
+[16:40:33.182]     Point: (1950, 50)
+[16:40:33.182]     Point: (1950, 1400)
+[16:40:33.183]     Point: (50, 1400)
+[16:40:33.183] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:33.689] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:33.690] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:33.690]     Point: (50, 50)
+[16:40:33.690]     Point: (1950, 50)
+[16:40:33.690]     Point: (1950, 1400)
+[16:40:33.691]     Point: (50, 1400)
+[16:40:33.691] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:34.200] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:34.200] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:34.200]     Point: (50, 50)
+[16:40:34.201]     Point: (1950, 50)
+[16:40:34.201]     Point: (1950, 1400)
+[16:40:34.201]     Point: (50, 1400)
+[16:40:34.201] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:34.728] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:34.728] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:34.728]     Point: (50, 50)
+[16:40:34.728]     Point: (1950, 50)
+[16:40:34.728]     Point: (1950, 1400)
+[16:40:34.729]     Point: (50, 1400)
+[16:40:34.729] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:35.250] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:35.250] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:35.250]     Point: (50, 50)
+[16:40:35.251]     Point: (1950, 50)
+[16:40:35.251]     Point: (1950, 1400)
+[16:40:35.251]     Point: (50, 1400)
+[16:40:35.251] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:35.768] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:35.769] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:35.769]     Point: (50, 50)
+[16:40:35.770]     Point: (1950, 50)
+[16:40:35.770]     Point: (1950, 1400)
+[16:40:35.771]     Point: (50, 1400)
+[16:40:35.771] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:36.296] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:36.297] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:36.297]     Point: (50, 50)
+[16:40:36.298]     Point: (1950, 50)
+[16:40:36.298]     Point: (1950, 1400)
+[16:40:36.298]     Point: (50, 1400)
+[16:40:36.298] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:36.809] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:36.809] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:36.810]     Point: (50, 50)
+[16:40:36.811]     Point: (1950, 50)
+[16:40:36.811]     Point: (1950, 1400)
+[16:40:36.811]     Point: (50, 1400)
+[16:40:36.812] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:37.347] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:37.348] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:37.348]     Point: (50, 50)
+[16:40:37.348]     Point: (1950, 50)
+[16:40:37.349]     Point: (1950, 1400)
+[16:40:37.349]     Point: (50, 1400)
+[16:40:37.350] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:37.855] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:37.856] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:37.856]     Point: (50, 50)
+[16:40:37.856]     Point: (1950, 50)
+[16:40:37.857]     Point: (1950, 1400)
+[16:40:37.857]     Point: (50, 1400)
+[16:40:37.857] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:38.382] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:38.382] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:38.383]     Point: (50, 50)
+[16:40:38.383]     Point: (1950, 50)
+[16:40:38.383]     Point: (1950, 1400)
+[16:40:38.383]     Point: (50, 1400)
+[16:40:38.384] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:38.902] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:38.902] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:38.903]     Point: (50, 50)
+[16:40:38.903]     Point: (1950, 50)
+[16:40:38.903]     Point: (1950, 1400)
+[16:40:38.904]     Point: (50, 1400)
+[16:40:38.904] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:39.424] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:39.425] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:39.425]     Point: (50, 50)
+[16:40:39.426]     Point: (1950, 50)
+[16:40:39.426]     Point: (1950, 1400)
+[16:40:39.426]     Point: (50, 1400)
+[16:40:39.427] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:39.937] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:39.938] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:39.938]     Point: (50, 50)
+[16:40:39.938]     Point: (1950, 50)
+[16:40:39.939]     Point: (1950, 1400)
+[16:40:39.939]     Point: (50, 1400)
+[16:40:39.939] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:40.452] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:40.452] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:40.452]     Point: (50, 50)
+[16:40:40.452]     Point: (1950, 50)
+[16:40:40.452]     Point: (1950, 1400)
+[16:40:40.453]     Point: (50, 1400)
+[16:40:40.453] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:40.966] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:40.967] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:40.967]     Point: (50, 50)
+[16:40:40.968]     Point: (1950, 50)
+[16:40:40.968]     Point: (1950, 1400)
+[16:40:40.968]     Point: (50, 1400)
+[16:40:40.969] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:41.475] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:41.475] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:41.476]     Point: (50, 50)
+[16:40:41.476]     Point: (1950, 50)
+[16:40:41.477]     Point: (1950, 1400)
+[16:40:41.477]     Point: (50, 1400)
+[16:40:41.477] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:41.977] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:41.978] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:41.978]     Point: (50, 50)
+[16:40:41.979]     Point: (1950, 50)
+[16:40:41.979]     Point: (1950, 1400)
+[16:40:41.979]     Point: (50, 1400)
+[16:40:41.980] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:42.491] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:42.492] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:42.492]     Point: (50, 50)
+[16:40:42.492]     Point: (1950, 50)
+[16:40:42.493]     Point: (1950, 1400)
+[16:40:42.493]     Point: (50, 1400)
+[16:40:42.493] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:43.002] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:43.002] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:43.003]     Point: (50, 50)
+[16:40:43.003]     Point: (1950, 50)
+[16:40:43.004]     Point: (1950, 1400)
+[16:40:43.004]     Point: (50, 1400)
+[16:40:43.004] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:43.507] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:43.507] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:43.508]     Point: (50, 50)
+[16:40:43.508]     Point: (1950, 50)
+[16:40:43.509]     Point: (1950, 1400)
+[16:40:43.509]     Point: (50, 1400)
+[16:40:43.510] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:44.012] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:44.013] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:44.013]     Point: (50, 50)
+[16:40:44.013]     Point: (1950, 50)
+[16:40:44.013]     Point: (1950, 1400)
+[16:40:44.014]     Point: (50, 1400)
+[16:40:44.014] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:44.533] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:44.534] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:44.534]     Point: (50, 50)
+[16:40:44.535]     Point: (1950, 50)
+[16:40:44.535]     Point: (1950, 1400)
+[16:40:44.535]     Point: (50, 1400)
+[16:40:44.536] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:45.041] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:45.041] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:45.042]     Point: (50, 50)
+[16:40:45.042]     Point: (1950, 50)
+[16:40:45.042]     Point: (1950, 1400)
+[16:40:45.043]     Point: (50, 1400)
+[16:40:45.043] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:45.560] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:45.561] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:45.561]     Point: (50, 50)
+[16:40:45.561]     Point: (1950, 50)
+[16:40:45.562]     Point: (1950, 1400)
+[16:40:45.562]     Point: (50, 1400)
+[16:40:45.563] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:46.073] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:46.075] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:46.075]     Point: (50, 50)
+[16:40:46.077]     Point: (1950, 50)
+[16:40:46.077]     Point: (1950, 1400)
+[16:40:46.077]     Point: (50, 1400)
+[16:40:46.077] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:46.587] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:46.587] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:46.587]     Point: (50, 50)
+[16:40:46.588]     Point: (1950, 50)
+[16:40:46.588]     Point: (1950, 1400)
+[16:40:46.588]     Point: (50, 1400)
+[16:40:46.588] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:47.085] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:47.086] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:47.087]     Point: (50, 50)
+[16:40:47.087]     Point: (1950, 50)
+[16:40:47.087]     Point: (1950, 1400)
+[16:40:47.088]     Point: (50, 1400)
+[16:40:47.088] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:47.604] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:47.604] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:47.604]     Point: (50, 50)
+[16:40:47.605]     Point: (1950, 50)
+[16:40:47.605]     Point: (1950, 1400)
+[16:40:47.605]     Point: (50, 1400)
+[16:40:47.606] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:48.116] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:48.117] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:48.117]     Point: (50, 50)
+[16:40:48.118]     Point: (1950, 50)
+[16:40:48.118]     Point: (1950, 1400)
+[16:40:48.119]     Point: (50, 1400)
+[16:40:48.119] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:48.633] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:48.633] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:48.633]     Point: (50, 50)
+[16:40:48.633]     Point: (1950, 50)
+[16:40:48.634]     Point: (1950, 1400)
+[16:40:48.634]     Point: (50, 1400)
+[16:40:48.635] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:49.148] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:49.149] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:49.149]     Point: (50, 50)
+[16:40:49.149]     Point: (1950, 50)
+[16:40:49.150]     Point: (1950, 1400)
+[16:40:49.150]     Point: (50, 1400)
+[16:40:49.150] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:49.677] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:49.678] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:49.678]     Point: (50, 50)
+[16:40:49.678]     Point: (1950, 50)
+[16:40:49.679]     Point: (1950, 1400)
+[16:40:49.679]     Point: (50, 1400)
+[16:40:49.680] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:50.188] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:50.189] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:50.189]     Point: (50, 50)
+[16:40:50.190]     Point: (1950, 50)
+[16:40:50.190]     Point: (1950, 1400)
+[16:40:50.191]     Point: (50, 1400)
+[16:40:50.191] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:50.705] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:50.705] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:50.705]     Point: (50, 50)
+[16:40:50.706]     Point: (1950, 50)
+[16:40:50.706]     Point: (1950, 1400)
+[16:40:50.706]     Point: (50, 1400)
+[16:40:50.707] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:51.209] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:51.210] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:51.211]     Point: (50, 50)
+[16:40:51.211]     Point: (1950, 50)
+[16:40:51.211]     Point: (1950, 1400)
+[16:40:51.212]     Point: (50, 1400)
+[16:40:51.212] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:51.728] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:51.730] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:51.731]     Point: (50, 50)
+[16:40:51.731]     Point: (1950, 50)
+[16:40:51.731]     Point: (1950, 1400)
+[16:40:51.731]     Point: (50, 1400)
+[16:40:51.731] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:52.246] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:52.247] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:52.247]     Point: (50, 50)
+[16:40:52.248]     Point: (1950, 50)
+[16:40:52.248]     Point: (1950, 1400)
+[16:40:52.248]     Point: (50, 1400)
+[16:40:52.248] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:52.764] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:52.765] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:52.765]     Point: (50, 50)
+[16:40:52.765]     Point: (1950, 50)
+[16:40:52.766]     Point: (1950, 1400)
+[16:40:52.766]     Point: (50, 1400)
+[16:40:52.766] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:53.281] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:53.281] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:53.282]     Point: (50, 50)
+[16:40:53.282]     Point: (1950, 50)
+[16:40:53.283]     Point: (1950, 1400)
+[16:40:53.283]     Point: (50, 1400)
+[16:40:53.283] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:53.797] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:53.797] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:53.797]     Point: (50, 50)
+[16:40:53.798]     Point: (1950, 50)
+[16:40:53.798]     Point: (1950, 1400)
+[16:40:53.798]     Point: (50, 1400)
+[16:40:53.799] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:54.306] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:54.307] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:54.307]     Point: (50, 50)
+[16:40:54.308]     Point: (1950, 50)
+[16:40:54.308]     Point: (1950, 1400)
+[16:40:54.308]     Point: (50, 1400)
+[16:40:54.309] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:54.820] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:54.821] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:54.821]     Point: (50, 50)
+[16:40:54.821]     Point: (1950, 50)
+[16:40:54.821]     Point: (1950, 1400)
+[16:40:54.822]     Point: (50, 1400)
+[16:40:54.822] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:55.335] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:55.336] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:55.336]     Point: (50, 50)
+[16:40:55.337]     Point: (1950, 50)
+[16:40:55.337]     Point: (1950, 1400)
+[16:40:55.337]     Point: (50, 1400)
+[16:40:55.338] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:55.855] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:55.856] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:55.856]     Point: (50, 50)
+[16:40:55.856]     Point: (1950, 50)
+[16:40:55.856]     Point: (1950, 1400)
+[16:40:55.857]     Point: (50, 1400)
+[16:40:55.857] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:56.369] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:56.370] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:56.370]     Point: (50, 50)
+[16:40:56.371]     Point: (1950, 50)
+[16:40:56.371]     Point: (1950, 1400)
+[16:40:56.372]     Point: (50, 1400)
+[16:40:56.372] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:56.887] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:56.887] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:56.887]     Point: (50, 50)
+[16:40:56.887]     Point: (1950, 50)
+[16:40:56.887]     Point: (1950, 1400)
+[16:40:56.887]     Point: (50, 1400)
+[16:40:56.888] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:57.399] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:57.399] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:57.400]     Point: (50, 50)
+[16:40:57.400]     Point: (1950, 50)
+[16:40:57.400]     Point: (1950, 1400)
+[16:40:57.400]     Point: (50, 1400)
+[16:40:57.401] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:57.934] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:57.934] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:57.935]     Point: (50, 50)
+[16:40:57.935]     Point: (1950, 50)
+[16:40:57.936]     Point: (1950, 1400)
+[16:40:57.936]     Point: (50, 1400)
+[16:40:57.936] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:58.453] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:58.453] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:58.454]     Point: (50, 50)
+[16:40:58.454]     Point: (1950, 50)
+[16:40:58.454]     Point: (1950, 1400)
+[16:40:58.455]     Point: (50, 1400)
+[16:40:58.455] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:58.966] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:58.967] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:58.967]     Point: (50, 50)
+[16:40:58.967]     Point: (1950, 50)
+[16:40:58.967]     Point: (1950, 1400)
+[16:40:58.968]     Point: (50, 1400)
+[16:40:58.968] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:40:59.481] [SpatialRenderer] RenderZones called, zone count: 1
+[16:40:59.482] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:40:59.482]     Point: (50, 50)
+[16:40:59.483]     Point: (1950, 50)
+[16:40:59.483]     Point: (1950, 1400)
+[16:40:59.483]     Point: (50, 1400)
+[16:40:59.484] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:41:00.002] [SpatialRenderer] RenderZones called, zone count: 1
+[16:41:00.002] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:41:00.003]     Point: (50, 50)
+[16:41:00.003]     Point: (1950, 50)
+[16:41:00.003]     Point: (1950, 1400)
+[16:41:00.004]     Point: (50, 1400)
+[16:41:00.004] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:41:00.512] [SpatialRenderer] RenderZones called, zone count: 1
+[16:41:00.513] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:41:00.513]     Point: (50, 50)
+[16:41:00.513]     Point: (1950, 50)
+[16:41:00.513]     Point: (1950, 1400)
+[16:41:00.513]     Point: (50, 1400)
+[16:41:00.514] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:41:01.028] [SpatialRenderer] RenderZones called, zone count: 1
+[16:41:01.029] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:41:01.029]     Point: (50, 50)
+[16:41:01.029]     Point: (1950, 50)
+[16:41:01.029]     Point: (1950, 1400)
+[16:41:01.030]     Point: (50, 1400)
+[16:41:01.030] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:41:01.537] [SpatialRenderer] RenderZones called, zone count: 1
+[16:41:01.538] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:41:01.538]     Point: (50, 50)
+[16:41:01.539]     Point: (1950, 50)
+[16:41:01.539]     Point: (1950, 1400)
+[16:41:01.539]     Point: (50, 1400)
+[16:41:01.539] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:41:02.129] [SpatialRenderer] RenderZones called, zone count: 1
+[16:41:02.129] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:41:02.130]     Point: (50, 50)
+[16:41:02.130]     Point: (1950, 50)
+[16:41:02.130]     Point: (1950, 1400)
+[16:41:02.130]     Point: (50, 1400)
+[16:41:02.131] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:41:02.643] [SpatialRenderer] RenderZones called, zone count: 1
+[16:41:02.643] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:41:02.643]     Point: (50, 50)
+[16:41:02.644]     Point: (1950, 50)
+[16:41:02.644]     Point: (1950, 1400)
+[16:41:02.644]     Point: (50, 1400)
+[16:41:02.644] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:41:03.299] [SpatialRenderer] RenderZones called, zone count: 1
+[16:41:03.299] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:41:03.299]     Point: (50, 50)
+[16:41:03.299]     Point: (1950, 50)
+[16:41:03.299]     Point: (1950, 1400)
+[16:41:03.300]     Point: (50, 1400)
+[16:41:03.300] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:41:03.814] [SpatialRenderer] RenderZones called, zone count: 1
+[16:41:03.814] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:41:03.814]     Point: (50, 50)
+[16:41:03.814]     Point: (1950, 50)
+[16:41:03.814]     Point: (1950, 1400)
+[16:41:03.815]     Point: (50, 1400)
+[16:41:03.815] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas
+[16:41:04.327] [SpatialRenderer] RenderZones called, zone count: 1
+[16:41:04.327] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone' with 4 points
+[16:41:04.327]     Point: (50, 50)
+[16:41:04.327]     Point: (1950, 50)
+[16:41:04.327]     Point: (1950, 1400)
+[16:41:04.328]     Point: (50, 1400)
+[16:41:04.328] [SpatialRenderer] Zone 'Warehouse Zone' added to canvas

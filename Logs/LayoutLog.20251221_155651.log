@@ -1,0 +1,1675 @@
+=== LayoutEditor Debug Log Started at 12/21/2025 3:56:51 PM ===
+[15:56:51.789] DrawZones called, zone count: 0
+[15:56:51.797] MainWindow constructor completed successfully
+[15:56:51.798] Window should be visible now
+[15:57:02.112] DrawZones called, zone count: 1
+[15:57:02.113] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:02.114]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:02.114]   Polygon zone added with 4 points
+[15:57:06.916] === HitTest START at (457.8, 1495.1), frictionless=False, design=False ===
+[15:57:06.917] Checking node terminals...
+[15:57:06.920] Checking GuidedTransport layer, visible=True
+[15:57:06.920] Checking AGV stations (count=5)...
+[15:57:06.921] HitTestAGVStations at (457.8, 1495.1), designMode=False, radius=15
+[15:57:06.921] Checking 5 AGV stations
+[15:57:06.921]   Station 'AGV Station 1' at (50.0, 100.0), distance=1453.5
+[15:57:06.921]   Station 'AGV Station 2' at (1950.0, 100.0), distance=2042.8
+[15:57:06.922]   Station 'AGV Station 3' at (50.0, 200.0), distance=1357.8
+[15:57:06.922]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1975.8
+[15:57:06.922]   Station 'AGV Station 5' at (50.0, 300.0), distance=1262.8
+[15:57:06.922]   No AGV station within hit radius
+[15:57:06.922] No AGV station hit
+[15:57:06.924] >>> CLICK RESULT: Hit type = Canvas at (457.8, 1495.1)
+[15:57:06.925]     FrictionlessMode=False, DesignMode=False
+[15:57:06.941] DrawZones called, zone count: 1
+[15:57:06.942] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:06.942]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:06.942]   Polygon zone added with 4 points
+[15:57:06.959] DrawZones called, zone count: 1
+[15:57:06.959] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:06.959]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:06.960]   Polygon zone added with 4 points
+[15:57:07.342] DrawZones called, zone count: 1
+[15:57:07.342] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:07.342]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:07.343]   Polygon zone added with 4 points
+[15:57:13.431] === HitTest START at (1873.5, 52.9), frictionless=False, design=False ===
+[15:57:13.431] Checking node terminals...
+[15:57:13.431] Checking GuidedTransport layer, visible=True
+[15:57:13.431] Checking AGV stations (count=5)...
+[15:57:13.431] HitTestAGVStations at (1873.5, 52.9), designMode=False, radius=15
+[15:57:13.432] Checking 5 AGV stations
+[15:57:13.432]   Station 'AGV Station 1' at (50.0, 100.0), distance=1824.1
+[15:57:13.432]   Station 'AGV Station 2' at (1950.0, 100.0), distance=89.9
+[15:57:13.432]   Station 'AGV Station 3' at (50.0, 200.0), distance=1829.4
+[15:57:13.433]   Station 'AGV Station 4' at (1950.0, 200.0), distance=165.8
+[15:57:13.433]   Station 'AGV Station 5' at (50.0, 300.0), distance=1840.1
+[15:57:13.433]   No AGV station within hit radius
+[15:57:13.433] No AGV station hit
+[15:57:13.434] >>> CLICK RESULT: Hit type = Canvas at (1873.5, 52.9)
+[15:57:13.434]     FrictionlessMode=False, DesignMode=False
+[15:57:13.441] DrawZones called, zone count: 1
+[15:57:13.441] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:13.441]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:13.441]   Polygon zone added with 4 points
+[15:57:13.447] DrawZones called, zone count: 1
+[15:57:13.447] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:13.447]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:13.448]   Polygon zone added with 4 points
+[15:57:13.575] DrawZones called, zone count: 1
+[15:57:13.575] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:13.575]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:13.575]   Polygon zone added with 4 points
+[15:57:13.992] === HitTest START at (1930.1, 45.5), frictionless=False, design=False ===
+[15:57:13.993] Checking node terminals...
+[15:57:13.993] Checking GuidedTransport layer, visible=True
+[15:57:13.993] Checking AGV stations (count=5)...
+[15:57:13.994] HitTestAGVStations at (1930.1, 45.5), designMode=False, radius=15
+[15:57:13.994] Checking 5 AGV stations
+[15:57:13.994]   Station 'AGV Station 1' at (50.0, 100.0), distance=1880.9
+[15:57:13.994]   Station 'AGV Station 2' at (1950.0, 100.0), distance=58.0
+[15:57:13.994]   Station 'AGV Station 3' at (50.0, 200.0), distance=1886.5
+[15:57:13.994]   Station 'AGV Station 4' at (1950.0, 200.0), distance=155.7
+[15:57:13.995]   Station 'AGV Station 5' at (50.0, 300.0), distance=1897.3
+[15:57:13.995]   No AGV station within hit radius
+[15:57:13.995] No AGV station hit
+[15:57:13.995] >>> CLICK RESULT: Hit type = Canvas at (1930.1, 45.5)
+[15:57:13.995]     FrictionlessMode=False, DesignMode=False
+[15:57:14.002] DrawZones called, zone count: 1
+[15:57:14.002] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:14.002]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:14.002]   Polygon zone added with 4 points
+[15:57:14.009] DrawZones called, zone count: 1
+[15:57:14.009] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:14.009]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:14.010]   Polygon zone added with 4 points
+[15:57:14.142] DrawZones called, zone count: 1
+[15:57:14.143] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:14.143]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:14.143]   Polygon zone added with 4 points
+[15:57:14.437] === HitTest START at (1932.8, 52.2), frictionless=False, design=False ===
+[15:57:14.438] Checking node terminals...
+[15:57:14.438] Checking GuidedTransport layer, visible=True
+[15:57:14.438] Checking AGV stations (count=5)...
+[15:57:14.438] HitTestAGVStations at (1932.8, 52.2), designMode=False, radius=15
+[15:57:14.439] Checking 5 AGV stations
+[15:57:14.439]   Station 'AGV Station 1' at (50.0, 100.0), distance=1883.4
+[15:57:14.439]   Station 'AGV Station 2' at (1950.0, 100.0), distance=50.8
+[15:57:14.439]   Station 'AGV Station 3' at (50.0, 200.0), distance=1888.6
+[15:57:14.439]   Station 'AGV Station 4' at (1950.0, 200.0), distance=148.8
+[15:57:14.439]   Station 'AGV Station 5' at (50.0, 300.0), distance=1899.0
+[15:57:14.440]   No AGV station within hit radius
+[15:57:14.440] No AGV station hit
+[15:57:14.440] >>> CLICK RESULT: Hit type = Canvas at (1932.8, 52.2)
+[15:57:14.440]     FrictionlessMode=False, DesignMode=False
+[15:57:14.445] DrawZones called, zone count: 1
+[15:57:14.446] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:14.446]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:14.446]   Polygon zone added with 4 points
+[15:57:14.452] DrawZones called, zone count: 1
+[15:57:14.453] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:14.453]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:14.453]   Polygon zone added with 4 points
+[15:57:14.523] DrawZones called, zone count: 1
+[15:57:14.523] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:14.523]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:14.523]   Polygon zone added with 4 points
+[15:57:15.670] DrawZones called, zone count: 1
+[15:57:15.670] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:15.671]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:15.671]   Polygon zone added with 4 points
+[15:57:16.146] DrawZones called, zone count: 1
+[15:57:16.146] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:16.146]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:16.147]   Polygon zone added with 4 points
+[15:57:16.800] DrawZones called, zone count: 1
+[15:57:16.801] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:16.801]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:16.801]   Polygon zone added with 4 points
+[15:57:17.320] DrawZones called, zone count: 1
+[15:57:17.320] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:17.320]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:17.321]   Polygon zone added with 4 points
+[15:57:17.874] DrawZones called, zone count: 1
+[15:57:17.874] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:17.874]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:17.875]   Polygon zone added with 4 points
+[15:57:18.498] DrawZones called, zone count: 1
+[15:57:18.498] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:18.498]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:18.499]   Polygon zone added with 4 points
+[15:57:19.213] DrawZones called, zone count: 1
+[15:57:19.213] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:19.213]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:19.213]   Polygon zone added with 4 points
+[15:57:19.713] DrawZones called, zone count: 1
+[15:57:19.713] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:19.713]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:19.713]   Polygon zone added with 4 points
+[15:57:20.257] DrawZones called, zone count: 1
+[15:57:20.257] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:20.258]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:20.258]   Polygon zone added with 4 points
+[15:57:20.361] === HitTest START at (1234.8, 1389.8), frictionless=False, design=True ===
+[15:57:20.362] Checking node terminals...
+[15:57:20.362] Checking GuidedTransport layer, visible=True
+[15:57:20.362] Checking AGV stations (count=5)...
+[15:57:20.362] HitTestAGVStations at (1234.8, 1389.8), designMode=True, radius=25
+[15:57:20.362] Checking 5 AGV stations
+[15:57:20.362]   Station 'AGV Station 1' at (50.0, 100.0), distance=1751.4
+[15:57:20.363]   Station 'AGV Station 2' at (1950.0, 100.0), distance=1474.8
+[15:57:20.363]   Station 'AGV Station 3' at (50.0, 200.0), distance=1679.1
+[15:57:20.363]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1388.2
+[15:57:20.363]   Station 'AGV Station 5' at (50.0, 300.0), distance=1609.8
+[15:57:20.363]   No AGV station within hit radius
+[15:57:20.363] No AGV station hit
+[15:57:20.364] >>> CLICK RESULT: Hit type = Canvas at (1234.8, 1389.8)
+[15:57:20.364]     FrictionlessMode=False, DesignMode=True
+[15:57:20.370] DrawZones called, zone count: 1
+[15:57:20.370] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:20.370]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:20.371]   Polygon zone added with 4 points
+[15:57:20.379] DrawZones called, zone count: 1
+[15:57:20.386] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:20.386]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:20.386]   Polygon zone added with 4 points
+[15:57:20.483] DrawZones called, zone count: 1
+[15:57:20.484] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:20.484]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:20.484]   Polygon zone added with 4 points
+[15:57:20.759] DrawZones called, zone count: 1
+[15:57:20.760] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:20.760]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:20.760]   Polygon zone added with 4 points
+[15:57:20.802] === HitTest START at (1230.8, 1397.8), frictionless=False, design=True ===
+[15:57:20.803] Checking node terminals...
+[15:57:20.803] Checking GuidedTransport layer, visible=True
+[15:57:20.803] Checking AGV stations (count=5)...
+[15:57:20.803] HitTestAGVStations at (1230.8, 1397.8), designMode=True, radius=25
+[15:57:20.803] Checking 5 AGV stations
+[15:57:20.804]   Station 'AGV Station 1' at (50.0, 100.0), distance=1754.6
+[15:57:20.804]   Station 'AGV Station 2' at (1950.0, 100.0), distance=1483.8
+[15:57:20.804]   Station 'AGV Station 3' at (50.0, 200.0), distance=1682.0
+[15:57:20.804]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1397.1
+[15:57:20.804]   Station 'AGV Station 5' at (50.0, 300.0), distance=1612.3
+[15:57:20.804]   No AGV station within hit radius
+[15:57:20.805] No AGV station hit
+[15:57:20.805] >>> CLICK RESULT: Hit type = Canvas at (1230.8, 1397.8)
+[15:57:20.805]     FrictionlessMode=False, DesignMode=True
+[15:57:20.813] DrawZones called, zone count: 1
+[15:57:20.813] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:20.813]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:20.813]   Polygon zone added with 4 points
+[15:57:20.820] DrawZones called, zone count: 1
+[15:57:20.820] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:20.820]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:20.820]   Polygon zone added with 4 points
+[15:57:21.261] DrawZones called, zone count: 1
+[15:57:21.261] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:21.262]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:21.262]   Polygon zone added with 4 points
+[15:57:21.321] DrawZones called, zone count: 1
+[15:57:21.321] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:21.322]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:21.322]   Polygon zone added with 4 points
+[15:57:21.778] DrawZones called, zone count: 1
+[15:57:21.778] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:21.778]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:21.779]   Polygon zone added with 4 points
+[15:57:22.808] DrawZones called, zone count: 1
+[15:57:22.809] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:22.809]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:22.809]   Polygon zone added with 4 points
+[15:57:23.325] DrawZones called, zone count: 1
+[15:57:23.326] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:23.326]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:23.327]   Polygon zone added with 4 points
+[15:57:23.855] DrawZones called, zone count: 1
+[15:57:23.856] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:23.856]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:23.856]   Polygon zone added with 4 points
+[15:57:23.900] === HitTest START at (53.2, 1389.1), frictionless=False, design=True ===
+[15:57:23.900] Checking node terminals...
+[15:57:23.900] Checking GuidedTransport layer, visible=True
+[15:57:23.901] Checking AGV stations (count=5)...
+[15:57:23.901] HitTestAGVStations at (53.2, 1389.1), designMode=True, radius=25
+[15:57:23.901] Checking 5 AGV stations
+[15:57:23.901]   Station 'AGV Station 1' at (50.0, 100.0), distance=1289.1
+[15:57:23.901]   Station 'AGV Station 2' at (1950.0, 100.0), distance=2293.4
+[15:57:23.902]   Station 'AGV Station 3' at (50.0, 200.0), distance=1189.1
+[15:57:23.902]   Station 'AGV Station 4' at (1950.0, 200.0), distance=2238.7
+[15:57:23.902]   Station 'AGV Station 5' at (50.0, 300.0), distance=1089.1
+[15:57:23.902]   No AGV station within hit radius
+[15:57:23.902] No AGV station hit
+[15:57:23.903] >>> CLICK RESULT: Hit type = Canvas at (53.2, 1389.1)
+[15:57:23.903]     FrictionlessMode=False, DesignMode=True
+[15:57:23.913] DrawZones called, zone count: 1
+[15:57:23.913] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:23.913]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:23.913]   Polygon zone added with 4 points
+[15:57:23.923] DrawZones called, zone count: 1
+[15:57:23.923] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:23.923]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:23.923]   Polygon zone added with 4 points
+[15:57:24.074] DrawZones called, zone count: 1
+[15:57:24.075] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:24.075]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:24.076]   Polygon zone added with 4 points
+[15:57:24.372] DrawZones called, zone count: 1
+[15:57:24.373] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:24.373]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:24.373]   Polygon zone added with 4 points
+[15:57:24.456] === HitTest START at (43.2, 1393.8), frictionless=False, design=True ===
+[15:57:24.456] Checking node terminals...
+[15:57:24.457] Checking GuidedTransport layer, visible=True
+[15:57:24.457] Checking AGV stations (count=5)...
+[15:57:24.457] HitTestAGVStations at (43.2, 1393.8), designMode=True, radius=25
+[15:57:24.457] Checking 5 AGV stations
+[15:57:24.457]   Station 'AGV Station 1' at (50.0, 100.0), distance=1293.8
+[15:57:24.458]   Station 'AGV Station 2' at (1950.0, 100.0), distance=2304.3
+[15:57:24.458]   Station 'AGV Station 3' at (50.0, 200.0), distance=1193.8
+[15:57:24.458]   Station 'AGV Station 4' at (1950.0, 200.0), distance=2249.7
+[15:57:24.458]   Station 'AGV Station 5' at (50.0, 300.0), distance=1093.8
+[15:57:24.458]   No AGV station within hit radius
+[15:57:24.459] No AGV station hit
+[15:57:24.459] >>> CLICK RESULT: Hit type = Canvas at (43.2, 1393.8)
+[15:57:24.459]     FrictionlessMode=False, DesignMode=True
+[15:57:24.466] DrawZones called, zone count: 1
+[15:57:24.466] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:24.467]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:24.467]   Polygon zone added with 4 points
+[15:57:24.476] DrawZones called, zone count: 1
+[15:57:24.476] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:24.477]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:24.477]   Polygon zone added with 4 points
+[15:57:24.550] DrawZones called, zone count: 1
+[15:57:24.550] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:24.551]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:24.551]   Polygon zone added with 4 points
+[15:57:24.883] DrawZones called, zone count: 1
+[15:57:24.883] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:24.884]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:24.884]   Polygon zone added with 4 points
+[15:57:24.910] === HitTest START at (47.2, 1395.1), frictionless=False, design=True ===
+[15:57:24.911] Checking node terminals...
+[15:57:24.911] Checking GuidedTransport layer, visible=True
+[15:57:24.911] Checking AGV stations (count=5)...
+[15:57:24.911] HitTestAGVStations at (47.2, 1395.1), designMode=True, radius=25
+[15:57:24.912] Checking 5 AGV stations
+[15:57:24.912]   Station 'AGV Station 1' at (50.0, 100.0), distance=1295.1
+[15:57:24.912]   Station 'AGV Station 2' at (1950.0, 100.0), distance=2301.8
+[15:57:24.912]   Station 'AGV Station 3' at (50.0, 200.0), distance=1195.1
+[15:57:24.912]   Station 'AGV Station 4' at (1950.0, 200.0), distance=2247.0
+[15:57:24.913]   Station 'AGV Station 5' at (50.0, 300.0), distance=1095.1
+[15:57:24.913]   No AGV station within hit radius
+[15:57:24.913] No AGV station hit
+[15:57:24.914] >>> CLICK RESULT: Hit type = Canvas at (47.2, 1395.1)
+[15:57:24.914]     FrictionlessMode=False, DesignMode=True
+[15:57:24.921] DrawZones called, zone count: 1
+[15:57:24.922] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:24.922]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:24.922]   Polygon zone added with 4 points
+[15:57:24.932] DrawZones called, zone count: 1
+[15:57:24.932] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:24.932]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:24.933]   Polygon zone added with 4 points
+[15:57:25.080] DrawZones called, zone count: 1
+[15:57:25.080] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:25.080]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:25.081]   Polygon zone added with 4 points
+[15:57:25.383] DrawZones called, zone count: 1
+[15:57:25.383] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:25.383]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:25.383]   Polygon zone added with 4 points
+[15:57:25.896] DrawZones called, zone count: 1
+[15:57:25.897] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:25.898]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:25.900]   Polygon zone added with 4 points
+[15:57:26.424] DrawZones called, zone count: 1
+[15:57:26.424] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:26.425]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:26.425]   Polygon zone added with 4 points
+[15:57:26.939] DrawZones called, zone count: 1
+[15:57:26.940] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:26.940]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:26.940]   Polygon zone added with 4 points
+[15:57:27.564] DrawZones called, zone count: 1
+[15:57:27.564] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:27.565]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:27.565]   Polygon zone added with 4 points
+[15:57:27.957] === HitTest START at (47.2, 91.5), frictionless=False, design=True ===
+[15:57:27.958] Checking node terminals...
+[15:57:27.958] Checking GuidedTransport layer, visible=True
+[15:57:27.958] Checking AGV stations (count=5)...
+[15:57:27.958] HitTestAGVStations at (47.2, 91.5), designMode=True, radius=25
+[15:57:27.959] Checking 5 AGV stations
+[15:57:27.959]   Station 'AGV Station 1' at (50.0, 100.0), distance=8.9
+[15:57:27.959]   HIT! Returning station 'AGV Station 1'
+[15:57:27.959] HIT: AGV Station 'AGV Station 1'
+[15:57:27.959] >>> CLICK RESULT: Hit type = AGVStation at (47.2, 91.5)
+[15:57:27.961]     FrictionlessMode=False, DesignMode=True
+[15:57:27.968] DrawZones called, zone count: 1
+[15:57:27.969] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:27.969]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:27.969]   Polygon zone added with 4 points
+[15:57:28.078] DrawZones called, zone count: 1
+[15:57:28.078] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.078]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.079]   Polygon zone added with 4 points
+[15:57:28.109] DrawZones called, zone count: 1
+[15:57:28.110] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.110]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.110]   Polygon zone added with 4 points
+[15:57:28.146] DrawZones called, zone count: 1
+[15:57:28.147] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.147]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.147]   Polygon zone added with 4 points
+[15:57:28.183] DrawZones called, zone count: 1
+[15:57:28.184] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.184]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.184]   Polygon zone added with 4 points
+[15:57:28.217] DrawZones called, zone count: 1
+[15:57:28.217] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.217]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.218]   Polygon zone added with 4 points
+[15:57:28.266] DrawZones called, zone count: 1
+[15:57:28.267] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.267]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.267]   Polygon zone added with 4 points
+[15:57:28.295] DrawZones called, zone count: 1
+[15:57:28.295] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.296]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.296]   Polygon zone added with 4 points
+[15:57:28.329] DrawZones called, zone count: 1
+[15:57:28.329] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.330]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.330]   Polygon zone added with 4 points
+[15:57:28.362] DrawZones called, zone count: 1
+[15:57:28.362] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.363]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.363]   Polygon zone added with 4 points
+[15:57:28.599] DrawZones called, zone count: 1
+[15:57:28.599] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.600]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.600]   Polygon zone added with 4 points
+[15:57:28.771] DrawZones called, zone count: 1
+[15:57:28.772] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.772]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.772]   Polygon zone added with 4 points
+[15:57:28.799] DrawZones called, zone count: 1
+[15:57:28.800] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.800]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.801]   Polygon zone added with 4 points
+[15:57:28.833] DrawZones called, zone count: 1
+[15:57:28.834] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.834]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.834]   Polygon zone added with 4 points
+[15:57:28.892] DrawZones called, zone count: 1
+[15:57:28.892] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.892]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.893]   Polygon zone added with 4 points
+[15:57:28.919] DrawZones called, zone count: 1
+[15:57:28.920] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.920]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.920]   Polygon zone added with 4 points
+[15:57:28.949] DrawZones called, zone count: 1
+[15:57:28.949] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.949]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.950]   Polygon zone added with 4 points
+[15:57:28.980] DrawZones called, zone count: 1
+[15:57:28.981] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:28.981]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:28.981]   Polygon zone added with 4 points
+[15:57:29.112] DrawZones called, zone count: 1
+[15:57:29.119] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:29.119]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:29.119]   Polygon zone added with 4 points
+[15:57:29.630] DrawZones called, zone count: 1
+[15:57:29.630] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:29.630]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:29.631]   Polygon zone added with 4 points
+[15:57:30.082] === HitTest START at (62.5, 81.5), frictionless=False, design=True ===
+[15:57:30.083] Checking node terminals...
+[15:57:30.083] Checking GuidedTransport layer, visible=True
+[15:57:30.083] Checking AGV stations (count=5)...
+[15:57:30.083] HitTestAGVStations at (62.5, 81.5), designMode=True, radius=25
+[15:57:30.083] Checking 5 AGV stations
+[15:57:30.084]   Station 'AGV Station 1' at (50.5, 117.5), distance=37.9
+[15:57:30.084]   Station 'AGV Station 2' at (1950.0, 100.0), distance=1887.6
+[15:57:30.084]   Station 'AGV Station 3' at (50.0, 200.0), distance=119.1
+[15:57:30.084]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1891.2
+[15:57:30.084]   Station 'AGV Station 5' at (50.0, 300.0), distance=218.8
+[15:57:30.084]   No AGV station within hit radius
+[15:57:30.084] No AGV station hit
+[15:57:30.085] >>> CLICK RESULT: Hit type = Canvas at (62.5, 81.5)
+[15:57:30.085]     FrictionlessMode=False, DesignMode=True
+[15:57:30.090] DrawZones called, zone count: 1
+[15:57:30.091] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:30.091]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:30.091]   Polygon zone added with 4 points
+[15:57:30.098] DrawZones called, zone count: 1
+[15:57:30.098] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:30.099]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:30.099]   Polygon zone added with 4 points
+[15:57:30.144] DrawZones called, zone count: 1
+[15:57:30.144] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:30.144]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:30.144]   Polygon zone added with 4 points
+[15:57:30.252] DrawZones called, zone count: 1
+[15:57:30.252] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:30.252]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:30.253]   Polygon zone added with 4 points
+[15:57:30.608] === HitTest START at (78.5, 56.9), frictionless=False, design=True ===
+[15:57:30.608] Checking node terminals...
+[15:57:30.609] Checking GuidedTransport layer, visible=True
+[15:57:30.609] Checking AGV stations (count=5)...
+[15:57:30.609] HitTestAGVStations at (78.5, 56.9), designMode=True, radius=25
+[15:57:30.609] Checking 5 AGV stations
+[15:57:30.609]   Station 'AGV Station 1' at (50.5, 117.5), distance=66.8
+[15:57:30.609]   Station 'AGV Station 2' at (1950.0, 100.0), distance=1872.0
+[15:57:30.610]   Station 'AGV Station 3' at (50.0, 200.0), distance=145.9
+[15:57:30.610]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1877.0
+[15:57:30.610]   Station 'AGV Station 5' at (50.0, 300.0), distance=244.8
+[15:57:30.610]   No AGV station within hit radius
+[15:57:30.610] No AGV station hit
+[15:57:30.610] >>> CLICK RESULT: Hit type = Canvas at (78.5, 56.9)
+[15:57:30.610]     FrictionlessMode=False, DesignMode=True
+[15:57:30.618] DrawZones called, zone count: 1
+[15:57:30.618] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:30.618]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:30.618]   Polygon zone added with 4 points
+[15:57:30.630] DrawZones called, zone count: 1
+[15:57:30.631] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:30.631]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:30.631]   Polygon zone added with 4 points
+[15:57:30.692] DrawZones called, zone count: 1
+[15:57:30.692] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:30.692]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:30.693]   Polygon zone added with 4 points
+[15:57:31.087] DrawZones called, zone count: 1
+[15:57:31.087] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:31.087]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:31.087]   Polygon zone added with 4 points
+[15:57:31.298] DrawZones called, zone count: 1
+[15:57:31.298] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:31.298]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:31.298]   Polygon zone added with 4 points
+[15:57:31.468] === HitTest START at (79.2, 47.5), frictionless=False, design=True ===
+[15:57:31.469] Checking node terminals...
+[15:57:31.469] Checking GuidedTransport layer, visible=True
+[15:57:31.469] Checking AGV stations (count=5)...
+[15:57:31.469] HitTestAGVStations at (79.2, 47.5), designMode=True, radius=25
+[15:57:31.469] Checking 5 AGV stations
+[15:57:31.469]   Station 'AGV Station 1' at (50.5, 117.5), distance=75.6
+[15:57:31.470]   Station 'AGV Station 2' at (1950.0, 100.0), distance=1871.6
+[15:57:31.470]   Station 'AGV Station 3' at (50.0, 200.0), distance=155.2
+[15:57:31.470]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1877.0
+[15:57:31.470]   Station 'AGV Station 5' at (50.0, 300.0), distance=254.1
+[15:57:31.470]   No AGV station within hit radius
+[15:57:31.470] No AGV station hit
+[15:57:31.471] >>> CLICK RESULT: Hit type = Canvas at (79.2, 47.5)
+[15:57:31.471]     FrictionlessMode=False, DesignMode=True
+[15:57:31.480] DrawZones called, zone count: 1
+[15:57:31.480] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:31.480]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:31.480]   Polygon zone added with 4 points
+[15:57:31.489] DrawZones called, zone count: 1
+[15:57:31.489] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:31.489]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:31.490]   Polygon zone added with 4 points
+[15:57:31.639] DrawZones called, zone count: 1
+[15:57:31.639] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:31.639]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:31.640]   Polygon zone added with 4 points
+[15:57:31.814] DrawZones called, zone count: 1
+[15:57:31.815] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:31.815]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:31.815]   Polygon zone added with 4 points
+[15:57:31.996] === HitTest START at (76.5, 56.9), frictionless=False, design=True ===
+[15:57:31.996] Checking node terminals...
+[15:57:31.996] Checking GuidedTransport layer, visible=True
+[15:57:31.996] Checking AGV stations (count=5)...
+[15:57:31.997] HitTestAGVStations at (76.5, 56.9), designMode=True, radius=25
+[15:57:31.997] Checking 5 AGV stations
+[15:57:31.997]   Station 'AGV Station 1' at (50.5, 117.5), distance=66.0
+[15:57:31.997]   Station 'AGV Station 2' at (1950.0, 100.0), distance=1874.0
+[15:57:31.997]   Station 'AGV Station 3' at (50.0, 200.0), distance=145.6
+[15:57:31.997]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1879.0
+[15:57:31.998]   Station 'AGV Station 5' at (50.0, 300.0), distance=244.6
+[15:57:31.998]   No AGV station within hit radius
+[15:57:31.998] No AGV station hit
+[15:57:31.998] >>> CLICK RESULT: Hit type = Canvas at (76.5, 56.9)
+[15:57:31.998]     FrictionlessMode=False, DesignMode=True
+[15:57:32.004] DrawZones called, zone count: 1
+[15:57:32.004] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:32.004]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:32.004]   Polygon zone added with 4 points
+[15:57:32.012] DrawZones called, zone count: 1
+[15:57:32.012] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:32.012]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:32.012]   Polygon zone added with 4 points
+[15:57:32.155] DrawZones called, zone count: 1
+[15:57:32.156] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:32.156]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:32.157]   Polygon zone added with 4 points
+[15:57:32.286] === HitTest START at (76.5, 56.9), frictionless=False, design=True ===
+[15:57:32.286] Checking node terminals...
+[15:57:32.286] Checking GuidedTransport layer, visible=True
+[15:57:32.286] Checking AGV stations (count=5)...
+[15:57:32.286] HitTestAGVStations at (76.5, 56.9), designMode=True, radius=25
+[15:57:32.287] Checking 5 AGV stations
+[15:57:32.287]   Station 'AGV Station 1' at (50.5, 117.5), distance=66.0
+[15:57:32.287]   Station 'AGV Station 2' at (1950.0, 100.0), distance=1874.0
+[15:57:32.287]   Station 'AGV Station 3' at (50.0, 200.0), distance=145.6
+[15:57:32.287]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1879.0
+[15:57:32.287]   Station 'AGV Station 5' at (50.0, 300.0), distance=244.6
+[15:57:32.288]   No AGV station within hit radius
+[15:57:32.288] No AGV station hit
+[15:57:32.288] === HitTest START at (76.5, 56.9), frictionless=False, design=True ===
+[15:57:32.288] Checking node terminals...
+[15:57:32.289] Checking GuidedTransport layer, visible=True
+[15:57:32.289] Checking AGV stations (count=5)...
+[15:57:32.289] HitTestAGVStations at (76.5, 56.9), designMode=True, radius=25
+[15:57:32.289] Checking 5 AGV stations
+[15:57:32.289]   Station 'AGV Station 1' at (50.5, 117.5), distance=66.0
+[15:57:32.289]   Station 'AGV Station 2' at (1950.0, 100.0), distance=1874.0
+[15:57:32.289]   Station 'AGV Station 3' at (50.0, 200.0), distance=145.6
+[15:57:32.289]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1879.0
+[15:57:32.290]   Station 'AGV Station 5' at (50.0, 300.0), distance=244.6
+[15:57:32.290]   No AGV station within hit radius
+[15:57:32.290] No AGV station hit
+[15:57:32.290] >>> CLICK RESULT: Hit type = Canvas at (76.5, 56.9)
+[15:57:32.290]     FrictionlessMode=False, DesignMode=True
+[15:57:32.296] DrawZones called, zone count: 1
+[15:57:32.296] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:32.296]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:32.297]   Polygon zone added with 4 points
+[15:57:32.303] DrawZones called, zone count: 1
+[15:57:32.304] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:32.304]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:32.304]   Polygon zone added with 4 points
+[15:57:32.359] DrawZones called, zone count: 1
+[15:57:32.359] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:32.360]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:32.360]   Polygon zone added with 4 points
+[15:57:32.411] DrawZones called, zone count: 1
+[15:57:32.412] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:32.412]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:32.412]   Polygon zone added with 4 points
+[15:57:32.480] === HitTest START at (76.5, 56.9), frictionless=False, design=True ===
+[15:57:32.480] Checking node terminals...
+[15:57:32.480] Checking GuidedTransport layer, visible=True
+[15:57:32.481] Checking AGV stations (count=5)...
+[15:57:32.481] HitTestAGVStations at (76.5, 56.9), designMode=True, radius=25
+[15:57:32.481] Checking 5 AGV stations
+[15:57:32.481]   Station 'AGV Station 1' at (50.5, 117.5), distance=66.0
+[15:57:32.481]   Station 'AGV Station 2' at (1950.0, 100.0), distance=1874.0
+[15:57:32.481]   Station 'AGV Station 3' at (50.0, 200.0), distance=145.6
+[15:57:32.482]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1879.0
+[15:57:32.482]   Station 'AGV Station 5' at (50.0, 300.0), distance=244.6
+[15:57:32.482]   No AGV station within hit radius
+[15:57:32.482] No AGV station hit
+[15:57:32.482] >>> CLICK RESULT: Hit type = Canvas at (76.5, 56.9)
+[15:57:32.482]     FrictionlessMode=False, DesignMode=True
+[15:57:32.490] DrawZones called, zone count: 1
+[15:57:32.490] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:32.490]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:32.491]   Polygon zone added with 4 points
+[15:57:32.500] DrawZones called, zone count: 1
+[15:57:32.501] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:32.501]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:32.501]   Polygon zone added with 4 points
+[15:57:32.570] DrawZones called, zone count: 1
+[15:57:32.570] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:32.571]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:32.571]   Polygon zone added with 4 points
+[15:57:32.875] DrawZones called, zone count: 1
+[15:57:32.875] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:32.875]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:32.875]   Polygon zone added with 4 points
+[15:57:33.397] DrawZones called, zone count: 1
+[15:57:33.397] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:33.397]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:33.398]   Polygon zone added with 4 points
+[15:57:33.903] DrawZones called, zone count: 1
+[15:57:33.904] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:33.904]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:33.904]   Polygon zone added with 4 points
+[15:57:34.423] DrawZones called, zone count: 1
+[15:57:34.424] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:34.424]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:34.425]   Polygon zone added with 4 points
+[15:57:34.942] DrawZones called, zone count: 1
+[15:57:34.942] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:34.943]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:34.943]   Polygon zone added with 4 points
+[15:57:35.458] DrawZones called, zone count: 1
+[15:57:35.458] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:35.459]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:35.459]   Polygon zone added with 4 points
+[15:57:35.976] DrawZones called, zone count: 1
+[15:57:35.976] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:35.977]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:35.977]   Polygon zone added with 4 points
+[15:57:36.484] DrawZones called, zone count: 1
+[15:57:36.484] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:36.485]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:36.485]   Polygon zone added with 4 points
+[15:57:36.998] DrawZones called, zone count: 1
+[15:57:36.998] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:36.998]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:36.999]   Polygon zone added with 4 points
+[15:57:37.522] DrawZones called, zone count: 1
+[15:57:37.522] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:37.523]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:37.523]   Polygon zone added with 4 points
+[15:57:38.044] DrawZones called, zone count: 1
+[15:57:38.044] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:38.045]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:38.045]   Polygon zone added with 4 points
+[15:57:38.572] DrawZones called, zone count: 1
+[15:57:38.573] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:38.573]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:38.573]   Polygon zone added with 4 points
+[15:57:39.100] DrawZones called, zone count: 1
+[15:57:39.101] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:39.101]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:39.102]   Polygon zone added with 4 points
+[15:57:39.611] DrawZones called, zone count: 1
+[15:57:39.612] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:39.612]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:39.613]   Polygon zone added with 4 points
+[15:57:40.127] DrawZones called, zone count: 1
+[15:57:40.127] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:40.127]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:40.128]   Polygon zone added with 4 points
+[15:57:40.642] DrawZones called, zone count: 1
+[15:57:40.642] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:40.643]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:40.643]   Polygon zone added with 4 points
+[15:57:41.155] DrawZones called, zone count: 1
+[15:57:41.155] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:41.156]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:41.156]   Polygon zone added with 4 points
+[15:57:41.666] DrawZones called, zone count: 1
+[15:57:41.666] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:41.667]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:41.667]   Polygon zone added with 4 points
+[15:57:42.252] DrawZones called, zone count: 1
+[15:57:42.252] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:42.253]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:42.253]   Polygon zone added with 4 points
+[15:57:42.760] DrawZones called, zone count: 1
+[15:57:42.761] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:42.761]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:42.761]   Polygon zone added with 4 points
+[15:57:43.264] DrawZones called, zone count: 1
+[15:57:43.264] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:43.264]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:43.265]   Polygon zone added with 4 points
+[15:57:43.774] DrawZones called, zone count: 1
+[15:57:43.774] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:43.775]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:43.775]   Polygon zone added with 4 points
+[15:57:44.273] DrawZones called, zone count: 1
+[15:57:44.273] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:44.274]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:44.274]   Polygon zone added with 4 points
+[15:57:44.771] DrawZones called, zone count: 1
+[15:57:44.771] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:44.771]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:44.771]   Polygon zone added with 4 points
+[15:57:45.306] DrawZones called, zone count: 1
+[15:57:45.306] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:45.306]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:45.307]   Polygon zone added with 4 points
+[15:57:45.801] DrawZones called, zone count: 1
+[15:57:45.802] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:45.802]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:45.802]   Polygon zone added with 4 points
+[15:57:46.095] === HitTest START at (17.8, 548.9), frictionless=False, design=True ===
+[15:57:46.096] Checking node terminals...
+[15:57:46.096] >>> CLICK RESULT: Hit type = Runway at (17.8, 548.9)
+[15:57:46.096]     FrictionlessMode=False, DesignMode=True
+[15:57:46.107] DrawZones called, zone count: 1
+[15:57:46.108] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.108]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.108]   Polygon zone added with 4 points
+[15:57:46.315] DrawZones called, zone count: 1
+[15:57:46.315] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.315]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.315]   Polygon zone added with 4 points
+[15:57:46.348] DrawZones called, zone count: 1
+[15:57:46.348] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.348]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.349]   Polygon zone added with 4 points
+[15:57:46.380] DrawZones called, zone count: 1
+[15:57:46.380] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.381]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.381]   Polygon zone added with 4 points
+[15:57:46.408] DrawZones called, zone count: 1
+[15:57:46.408] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.408]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.409]   Polygon zone added with 4 points
+[15:57:46.437] DrawZones called, zone count: 1
+[15:57:46.437] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.437]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.438]   Polygon zone added with 4 points
+[15:57:46.464] DrawZones called, zone count: 1
+[15:57:46.465] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.465]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.465]   Polygon zone added with 4 points
+[15:57:46.492] DrawZones called, zone count: 1
+[15:57:46.493] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.493]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.493]   Polygon zone added with 4 points
+[15:57:46.518] DrawZones called, zone count: 1
+[15:57:46.518] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.518]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.519]   Polygon zone added with 4 points
+[15:57:46.547] DrawZones called, zone count: 1
+[15:57:46.547] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.548]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.548]   Polygon zone added with 4 points
+[15:57:46.578] DrawZones called, zone count: 1
+[15:57:46.579] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.579]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.579]   Polygon zone added with 4 points
+[15:57:46.637] DrawZones called, zone count: 1
+[15:57:46.637] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.638]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.638]   Polygon zone added with 4 points
+[15:57:46.666] DrawZones called, zone count: 1
+[15:57:46.667] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.667]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.667]   Polygon zone added with 4 points
+[15:57:46.696] DrawZones called, zone count: 1
+[15:57:46.696] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.696]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.696]   Polygon zone added with 4 points
+[15:57:46.722] DrawZones called, zone count: 1
+[15:57:46.723] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.723]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.723]   Polygon zone added with 4 points
+[15:57:46.757] DrawZones called, zone count: 1
+[15:57:46.757] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.757]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.758]   Polygon zone added with 4 points
+[15:57:46.818] DrawZones called, zone count: 1
+[15:57:46.818] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.819]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.819]   Polygon zone added with 4 points
+[15:57:46.933] DrawZones called, zone count: 1
+[15:57:46.934] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.934]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.935]   Polygon zone added with 4 points
+[15:57:46.965] DrawZones called, zone count: 1
+[15:57:46.965] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:46.965]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:46.966]   Polygon zone added with 4 points
+[15:57:46.999] DrawZones called, zone count: 1
+[15:57:46.999] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.000]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.000]   Polygon zone added with 4 points
+[15:57:47.030] DrawZones called, zone count: 1
+[15:57:47.030] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.030]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.030]   Polygon zone added with 4 points
+[15:57:47.061] DrawZones called, zone count: 1
+[15:57:47.062] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.062]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.063]   Polygon zone added with 4 points
+[15:57:47.092] DrawZones called, zone count: 1
+[15:57:47.092] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.092]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.093]   Polygon zone added with 4 points
+[15:57:47.321] DrawZones called, zone count: 1
+[15:57:47.321] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.321]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.322]   Polygon zone added with 4 points
+[15:57:47.545] DrawZones called, zone count: 1
+[15:57:47.545] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.545]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.545]   Polygon zone added with 4 points
+[15:57:47.570] DrawZones called, zone count: 1
+[15:57:47.570] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.571]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.571]   Polygon zone added with 4 points
+[15:57:47.599] DrawZones called, zone count: 1
+[15:57:47.599] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.599]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.599]   Polygon zone added with 4 points
+[15:57:47.623] DrawZones called, zone count: 1
+[15:57:47.624] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.624]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.624]   Polygon zone added with 4 points
+[15:57:47.655] DrawZones called, zone count: 1
+[15:57:47.655] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.655]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.656]   Polygon zone added with 4 points
+[15:57:47.680] DrawZones called, zone count: 1
+[15:57:47.681] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.681]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.681]   Polygon zone added with 4 points
+[15:57:47.706] DrawZones called, zone count: 1
+[15:57:47.713] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.714]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.714]   Polygon zone added with 4 points
+[15:57:47.743] DrawZones called, zone count: 1
+[15:57:47.743] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.744]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.744]   Polygon zone added with 4 points
+[15:57:47.770] DrawZones called, zone count: 1
+[15:57:47.770] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.771]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.771]   Polygon zone added with 4 points
+[15:57:47.802] DrawZones called, zone count: 1
+[15:57:47.802] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.802]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.803]   Polygon zone added with 4 points
+[15:57:47.829] DrawZones called, zone count: 1
+[15:57:47.829] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.829]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.829]   Polygon zone added with 4 points
+[15:57:47.858] DrawZones called, zone count: 1
+[15:57:47.859] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.859]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.859]   Polygon zone added with 4 points
+[15:57:47.886] DrawZones called, zone count: 1
+[15:57:47.887] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.887]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.887]   Polygon zone added with 4 points
+[15:57:47.934] DrawZones called, zone count: 1
+[15:57:47.934] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.935]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.935]   Polygon zone added with 4 points
+[15:57:47.984] DrawZones called, zone count: 1
+[15:57:47.985] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:47.985]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:47.985]   Polygon zone added with 4 points
+[15:57:48.015] DrawZones called, zone count: 1
+[15:57:48.016] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:48.016]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:48.016]   Polygon zone added with 4 points
+[15:57:48.054] DrawZones called, zone count: 1
+[15:57:48.054] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:48.055]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:48.055]   Polygon zone added with 4 points
+[15:57:48.452] DrawZones called, zone count: 1
+[15:57:48.452] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:48.452]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:48.453]   Polygon zone added with 4 points
+[15:57:49.060] DrawZones called, zone count: 1
+[15:57:49.060] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:49.060]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:49.060]   Polygon zone added with 4 points
+[15:57:49.581] DrawZones called, zone count: 1
+[15:57:49.581] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:49.581]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:49.582]   Polygon zone added with 4 points
+[15:57:50.096] DrawZones called, zone count: 1
+[15:57:50.097] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:50.097]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:50.097]   Polygon zone added with 4 points
+[15:57:50.611] DrawZones called, zone count: 1
+[15:57:50.612] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:50.612]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:50.612]   Polygon zone added with 4 points
+[15:57:51.123] DrawZones called, zone count: 1
+[15:57:51.123] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:51.124]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:51.124]   Polygon zone added with 4 points
+[15:57:51.765] DrawZones called, zone count: 1
+[15:57:51.765] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:51.765]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:51.766]   Polygon zone added with 4 points
+[15:57:52.280] DrawZones called, zone count: 1
+[15:57:52.280] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:52.280]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:52.280]   Polygon zone added with 4 points
+[15:57:52.811] DrawZones called, zone count: 1
+[15:57:52.811] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:52.811]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:52.812]   Polygon zone added with 4 points
+[15:57:53.323] DrawZones called, zone count: 1
+[15:57:53.323] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:53.323]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:53.324]   Polygon zone added with 4 points
+[15:57:53.841] DrawZones called, zone count: 1
+[15:57:53.841] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:53.841]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:53.841]   Polygon zone added with 4 points
+[15:57:54.354] DrawZones called, zone count: 1
+[15:57:54.354] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:54.354]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:54.354]   Polygon zone added with 4 points
+[15:57:54.868] DrawZones called, zone count: 1
+[15:57:54.868] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:54.869]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:54.869]   Polygon zone added with 4 points
+[15:57:55.368] DrawZones called, zone count: 1
+[15:57:55.368] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:55.369]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:55.369]   Polygon zone added with 4 points
+[15:57:55.868] DrawZones called, zone count: 1
+[15:57:55.868] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:55.869]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:55.869]   Polygon zone added with 4 points
+[15:57:56.365] DrawZones called, zone count: 1
+[15:57:56.365] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:56.365]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:56.366]   Polygon zone added with 4 points
+[15:57:56.870] DrawZones called, zone count: 1
+[15:57:56.871] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:56.871]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:56.871]   Polygon zone added with 4 points
+[15:57:57.372] DrawZones called, zone count: 1
+[15:57:57.372] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:57.372]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:57.373]   Polygon zone added with 4 points
+[15:57:57.952] DrawZones called, zone count: 1
+[15:57:57.952] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:57.952]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:57.953]   Polygon zone added with 4 points
+[15:57:58.465] DrawZones called, zone count: 1
+[15:57:58.465] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:58.465]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:58.466]   Polygon zone added with 4 points
+[15:57:59.186] DrawZones called, zone count: 1
+[15:57:59.187] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:59.187]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:59.187]   Polygon zone added with 4 points
+[15:57:59.702] DrawZones called, zone count: 1
+[15:57:59.702] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:57:59.702]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:57:59.703]   Polygon zone added with 4 points
+[15:58:00.219] DrawZones called, zone count: 1
+[15:58:00.219] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:00.219]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:00.220]   Polygon zone added with 4 points
+[15:58:00.734] DrawZones called, zone count: 1
+[15:58:00.734] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:00.734]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:00.734]   Polygon zone added with 4 points
+[15:58:01.531] DrawZones called, zone count: 1
+[15:58:01.531] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:01.531]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:01.532]   Polygon zone added with 4 points
+[15:58:02.047] DrawZones called, zone count: 1
+[15:58:02.047] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:02.048]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:02.048]   Polygon zone added with 4 points
+[15:58:02.521] === HitTest START at (1951.5, 325.5), frictionless=False, design=True ===
+[15:58:02.522] Checking node terminals...
+[15:58:02.522] Checking GuidedTransport layer, visible=True
+[15:58:02.522] Checking AGV stations (count=5)...
+[15:58:02.522] HitTestAGVStations at (1951.5, 325.5), designMode=True, radius=25
+[15:58:02.522] Checking 5 AGV stations
+[15:58:02.522]   Station 'AGV Station 1' at (50.5, 117.5), distance=1912.3
+[15:58:02.523]   Station 'AGV Station 2' at (1950.0, 100.0), distance=225.5
+[15:58:02.523]   Station 'AGV Station 3' at (50.0, 200.0), distance=1905.6
+[15:58:02.523]   Station 'AGV Station 4' at (1950.0, 200.0), distance=125.5
+[15:58:02.523]   Station 'AGV Station 5' at (50.0, 300.0), distance=1901.6
+[15:58:02.523]   No AGV station within hit radius
+[15:58:02.523] No AGV station hit
+[15:58:02.524] >>> CLICK RESULT: Hit type = Canvas at (1951.5, 325.5)
+[15:58:02.524]     FrictionlessMode=False, DesignMode=True
+[15:58:02.530] DrawZones called, zone count: 1
+[15:58:02.531] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:02.531]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:02.531]   Polygon zone added with 4 points
+[15:58:02.541] DrawZones called, zone count: 1
+[15:58:02.541] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:02.542]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:02.542]   Polygon zone added with 4 points
+[15:58:02.589] DrawZones called, zone count: 1
+[15:58:02.590] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:02.590]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:02.590]   Polygon zone added with 4 points
+[15:58:02.772] DrawZones called, zone count: 1
+[15:58:02.772] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:02.772]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:02.772]   Polygon zone added with 4 points
+[15:58:02.885] === HitTest START at (1951.5, 325.5), frictionless=False, design=True ===
+[15:58:02.885] Checking node terminals...
+[15:58:02.885] Checking GuidedTransport layer, visible=True
+[15:58:02.886] Checking AGV stations (count=5)...
+[15:58:02.886] HitTestAGVStations at (1951.5, 325.5), designMode=True, radius=25
+[15:58:02.886] Checking 5 AGV stations
+[15:58:02.887]   Station 'AGV Station 1' at (50.5, 117.5), distance=1912.3
+[15:58:02.887]   Station 'AGV Station 2' at (1950.0, 100.0), distance=225.5
+[15:58:02.887]   Station 'AGV Station 3' at (50.0, 200.0), distance=1905.6
+[15:58:02.888]   Station 'AGV Station 4' at (1950.0, 200.0), distance=125.5
+[15:58:02.888]   Station 'AGV Station 5' at (50.0, 300.0), distance=1901.6
+[15:58:02.888]   No AGV station within hit radius
+[15:58:02.888] No AGV station hit
+[15:58:02.889] === HitTest START at (1951.5, 325.5), frictionless=False, design=True ===
+[15:58:02.889] Checking node terminals...
+[15:58:02.889] Checking GuidedTransport layer, visible=True
+[15:58:02.890] Checking AGV stations (count=5)...
+[15:58:02.890] HitTestAGVStations at (1951.5, 325.5), designMode=True, radius=25
+[15:58:02.890] Checking 5 AGV stations
+[15:58:02.891]   Station 'AGV Station 1' at (50.5, 117.5), distance=1912.3
+[15:58:02.891]   Station 'AGV Station 2' at (1950.0, 100.0), distance=225.5
+[15:58:02.891]   Station 'AGV Station 3' at (50.0, 200.0), distance=1905.6
+[15:58:02.891]   Station 'AGV Station 4' at (1950.0, 200.0), distance=125.5
+[15:58:02.891]   Station 'AGV Station 5' at (50.0, 300.0), distance=1901.6
+[15:58:02.891]   No AGV station within hit radius
+[15:58:02.892] No AGV station hit
+[15:58:02.892] >>> CLICK RESULT: Hit type = Canvas at (1951.5, 325.5)
+[15:58:02.892]     FrictionlessMode=False, DesignMode=True
+[15:58:02.900] DrawZones called, zone count: 1
+[15:58:02.900] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:02.901]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:02.901]   Polygon zone added with 4 points
+[15:58:02.907] DrawZones called, zone count: 1
+[15:58:02.908] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:02.908]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:02.908]   Polygon zone added with 4 points
+[15:58:03.025] DrawZones called, zone count: 1
+[15:58:03.026] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:03.026]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:03.026]   Polygon zone added with 4 points
+[15:58:03.085] DrawZones called, zone count: 1
+[15:58:03.085] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:03.086]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:03.086]   Polygon zone added with 4 points
+[15:58:03.125] === HitTest START at (1951.5, 325.5), frictionless=False, design=True ===
+[15:58:03.126] Checking node terminals...
+[15:58:03.126] Checking GuidedTransport layer, visible=True
+[15:58:03.126] Checking AGV stations (count=5)...
+[15:58:03.126] HitTestAGVStations at (1951.5, 325.5), designMode=True, radius=25
+[15:58:03.126] Checking 5 AGV stations
+[15:58:03.127]   Station 'AGV Station 1' at (50.5, 117.5), distance=1912.3
+[15:58:03.127]   Station 'AGV Station 2' at (1950.0, 100.0), distance=225.5
+[15:58:03.127]   Station 'AGV Station 3' at (50.0, 200.0), distance=1905.6
+[15:58:03.127]   Station 'AGV Station 4' at (1950.0, 200.0), distance=125.5
+[15:58:03.127]   Station 'AGV Station 5' at (50.0, 300.0), distance=1901.6
+[15:58:03.127]   No AGV station within hit radius
+[15:58:03.128] No AGV station hit
+[15:58:03.128] >>> CLICK RESULT: Hit type = Canvas at (1951.5, 325.5)
+[15:58:03.128]     FrictionlessMode=False, DesignMode=True
+[15:58:03.135] DrawZones called, zone count: 1
+[15:58:03.136] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:03.136]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:03.136]   Polygon zone added with 4 points
+[15:58:03.145] DrawZones called, zone count: 1
+[15:58:03.146] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:03.146]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:03.147]   Polygon zone added with 4 points
+[15:58:03.267] DrawZones called, zone count: 1
+[15:58:03.268] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:03.268]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:03.268]   Polygon zone added with 4 points
+[15:58:03.328] === HitTest START at (1951.5, 325.5), frictionless=False, design=True ===
+[15:58:03.329] Checking node terminals...
+[15:58:03.329] Checking GuidedTransport layer, visible=True
+[15:58:03.329] Checking AGV stations (count=5)...
+[15:58:03.329] HitTestAGVStations at (1951.5, 325.5), designMode=True, radius=25
+[15:58:03.329] Checking 5 AGV stations
+[15:58:03.329]   Station 'AGV Station 1' at (50.5, 117.5), distance=1912.3
+[15:58:03.329]   Station 'AGV Station 2' at (1950.0, 100.0), distance=225.5
+[15:58:03.330]   Station 'AGV Station 3' at (50.0, 200.0), distance=1905.6
+[15:58:03.330]   Station 'AGV Station 4' at (1950.0, 200.0), distance=125.5
+[15:58:03.330]   Station 'AGV Station 5' at (50.0, 300.0), distance=1901.6
+[15:58:03.330]   No AGV station within hit radius
+[15:58:03.330] No AGV station hit
+[15:58:03.331] === HitTest START at (1951.5, 325.5), frictionless=False, design=True ===
+[15:58:03.331] Checking node terminals...
+[15:58:03.331] Checking GuidedTransport layer, visible=True
+[15:58:03.331] Checking AGV stations (count=5)...
+[15:58:03.331] HitTestAGVStations at (1951.5, 325.5), designMode=True, radius=25
+[15:58:03.332] Checking 5 AGV stations
+[15:58:03.332]   Station 'AGV Station 1' at (50.5, 117.5), distance=1912.3
+[15:58:03.332]   Station 'AGV Station 2' at (1950.0, 100.0), distance=225.5
+[15:58:03.332]   Station 'AGV Station 3' at (50.0, 200.0), distance=1905.6
+[15:58:03.332]   Station 'AGV Station 4' at (1950.0, 200.0), distance=125.5
+[15:58:03.332]   Station 'AGV Station 5' at (50.0, 300.0), distance=1901.6
+[15:58:03.332]   No AGV station within hit radius
+[15:58:03.332] No AGV station hit
+[15:58:03.333] >>> CLICK RESULT: Hit type = Canvas at (1951.5, 325.5)
+[15:58:03.333]     FrictionlessMode=False, DesignMode=True
+[15:58:03.339] DrawZones called, zone count: 1
+[15:58:03.340] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:03.340]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:03.340]   Polygon zone added with 4 points
+[15:58:03.352] DrawZones called, zone count: 1
+[15:58:03.352] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:03.352]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:03.353]   Polygon zone added with 4 points
+[15:58:03.454] DrawZones called, zone count: 1
+[15:58:03.455] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:03.455]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:03.456]   Polygon zone added with 4 points
+[15:58:03.601] DrawZones called, zone count: 1
+[15:58:03.601] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:03.601]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:03.601]   Polygon zone added with 4 points
+[15:58:03.876] === HitTest START at (1943.5, 331.5), frictionless=False, design=True ===
+[15:58:03.876] Checking node terminals...
+[15:58:03.876] Checking GuidedTransport layer, visible=True
+[15:58:03.876] Checking AGV stations (count=5)...
+[15:58:03.877] HitTestAGVStations at (1943.5, 331.5), designMode=True, radius=25
+[15:58:03.877] Checking 5 AGV stations
+[15:58:03.877]   Station 'AGV Station 1' at (50.5, 117.5), distance=1905.0
+[15:58:03.877]   Station 'AGV Station 2' at (1950.0, 100.0), distance=231.6
+[15:58:03.877]   Station 'AGV Station 3' at (50.0, 200.0), distance=1898.0
+[15:58:03.877]   Station 'AGV Station 4' at (1950.0, 200.0), distance=131.7
+[15:58:03.878]   Station 'AGV Station 5' at (50.0, 300.0), distance=1893.7
+[15:58:03.878]   No AGV station within hit radius
+[15:58:03.878] No AGV station hit
+[15:58:03.878] >>> CLICK RESULT: Hit type = Canvas at (1943.5, 331.5)
+[15:58:03.878]     FrictionlessMode=False, DesignMode=True
+[15:58:03.884] DrawZones called, zone count: 1
+[15:58:03.884] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:03.885]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:03.885]   Polygon zone added with 4 points
+[15:58:03.891] DrawZones called, zone count: 1
+[15:58:03.891] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:03.892]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:03.892]   Polygon zone added with 4 points
+[15:58:04.020] DrawZones called, zone count: 1
+[15:58:04.021] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:04.021]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:04.021]   Polygon zone added with 4 points
+[15:58:04.114] DrawZones called, zone count: 1
+[15:58:04.114] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:04.114]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:04.115]   Polygon zone added with 4 points
+[15:58:04.620] DrawZones called, zone count: 1
+[15:58:04.620] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:04.620]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:04.621]   Polygon zone added with 4 points
+[15:58:05.129] DrawZones called, zone count: 1
+[15:58:05.129] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:05.130]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:05.130]   Polygon zone added with 4 points
+[15:58:05.645] DrawZones called, zone count: 1
+[15:58:05.645] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:05.646]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:05.646]   Polygon zone added with 4 points
+[15:58:06.154] DrawZones called, zone count: 1
+[15:58:06.155] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:06.155]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:06.156]   Polygon zone added with 4 points
+[15:58:06.673] DrawZones called, zone count: 1
+[15:58:06.673] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:06.674]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:06.674]   Polygon zone added with 4 points
+[15:58:07.184] DrawZones called, zone count: 1
+[15:58:07.184] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:07.185]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:07.185]   Polygon zone added with 4 points
+[15:58:07.717] DrawZones called, zone count: 1
+[15:58:07.717] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:07.718]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:07.718]   Polygon zone added with 4 points
+[15:58:08.249] DrawZones called, zone count: 1
+[15:58:08.249] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:08.249]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:08.250]   Polygon zone added with 4 points
+[15:58:08.775] DrawZones called, zone count: 1
+[15:58:08.776] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:08.776]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:08.777]   Polygon zone added with 4 points
+[15:58:09.295] DrawZones called, zone count: 1
+[15:58:09.295] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:09.296]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:09.296]   Polygon zone added with 4 points
+[15:58:09.820] DrawZones called, zone count: 1
+[15:58:09.820] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:09.821]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:09.821]   Polygon zone added with 4 points
+[15:58:10.333] DrawZones called, zone count: 1
+[15:58:10.334] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:10.334]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:10.335]   Polygon zone added with 4 points
+[15:58:10.849] DrawZones called, zone count: 1
+[15:58:10.849] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:10.850]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:10.850]   Polygon zone added with 4 points
+[15:58:11.358] DrawZones called, zone count: 1
+[15:58:11.358] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:11.359]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:11.359]   Polygon zone added with 4 points
+[15:58:11.868] DrawZones called, zone count: 1
+[15:58:11.868] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:11.868]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:11.869]   Polygon zone added with 4 points
+[15:58:12.375] DrawZones called, zone count: 1
+[15:58:12.375] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:12.376]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:12.377]   Polygon zone added with 4 points
+[15:58:12.892] DrawZones called, zone count: 1
+[15:58:12.892] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:12.893]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:12.893]   Polygon zone added with 4 points
+[15:58:13.404] DrawZones called, zone count: 1
+[15:58:13.405] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:13.405]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:13.406]   Polygon zone added with 4 points
+[15:58:13.928] DrawZones called, zone count: 1
+[15:58:13.928] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:13.929]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:13.929]   Polygon zone added with 4 points
+[15:58:14.428] DrawZones called, zone count: 1
+[15:58:14.428] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:14.428]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:14.429]   Polygon zone added with 4 points
+[15:58:14.949] DrawZones called, zone count: 1
+[15:58:14.950] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:14.950]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:14.951]   Polygon zone added with 4 points
+[15:58:15.470] DrawZones called, zone count: 1
+[15:58:15.471] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:15.471]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:15.472]   Polygon zone added with 4 points
+[15:58:15.992] DrawZones called, zone count: 1
+[15:58:15.993] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:15.993]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:15.993]   Polygon zone added with 4 points
+[15:58:16.492] DrawZones called, zone count: 1
+[15:58:16.492] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:16.492]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:16.492]   Polygon zone added with 4 points
+[15:58:17.003] DrawZones called, zone count: 1
+[15:58:17.004] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:17.004]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:17.004]   Polygon zone added with 4 points
+[15:58:17.521] DrawZones called, zone count: 1
+[15:58:17.522] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:17.522]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:17.522]   Polygon zone added with 4 points
+[15:58:18.043] DrawZones called, zone count: 1
+[15:58:18.044] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:18.044]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:18.044]   Polygon zone added with 4 points
+[15:58:18.565] DrawZones called, zone count: 1
+[15:58:18.566] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:18.566]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:18.566]   Polygon zone added with 4 points
+[15:58:19.085] DrawZones called, zone count: 1
+[15:58:19.086] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:19.086]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:19.086]   Polygon zone added with 4 points
+[15:58:19.593] DrawZones called, zone count: 1
+[15:58:19.594] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:19.594]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:19.595]   Polygon zone added with 4 points
+[15:58:20.115] DrawZones called, zone count: 1
+[15:58:20.115] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:20.116]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:20.116]   Polygon zone added with 4 points
+[15:58:20.621] DrawZones called, zone count: 1
+[15:58:20.622] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:20.622]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:20.622]   Polygon zone added with 4 points
+[15:58:21.149] DrawZones called, zone count: 1
+[15:58:21.150] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:21.150]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:21.151]   Polygon zone added with 4 points
+[15:58:21.657] DrawZones called, zone count: 1
+[15:58:21.658] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:21.658]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:21.659]   Polygon zone added with 4 points
+[15:58:22.178] DrawZones called, zone count: 1
+[15:58:22.179] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:22.179]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:22.179]   Polygon zone added with 4 points
+[15:58:22.687] DrawZones called, zone count: 1
+[15:58:22.688] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:22.688]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:22.689]   Polygon zone added with 4 points
+[15:58:23.210] DrawZones called, zone count: 1
+[15:58:23.211] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:23.211]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:23.212]   Polygon zone added with 4 points
+[15:58:23.715] DrawZones called, zone count: 1
+[15:58:23.715] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:23.716]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:23.716]   Polygon zone added with 4 points
+[15:58:24.244] DrawZones called, zone count: 1
+[15:58:24.244] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:24.245]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:24.245]   Polygon zone added with 4 points
+[15:58:24.747] DrawZones called, zone count: 1
+[15:58:24.748] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:24.748]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:24.749]   Polygon zone added with 4 points
+[15:58:25.266] DrawZones called, zone count: 1
+[15:58:25.267] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:25.267]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:25.268]   Polygon zone added with 4 points
+[15:58:25.779] DrawZones called, zone count: 1
+[15:58:25.780] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:25.780]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:25.781]   Polygon zone added with 4 points
+[15:58:26.294] DrawZones called, zone count: 1
+[15:58:26.294] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:26.295]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:26.295]   Polygon zone added with 4 points
+[15:58:26.810] DrawZones called, zone count: 1
+[15:58:26.811] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:26.811]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:26.812]   Polygon zone added with 4 points
+[15:58:27.323] DrawZones called, zone count: 1
+[15:58:27.323] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:27.324]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:27.324]   Polygon zone added with 4 points
+[15:58:27.834] DrawZones called, zone count: 1
+[15:58:27.834] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:27.835]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:27.835]   Polygon zone added with 4 points
+[15:58:28.345] DrawZones called, zone count: 1
+[15:58:28.346] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:28.346]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:28.347]   Polygon zone added with 4 points
+[15:58:28.863] DrawZones called, zone count: 1
+[15:58:28.864] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:28.864]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:28.865]   Polygon zone added with 4 points
+[15:58:29.388] DrawZones called, zone count: 1
+[15:58:29.389] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:29.389]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:29.390]   Polygon zone added with 4 points
+[15:58:29.906] DrawZones called, zone count: 1
+[15:58:29.907] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:29.907]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:29.907]   Polygon zone added with 4 points
+[15:58:30.424] DrawZones called, zone count: 1
+[15:58:30.424] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:30.425]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:30.425]   Polygon zone added with 4 points
+[15:58:30.945] DrawZones called, zone count: 1
+[15:58:30.945] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:30.946]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:30.946]   Polygon zone added with 4 points
+[15:58:31.473] DrawZones called, zone count: 1
+[15:58:31.473] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:31.474]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:31.474]   Polygon zone added with 4 points
+[15:58:31.989] DrawZones called, zone count: 1
+[15:58:31.990] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:31.990]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:31.991]   Polygon zone added with 4 points
+[15:58:32.514] DrawZones called, zone count: 1
+[15:58:32.514] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:32.515]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:32.515]   Polygon zone added with 4 points
+[15:58:33.033] DrawZones called, zone count: 1
+[15:58:33.033] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:33.033]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:33.033]   Polygon zone added with 4 points
+[15:58:33.560] DrawZones called, zone count: 1
+[15:58:33.560] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:33.561]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:33.561]   Polygon zone added with 4 points
+[15:58:34.082] DrawZones called, zone count: 1
+[15:58:34.082] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:34.083]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:34.083]   Polygon zone added with 4 points
+[15:58:34.606] DrawZones called, zone count: 1
+[15:58:34.606] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:34.607]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:34.607]   Polygon zone added with 4 points
+[15:58:35.130] DrawZones called, zone count: 1
+[15:58:35.131] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:35.131]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:35.131]   Polygon zone added with 4 points
+[15:58:35.651] DrawZones called, zone count: 1
+[15:58:35.652] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:35.652]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:35.653]   Polygon zone added with 4 points
+[15:58:36.177] DrawZones called, zone count: 1
+[15:58:36.178] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:36.178]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:36.179]   Polygon zone added with 4 points
+[15:58:36.693] DrawZones called, zone count: 1
+[15:58:36.693] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:36.694]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:36.694]   Polygon zone added with 4 points
+[15:58:37.195] DrawZones called, zone count: 1
+[15:58:37.195] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:37.195]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:37.196]   Polygon zone added with 4 points
+[15:58:37.707] DrawZones called, zone count: 1
+[15:58:37.707] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:37.708]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:37.708]   Polygon zone added with 4 points
+[15:58:38.226] DrawZones called, zone count: 1
+[15:58:38.227] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:38.227]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:38.227]   Polygon zone added with 4 points
+[15:58:38.751] DrawZones called, zone count: 1
+[15:58:38.751] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:38.751]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:38.752]   Polygon zone added with 4 points
+[15:58:39.271] DrawZones called, zone count: 1
+[15:58:39.271] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:39.272]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:39.272]   Polygon zone added with 4 points
+[15:58:39.785] DrawZones called, zone count: 1
+[15:58:39.786] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:39.786]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:39.787]   Polygon zone added with 4 points
+[15:58:40.298] DrawZones called, zone count: 1
+[15:58:40.299] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:40.299]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:40.300]   Polygon zone added with 4 points
+[15:58:40.813] DrawZones called, zone count: 1
+[15:58:40.814] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:40.814]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:40.815]   Polygon zone added with 4 points
+[15:58:41.334] DrawZones called, zone count: 1
+[15:58:41.334] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:41.335]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:41.335]   Polygon zone added with 4 points
+[15:58:41.854] DrawZones called, zone count: 1
+[15:58:41.855] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:41.855]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:41.856]   Polygon zone added with 4 points
+[15:58:42.372] DrawZones called, zone count: 1
+[15:58:42.373] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:42.373]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:42.373]   Polygon zone added with 4 points
+[15:58:42.907] DrawZones called, zone count: 1
+[15:58:42.907] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:42.908]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:42.909]   Polygon zone added with 4 points
+[15:58:43.422] DrawZones called, zone count: 1
+[15:58:43.423] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:43.424]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:43.424]   Polygon zone added with 4 points
+[15:58:43.948] DrawZones called, zone count: 1
+[15:58:43.949] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:43.949]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:43.950]   Polygon zone added with 4 points
+[15:58:44.469] DrawZones called, zone count: 1
+[15:58:44.470] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:44.470]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:44.470]   Polygon zone added with 4 points
+[15:58:44.990] DrawZones called, zone count: 1
+[15:58:44.990] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:44.991]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:44.991]   Polygon zone added with 4 points
+[15:58:45.496] DrawZones called, zone count: 1
+[15:58:45.497] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:45.497]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:45.498]   Polygon zone added with 4 points
+[15:58:46.011] DrawZones called, zone count: 1
+[15:58:46.012] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:46.012]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:46.013]   Polygon zone added with 4 points
+[15:58:46.523] DrawZones called, zone count: 1
+[15:58:46.524] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:46.524]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:46.524]   Polygon zone added with 4 points
+[15:58:47.286] DrawZones called, zone count: 1
+[15:58:47.286] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:47.287]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:47.287]   Polygon zone added with 4 points
+[15:58:47.786] DrawZones called, zone count: 1
+[15:58:47.786] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:47.786]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:47.787]   Polygon zone added with 4 points
+[15:58:47.815] === HitTest START at (1951.5, 288.2), frictionless=False, design=True ===
+[15:58:47.815] Checking node terminals...
+[15:58:47.816] Checking GuidedTransport layer, visible=True
+[15:58:47.816] Checking AGV stations (count=5)...
+[15:58:47.816] HitTestAGVStations at (1951.5, 288.2), designMode=True, radius=25
+[15:58:47.816] Checking 5 AGV stations
+[15:58:47.816]   Station 'AGV Station 1' at (50.5, 117.5), distance=1908.6
+[15:58:47.817]   Station 'AGV Station 2' at (1950.0, 100.0), distance=188.2
+[15:58:47.817]   Station 'AGV Station 3' at (50.0, 200.0), distance=1903.5
+[15:58:47.817]   Station 'AGV Station 4' at (1950.0, 200.0), distance=88.2
+[15:58:47.817]   Station 'AGV Station 5' at (50.0, 300.0), distance=1901.5
+[15:58:47.817]   No AGV station within hit radius
+[15:58:47.818] No AGV station hit
+[15:58:47.818] >>> CLICK RESULT: Hit type = Canvas at (1951.5, 288.2)
+[15:58:47.818]     FrictionlessMode=False, DesignMode=True
+[15:58:47.830] DrawZones called, zone count: 1
+[15:58:47.831] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:47.831]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:47.832]   Polygon zone added with 4 points
+[15:58:47.849] DrawZones called, zone count: 1
+[15:58:47.850] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:47.850]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:47.850]   Polygon zone added with 4 points
+[15:58:48.394] DrawZones called, zone count: 1
+[15:58:48.394] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:48.395]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:48.395]   Polygon zone added with 4 points
+[15:58:48.464] DrawZones called, zone count: 1
+[15:58:48.464] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:48.465]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:48.465]   Polygon zone added with 4 points
+[15:58:48.878] === HitTest START at (1958.1, 291.5), frictionless=False, design=True ===
+[15:58:48.879] Checking node terminals...
+[15:58:48.879] Checking GuidedTransport layer, visible=True
+[15:58:48.879] Checking AGV stations (count=5)...
+[15:58:48.879] HitTestAGVStations at (1958.1, 291.5), designMode=True, radius=25
+[15:58:48.879] Checking 5 AGV stations
+[15:58:48.879]   Station 'AGV Station 1' at (50.5, 117.5), distance=1915.5
+[15:58:48.880]   Station 'AGV Station 2' at (1950.0, 100.0), distance=191.7
+[15:58:48.880]   Station 'AGV Station 3' at (50.0, 200.0), distance=1910.3
+[15:58:48.880]   Station 'AGV Station 4' at (1950.0, 200.0), distance=91.9
+[15:58:48.880]   Station 'AGV Station 5' at (50.0, 300.0), distance=1908.1
+[15:58:48.880]   No AGV station within hit radius
+[15:58:48.881] No AGV station hit
+[15:58:48.881] >>> CLICK RESULT: Hit type = Canvas at (1958.1, 291.5)
+[15:58:48.881]     FrictionlessMode=False, DesignMode=True
+[15:58:48.890] DrawZones called, zone count: 1
+[15:58:48.891] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:48.891]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:48.891]   Polygon zone added with 4 points
+[15:58:48.898] DrawZones called, zone count: 1
+[15:58:48.898] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:48.898]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:48.899]   Polygon zone added with 4 points
+[15:58:48.949] DrawZones called, zone count: 1
+[15:58:48.950] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:48.950]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:48.950]   Polygon zone added with 4 points
+[15:58:49.014] DrawZones called, zone count: 1
+[15:58:49.014] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:49.014]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:49.015]   Polygon zone added with 4 points
+[15:58:49.108] === HitTest START at (1958.1, 291.5), frictionless=False, design=True ===
+[15:58:49.108] Checking node terminals...
+[15:58:49.109] Checking GuidedTransport layer, visible=True
+[15:58:49.109] Checking AGV stations (count=5)...
+[15:58:49.109] HitTestAGVStations at (1958.1, 291.5), designMode=True, radius=25
+[15:58:49.109] Checking 5 AGV stations
+[15:58:49.109]   Station 'AGV Station 1' at (50.5, 117.5), distance=1915.5
+[15:58:49.109]   Station 'AGV Station 2' at (1950.0, 100.0), distance=191.7
+[15:58:49.109]   Station 'AGV Station 3' at (50.0, 200.0), distance=1910.3
+[15:58:49.110]   Station 'AGV Station 4' at (1950.0, 200.0), distance=91.9
+[15:58:49.110]   Station 'AGV Station 5' at (50.0, 300.0), distance=1908.1
+[15:58:49.110]   No AGV station within hit radius
+[15:58:49.110] No AGV station hit
+[15:58:49.110] === HitTest START at (1958.1, 291.5), frictionless=False, design=True ===
+[15:58:49.111] Checking node terminals...
+[15:58:49.111] Checking GuidedTransport layer, visible=True
+[15:58:49.111] Checking AGV stations (count=5)...
+[15:58:49.111] HitTestAGVStations at (1958.1, 291.5), designMode=True, radius=25
+[15:58:49.111] Checking 5 AGV stations
+[15:58:49.112]   Station 'AGV Station 1' at (50.5, 117.5), distance=1915.5
+[15:58:49.112]   Station 'AGV Station 2' at (1950.0, 100.0), distance=191.7
+[15:58:49.112]   Station 'AGV Station 3' at (50.0, 200.0), distance=1910.3
+[15:58:49.112]   Station 'AGV Station 4' at (1950.0, 200.0), distance=91.9
+[15:58:49.112]   Station 'AGV Station 5' at (50.0, 300.0), distance=1908.1
+[15:58:49.112]   No AGV station within hit radius
+[15:58:49.113] No AGV station hit
+[15:58:49.113] >>> CLICK RESULT: Hit type = Canvas at (1958.1, 291.5)
+[15:58:49.113]     FrictionlessMode=False, DesignMode=True
+[15:58:49.120] DrawZones called, zone count: 1
+[15:58:49.121] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:49.121]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:49.121]   Polygon zone added with 4 points
+[15:58:49.131] DrawZones called, zone count: 1
+[15:58:49.132] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:49.132]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:49.133]   Polygon zone added with 4 points
+[15:58:49.214] DrawZones called, zone count: 1
+[15:58:49.214] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:49.214]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:49.215]   Polygon zone added with 4 points
+[15:58:49.296] === HitTest START at (1954.8, 291.5), frictionless=False, design=True ===
+[15:58:49.297] Checking node terminals...
+[15:58:49.297] Checking GuidedTransport layer, visible=True
+[15:58:49.297] Checking AGV stations (count=5)...
+[15:58:49.297] HitTestAGVStations at (1954.8, 291.5), designMode=True, radius=25
+[15:58:49.298] Checking 5 AGV stations
+[15:58:49.298]   Station 'AGV Station 1' at (50.5, 117.5), distance=1912.2
+[15:58:49.298]   Station 'AGV Station 2' at (1950.0, 100.0), distance=191.6
+[15:58:49.298]   Station 'AGV Station 3' at (50.0, 200.0), distance=1907.0
+[15:58:49.298]   Station 'AGV Station 4' at (1950.0, 200.0), distance=91.7
+[15:58:49.298]   Station 'AGV Station 5' at (50.0, 300.0), distance=1904.8
+[15:58:49.299]   No AGV station within hit radius
+[15:58:49.299] No AGV station hit
+[15:58:49.299] >>> CLICK RESULT: Hit type = Canvas at (1954.8, 291.5)
+[15:58:49.299]     FrictionlessMode=False, DesignMode=True
+[15:58:49.307] DrawZones called, zone count: 1
+[15:58:49.307] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:49.307]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:49.308]   Polygon zone added with 4 points
+[15:58:49.319] DrawZones called, zone count: 1
+[15:58:49.319] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:49.320]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:49.320]   Polygon zone added with 4 points
+[15:58:49.362] DrawZones called, zone count: 1
+[15:58:49.363] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:49.363]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:49.363]   Polygon zone added with 4 points
+[15:58:49.470] DrawZones called, zone count: 1
+[15:58:49.471] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:49.471]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:49.471]   Polygon zone added with 4 points
+[15:58:49.982] DrawZones called, zone count: 1
+[15:58:49.982] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:49.983]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:49.983]   Polygon zone added with 4 points
+[15:58:50.500] DrawZones called, zone count: 1
+[15:58:50.501] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:50.501]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:50.502]   Polygon zone added with 4 points
+[15:58:51.012] DrawZones called, zone count: 1
+[15:58:51.012] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:51.013]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:51.013]   Polygon zone added with 4 points
+[15:58:51.527] DrawZones called, zone count: 1
+[15:58:51.527] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:51.527]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:51.528]   Polygon zone added with 4 points
+[15:58:52.031] DrawZones called, zone count: 1
+[15:58:52.031] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:52.031]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:52.032]   Polygon zone added with 4 points
+[15:58:52.540] DrawZones called, zone count: 1
+[15:58:52.541] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:52.542]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:52.542]   Polygon zone added with 4 points
+[15:58:53.038] DrawZones called, zone count: 1
+[15:58:53.039] DrawZone: 'Warehouse Zone', Points count: 4, Rect: (0, 0, 0x0)
+[15:58:53.039]   Zone brush: type='warehouse', alpha=80, RGB=(200,220,255)
+[15:58:53.040]   Polygon zone added with 4 points

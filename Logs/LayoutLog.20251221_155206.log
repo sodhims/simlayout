@@ -1,0 +1,119 @@
+=== LayoutEditor Debug Log Started at 12/21/2025 3:52:06 PM ===
+[15:52:06.812] MainWindow constructor completed successfully
+[15:52:06.813] Window should be visible now
+[15:52:21.709] === HitTest START at (49.2, 299.5), frictionless=False, design=False ===
+[15:52:21.710] Checking node terminals...
+[15:52:21.713] Checking GuidedTransport layer, visible=True
+[15:52:21.713] Checking AGV stations (count=5)...
+[15:52:21.713] HitTestAGVStations at (49.2, 299.5), designMode=False, radius=15
+[15:52:21.714] Checking 5 AGV stations
+[15:52:21.714]   Station 'AGV Station 1' at (50.0, 100.0), distance=199.5
+[15:52:21.714]   Station 'AGV Station 2' at (1950.0, 100.0), distance=1911.3
+[15:52:21.714]   Station 'AGV Station 3' at (50.0, 200.0), distance=99.5
+[15:52:21.715]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1903.4
+[15:52:21.715]   Station 'AGV Station 5' at (50.0, 300.0), distance=1.0
+[15:52:21.715]   HIT! Returning station 'AGV Station 5'
+[15:52:21.715] HIT: AGV Station 'AGV Station 5'
+[15:52:21.716] >>> CLICK RESULT: Hit type = AGVStation at (49.2, 299.5)
+[15:52:21.716]     FrictionlessMode=False, DesignMode=False
+[15:52:22.217] === HitTest START at (49.2, 299.5), frictionless=False, design=False ===
+[15:52:22.217] Checking node terminals...
+[15:52:22.218] Checking GuidedTransport layer, visible=True
+[15:52:22.218] Checking AGV stations (count=5)...
+[15:52:22.218] HitTestAGVStations at (49.2, 299.5), designMode=False, radius=15
+[15:52:22.218] Checking 5 AGV stations
+[15:52:22.218]   Station 'AGV Station 1' at (50.0, 100.0), distance=199.5
+[15:52:22.219]   Station 'AGV Station 2' at (1950.0, 100.0), distance=1911.3
+[15:52:22.219]   Station 'AGV Station 3' at (50.0, 200.0), distance=99.5
+[15:52:22.219]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1903.4
+[15:52:22.219]   Station 'AGV Station 5' at (50.0, 300.0), distance=1.0
+[15:52:22.219]   HIT! Returning station 'AGV Station 5'
+[15:52:22.219] HIT: AGV Station 'AGV Station 5'
+[15:52:22.220] >>> CLICK RESULT: Hit type = AGVStation at (49.2, 299.5)
+[15:52:22.220]     FrictionlessMode=False, DesignMode=False
+[15:52:28.502] === HitTest START at (52.5, 292.9), frictionless=False, design=True ===
+[15:52:28.503] Checking node terminals...
+[15:52:28.503] Checking GuidedTransport layer, visible=True
+[15:52:28.503] Checking AGV stations (count=5)...
+[15:52:28.504] HitTestAGVStations at (52.5, 292.9), designMode=True, radius=25
+[15:52:28.504] Checking 5 AGV stations
+[15:52:28.504]   Station 'AGV Station 1' at (50.0, 100.0), distance=192.9
+[15:52:28.504]   Station 'AGV Station 2' at (1950.0, 100.0), distance=1907.3
+[15:52:28.504]   Station 'AGV Station 3' at (50.0, 200.0), distance=92.9
+[15:52:28.504]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1899.8
+[15:52:28.504]   Station 'AGV Station 5' at (50.0, 300.0), distance=7.6
+[15:52:28.505]   HIT! Returning station 'AGV Station 5'
+[15:52:28.505] HIT: AGV Station 'AGV Station 5'
+[15:52:28.505] >>> CLICK RESULT: Hit type = AGVStation at (52.5, 292.9)
+[15:52:28.505]     FrictionlessMode=False, DesignMode=True
+[15:52:33.140] === HitTest START at (51.2, 99.5), frictionless=False, design=True ===
+[15:52:33.141] Checking node terminals...
+[15:52:33.141] Checking GuidedTransport layer, visible=True
+[15:52:33.141] Checking AGV stations (count=5)...
+[15:52:33.142] HitTestAGVStations at (51.2, 99.5), designMode=True, radius=25
+[15:52:33.142] Checking 5 AGV stations
+[15:52:33.142]   Station 'AGV Station 1' at (50.0, 100.0), distance=1.3
+[15:52:33.142]   HIT! Returning station 'AGV Station 1'
+[15:52:33.142] HIT: AGV Station 'AGV Station 1'
+[15:52:33.143] >>> CLICK RESULT: Hit type = AGVStation at (51.2, 99.5)
+[15:52:33.143]     FrictionlessMode=False, DesignMode=True
+[15:52:38.938] === HitTest START at (1956.1, 98.9), frictionless=False, design=True ===
+[15:52:38.938] Checking node terminals...
+[15:52:38.938] Checking GuidedTransport layer, visible=True
+[15:52:38.939] Checking AGV stations (count=5)...
+[15:52:38.939] HitTestAGVStations at (1956.1, 98.9), designMode=True, radius=25
+[15:52:38.939] Checking 5 AGV stations
+[15:52:38.939]   Station 'AGV Station 1' at (47.8, 53.5), distance=1908.8
+[15:52:38.939]   Station 'AGV Station 2' at (1950.0, 100.0), distance=6.2
+[15:52:38.939]   HIT! Returning station 'AGV Station 2'
+[15:52:38.940] HIT: AGV Station 'AGV Station 2'
+[15:52:38.940] >>> CLICK RESULT: Hit type = AGVStation at (1956.1, 98.9)
+[15:52:38.940]     FrictionlessMode=False, DesignMode=True
+[15:52:48.550] === HitTest START at (47.2, 334.9), frictionless=False, design=True ===
+[15:52:48.550] Checking node terminals...
+[15:52:48.550] Checking GuidedTransport layer, visible=True
+[15:52:48.551] Checking AGV stations (count=5)...
+[15:52:48.551] HitTestAGVStations at (47.2, 334.9), designMode=True, radius=25
+[15:52:48.551] Checking 5 AGV stations
+[15:52:48.551]   Station 'AGV Station 1' at (47.8, 53.5), distance=281.3
+[15:52:48.551]   Station 'AGV Station 2' at (1052.1, 65.5), distance=1040.4
+[15:52:48.551]   Station 'AGV Station 3' at (50.0, 200.0), distance=134.9
+[15:52:48.551]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1907.6
+[15:52:48.551]   Station 'AGV Station 5' at (49.2, 340.9), distance=6.3
+[15:52:48.552]   HIT! Returning station 'AGV Station 5'
+[15:52:48.552] HIT: AGV Station 'AGV Station 5'
+[15:52:48.552] >>> CLICK RESULT: Hit type = AGVStation at (47.2, 334.9)
+[15:52:48.552]     FrictionlessMode=False, DesignMode=True
+[15:52:57.663] === HitTest START at (1961.5, 199.5), frictionless=False, design=True ===
+[15:52:57.663] Checking node terminals...
+[15:52:57.663] Checking GuidedTransport layer, visible=True
+[15:52:57.663] Checking AGV stations (count=5)...
+[15:52:57.664] HitTestAGVStations at (1961.5, 199.5), designMode=True, radius=25
+[15:52:57.664] Checking 5 AGV stations
+[15:52:57.664]   Station 'AGV Station 1' at (47.8, 53.5), distance=1919.2
+[15:52:57.664]   Station 'AGV Station 2' at (1052.1, 65.5), distance=919.2
+[15:52:57.664]   Station 'AGV Station 3' at (50.0, 200.0), distance=1911.5
+[15:52:57.664]   Station 'AGV Station 4' at (1950.0, 200.0), distance=11.5
+[15:52:57.665]   HIT! Returning station 'AGV Station 4'
+[15:52:57.665] HIT: AGV Station 'AGV Station 4'
+[15:52:57.665] >>> CLICK RESULT: Hit type = AGVStation at (1961.5, 199.5)
+[15:52:57.665]     FrictionlessMode=False, DesignMode=True
+[15:53:04.273] === HitTest START at (1958.8, 300.2), frictionless=False, design=True ===
+[15:53:04.273] Checking node terminals...
+[15:53:04.274] Checking GuidedTransport layer, visible=True
+[15:53:04.274] Checking AGV stations (count=5)...
+[15:53:04.274] HitTestAGVStations at (1958.8, 300.2), designMode=True, radius=25
+[15:53:04.274] Checking 5 AGV stations
+[15:53:04.275]   Station 'AGV Station 1' at (47.8, 53.5), distance=1926.8
+[15:53:04.275]   Station 'AGV Station 2' at (1052.1, 65.5), distance=936.5
+[15:53:04.275]   Station 'AGV Station 3' at (50.0, 200.0), distance=1911.4
+[15:53:04.275]   Station 'AGV Station 4' at (1967.5, 180.2), distance=120.3
+[15:53:04.275]   Station 'AGV Station 5' at (47.8, 480.2), distance=1919.4
+[15:53:04.275]   No AGV station within hit radius
+[15:53:04.275] No AGV station hit
+[15:53:04.276] >>> CLICK RESULT: Hit type = Canvas at (1958.8, 300.2)
+[15:53:04.276]     FrictionlessMode=False, DesignMode=True
+[15:53:10.940] === HitTest START at (997.5, 1046.5), frictionless=False, design=True ===
+[15:53:10.940] Checking node terminals...
+[15:53:10.941] >>> CLICK RESULT: Hit type = Runway at (997.5, 1046.5)
+[15:53:10.941]     FrictionlessMode=False, DesignMode=True

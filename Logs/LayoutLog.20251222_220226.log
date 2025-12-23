@@ -1,0 +1,4 @@
+=== LayoutEditor Debug Log Started at 12/22/2025 10:02:26 PM ===
+[22:02:26.944] [SpatialRenderer] RenderZones called, zone count: 0
+[22:02:26.970] MainWindow constructor completed successfully
+[22:02:26.971] Window should be visible now

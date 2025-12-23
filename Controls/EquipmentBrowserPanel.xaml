@@ -1,0 +1,150 @@
+<UserControl x:Class="LayoutEditor.Controls.EquipmentBrowserPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#F5F5F5">
+
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="SelectedBrush" Color="#CCE8FF"/>
+        <SolidColorBrush x:Key="HoverBrush" Color="#E8E8E8"/>
+        <SolidColorBrush x:Key="BorderBrush" Color="#CCCEDB"/>
+        <SolidColorBrush x:Key="HeaderBg" Color="#E8E8E8"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="#007ACC"/>
+
+        <!-- TreeView Item Style -->
+        <Style x:Key="EquipmentTreeItem" TargetType="TreeViewItem">
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="{StaticResource SelectedBrush}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource HoverBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Category Header Style -->
+        <Style x:Key="CategoryHeader" TargetType="TreeViewItem">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="IsExpanded" Value="True"/>
+            <Setter Property="Margin" Value="0,2,0,0"/>
+        </Style>
+
+        <!-- Property Row Style -->
+        <Style x:Key="PropertyRow" TargetType="Border">
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush" Value="#EEE"/>
+            <Setter Property="Padding" Value="4,3"/>
+        </Style>
+
+        <!-- DataGrid Style -->
+        <Style x:Key="CompactDataGrid" TargetType="DataGrid">
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="RowHeight" Value="22"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#E0E0E0"/>
+            <Setter Property="AlternatingRowBackground" Value="#FAFAFA"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="{StaticResource HeaderBg}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1">
+            <DockPanel Margin="8,6">
+                <TextBlock Text="EQUIPMENT BROWSER" FontWeight="SemiBold" FontSize="11" Foreground="#1E1E1E"/>
+                <TextBlock x:Name="CountLabel" Text=" (0 items)" FontSize="10" Foreground="#6E6E6E" VerticalAlignment="Center"/>
+            </DockPanel>
+        </Border>
+
+        <!-- Search Box and Category Selector -->
+        <Border Grid.Row="1" Padding="6,4" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="SearchBox" Height="24" Padding="4,2" FontSize="11"
+                         TextChanged="SearchBox_TextChanged"
+                         ToolTip="Search equipment by name or type"/>
+                <TextBlock Text="🔍" Grid.Column="0" FontSize="11" Foreground="#888"
+                           VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,8,0"
+                           IsHitTestVisible="False"/>
+                <Button Grid.Column="1" Content="↻" Width="24" Height="24" Margin="4,0,0,0"
+                        ToolTip="Refresh list" Click="Refresh_Click" FontSize="12"/>
+
+                <!-- Category selector for Data Grid tab -->
+                <ComboBox x:Name="CategoryCombo" Grid.Row="1" Grid.ColumnSpan="2" Height="24" Margin="0,4,0,0"
+                          FontSize="11" SelectionChanged="CategoryCombo_SelectionChanged"
+                          Visibility="Collapsed">
+                    <ComboBoxItem Content="EOT Cranes" Tag="EOTCranes"/>
+                    <ComboBoxItem Content="Jib Cranes" Tag="JibCranes"/>
+                    <ComboBoxItem Content="Runways" Tag="Runways"/>
+                    <ComboBoxItem Content="Zones" Tag="Zones"/>
+                    <ComboBoxItem Content="AGV Stations" Tag="AGVStations"/>
+                    <ComboBoxItem Content="Conveyors" Tag="Conveyors"/>
+                    <ComboBoxItem Content="Openings" Tag="Openings"/>
+                    <ComboBoxItem Content="Nodes" Tag="Nodes"/>
+                    <ComboBoxItem Content="Paths" Tag="Paths"/>
+                    <ComboBoxItem Content="Walls" Tag="Walls"/>
+                </ComboBox>
+            </Grid>
+        </Border>
+
+        <!-- Tab Control for Tree/Grid views -->
+        <TabControl x:Name="ViewTabs" Grid.Row="2" BorderThickness="0" SelectionChanged="ViewTabs_SelectionChanged">
+            <TabItem Header="Tree View" Padding="8,4">
+                <TreeView x:Name="EquipmentTree" BorderThickness="0"
+                          SelectedItemChanged="EquipmentTree_SelectedItemChanged"
+                          MouseDoubleClick="EquipmentTree_MouseDoubleClick">
+                    <TreeView.ItemContainerStyle>
+                        <Style TargetType="TreeViewItem">
+                            <Setter Property="IsExpanded" Value="True"/>
+                            <Setter Property="Padding" Value="2"/>
+                        </Style>
+                    </TreeView.ItemContainerStyle>
+                </TreeView>
+            </TabItem>
+            <TabItem Header="Data Grid" Padding="8,4">
+                <DataGrid x:Name="EquipmentGrid" Style="{StaticResource CompactDataGrid}"
+                          AutoGenerateColumns="False" CanUserAddRows="False"
+                          SelectionMode="Single" SelectionUnit="FullRow"
+                          SelectionChanged="EquipmentGrid_SelectionChanged"
+                          CellEditEnding="EquipmentGrid_CellEditEnding"
+                          MouseDoubleClick="EquipmentGrid_MouseDoubleClick"/>
+            </TabItem>
+        </TabControl>
+
+        <!-- Properties Header -->
+        <Border Grid.Row="3" Background="{StaticResource HeaderBg}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,1">
+            <DockPanel Margin="8,4">
+                <Button DockPanel.Dock="Right" Content="Edit..." Width="50" Height="20" FontSize="10"
+                        Click="EditProperties_Click" ToolTip="Open properties dialog"/>
+                <TextBlock x:Name="SelectedItemLabel" Text="No selection" FontWeight="SemiBold" FontSize="10"
+                           Foreground="#1E1E1E" VerticalAlignment="Center"/>
+            </DockPanel>
+        </Border>
+
+        <!-- Properties Panel -->
+        <ScrollViewer Grid.Row="4" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="PropertiesPanel" Margin="4">
+                <TextBlock Text="Select an item to view properties" FontSize="10" Foreground="#888"
+                           HorizontalAlignment="Center" Margin="0,20"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

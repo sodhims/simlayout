@@ -1,0 +1,2541 @@
+=== LayoutEditor Debug Log Started at 12/21/2025 5:02:19 PM ===
+[17:02:19.871] [SpatialRenderer] RenderZones called, zone count: 0
+[17:02:19.882] MainWindow constructor completed successfully
+[17:02:19.883] Window should be visible now
+[17:02:26.465] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:26.466] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:26.467]     Point: (55, 55)
+[17:02:26.467]     Point: (995, 55)
+[17:02:26.467]     Point: (995, 720)
+[17:02:26.467]     Point: (55, 720)
+[17:02:26.468] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:26.469] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:26.469]     Point: (1005, 55)
+[17:02:26.469]     Point: (1945, 55)
+[17:02:26.470]     Point: (1945, 720)
+[17:02:26.470]     Point: (1005, 720)
+[17:02:26.470] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:26.470] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:26.470]     Point: (55, 730)
+[17:02:26.470]     Point: (995, 730)
+[17:02:26.471]     Point: (995, 1395)
+[17:02:26.471]     Point: (55, 1395)
+[17:02:26.471] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:28.216] === HitTest START at (329.2, 346.2), frictionless=False, design=False ===
+[17:02:28.217] Checking node terminals...
+[17:02:28.219] HIT: Zone interior 'Warehouse Zone 1'
+[17:02:28.220] >>> CLICK RESULT: Hit type = Zone at (329.2, 346.2)
+[17:02:28.221]     FrictionlessMode=False, DesignMode=False
+[17:02:29.700] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:29.700] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:29.700]     Point: (55, 55)
+[17:02:29.700]     Point: (995, 55)
+[17:02:29.701]     Point: (995, 720)
+[17:02:29.701]     Point: (55, 720)
+[17:02:29.701] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:29.702] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:29.702]     Point: (1005, 55)
+[17:02:29.702]     Point: (1945, 55)
+[17:02:29.702]     Point: (1945, 720)
+[17:02:29.702]     Point: (1005, 720)
+[17:02:29.703] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:29.703] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:29.703]     Point: (55, 730)
+[17:02:29.703]     Point: (995, 730)
+[17:02:29.703]     Point: (995, 1395)
+[17:02:29.704]     Point: (55, 1395)
+[17:02:29.704] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:30.057] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:30.058] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:30.058]     Point: (55, 55)
+[17:02:30.058]     Point: (995, 55)
+[17:02:30.059]     Point: (995, 720)
+[17:02:30.059]     Point: (55, 720)
+[17:02:30.059] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:30.059] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:30.059]     Point: (1005, 55)
+[17:02:30.060]     Point: (1945, 55)
+[17:02:30.060]     Point: (1945, 720)
+[17:02:30.060]     Point: (1005, 720)
+[17:02:30.060] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:30.061] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:30.061]     Point: (55, 730)
+[17:02:30.061]     Point: (995, 730)
+[17:02:30.061]     Point: (995, 1395)
+[17:02:30.061]     Point: (55, 1395)
+[17:02:30.061] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:30.647] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:30.648] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:30.648]     Point: (55, 55)
+[17:02:30.648]     Point: (995, 55)
+[17:02:30.648]     Point: (995, 720)
+[17:02:30.648]     Point: (55, 720)
+[17:02:30.649] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:30.649] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:30.649]     Point: (1005, 55)
+[17:02:30.649]     Point: (1945, 55)
+[17:02:30.649]     Point: (1945, 720)
+[17:02:30.650]     Point: (1005, 720)
+[17:02:30.650] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:30.650] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:30.650]     Point: (55, 730)
+[17:02:30.650]     Point: (995, 730)
+[17:02:30.650]     Point: (995, 1395)
+[17:02:30.651]     Point: (55, 1395)
+[17:02:30.651] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:31.187] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:31.187] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:31.188]     Point: (55, 55)
+[17:02:31.188]     Point: (995, 55)
+[17:02:31.188]     Point: (995, 720)
+[17:02:31.188]     Point: (55, 720)
+[17:02:31.188] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:31.189] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:31.189]     Point: (1005, 55)
+[17:02:31.189]     Point: (1945, 55)
+[17:02:31.189]     Point: (1945, 720)
+[17:02:31.189]     Point: (1005, 720)
+[17:02:31.190] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:31.190] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:31.190]     Point: (55, 730)
+[17:02:31.190]     Point: (995, 730)
+[17:02:31.190]     Point: (995, 1395)
+[17:02:31.190]     Point: (55, 1395)
+[17:02:31.190] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:31.363] === HitTest START at (523.8, 384.9), frictionless=False, design=True ===
+[17:02:31.363] Checking node terminals...
+[17:02:31.364] HIT: Zone interior 'Warehouse Zone 1'
+[17:02:31.364] >>> CLICK RESULT: Hit type = Zone at (523.8, 384.9)
+[17:02:31.364]     FrictionlessMode=False, DesignMode=True
+[17:02:31.736] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:31.736] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:31.736]     Point: (55, 55)
+[17:02:31.737]     Point: (995, 55)
+[17:02:31.737]     Point: (995, 720)
+[17:02:31.737]     Point: (55, 720)
+[17:02:31.737] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:31.737] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:31.738]     Point: (1005, 55)
+[17:02:31.738]     Point: (1945, 55)
+[17:02:31.738]     Point: (1945, 720)
+[17:02:31.738]     Point: (1005, 720)
+[17:02:31.738] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:31.738] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:31.739]     Point: (55, 730)
+[17:02:31.739]     Point: (995, 730)
+[17:02:31.739]     Point: (995, 1395)
+[17:02:31.739]     Point: (55, 1395)
+[17:02:31.739] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:32.243] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:32.243] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:32.244]     Point: (55, 55)
+[17:02:32.244]     Point: (995, 55)
+[17:02:32.244]     Point: (995, 720)
+[17:02:32.244]     Point: (55, 720)
+[17:02:32.245] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:32.245] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:32.245]     Point: (1005, 55)
+[17:02:32.246]     Point: (1945, 55)
+[17:02:32.246]     Point: (1945, 720)
+[17:02:32.246]     Point: (1005, 720)
+[17:02:32.246] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:32.246] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:32.246]     Point: (55, 730)
+[17:02:32.247]     Point: (995, 730)
+[17:02:32.247]     Point: (995, 1395)
+[17:02:32.247]     Point: (55, 1395)
+[17:02:32.247] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:32.727] === HitTest START at (522.5, 388.2), frictionless=False, design=True ===
+[17:02:32.727] Checking node terminals...
+[17:02:32.727] HIT: Zone interior 'Warehouse Zone 1'
+[17:02:32.728] >>> CLICK RESULT: Hit type = Zone at (522.5, 388.2)
+[17:02:32.728]     FrictionlessMode=False, DesignMode=True
+[17:02:32.767] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:32.768] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:32.768]     Point: (55, 55)
+[17:02:32.768]     Point: (995, 55)
+[17:02:32.768]     Point: (995, 720)
+[17:02:32.769]     Point: (55, 720)
+[17:02:32.769] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:32.769] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:32.769]     Point: (1005, 55)
+[17:02:32.769]     Point: (1945, 55)
+[17:02:32.769]     Point: (1945, 720)
+[17:02:32.769]     Point: (1005, 720)
+[17:02:32.769] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:32.770] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:32.770]     Point: (55, 730)
+[17:02:32.770]     Point: (995, 730)
+[17:02:32.770]     Point: (995, 1395)
+[17:02:32.770]     Point: (55, 1395)
+[17:02:32.770] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:32.958] === HitTest START at (522.5, 388.2), frictionless=False, design=True ===
+[17:02:32.958] Checking node terminals...
+[17:02:32.959] HIT: Zone interior 'Warehouse Zone 1'
+[17:02:32.959] === HitTest START at (522.5, 388.2), frictionless=False, design=True ===
+[17:02:32.959] Checking node terminals...
+[17:02:32.959] HIT: Zone interior 'Warehouse Zone 1'
+[17:02:32.959] >>> CLICK RESULT: Hit type = Zone at (522.5, 388.2)
+[17:02:32.959]     FrictionlessMode=False, DesignMode=True
+[17:02:33.206] === HitTest START at (522.5, 388.2), frictionless=False, design=True ===
+[17:02:33.206] Checking node terminals...
+[17:02:33.207] HIT: Zone interior 'Warehouse Zone 1'
+[17:02:33.207] >>> CLICK RESULT: Hit type = Zone at (522.5, 388.2)
+[17:02:33.207]     FrictionlessMode=False, DesignMode=True
+[17:02:33.276] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:33.277] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:33.278]     Point: (55, 55)
+[17:02:33.278]     Point: (995, 55)
+[17:02:33.278]     Point: (995, 720)
+[17:02:33.278]     Point: (55, 720)
+[17:02:33.278] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:33.279] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:33.279]     Point: (1005, 55)
+[17:02:33.279]     Point: (1945, 55)
+[17:02:33.279]     Point: (1945, 720)
+[17:02:33.279]     Point: (1005, 720)
+[17:02:33.279] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:33.280] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:33.280]     Point: (55, 730)
+[17:02:33.280]     Point: (995, 730)
+[17:02:33.280]     Point: (995, 1395)
+[17:02:33.280]     Point: (55, 1395)
+[17:02:33.280] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:33.801] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:33.801] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:33.801]     Point: (55, 55)
+[17:02:33.801]     Point: (995, 55)
+[17:02:33.801]     Point: (995, 720)
+[17:02:33.802]     Point: (55, 720)
+[17:02:33.802] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:33.802] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:33.802]     Point: (1005, 55)
+[17:02:33.802]     Point: (1945, 55)
+[17:02:33.802]     Point: (1945, 720)
+[17:02:33.802]     Point: (1005, 720)
+[17:02:33.803] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:33.803] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:33.803]     Point: (55, 730)
+[17:02:33.803]     Point: (995, 730)
+[17:02:33.803]     Point: (995, 1395)
+[17:02:33.803]     Point: (55, 1395)
+[17:02:33.803] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:34.304] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:34.304] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:34.305]     Point: (55, 55)
+[17:02:34.305]     Point: (995, 55)
+[17:02:34.305]     Point: (995, 720)
+[17:02:34.305]     Point: (55, 720)
+[17:02:34.305] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:34.306] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:34.306]     Point: (1005, 55)
+[17:02:34.306]     Point: (1945, 55)
+[17:02:34.306]     Point: (1945, 720)
+[17:02:34.306]     Point: (1005, 720)
+[17:02:34.306] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:34.307] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:34.307]     Point: (55, 730)
+[17:02:34.307]     Point: (995, 730)
+[17:02:34.307]     Point: (995, 1395)
+[17:02:34.307]     Point: (55, 1395)
+[17:02:34.307] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:34.619] === HitTest START at (523.8, 381.5), frictionless=False, design=True ===
+[17:02:34.619] Checking node terminals...
+[17:02:34.619] HIT: Zone interior 'Warehouse Zone 1'
+[17:02:34.620] >>> CLICK RESULT: Hit type = Zone at (523.8, 381.5)
+[17:02:34.620]     FrictionlessMode=False, DesignMode=True
+[17:02:34.863] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:34.863] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:34.863]     Point: (55, 55)
+[17:02:34.863]     Point: (995, 55)
+[17:02:34.864]     Point: (995, 720)
+[17:02:34.864]     Point: (55, 720)
+[17:02:34.864] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:34.864] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:34.864]     Point: (1005, 55)
+[17:02:34.864]     Point: (1945, 55)
+[17:02:34.865]     Point: (1945, 720)
+[17:02:34.865]     Point: (1005, 720)
+[17:02:34.865] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:34.865] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:34.865]     Point: (55, 730)
+[17:02:34.865]     Point: (995, 730)
+[17:02:34.865]     Point: (995, 1395)
+[17:02:34.866]     Point: (55, 1395)
+[17:02:34.866] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:35.365] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:35.365] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:35.365]     Point: (55, 55)
+[17:02:35.365]     Point: (995, 55)
+[17:02:35.365]     Point: (995, 720)
+[17:02:35.365]     Point: (55, 720)
+[17:02:35.366] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:35.367] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:35.367]     Point: (1005, 55)
+[17:02:35.368]     Point: (1945, 55)
+[17:02:35.368]     Point: (1945, 720)
+[17:02:35.368]     Point: (1005, 720)
+[17:02:35.368] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:35.368] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:35.369]     Point: (55, 730)
+[17:02:35.369]     Point: (995, 730)
+[17:02:35.369]     Point: (995, 1395)
+[17:02:35.369]     Point: (55, 1395)
+[17:02:35.369] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:35.863] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:35.863] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:35.864]     Point: (55, 55)
+[17:02:35.864]     Point: (995, 55)
+[17:02:35.864]     Point: (995, 720)
+[17:02:35.865]     Point: (55, 720)
+[17:02:35.865] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:35.865] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:35.865]     Point: (1005, 55)
+[17:02:35.866]     Point: (1945, 55)
+[17:02:35.866]     Point: (1945, 720)
+[17:02:35.866]     Point: (1005, 720)
+[17:02:35.866] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:35.867] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:35.867]     Point: (55, 730)
+[17:02:35.867]     Point: (995, 730)
+[17:02:35.867]     Point: (995, 1395)
+[17:02:35.867]     Point: (55, 1395)
+[17:02:35.867] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:36.365] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:36.365] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:36.365]     Point: (55, 55)
+[17:02:36.366]     Point: (995, 55)
+[17:02:36.366]     Point: (995, 720)
+[17:02:36.366]     Point: (55, 720)
+[17:02:36.366] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:36.367] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:36.367]     Point: (1005, 55)
+[17:02:36.368]     Point: (1945, 55)
+[17:02:36.368]     Point: (1945, 720)
+[17:02:36.368]     Point: (1005, 720)
+[17:02:36.368] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:36.368] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:36.368]     Point: (55, 730)
+[17:02:36.369]     Point: (995, 730)
+[17:02:36.369]     Point: (995, 1395)
+[17:02:36.369]     Point: (55, 1395)
+[17:02:36.369] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:37.017] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:37.018] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:37.018]     Point: (55, 55)
+[17:02:37.018]     Point: (995, 55)
+[17:02:37.018]     Point: (995, 720)
+[17:02:37.018]     Point: (55, 720)
+[17:02:37.019] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:37.019] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:37.019]     Point: (1005, 55)
+[17:02:37.019]     Point: (1945, 55)
+[17:02:37.019]     Point: (1945, 720)
+[17:02:37.019]     Point: (1005, 720)
+[17:02:37.020] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:37.020] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:37.020]     Point: (55, 730)
+[17:02:37.020]     Point: (995, 730)
+[17:02:37.020]     Point: (995, 1395)
+[17:02:37.020]     Point: (55, 1395)
+[17:02:37.021] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:37.532] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:37.532] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:37.532]     Point: (55, 55)
+[17:02:37.532]     Point: (995, 55)
+[17:02:37.532]     Point: (995, 720)
+[17:02:37.533]     Point: (55, 720)
+[17:02:37.533] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:37.533] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:37.533]     Point: (1005, 55)
+[17:02:37.534]     Point: (1945, 55)
+[17:02:37.534]     Point: (1945, 720)
+[17:02:37.534]     Point: (1005, 720)
+[17:02:37.534] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:37.534] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:37.534]     Point: (55, 730)
+[17:02:37.534]     Point: (995, 730)
+[17:02:37.535]     Point: (995, 1395)
+[17:02:37.535]     Point: (55, 1395)
+[17:02:37.535] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:37.604] === HitTest START at (520.5, 380.2), frictionless=False, design=True ===
+[17:02:37.605] Checking node terminals...
+[17:02:37.605] HIT: Zone interior 'Warehouse Zone 1'
+[17:02:37.605] >>> CLICK RESULT: Hit type = Zone at (520.5, 380.2)
+[17:02:37.605]     FrictionlessMode=False, DesignMode=True
+[17:02:38.022] === HitTest START at (521.8, 382.9), frictionless=False, design=True ===
+[17:02:38.022] Checking node terminals...
+[17:02:38.023] HIT: Zone interior 'Warehouse Zone 1'
+[17:02:38.023] >>> CLICK RESULT: Hit type = Zone at (521.8, 382.9)
+[17:02:38.023]     FrictionlessMode=False, DesignMode=True
+[17:02:38.045] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:38.045] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:38.045]     Point: (55, 55)
+[17:02:38.045]     Point: (995, 55)
+[17:02:38.045]     Point: (995, 720)
+[17:02:38.046]     Point: (55, 720)
+[17:02:38.046] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:38.046] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:38.046]     Point: (1005, 55)
+[17:02:38.046]     Point: (1945, 55)
+[17:02:38.046]     Point: (1945, 720)
+[17:02:38.047]     Point: (1005, 720)
+[17:02:38.047] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:38.047] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:38.047]     Point: (55, 730)
+[17:02:38.047]     Point: (995, 730)
+[17:02:38.047]     Point: (995, 1395)
+[17:02:38.047]     Point: (55, 1395)
+[17:02:38.047] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:38.216] === HitTest START at (521.8, 382.9), frictionless=False, design=True ===
+[17:02:38.216] Checking node terminals...
+[17:02:38.217] HIT: Zone interior 'Warehouse Zone 1'
+[17:02:38.217] === HitTest START at (521.8, 382.9), frictionless=False, design=True ===
+[17:02:38.217] Checking node terminals...
+[17:02:38.217] HIT: Zone interior 'Warehouse Zone 1'
+[17:02:38.217] >>> CLICK RESULT: Hit type = Zone at (521.8, 382.9)
+[17:02:38.218]     FrictionlessMode=False, DesignMode=True
+[17:02:38.564] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:38.564] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:38.564]     Point: (55, 55)
+[17:02:38.564]     Point: (995, 55)
+[17:02:38.564]     Point: (995, 720)
+[17:02:38.565]     Point: (55, 720)
+[17:02:38.565] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:38.565] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:38.565]     Point: (1005, 55)
+[17:02:38.565]     Point: (1945, 55)
+[17:02:38.565]     Point: (1945, 720)
+[17:02:38.566]     Point: (1005, 720)
+[17:02:38.566] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:38.566] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:38.566]     Point: (55, 730)
+[17:02:38.566]     Point: (995, 730)
+[17:02:38.566]     Point: (995, 1395)
+[17:02:38.566]     Point: (55, 1395)
+[17:02:38.567] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:39.117] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:39.118] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:39.118]     Point: (55, 55)
+[17:02:39.118]     Point: (995, 55)
+[17:02:39.118]     Point: (995, 720)
+[17:02:39.118]     Point: (55, 720)
+[17:02:39.118] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:39.119] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:39.119]     Point: (1005, 55)
+[17:02:39.119]     Point: (1945, 55)
+[17:02:39.119]     Point: (1945, 720)
+[17:02:39.119]     Point: (1005, 720)
+[17:02:39.119] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:39.119] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:39.120]     Point: (55, 730)
+[17:02:39.120]     Point: (995, 730)
+[17:02:39.120]     Point: (995, 1395)
+[17:02:39.120]     Point: (55, 1395)
+[17:02:39.120] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:39.634] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:39.634] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:39.634]     Point: (55, 55)
+[17:02:39.634]     Point: (995, 55)
+[17:02:39.635]     Point: (995, 720)
+[17:02:39.635]     Point: (55, 720)
+[17:02:39.635] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:39.635] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:39.635]     Point: (1005, 55)
+[17:02:39.636]     Point: (1945, 55)
+[17:02:39.636]     Point: (1945, 720)
+[17:02:39.636]     Point: (1005, 720)
+[17:02:39.636] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:39.636] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:39.637]     Point: (55, 730)
+[17:02:39.637]     Point: (995, 730)
+[17:02:39.637]     Point: (995, 1395)
+[17:02:39.637]     Point: (55, 1395)
+[17:02:39.637] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:40.145] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:40.145] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:40.146]     Point: (55, 55)
+[17:02:40.146]     Point: (995, 55)
+[17:02:40.146]     Point: (995, 720)
+[17:02:40.146]     Point: (55, 720)
+[17:02:40.146] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:40.147] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:40.147]     Point: (1005, 55)
+[17:02:40.147]     Point: (1945, 55)
+[17:02:40.147]     Point: (1945, 720)
+[17:02:40.147]     Point: (1005, 720)
+[17:02:40.147] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:40.147] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:40.148]     Point: (55, 730)
+[17:02:40.148]     Point: (995, 730)
+[17:02:40.148]     Point: (995, 1395)
+[17:02:40.148]     Point: (55, 1395)
+[17:02:40.148] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:40.649] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:40.649] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:40.649]     Point: (55, 55)
+[17:02:40.649]     Point: (995, 55)
+[17:02:40.650]     Point: (995, 720)
+[17:02:40.650]     Point: (55, 720)
+[17:02:40.650] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:40.650] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:40.650]     Point: (1005, 55)
+[17:02:40.651]     Point: (1945, 55)
+[17:02:40.651]     Point: (1945, 720)
+[17:02:40.651]     Point: (1005, 720)
+[17:02:40.651] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:40.651] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:40.651]     Point: (55, 730)
+[17:02:40.651]     Point: (995, 730)
+[17:02:40.652]     Point: (995, 1395)
+[17:02:40.652]     Point: (55, 1395)
+[17:02:40.652] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:41.159] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:41.159] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:41.159]     Point: (55, 55)
+[17:02:41.160]     Point: (995, 55)
+[17:02:41.160]     Point: (995, 720)
+[17:02:41.160]     Point: (55, 720)
+[17:02:41.161] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:41.161] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:41.161]     Point: (1005, 55)
+[17:02:41.161]     Point: (1945, 55)
+[17:02:41.161]     Point: (1945, 720)
+[17:02:41.162]     Point: (1005, 720)
+[17:02:41.162] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:41.162] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:41.162]     Point: (55, 730)
+[17:02:41.162]     Point: (995, 730)
+[17:02:41.162]     Point: (995, 1395)
+[17:02:41.162]     Point: (55, 1395)
+[17:02:41.162] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:41.188] === HitTest START at (56.5, 53.5), frictionless=False, design=True ===
+[17:02:41.188] Checking node terminals...
+[17:02:41.189] HIT: Zone vertex 0 of 'Warehouse Zone 1'
+[17:02:41.189] >>> CLICK RESULT: Hit type = ZoneVertex at (56.5, 53.5)
+[17:02:41.189]     FrictionlessMode=False, DesignMode=True
+[17:02:41.661] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:41.661] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:41.661]     Point: (55, 55)
+[17:02:41.661]     Point: (995, 55)
+[17:02:41.662]     Point: (995, 720)
+[17:02:41.663]     Point: (55, 720)
+[17:02:41.663] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:41.663] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:41.663]     Point: (1005, 55)
+[17:02:41.664]     Point: (1945, 55)
+[17:02:41.664]     Point: (1945, 720)
+[17:02:41.664]     Point: (1005, 720)
+[17:02:41.664] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:41.664] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:41.664]     Point: (55, 730)
+[17:02:41.664]     Point: (995, 730)
+[17:02:41.665]     Point: (995, 1395)
+[17:02:41.665]     Point: (55, 1395)
+[17:02:41.665] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:42.020] === HitTest START at (69.2, 28.2), frictionless=False, design=True ===
+[17:02:42.020] Checking node terminals...
+[17:02:42.021] Checking GuidedTransport layer, visible=True
+[17:02:42.022] Checking AGV stations (count=4)...
+[17:02:42.022] HitTestAGVStations at (69.2, 28.2), designMode=True, radius=25
+[17:02:42.022] Checking 4 AGV stations
+[17:02:42.022]   Station 'AGV Station 1' at (50.0, 100.0), distance=74.3
+[17:02:42.023]   Station 'AGV Station 2' at (1950.0, 100.0), distance=1882.2
+[17:02:42.023]   Station 'AGV Station 3' at (50.0, 200.0), distance=172.9
+[17:02:42.023]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1888.7
+[17:02:42.023]   No AGV station within hit radius
+[17:02:42.023] No AGV station hit
+[17:02:42.023] >>> CLICK RESULT: Hit type = Canvas at (69.2, 28.2)
+[17:02:42.024]     FrictionlessMode=False, DesignMode=True
+[17:02:42.031] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:42.031] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:42.031]     Point: (55, 55)
+[17:02:42.031]     Point: (995, 55)
+[17:02:42.031]     Point: (995, 720)
+[17:02:42.031]     Point: (55, 720)
+[17:02:42.032] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:42.032] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:42.032]     Point: (1005, 55)
+[17:02:42.032]     Point: (1945, 55)
+[17:02:42.032]     Point: (1945, 720)
+[17:02:42.032]     Point: (1005, 720)
+[17:02:42.033] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:42.033] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:42.033]     Point: (55, 730)
+[17:02:42.033]     Point: (995, 730)
+[17:02:42.033]     Point: (995, 1395)
+[17:02:42.033]     Point: (55, 1395)
+[17:02:42.034] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:42.039] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:42.039] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:42.040]     Point: (55, 55)
+[17:02:42.040]     Point: (995, 55)
+[17:02:42.040]     Point: (995, 720)
+[17:02:42.040]     Point: (55, 720)
+[17:02:42.040] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:42.040] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:42.040]     Point: (1005, 55)
+[17:02:42.040]     Point: (1945, 55)
+[17:02:42.041]     Point: (1945, 720)
+[17:02:42.041]     Point: (1005, 720)
+[17:02:42.041] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:42.041] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:42.041]     Point: (55, 730)
+[17:02:42.041]     Point: (995, 730)
+[17:02:42.041]     Point: (995, 1395)
+[17:02:42.041]     Point: (55, 1395)
+[17:02:42.042] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:42.160] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:42.161] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:42.161]     Point: (55, 55)
+[17:02:42.161]     Point: (995, 55)
+[17:02:42.161]     Point: (995, 720)
+[17:02:42.162]     Point: (55, 720)
+[17:02:42.162] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:42.162] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:42.162]     Point: (1005, 55)
+[17:02:42.163]     Point: (1945, 55)
+[17:02:42.163]     Point: (1945, 720)
+[17:02:42.163]     Point: (1005, 720)
+[17:02:42.163] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:42.163] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:42.164]     Point: (55, 730)
+[17:02:42.164]     Point: (995, 730)
+[17:02:42.164]     Point: (995, 1395)
+[17:02:42.164]     Point: (55, 1395)
+[17:02:42.164] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:42.191] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:42.191] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:42.191]     Point: (55, 55)
+[17:02:42.192]     Point: (995, 55)
+[17:02:42.192]     Point: (995, 720)
+[17:02:42.192]     Point: (55, 720)
+[17:02:42.192] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:42.193] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:42.193]     Point: (1005, 55)
+[17:02:42.193]     Point: (1945, 55)
+[17:02:42.193]     Point: (1945, 720)
+[17:02:42.193]     Point: (1005, 720)
+[17:02:42.194] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:42.194] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:42.194]     Point: (55, 730)
+[17:02:42.194]     Point: (995, 730)
+[17:02:42.194]     Point: (995, 1395)
+[17:02:42.194]     Point: (55, 1395)
+[17:02:42.194] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:42.661] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:42.661] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:42.662]     Point: (55, 55)
+[17:02:42.662]     Point: (995, 55)
+[17:02:42.662]     Point: (995, 720)
+[17:02:42.662]     Point: (55, 720)
+[17:02:42.663] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:42.663] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:42.663]     Point: (1005, 55)
+[17:02:42.663]     Point: (1945, 55)
+[17:02:42.663]     Point: (1945, 720)
+[17:02:42.663]     Point: (1005, 720)
+[17:02:42.663] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:42.664] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:42.664]     Point: (55, 730)
+[17:02:42.664]     Point: (995, 730)
+[17:02:42.664]     Point: (995, 1395)
+[17:02:42.664]     Point: (55, 1395)
+[17:02:42.665] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:43.017] === HitTest START at (53.8, 54.2), frictionless=False, design=True ===
+[17:02:43.017] Checking node terminals...
+[17:02:43.017] HIT: Zone vertex 0 of 'Warehouse Zone 1'
+[17:02:43.017] >>> CLICK RESULT: Hit type = ZoneVertex at (53.8, 54.2)
+[17:02:43.017]     FrictionlessMode=False, DesignMode=True
+[17:02:43.159] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:43.160] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:43.160]     Point: (55, 55)
+[17:02:43.160]     Point: (995, 55)
+[17:02:43.160]     Point: (995, 720)
+[17:02:43.160]     Point: (55, 720)
+[17:02:43.160] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:43.160] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:43.161]     Point: (1005, 55)
+[17:02:43.161]     Point: (1945, 55)
+[17:02:43.161]     Point: (1945, 720)
+[17:02:43.161]     Point: (1005, 720)
+[17:02:43.161] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:43.161] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:43.162]     Point: (55, 730)
+[17:02:43.162]     Point: (995, 730)
+[17:02:43.163]     Point: (995, 1395)
+[17:02:43.163]     Point: (55, 1395)
+[17:02:43.163] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:43.662] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:43.662] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:43.662]     Point: (55, 55)
+[17:02:43.662]     Point: (995, 55)
+[17:02:43.662]     Point: (995, 720)
+[17:02:43.663]     Point: (55, 720)
+[17:02:43.663] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:43.663] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:43.663]     Point: (1005, 55)
+[17:02:43.663]     Point: (1945, 55)
+[17:02:43.664]     Point: (1945, 720)
+[17:02:43.664]     Point: (1005, 720)
+[17:02:43.664] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:43.664] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:43.664]     Point: (55, 730)
+[17:02:43.664]     Point: (995, 730)
+[17:02:43.664]     Point: (995, 1395)
+[17:02:43.664]     Point: (55, 1395)
+[17:02:43.665] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:44.168] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:44.169] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:44.169]     Point: (55, 55)
+[17:02:44.169]     Point: (995, 55)
+[17:02:44.169]     Point: (995, 720)
+[17:02:44.169]     Point: (55, 720)
+[17:02:44.170] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:44.170] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:44.170]     Point: (1005, 55)
+[17:02:44.170]     Point: (1945, 55)
+[17:02:44.170]     Point: (1945, 720)
+[17:02:44.171]     Point: (1005, 720)
+[17:02:44.171] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:44.171] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:44.171]     Point: (55, 730)
+[17:02:44.171]     Point: (995, 730)
+[17:02:44.171]     Point: (995, 1395)
+[17:02:44.172]     Point: (55, 1395)
+[17:02:44.172] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:44.684] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:44.684] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:44.684]     Point: (55, 55)
+[17:02:44.684]     Point: (995, 55)
+[17:02:44.684]     Point: (995, 720)
+[17:02:44.685]     Point: (55, 720)
+[17:02:44.685] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:44.685] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:44.685]     Point: (1005, 55)
+[17:02:44.685]     Point: (1945, 55)
+[17:02:44.685]     Point: (1945, 720)
+[17:02:44.685]     Point: (1005, 720)
+[17:02:44.686] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:44.686] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:44.686]     Point: (55, 730)
+[17:02:44.686]     Point: (995, 730)
+[17:02:44.686]     Point: (995, 1395)
+[17:02:44.686]     Point: (55, 1395)
+[17:02:44.686] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:45.197] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:45.197] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:45.198]     Point: (55, 55)
+[17:02:45.198]     Point: (995, 55)
+[17:02:45.198]     Point: (995, 720)
+[17:02:45.198]     Point: (55, 720)
+[17:02:45.198] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:45.199] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:45.199]     Point: (1005, 55)
+[17:02:45.199]     Point: (1945, 55)
+[17:02:45.199]     Point: (1945, 720)
+[17:02:45.199]     Point: (1005, 720)
+[17:02:45.199] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:45.200] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:45.200]     Point: (55, 730)
+[17:02:45.200]     Point: (995, 730)
+[17:02:45.200]     Point: (995, 1395)
+[17:02:45.200]     Point: (55, 1395)
+[17:02:45.200] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:45.710] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:45.710] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:45.711]     Point: (55, 55)
+[17:02:45.711]     Point: (995, 55)
+[17:02:45.711]     Point: (995, 720)
+[17:02:45.711]     Point: (55, 720)
+[17:02:45.711] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:45.712] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:45.712]     Point: (1005, 55)
+[17:02:45.712]     Point: (1945, 55)
+[17:02:45.712]     Point: (1945, 720)
+[17:02:45.712]     Point: (1005, 720)
+[17:02:45.712] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:45.713] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:45.713]     Point: (55, 730)
+[17:02:45.713]     Point: (995, 730)
+[17:02:45.713]     Point: (995, 1395)
+[17:02:45.713]     Point: (55, 1395)
+[17:02:45.713] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:46.210] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:46.210] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:46.210]     Point: (55, 55)
+[17:02:46.210]     Point: (995, 55)
+[17:02:46.211]     Point: (995, 720)
+[17:02:46.211]     Point: (55, 720)
+[17:02:46.211] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:46.211] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:46.211]     Point: (1005, 55)
+[17:02:46.211]     Point: (1945, 55)
+[17:02:46.212]     Point: (1945, 720)
+[17:02:46.212]     Point: (1005, 720)
+[17:02:46.212] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:46.212] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:46.212]     Point: (55, 730)
+[17:02:46.212]     Point: (995, 730)
+[17:02:46.213]     Point: (995, 1395)
+[17:02:46.213]     Point: (55, 1395)
+[17:02:46.213] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:46.730] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:46.730] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:46.730]     Point: (55, 55)
+[17:02:46.730]     Point: (995, 55)
+[17:02:46.730]     Point: (995, 720)
+[17:02:46.730]     Point: (55, 720)
+[17:02:46.731] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:46.731] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:46.731]     Point: (1005, 55)
+[17:02:46.731]     Point: (1945, 55)
+[17:02:46.731]     Point: (1945, 720)
+[17:02:46.731]     Point: (1005, 720)
+[17:02:46.732] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:46.732] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:46.732]     Point: (55, 730)
+[17:02:46.732]     Point: (995, 730)
+[17:02:46.732]     Point: (995, 1395)
+[17:02:46.732]     Point: (55, 1395)
+[17:02:46.732] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:47.242] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:47.242] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:47.243]     Point: (55, 55)
+[17:02:47.243]     Point: (995, 55)
+[17:02:47.243]     Point: (995, 720)
+[17:02:47.243]     Point: (55, 720)
+[17:02:47.243] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:47.243] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:47.244]     Point: (1005, 55)
+[17:02:47.244]     Point: (1945, 55)
+[17:02:47.244]     Point: (1945, 720)
+[17:02:47.244]     Point: (1005, 720)
+[17:02:47.244] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:47.244] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:47.244]     Point: (55, 730)
+[17:02:47.245]     Point: (995, 730)
+[17:02:47.245]     Point: (995, 1395)
+[17:02:47.245]     Point: (55, 1395)
+[17:02:47.245] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:47.760] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:47.761] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:47.761]     Point: (55, 55)
+[17:02:47.761]     Point: (995, 55)
+[17:02:47.761]     Point: (995, 720)
+[17:02:47.762]     Point: (55, 720)
+[17:02:47.762] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:47.762] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:47.762]     Point: (1005, 55)
+[17:02:47.762]     Point: (1945, 55)
+[17:02:47.762]     Point: (1945, 720)
+[17:02:47.762]     Point: (1005, 720)
+[17:02:47.762] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:47.763] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:47.763]     Point: (55, 730)
+[17:02:47.763]     Point: (995, 730)
+[17:02:47.763]     Point: (995, 1395)
+[17:02:47.763]     Point: (55, 1395)
+[17:02:47.763] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:48.273] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:48.273] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:48.273]     Point: (55, 55)
+[17:02:48.273]     Point: (995, 55)
+[17:02:48.273]     Point: (995, 720)
+[17:02:48.273]     Point: (55, 720)
+[17:02:48.274] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:48.274] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:48.274]     Point: (1005, 55)
+[17:02:48.274]     Point: (1945, 55)
+[17:02:48.274]     Point: (1945, 720)
+[17:02:48.274]     Point: (1005, 720)
+[17:02:48.275] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:48.275] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:48.275]     Point: (55, 730)
+[17:02:48.275]     Point: (995, 730)
+[17:02:48.275]     Point: (995, 1395)
+[17:02:48.275]     Point: (55, 1395)
+[17:02:48.275] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:48.772] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:48.773] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:48.773]     Point: (55, 55)
+[17:02:48.773]     Point: (995, 55)
+[17:02:48.773]     Point: (995, 720)
+[17:02:48.773]     Point: (55, 720)
+[17:02:48.774] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:48.774] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:48.774]     Point: (1005, 55)
+[17:02:48.774]     Point: (1945, 55)
+[17:02:48.774]     Point: (1945, 720)
+[17:02:48.774]     Point: (1005, 720)
+[17:02:48.774] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:48.774] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:48.775]     Point: (55, 730)
+[17:02:48.775]     Point: (995, 730)
+[17:02:48.775]     Point: (995, 1395)
+[17:02:48.775]     Point: (55, 1395)
+[17:02:48.775] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:49.273] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:49.273] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:49.273]     Point: (55, 55)
+[17:02:49.273]     Point: (995, 55)
+[17:02:49.274]     Point: (995, 720)
+[17:02:49.274]     Point: (55, 720)
+[17:02:49.274] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:49.274] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:49.274]     Point: (1005, 55)
+[17:02:49.274]     Point: (1945, 55)
+[17:02:49.274]     Point: (1945, 720)
+[17:02:49.275]     Point: (1005, 720)
+[17:02:49.275] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:49.275] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:49.275]     Point: (55, 730)
+[17:02:49.275]     Point: (995, 730)
+[17:02:49.275]     Point: (995, 1395)
+[17:02:49.275]     Point: (55, 1395)
+[17:02:49.276] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:49.774] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:49.774] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:49.774]     Point: (55, 55)
+[17:02:49.774]     Point: (995, 55)
+[17:02:49.775]     Point: (995, 720)
+[17:02:49.775]     Point: (55, 720)
+[17:02:49.775] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:49.775] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:49.775]     Point: (1005, 55)
+[17:02:49.775]     Point: (1945, 55)
+[17:02:49.775]     Point: (1945, 720)
+[17:02:49.775]     Point: (1005, 720)
+[17:02:49.776] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:49.776] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:49.776]     Point: (55, 730)
+[17:02:49.776]     Point: (995, 730)
+[17:02:49.776]     Point: (995, 1395)
+[17:02:49.776]     Point: (55, 1395)
+[17:02:49.776] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:50.348] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:50.348] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:50.348]     Point: (55, 55)
+[17:02:50.348]     Point: (995, 55)
+[17:02:50.348]     Point: (995, 720)
+[17:02:50.349]     Point: (55, 720)
+[17:02:50.349] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:50.349] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:50.349]     Point: (1005, 55)
+[17:02:50.349]     Point: (1945, 55)
+[17:02:50.349]     Point: (1945, 720)
+[17:02:50.349]     Point: (1005, 720)
+[17:02:50.350] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:50.350] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:50.350]     Point: (55, 730)
+[17:02:50.350]     Point: (995, 730)
+[17:02:50.350]     Point: (995, 1395)
+[17:02:50.350]     Point: (55, 1395)
+[17:02:50.350] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:50.859] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:50.860] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:50.860]     Point: (55, 55)
+[17:02:50.860]     Point: (995, 55)
+[17:02:50.860]     Point: (995, 720)
+[17:02:50.860]     Point: (55, 720)
+[17:02:50.860] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:50.861] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:50.861]     Point: (1005, 55)
+[17:02:50.861]     Point: (1945, 55)
+[17:02:50.861]     Point: (1945, 720)
+[17:02:50.861]     Point: (1005, 720)
+[17:02:50.862] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:50.862] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:50.862]     Point: (55, 730)
+[17:02:50.862]     Point: (995, 730)
+[17:02:50.862]     Point: (995, 1395)
+[17:02:50.862]     Point: (55, 1395)
+[17:02:50.862] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:51.140] === HitTest START at (519.8, 1060.5), frictionless=False, design=True ===
+[17:02:51.141] Checking node terminals...
+[17:02:51.141] HIT: Zone interior 'Production Zone 3'
+[17:02:51.141] >>> CLICK RESULT: Hit type = Zone at (519.8, 1060.5)
+[17:02:51.142]     FrictionlessMode=False, DesignMode=True
+[17:02:51.441] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:51.441] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:51.442]     Point: (55, 55)
+[17:02:51.442]     Point: (995, 55)
+[17:02:51.442]     Point: (995, 720)
+[17:02:51.442]     Point: (55, 720)
+[17:02:51.442] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:51.443] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:51.443]     Point: (1005, 55)
+[17:02:51.443]     Point: (1945, 55)
+[17:02:51.443]     Point: (1945, 720)
+[17:02:51.444]     Point: (1005, 720)
+[17:02:51.444] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:51.444] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:51.444]     Point: (55, 730)
+[17:02:51.444]     Point: (995, 730)
+[17:02:51.444]     Point: (995, 1395)
+[17:02:51.444]     Point: (55, 1395)
+[17:02:51.445] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:51.948] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:51.948] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:51.948]     Point: (55, 55)
+[17:02:51.949]     Point: (995, 55)
+[17:02:51.949]     Point: (995, 720)
+[17:02:51.949]     Point: (55, 720)
+[17:02:51.949] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:51.949] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:51.949]     Point: (1005, 55)
+[17:02:51.949]     Point: (1945, 55)
+[17:02:51.950]     Point: (1945, 720)
+[17:02:51.950]     Point: (1005, 720)
+[17:02:51.950] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:51.950] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:51.950]     Point: (55, 730)
+[17:02:51.950]     Point: (995, 730)
+[17:02:51.950]     Point: (995, 1395)
+[17:02:51.950]     Point: (55, 1395)
+[17:02:51.950] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:52.318] === HitTest START at (523.2, 1059.1), frictionless=False, design=True ===
+[17:02:52.319] Checking node terminals...
+[17:02:52.319] HIT: Zone interior 'Production Zone 3'
+[17:02:52.319] === HitTest START at (523.2, 1059.1), frictionless=False, design=True ===
+[17:02:52.320] Checking node terminals...
+[17:02:52.320] HIT: Zone interior 'Production Zone 3'
+[17:02:52.320] >>> CLICK RESULT: Hit type = Zone at (523.2, 1059.1)
+[17:02:52.321]     FrictionlessMode=False, DesignMode=True
+[17:02:52.466] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:52.467] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:52.467]     Point: (55, 55)
+[17:02:52.467]     Point: (995, 55)
+[17:02:52.467]     Point: (995, 720)
+[17:02:52.467]     Point: (55, 720)
+[17:02:52.467] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:52.468] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:52.468]     Point: (1005, 55)
+[17:02:52.468]     Point: (1945, 55)
+[17:02:52.468]     Point: (1945, 720)
+[17:02:52.468]     Point: (1005, 720)
+[17:02:52.468] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:52.469] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:52.469]     Point: (55, 730)
+[17:02:52.469]     Point: (995, 730)
+[17:02:52.469]     Point: (995, 1395)
+[17:02:52.469]     Point: (55, 1395)
+[17:02:52.469] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:52.978] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:52.978] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:52.978]     Point: (55, 55)
+[17:02:52.978]     Point: (995, 55)
+[17:02:52.978]     Point: (995, 720)
+[17:02:52.979]     Point: (55, 720)
+[17:02:52.979] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:52.979] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:52.979]     Point: (1005, 55)
+[17:02:52.979]     Point: (1945, 55)
+[17:02:52.980]     Point: (1945, 720)
+[17:02:52.980]     Point: (1005, 720)
+[17:02:52.980] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:52.980] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:52.980]     Point: (55, 730)
+[17:02:52.980]     Point: (995, 730)
+[17:02:52.980]     Point: (995, 1395)
+[17:02:52.980]     Point: (55, 1395)
+[17:02:52.981] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:53.491] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:53.492] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:53.492]     Point: (55, 55)
+[17:02:53.492]     Point: (995, 55)
+[17:02:53.492]     Point: (995, 720)
+[17:02:53.492]     Point: (55, 720)
+[17:02:53.493] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:53.493] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:53.493]     Point: (1005, 55)
+[17:02:53.493]     Point: (1945, 55)
+[17:02:53.493]     Point: (1945, 720)
+[17:02:53.493]     Point: (1005, 720)
+[17:02:53.493] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:53.493] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:53.494]     Point: (55, 730)
+[17:02:53.494]     Point: (995, 730)
+[17:02:53.494]     Point: (995, 1395)
+[17:02:53.494]     Point: (55, 1395)
+[17:02:53.494] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:53.998] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:53.999] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:53.999]     Point: (55, 55)
+[17:02:53.999]     Point: (995, 55)
+[17:02:54.000]     Point: (995, 720)
+[17:02:54.000]     Point: (55, 720)
+[17:02:54.000] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:54.001] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:54.001]     Point: (1005, 55)
+[17:02:54.001]     Point: (1945, 55)
+[17:02:54.001]     Point: (1945, 720)
+[17:02:54.001]     Point: (1005, 720)
+[17:02:54.001] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:54.001] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:54.002]     Point: (55, 730)
+[17:02:54.002]     Point: (995, 730)
+[17:02:54.002]     Point: (995, 1395)
+[17:02:54.002]     Point: (55, 1395)
+[17:02:54.002] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:54.510] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:54.510] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:54.510]     Point: (55, 55)
+[17:02:54.511]     Point: (995, 55)
+[17:02:54.511]     Point: (995, 720)
+[17:02:54.511]     Point: (55, 720)
+[17:02:54.511] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:54.511] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:54.511]     Point: (1005, 55)
+[17:02:54.511]     Point: (1945, 55)
+[17:02:54.511]     Point: (1945, 720)
+[17:02:54.512]     Point: (1005, 720)
+[17:02:54.512] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:54.512] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:54.512]     Point: (55, 730)
+[17:02:54.512]     Point: (995, 730)
+[17:02:54.512]     Point: (995, 1395)
+[17:02:54.513]     Point: (55, 1395)
+[17:02:54.513] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:55.033] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:55.034] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:55.034]     Point: (55, 55)
+[17:02:55.034]     Point: (995, 55)
+[17:02:55.034]     Point: (995, 720)
+[17:02:55.034]     Point: (55, 720)
+[17:02:55.035] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:55.035] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:55.035]     Point: (1005, 55)
+[17:02:55.035]     Point: (1945, 55)
+[17:02:55.035]     Point: (1945, 720)
+[17:02:55.035]     Point: (1005, 720)
+[17:02:55.036] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:55.036] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:55.036]     Point: (55, 730)
+[17:02:55.036]     Point: (995, 730)
+[17:02:55.036]     Point: (995, 1395)
+[17:02:55.036]     Point: (55, 1395)
+[17:02:55.036] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:55.538] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:55.538] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:55.538]     Point: (55, 55)
+[17:02:55.538]     Point: (995, 55)
+[17:02:55.538]     Point: (995, 720)
+[17:02:55.539]     Point: (55, 720)
+[17:02:55.539] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:55.539] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:55.539]     Point: (1005, 55)
+[17:02:55.539]     Point: (1945, 55)
+[17:02:55.539]     Point: (1945, 720)
+[17:02:55.540]     Point: (1005, 720)
+[17:02:55.540] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:55.540] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:55.540]     Point: (55, 730)
+[17:02:55.540]     Point: (995, 730)
+[17:02:55.540]     Point: (995, 1395)
+[17:02:55.540]     Point: (55, 1395)
+[17:02:55.541] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:56.069] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:56.069] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:56.070]     Point: (55, 55)
+[17:02:56.070]     Point: (995, 55)
+[17:02:56.070]     Point: (995, 720)
+[17:02:56.070]     Point: (55, 720)
+[17:02:56.070] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:56.070] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:56.071]     Point: (1005, 55)
+[17:02:56.071]     Point: (1945, 55)
+[17:02:56.071]     Point: (1945, 720)
+[17:02:56.071]     Point: (1005, 720)
+[17:02:56.071] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:56.071] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:56.071]     Point: (55, 730)
+[17:02:56.072]     Point: (995, 730)
+[17:02:56.072]     Point: (995, 1395)
+[17:02:56.072]     Point: (55, 1395)
+[17:02:56.072] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:56.575] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:56.576] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:56.576]     Point: (55, 55)
+[17:02:56.576]     Point: (995, 55)
+[17:02:56.576]     Point: (995, 720)
+[17:02:56.576]     Point: (55, 720)
+[17:02:56.577] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:56.577] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:56.577]     Point: (1005, 55)
+[17:02:56.577]     Point: (1945, 55)
+[17:02:56.577]     Point: (1945, 720)
+[17:02:56.577]     Point: (1005, 720)
+[17:02:56.577] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:56.578] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:56.578]     Point: (55, 730)
+[17:02:56.578]     Point: (995, 730)
+[17:02:56.578]     Point: (995, 1395)
+[17:02:56.578]     Point: (55, 1395)
+[17:02:56.578] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:57.089] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:57.089] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:57.089]     Point: (55, 55)
+[17:02:57.090]     Point: (995, 55)
+[17:02:57.090]     Point: (995, 720)
+[17:02:57.090]     Point: (55, 720)
+[17:02:57.090] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:57.090] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:57.091]     Point: (1005, 55)
+[17:02:57.091]     Point: (1945, 55)
+[17:02:57.091]     Point: (1945, 720)
+[17:02:57.091]     Point: (1005, 720)
+[17:02:57.091] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:57.091] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:57.091]     Point: (55, 730)
+[17:02:57.091]     Point: (995, 730)
+[17:02:57.092]     Point: (995, 1395)
+[17:02:57.092]     Point: (55, 1395)
+[17:02:57.092] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:57.599] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:57.599] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:57.599]     Point: (55, 55)
+[17:02:57.600]     Point: (995, 55)
+[17:02:57.600]     Point: (995, 720)
+[17:02:57.600]     Point: (55, 720)
+[17:02:57.600] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:57.600] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:57.600]     Point: (1005, 55)
+[17:02:57.600]     Point: (1945, 55)
+[17:02:57.601]     Point: (1945, 720)
+[17:02:57.601]     Point: (1005, 720)
+[17:02:57.601] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:57.601] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:57.601]     Point: (55, 730)
+[17:02:57.601]     Point: (995, 730)
+[17:02:57.601]     Point: (995, 1395)
+[17:02:57.601]     Point: (55, 1395)
+[17:02:57.602] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:58.132] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:58.132] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:58.132]     Point: (55, 55)
+[17:02:58.132]     Point: (995, 55)
+[17:02:58.133]     Point: (995, 720)
+[17:02:58.133]     Point: (55, 720)
+[17:02:58.133] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:58.133] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:58.133]     Point: (1005, 55)
+[17:02:58.134]     Point: (1945, 55)
+[17:02:58.134]     Point: (1945, 720)
+[17:02:58.134]     Point: (1005, 720)
+[17:02:58.134] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:58.134] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:58.135]     Point: (55, 730)
+[17:02:58.135]     Point: (995, 730)
+[17:02:58.135]     Point: (995, 1395)
+[17:02:58.135]     Point: (55, 1395)
+[17:02:58.135] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:58.994] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:58.994] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:58.995]     Point: (55, 55)
+[17:02:58.995]     Point: (995, 55)
+[17:02:58.995]     Point: (995, 720)
+[17:02:58.995]     Point: (55, 720)
+[17:02:58.995] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:58.996] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:58.996]     Point: (1005, 55)
+[17:02:58.996]     Point: (1945, 55)
+[17:02:58.996]     Point: (1945, 720)
+[17:02:58.997]     Point: (1005, 720)
+[17:02:58.997] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:58.997] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:58.997]     Point: (55, 730)
+[17:02:58.997]     Point: (995, 730)
+[17:02:58.997]     Point: (995, 1395)
+[17:02:58.997]     Point: (55, 1395)
+[17:02:58.998] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:02:59.622] [SpatialRenderer] RenderZones called, zone count: 3
+[17:02:59.622] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:02:59.622]     Point: (55, 55)
+[17:02:59.623]     Point: (995, 55)
+[17:02:59.623]     Point: (995, 720)
+[17:02:59.623]     Point: (55, 720)
+[17:02:59.623] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:02:59.623] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:02:59.624]     Point: (1005, 55)
+[17:02:59.624]     Point: (1945, 55)
+[17:02:59.624]     Point: (1945, 720)
+[17:02:59.624]     Point: (1005, 720)
+[17:02:59.624] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:02:59.624] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:02:59.624]     Point: (55, 730)
+[17:02:59.625]     Point: (995, 730)
+[17:02:59.625]     Point: (995, 1395)
+[17:02:59.625]     Point: (55, 1395)
+[17:02:59.625] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:00.140] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:00.140] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:00.141]     Point: (55, 55)
+[17:03:00.141]     Point: (995, 55)
+[17:03:00.141]     Point: (995, 720)
+[17:03:00.141]     Point: (55, 720)
+[17:03:00.141] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:00.142] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:00.142]     Point: (1005, 55)
+[17:03:00.142]     Point: (1945, 55)
+[17:03:00.142]     Point: (1945, 720)
+[17:03:00.142]     Point: (1005, 720)
+[17:03:00.142] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:00.143] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:00.143]     Point: (55, 730)
+[17:03:00.143]     Point: (995, 730)
+[17:03:00.143]     Point: (995, 1395)
+[17:03:00.143]     Point: (55, 1395)
+[17:03:00.144] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:00.657] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:00.657] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:00.658]     Point: (55, 55)
+[17:03:00.658]     Point: (995, 55)
+[17:03:00.658]     Point: (995, 720)
+[17:03:00.658]     Point: (55, 720)
+[17:03:00.658] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:00.659] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:00.659]     Point: (1005, 55)
+[17:03:00.659]     Point: (1945, 55)
+[17:03:00.659]     Point: (1945, 720)
+[17:03:00.659]     Point: (1005, 720)
+[17:03:00.660] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:00.660] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:00.660]     Point: (55, 730)
+[17:03:00.660]     Point: (995, 730)
+[17:03:00.660]     Point: (995, 1395)
+[17:03:00.660]     Point: (55, 1395)
+[17:03:00.661] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:00.743] === HitTest START at (1478.1, 386.9), frictionless=False, design=True ===
+[17:03:00.743] Checking node terminals...
+[17:03:00.744] HIT: Zone interior 'Storage Zone 2'
+[17:03:00.744] >>> CLICK RESULT: Hit type = Zone at (1478.1, 386.9)
+[17:03:00.744]     FrictionlessMode=False, DesignMode=True
+[17:03:01.093] === HitTest START at (1478.1, 386.9), frictionless=False, design=True ===
+[17:03:01.093] Checking node terminals...
+[17:03:01.093] HIT: Zone interior 'Storage Zone 2'
+[17:03:01.094] === HitTest START at (1478.1, 386.9), frictionless=False, design=True ===
+[17:03:01.094] Checking node terminals...
+[17:03:01.094] HIT: Zone interior 'Storage Zone 2'
+[17:03:01.094] >>> CLICK RESULT: Hit type = Zone at (1478.1, 386.9)
+[17:03:01.094]     FrictionlessMode=False, DesignMode=True
+[17:03:01.160] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:01.161] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:01.161]     Point: (55, 55)
+[17:03:01.161]     Point: (995, 55)
+[17:03:01.161]     Point: (995, 720)
+[17:03:01.161]     Point: (55, 720)
+[17:03:01.161] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:01.162] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:01.162]     Point: (1005, 55)
+[17:03:01.162]     Point: (1945, 55)
+[17:03:01.162]     Point: (1945, 720)
+[17:03:01.162]     Point: (1005, 720)
+[17:03:01.163] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:01.163] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:01.163]     Point: (55, 730)
+[17:03:01.163]     Point: (995, 730)
+[17:03:01.163]     Point: (995, 1395)
+[17:03:01.163]     Point: (55, 1395)
+[17:03:01.163] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:01.318] === HitTest START at (1478.1, 386.9), frictionless=False, design=True ===
+[17:03:01.318] Checking node terminals...
+[17:03:01.318] HIT: Zone interior 'Storage Zone 2'
+[17:03:01.319] >>> CLICK RESULT: Hit type = Zone at (1478.1, 386.9)
+[17:03:01.319]     FrictionlessMode=False, DesignMode=True
+[17:03:01.863] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:01.864] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:01.864]     Point: (55, 55)
+[17:03:01.864]     Point: (995, 55)
+[17:03:01.864]     Point: (995, 720)
+[17:03:01.865]     Point: (55, 720)
+[17:03:01.865] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:01.865] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:01.865]     Point: (1005, 55)
+[17:03:01.865]     Point: (1945, 55)
+[17:03:01.865]     Point: (1945, 720)
+[17:03:01.866]     Point: (1005, 720)
+[17:03:01.866] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:01.866] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:01.866]     Point: (55, 730)
+[17:03:01.866]     Point: (995, 730)
+[17:03:01.866]     Point: (995, 1395)
+[17:03:01.867]     Point: (55, 1395)
+[17:03:01.867] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:02.368] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:02.369] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:02.369]     Point: (55, 55)
+[17:03:02.369]     Point: (995, 55)
+[17:03:02.369]     Point: (995, 720)
+[17:03:02.369]     Point: (55, 720)
+[17:03:02.370] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:02.370] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:02.370]     Point: (1005, 55)
+[17:03:02.370]     Point: (1945, 55)
+[17:03:02.370]     Point: (1945, 720)
+[17:03:02.370]     Point: (1005, 720)
+[17:03:02.371] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:02.371] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:02.371]     Point: (55, 730)
+[17:03:02.371]     Point: (995, 730)
+[17:03:02.371]     Point: (995, 1395)
+[17:03:02.371]     Point: (55, 1395)
+[17:03:02.372] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:02.443] === HitTest START at (1954.1, 205.5), frictionless=False, design=True ===
+[17:03:02.443] Checking node terminals...
+[17:03:02.443] Checking GuidedTransport layer, visible=True
+[17:03:02.443] Checking AGV stations (count=4)...
+[17:03:02.443] HitTestAGVStations at (1954.1, 205.5), designMode=True, radius=25
+[17:03:02.444] Checking 4 AGV stations
+[17:03:02.444]   Station 'AGV Station 1' at (50.0, 100.0), distance=1907.0
+[17:03:02.444]   Station 'AGV Station 2' at (1950.0, 100.0), distance=105.6
+[17:03:02.444]   Station 'AGV Station 3' at (50.0, 200.0), distance=1904.1
+[17:03:02.444]   Station 'AGV Station 4' at (1950.0, 200.0), distance=6.9
+[17:03:02.444]   HIT! Returning station 'AGV Station 4'
+[17:03:02.445] HIT: AGV Station 'AGV Station 4'
+[17:03:02.445] >>> CLICK RESULT: Hit type = AGVStation at (1954.1, 205.5)
+[17:03:02.445]     FrictionlessMode=False, DesignMode=True
+[17:03:02.450] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:02.451] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:02.451]     Point: (55, 55)
+[17:03:02.451]     Point: (995, 55)
+[17:03:02.451]     Point: (995, 720)
+[17:03:02.451]     Point: (55, 720)
+[17:03:02.451] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:02.451] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:02.452]     Point: (1005, 55)
+[17:03:02.452]     Point: (1945, 55)
+[17:03:02.452]     Point: (1945, 720)
+[17:03:02.452]     Point: (1005, 720)
+[17:03:02.452] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:02.452] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:02.452]     Point: (55, 730)
+[17:03:02.452]     Point: (995, 730)
+[17:03:02.453]     Point: (995, 1395)
+[17:03:02.453]     Point: (55, 1395)
+[17:03:02.453] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:02.634] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:02.635] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:02.635]     Point: (55, 55)
+[17:03:02.635]     Point: (995, 55)
+[17:03:02.635]     Point: (995, 720)
+[17:03:02.636]     Point: (55, 720)
+[17:03:02.636] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:02.636] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:02.636]     Point: (1005, 55)
+[17:03:02.636]     Point: (1945, 55)
+[17:03:02.636]     Point: (1945, 720)
+[17:03:02.637]     Point: (1005, 720)
+[17:03:02.637] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:02.637] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:02.637]     Point: (55, 730)
+[17:03:02.637]     Point: (995, 730)
+[17:03:02.637]     Point: (995, 1395)
+[17:03:02.638]     Point: (55, 1395)
+[17:03:02.638] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:02.666] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:02.666] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:02.667]     Point: (55, 55)
+[17:03:02.667]     Point: (995, 55)
+[17:03:02.667]     Point: (995, 720)
+[17:03:02.667]     Point: (55, 720)
+[17:03:02.667] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:02.667] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:02.668]     Point: (1005, 55)
+[17:03:02.668]     Point: (1945, 55)
+[17:03:02.668]     Point: (1945, 720)
+[17:03:02.668]     Point: (1005, 720)
+[17:03:02.668] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:02.668] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:02.669]     Point: (55, 730)
+[17:03:02.669]     Point: (995, 730)
+[17:03:02.669]     Point: (995, 1395)
+[17:03:02.669]     Point: (55, 1395)
+[17:03:02.669] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:02.697] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:02.697] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:02.697]     Point: (55, 55)
+[17:03:02.697]     Point: (995, 55)
+[17:03:02.697]     Point: (995, 720)
+[17:03:02.697]     Point: (55, 720)
+[17:03:02.698] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:02.698] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:02.698]     Point: (1005, 55)
+[17:03:02.698]     Point: (1945, 55)
+[17:03:02.698]     Point: (1945, 720)
+[17:03:02.698]     Point: (1005, 720)
+[17:03:02.699] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:02.699] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:02.699]     Point: (55, 730)
+[17:03:02.699]     Point: (995, 730)
+[17:03:02.699]     Point: (995, 1395)
+[17:03:02.699]     Point: (55, 1395)
+[17:03:02.700] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:02.729] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:02.730] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:02.730]     Point: (55, 55)
+[17:03:02.730]     Point: (995, 55)
+[17:03:02.731]     Point: (995, 720)
+[17:03:02.731]     Point: (55, 720)
+[17:03:02.731] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:02.731] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:02.732]     Point: (1005, 55)
+[17:03:02.732]     Point: (1945, 55)
+[17:03:02.732]     Point: (1945, 720)
+[17:03:02.732]     Point: (1005, 720)
+[17:03:02.732] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:02.733] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:02.733]     Point: (55, 730)
+[17:03:02.733]     Point: (995, 730)
+[17:03:02.733]     Point: (995, 1395)
+[17:03:02.733]     Point: (55, 1395)
+[17:03:02.734] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:02.759] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:02.759] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:02.760]     Point: (55, 55)
+[17:03:02.760]     Point: (995, 55)
+[17:03:02.760]     Point: (995, 720)
+[17:03:02.761]     Point: (55, 720)
+[17:03:02.761] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:02.761] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:02.761]     Point: (1005, 55)
+[17:03:02.762]     Point: (1945, 55)
+[17:03:02.762]     Point: (1945, 720)
+[17:03:02.762]     Point: (1005, 720)
+[17:03:02.763] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:02.763] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:02.763]     Point: (55, 730)
+[17:03:02.763]     Point: (995, 730)
+[17:03:02.764]     Point: (995, 1395)
+[17:03:02.764]     Point: (55, 1395)
+[17:03:02.764] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:02.789] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:02.790] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:02.790]     Point: (55, 55)
+[17:03:02.790]     Point: (995, 55)
+[17:03:02.790]     Point: (995, 720)
+[17:03:02.790]     Point: (55, 720)
+[17:03:02.790] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:02.791] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:02.791]     Point: (1005, 55)
+[17:03:02.791]     Point: (1945, 55)
+[17:03:02.792]     Point: (1945, 720)
+[17:03:02.792]     Point: (1005, 720)
+[17:03:02.792] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:02.792] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:02.793]     Point: (55, 730)
+[17:03:02.793]     Point: (995, 730)
+[17:03:02.793]     Point: (995, 1395)
+[17:03:02.794]     Point: (55, 1395)
+[17:03:02.794] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:02.818] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:02.818] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:02.818]     Point: (55, 55)
+[17:03:02.819]     Point: (995, 55)
+[17:03:02.819]     Point: (995, 720)
+[17:03:02.819]     Point: (55, 720)
+[17:03:02.819] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:02.819] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:02.819]     Point: (1005, 55)
+[17:03:02.820]     Point: (1945, 55)
+[17:03:02.820]     Point: (1945, 720)
+[17:03:02.820]     Point: (1005, 720)
+[17:03:02.820] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:02.820] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:02.820]     Point: (55, 730)
+[17:03:02.821]     Point: (995, 730)
+[17:03:02.821]     Point: (995, 1395)
+[17:03:02.821]     Point: (55, 1395)
+[17:03:02.821] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:02.881] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:02.881] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:02.881]     Point: (55, 55)
+[17:03:02.881]     Point: (995, 55)
+[17:03:02.881]     Point: (995, 720)
+[17:03:02.881]     Point: (55, 720)
+[17:03:02.882] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:02.882] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:02.882]     Point: (1005, 55)
+[17:03:02.882]     Point: (1945, 55)
+[17:03:02.882]     Point: (1945, 720)
+[17:03:02.882]     Point: (1005, 720)
+[17:03:02.882] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:02.882] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:02.883]     Point: (55, 730)
+[17:03:02.883]     Point: (995, 730)
+[17:03:02.883]     Point: (995, 1395)
+[17:03:02.883]     Point: (55, 1395)
+[17:03:02.883] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:03.063] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:03.063] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:03.063]     Point: (55, 55)
+[17:03:03.063]     Point: (995, 55)
+[17:03:03.064]     Point: (995, 720)
+[17:03:03.064]     Point: (55, 720)
+[17:03:03.064] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:03.064] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:03.064]     Point: (1005, 55)
+[17:03:03.065]     Point: (1945, 55)
+[17:03:03.065]     Point: (1945, 720)
+[17:03:03.065]     Point: (1005, 720)
+[17:03:03.065] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:03.065] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:03.065]     Point: (55, 730)
+[17:03:03.066]     Point: (995, 730)
+[17:03:03.066]     Point: (995, 1395)
+[17:03:03.066]     Point: (55, 1395)
+[17:03:03.066] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:03.089] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:03.089] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:03.089]     Point: (55, 55)
+[17:03:03.090]     Point: (995, 55)
+[17:03:03.090]     Point: (995, 720)
+[17:03:03.090]     Point: (55, 720)
+[17:03:03.090] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:03.090] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:03.090]     Point: (1005, 55)
+[17:03:03.090]     Point: (1945, 55)
+[17:03:03.091]     Point: (1945, 720)
+[17:03:03.091]     Point: (1005, 720)
+[17:03:03.091] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:03.091] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:03.091]     Point: (55, 730)
+[17:03:03.091]     Point: (995, 730)
+[17:03:03.091]     Point: (995, 1395)
+[17:03:03.092]     Point: (55, 1395)
+[17:03:03.092] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:03.113] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:03.113] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:03.113]     Point: (55, 55)
+[17:03:03.113]     Point: (995, 55)
+[17:03:03.113]     Point: (995, 720)
+[17:03:03.114]     Point: (55, 720)
+[17:03:03.114] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:03.114] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:03.114]     Point: (1005, 55)
+[17:03:03.115]     Point: (1945, 55)
+[17:03:03.115]     Point: (1945, 720)
+[17:03:03.115]     Point: (1005, 720)
+[17:03:03.115] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:03.116] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:03.116]     Point: (55, 730)
+[17:03:03.116]     Point: (995, 730)
+[17:03:03.116]     Point: (995, 1395)
+[17:03:03.116]     Point: (55, 1395)
+[17:03:03.116] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:03.139] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:03.139] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:03.139]     Point: (55, 55)
+[17:03:03.139]     Point: (995, 55)
+[17:03:03.139]     Point: (995, 720)
+[17:03:03.140]     Point: (55, 720)
+[17:03:03.140] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:03.140] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:03.140]     Point: (1005, 55)
+[17:03:03.140]     Point: (1945, 55)
+[17:03:03.140]     Point: (1945, 720)
+[17:03:03.141]     Point: (1005, 720)
+[17:03:03.141] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:03.141] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:03.141]     Point: (55, 730)
+[17:03:03.141]     Point: (995, 730)
+[17:03:03.141]     Point: (995, 1395)
+[17:03:03.141]     Point: (55, 1395)
+[17:03:03.142] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:03.167] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:03.168] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:03.168]     Point: (55, 55)
+[17:03:03.168]     Point: (995, 55)
+[17:03:03.168]     Point: (995, 720)
+[17:03:03.168]     Point: (55, 720)
+[17:03:03.168] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:03.169] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:03.169]     Point: (1005, 55)
+[17:03:03.169]     Point: (1945, 55)
+[17:03:03.169]     Point: (1945, 720)
+[17:03:03.169]     Point: (1005, 720)
+[17:03:03.169] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:03.169] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:03.169]     Point: (55, 730)
+[17:03:03.170]     Point: (995, 730)
+[17:03:03.170]     Point: (995, 1395)
+[17:03:03.170]     Point: (55, 1395)
+[17:03:03.170] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:03.194] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:03.194] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:03.194]     Point: (55, 55)
+[17:03:03.194]     Point: (995, 55)
+[17:03:03.194]     Point: (995, 720)
+[17:03:03.194]     Point: (55, 720)
+[17:03:03.195] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:03.195] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:03.195]     Point: (1005, 55)
+[17:03:03.195]     Point: (1945, 55)
+[17:03:03.195]     Point: (1945, 720)
+[17:03:03.195]     Point: (1005, 720)
+[17:03:03.195] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:03.196] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:03.196]     Point: (55, 730)
+[17:03:03.196]     Point: (995, 730)
+[17:03:03.196]     Point: (995, 1395)
+[17:03:03.196]     Point: (55, 1395)
+[17:03:03.196] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:03.220] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:03.220] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:03.220]     Point: (55, 55)
+[17:03:03.220]     Point: (995, 55)
+[17:03:03.221]     Point: (995, 720)
+[17:03:03.221]     Point: (55, 720)
+[17:03:03.221] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:03.221] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:03.221]     Point: (1005, 55)
+[17:03:03.221]     Point: (1945, 55)
+[17:03:03.222]     Point: (1945, 720)
+[17:03:03.222]     Point: (1005, 720)
+[17:03:03.222] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:03.222] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:03.222]     Point: (55, 730)
+[17:03:03.222]     Point: (995, 730)
+[17:03:03.222]     Point: (995, 1395)
+[17:03:03.223]     Point: (55, 1395)
+[17:03:03.223] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:03.243] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:03.243] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:03.244]     Point: (55, 55)
+[17:03:03.244]     Point: (995, 55)
+[17:03:03.244]     Point: (995, 720)
+[17:03:03.244]     Point: (55, 720)
+[17:03:03.244] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:03.244] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:03.245]     Point: (1005, 55)
+[17:03:03.245]     Point: (1945, 55)
+[17:03:03.245]     Point: (1945, 720)
+[17:03:03.245]     Point: (1005, 720)
+[17:03:03.245] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:03.246] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:03.246]     Point: (55, 730)
+[17:03:03.246]     Point: (995, 730)
+[17:03:03.246]     Point: (995, 1395)
+[17:03:03.246]     Point: (55, 1395)
+[17:03:03.246] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:03.386] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:03.386] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:03.386]     Point: (55, 55)
+[17:03:03.386]     Point: (995, 55)
+[17:03:03.387]     Point: (995, 720)
+[17:03:03.387]     Point: (55, 720)
+[17:03:03.387] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:03.387] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:03.387]     Point: (1005, 55)
+[17:03:03.388]     Point: (1945, 55)
+[17:03:03.388]     Point: (1945, 720)
+[17:03:03.388]     Point: (1005, 720)
+[17:03:03.388] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:03.388] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:03.388]     Point: (55, 730)
+[17:03:03.388]     Point: (995, 730)
+[17:03:03.388]     Point: (995, 1395)
+[17:03:03.388]     Point: (55, 1395)
+[17:03:03.389] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:04.311] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:04.311] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:04.311]     Point: (55, 55)
+[17:03:04.311]     Point: (995, 55)
+[17:03:04.311]     Point: (995, 720)
+[17:03:04.312]     Point: (55, 720)
+[17:03:04.312] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:04.312] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:04.312]     Point: (1005, 55)
+[17:03:04.313]     Point: (1945, 55)
+[17:03:04.313]     Point: (1945, 720)
+[17:03:04.313]     Point: (1005, 720)
+[17:03:04.313] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:04.313] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:04.313]     Point: (55, 730)
+[17:03:04.313]     Point: (995, 730)
+[17:03:04.314]     Point: (995, 1395)
+[17:03:04.314]     Point: (55, 1395)
+[17:03:04.314] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:04.505] === HitTest START at (1469.5, 388.9), frictionless=False, design=True ===
+[17:03:04.505] Checking node terminals...
+[17:03:04.506] HIT: Zone interior 'Storage Zone 2'
+[17:03:04.506] >>> CLICK RESULT: Hit type = Zone at (1469.5, 388.9)
+[17:03:04.506]     FrictionlessMode=False, DesignMode=True
+[17:03:04.825] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:04.826] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:04.826]     Point: (55, 55)
+[17:03:04.826]     Point: (995, 55)
+[17:03:04.826]     Point: (995, 720)
+[17:03:04.826]     Point: (55, 720)
+[17:03:04.827] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:04.827] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:04.827]     Point: (1005, 55)
+[17:03:04.827]     Point: (1945, 55)
+[17:03:04.827]     Point: (1945, 720)
+[17:03:04.827]     Point: (1005, 720)
+[17:03:04.828] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:04.828] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:04.828]     Point: (55, 730)
+[17:03:04.828]     Point: (995, 730)
+[17:03:04.828]     Point: (995, 1395)
+[17:03:04.828]     Point: (55, 1395)
+[17:03:04.828] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:04.940] === HitTest START at (1470.1, 385.5), frictionless=False, design=True ===
+[17:03:04.940] Checking node terminals...
+[17:03:04.940] HIT: Zone interior 'Storage Zone 2'
+[17:03:04.940] >>> CLICK RESULT: Hit type = Zone at (1470.1, 385.5)
+[17:03:04.940]     FrictionlessMode=False, DesignMode=True
+[17:03:05.306] === HitTest START at (1470.1, 385.5), frictionless=False, design=True ===
+[17:03:05.306] Checking node terminals...
+[17:03:05.307] HIT: Zone interior 'Storage Zone 2'
+[17:03:05.307] === HitTest START at (1470.1, 385.5), frictionless=False, design=True ===
+[17:03:05.307] Checking node terminals...
+[17:03:05.307] HIT: Zone interior 'Storage Zone 2'
+[17:03:05.307] >>> CLICK RESULT: Hit type = Zone at (1470.1, 385.5)
+[17:03:05.307]     FrictionlessMode=False, DesignMode=True
+[17:03:05.338] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:05.338] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:05.339]     Point: (55, 55)
+[17:03:05.339]     Point: (995, 55)
+[17:03:05.339]     Point: (995, 720)
+[17:03:05.339]     Point: (55, 720)
+[17:03:05.340] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:05.340] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:05.340]     Point: (1005, 55)
+[17:03:05.340]     Point: (1945, 55)
+[17:03:05.340]     Point: (1945, 720)
+[17:03:05.340]     Point: (1005, 720)
+[17:03:05.340] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:05.341] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:05.341]     Point: (55, 730)
+[17:03:05.341]     Point: (995, 730)
+[17:03:05.341]     Point: (995, 1395)
+[17:03:05.341]     Point: (55, 1395)
+[17:03:05.341] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:05.856] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:05.857] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:05.857]     Point: (55, 55)
+[17:03:05.857]     Point: (995, 55)
+[17:03:05.857]     Point: (995, 720)
+[17:03:05.857]     Point: (55, 720)
+[17:03:05.857] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:05.858] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:05.858]     Point: (1005, 55)
+[17:03:05.858]     Point: (1945, 55)
+[17:03:05.858]     Point: (1945, 720)
+[17:03:05.858]     Point: (1005, 720)
+[17:03:05.858] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:05.859] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:05.859]     Point: (55, 730)
+[17:03:05.859]     Point: (995, 730)
+[17:03:05.859]     Point: (995, 1395)
+[17:03:05.859]     Point: (55, 1395)
+[17:03:05.859] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:06.385] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:06.385] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:06.385]     Point: (55, 55)
+[17:03:06.385]     Point: (995, 55)
+[17:03:06.385]     Point: (995, 720)
+[17:03:06.386]     Point: (55, 720)
+[17:03:06.386] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:06.386] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:06.386]     Point: (1005, 55)
+[17:03:06.386]     Point: (1945, 55)
+[17:03:06.386]     Point: (1945, 720)
+[17:03:06.386]     Point: (1005, 720)
+[17:03:06.387] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:06.387] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:06.387]     Point: (55, 730)
+[17:03:06.387]     Point: (995, 730)
+[17:03:06.387]     Point: (995, 1395)
+[17:03:06.387]     Point: (55, 1395)
+[17:03:06.387] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:06.620] === HitTest START at (1471.5, 377.5), frictionless=False, design=True ===
+[17:03:06.620] Checking node terminals...
+[17:03:06.621] HIT: Zone interior 'Storage Zone 2'
+[17:03:06.621] >>> CLICK RESULT: Hit type = Zone at (1471.5, 377.5)
+[17:03:06.621]     FrictionlessMode=False, DesignMode=True
+[17:03:06.817] === HitTest START at (1471.5, 377.5), frictionless=False, design=True ===
+[17:03:06.817] Checking node terminals...
+[17:03:06.818] HIT: Zone interior 'Storage Zone 2'
+[17:03:06.818] === HitTest START at (1471.5, 377.5), frictionless=False, design=True ===
+[17:03:06.819] Checking node terminals...
+[17:03:06.819] HIT: Zone interior 'Storage Zone 2'
+[17:03:06.819] >>> CLICK RESULT: Hit type = Zone at (1471.5, 377.5)
+[17:03:06.820]     FrictionlessMode=False, DesignMode=True
+[17:03:06.904] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:06.904] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:06.904]     Point: (55, 55)
+[17:03:06.905]     Point: (995, 55)
+[17:03:06.905]     Point: (995, 720)
+[17:03:06.905]     Point: (55, 720)
+[17:03:06.905] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:06.905] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:06.905]     Point: (1005, 55)
+[17:03:06.905]     Point: (1945, 55)
+[17:03:06.905]     Point: (1945, 720)
+[17:03:06.906]     Point: (1005, 720)
+[17:03:06.906] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:06.906] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:06.906]     Point: (55, 730)
+[17:03:06.906]     Point: (995, 730)
+[17:03:06.906]     Point: (995, 1395)
+[17:03:06.907]     Point: (55, 1395)
+[17:03:06.907] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:07.507] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:07.507] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:07.507]     Point: (55, 55)
+[17:03:07.508]     Point: (995, 55)
+[17:03:07.508]     Point: (995, 720)
+[17:03:07.508]     Point: (55, 720)
+[17:03:07.508] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:07.508] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:07.508]     Point: (1005, 55)
+[17:03:07.509]     Point: (1945, 55)
+[17:03:07.509]     Point: (1945, 720)
+[17:03:07.509]     Point: (1005, 720)
+[17:03:07.509] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:07.509] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:07.509]     Point: (55, 730)
+[17:03:07.509]     Point: (995, 730)
+[17:03:07.510]     Point: (995, 1395)
+[17:03:07.510]     Point: (55, 1395)
+[17:03:07.510] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:08.022] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:08.023] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:08.023]     Point: (55, 55)
+[17:03:08.023]     Point: (995, 55)
+[17:03:08.023]     Point: (995, 720)
+[17:03:08.023]     Point: (55, 720)
+[17:03:08.024] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:08.024] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:08.024]     Point: (1005, 55)
+[17:03:08.024]     Point: (1945, 55)
+[17:03:08.024]     Point: (1945, 720)
+[17:03:08.024]     Point: (1005, 720)
+[17:03:08.024] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:08.025] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:08.025]     Point: (55, 730)
+[17:03:08.025]     Point: (995, 730)
+[17:03:08.025]     Point: (995, 1395)
+[17:03:08.025]     Point: (55, 1395)
+[17:03:08.025] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:08.172] === HitTest START at (1004.8, 55.5), frictionless=False, design=True ===
+[17:03:08.172] Checking node terminals...
+[17:03:08.173] HIT: Zone vertex 1 of 'Warehouse Zone 1'
+[17:03:08.173] >>> CLICK RESULT: Hit type = ZoneVertex at (1004.8, 55.5)
+[17:03:08.173]     FrictionlessMode=False, DesignMode=True
+[17:03:08.396] === HitTest START at (1004.8, 55.5), frictionless=False, design=True ===
+[17:03:08.396] Checking node terminals...
+[17:03:08.397] HIT: Zone vertex 1 of 'Warehouse Zone 1'
+[17:03:08.398] === HitTest START at (1004.8, 55.5), frictionless=False, design=True ===
+[17:03:08.398] Checking node terminals...
+[17:03:08.398] HIT: Zone vertex 1 of 'Warehouse Zone 1'
+[17:03:08.399] >>> CLICK RESULT: Hit type = ZoneVertex at (1004.8, 55.5)
+[17:03:08.399]     FrictionlessMode=False, DesignMode=True
+[17:03:08.528] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:08.528] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:08.528]     Point: (55, 55)
+[17:03:08.528]     Point: (995, 55)
+[17:03:08.528]     Point: (995, 720)
+[17:03:08.529]     Point: (55, 720)
+[17:03:08.529] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:08.529] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:08.529]     Point: (1005, 55)
+[17:03:08.529]     Point: (1945, 55)
+[17:03:08.530]     Point: (1945, 720)
+[17:03:08.530]     Point: (1005, 720)
+[17:03:08.530] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:08.530] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:08.530]     Point: (55, 730)
+[17:03:08.530]     Point: (995, 730)
+[17:03:08.531]     Point: (995, 1395)
+[17:03:08.531]     Point: (55, 1395)
+[17:03:08.531] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:09.039] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:09.040] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:09.040]     Point: (55, 55)
+[17:03:09.040]     Point: (995, 55)
+[17:03:09.040]     Point: (995, 720)
+[17:03:09.040]     Point: (55, 720)
+[17:03:09.040] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:09.041] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:09.041]     Point: (1005, 55)
+[17:03:09.041]     Point: (1945, 55)
+[17:03:09.041]     Point: (1945, 720)
+[17:03:09.041]     Point: (1005, 720)
+[17:03:09.041] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:09.042] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:09.042]     Point: (55, 730)
+[17:03:09.042]     Point: (995, 730)
+[17:03:09.042]     Point: (995, 1395)
+[17:03:09.042]     Point: (55, 1395)
+[17:03:09.042] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:09.646] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:09.647] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:09.647]     Point: (55, 55)
+[17:03:09.647]     Point: (995, 55)
+[17:03:09.647]     Point: (995, 720)
+[17:03:09.647]     Point: (55, 720)
+[17:03:09.648] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:09.648] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:09.648]     Point: (1005, 55)
+[17:03:09.648]     Point: (1945, 55)
+[17:03:09.648]     Point: (1945, 720)
+[17:03:09.648]     Point: (1005, 720)
+[17:03:09.648] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:09.648] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:09.648]     Point: (55, 730)
+[17:03:09.649]     Point: (995, 730)
+[17:03:09.649]     Point: (995, 1395)
+[17:03:09.649]     Point: (55, 1395)
+[17:03:09.649] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:09.794] === HitTest START at (1245.5, 392.9), frictionless=False, design=True ===
+[17:03:09.795] Checking node terminals...
+[17:03:09.795] HIT: Zone interior 'Storage Zone 2'
+[17:03:09.795] >>> CLICK RESULT: Hit type = Zone at (1245.5, 392.9)
+[17:03:09.795]     FrictionlessMode=False, DesignMode=True
+[17:03:10.157] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:10.158] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:10.158]     Point: (55, 55)
+[17:03:10.158]     Point: (995, 55)
+[17:03:10.158]     Point: (995, 720)
+[17:03:10.158]     Point: (55, 720)
+[17:03:10.159] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:10.159] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:10.159]     Point: (1005, 55)
+[17:03:10.159]     Point: (1945, 55)
+[17:03:10.159]     Point: (1945, 720)
+[17:03:10.159]     Point: (1005, 720)
+[17:03:10.160] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:10.160] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:10.160]     Point: (55, 730)
+[17:03:10.160]     Point: (995, 730)
+[17:03:10.160]     Point: (995, 1395)
+[17:03:10.160]     Point: (55, 1395)
+[17:03:10.161] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:10.676] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:10.676] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:10.676]     Point: (55, 55)
+[17:03:10.676]     Point: (995, 55)
+[17:03:10.677]     Point: (995, 720)
+[17:03:10.677]     Point: (55, 720)
+[17:03:10.677] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:10.677] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:10.677]     Point: (1005, 55)
+[17:03:10.677]     Point: (1945, 55)
+[17:03:10.678]     Point: (1945, 720)
+[17:03:10.678]     Point: (1005, 720)
+[17:03:10.678] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:10.678] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:10.678]     Point: (55, 730)
+[17:03:10.678]     Point: (995, 730)
+[17:03:10.678]     Point: (995, 1395)
+[17:03:10.678]     Point: (55, 1395)
+[17:03:10.679] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:11.188] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:11.189] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:11.189]     Point: (55, 55)
+[17:03:11.189]     Point: (995, 55)
+[17:03:11.189]     Point: (995, 720)
+[17:03:11.189]     Point: (55, 720)
+[17:03:11.189] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:11.190] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:11.190]     Point: (1005, 55)
+[17:03:11.190]     Point: (1945, 55)
+[17:03:11.190]     Point: (1945, 720)
+[17:03:11.190]     Point: (1005, 720)
+[17:03:11.191] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:11.191] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:11.191]     Point: (55, 730)
+[17:03:11.191]     Point: (995, 730)
+[17:03:11.191]     Point: (995, 1395)
+[17:03:11.191]     Point: (55, 1395)
+[17:03:11.191] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:11.693] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:11.694] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:11.694]     Point: (55, 55)
+[17:03:11.694]     Point: (995, 55)
+[17:03:11.694]     Point: (995, 720)
+[17:03:11.695]     Point: (55, 720)
+[17:03:11.695] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:11.695] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:11.695]     Point: (1005, 55)
+[17:03:11.696]     Point: (1945, 55)
+[17:03:11.696]     Point: (1945, 720)
+[17:03:11.696]     Point: (1005, 720)
+[17:03:11.696] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:11.697] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:11.697]     Point: (55, 730)
+[17:03:11.697]     Point: (995, 730)
+[17:03:11.697]     Point: (995, 1395)
+[17:03:11.697]     Point: (55, 1395)
+[17:03:11.698] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:12.204] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:12.205] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:12.205]     Point: (55, 55)
+[17:03:12.205]     Point: (995, 55)
+[17:03:12.205]     Point: (995, 720)
+[17:03:12.205]     Point: (55, 720)
+[17:03:12.206] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:12.206] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:12.206]     Point: (1005, 55)
+[17:03:12.206]     Point: (1945, 55)
+[17:03:12.206]     Point: (1945, 720)
+[17:03:12.206]     Point: (1005, 720)
+[17:03:12.206] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:12.206] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:12.207]     Point: (55, 730)
+[17:03:12.207]     Point: (995, 730)
+[17:03:12.207]     Point: (995, 1395)
+[17:03:12.207]     Point: (55, 1395)
+[17:03:12.207] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:12.722] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:12.722] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:12.723]     Point: (55, 55)
+[17:03:12.723]     Point: (995, 55)
+[17:03:12.723]     Point: (995, 720)
+[17:03:12.723]     Point: (55, 720)
+[17:03:12.723] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:12.724] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:12.724]     Point: (1005, 55)
+[17:03:12.724]     Point: (1945, 55)
+[17:03:12.724]     Point: (1945, 720)
+[17:03:12.725]     Point: (1005, 720)
+[17:03:12.725] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:12.725] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:12.726]     Point: (55, 730)
+[17:03:12.726]     Point: (995, 730)
+[17:03:12.726]     Point: (995, 1395)
+[17:03:12.726]     Point: (55, 1395)
+[17:03:12.727] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:13.250] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:13.250] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:13.250]     Point: (55, 55)
+[17:03:13.251]     Point: (995, 55)
+[17:03:13.251]     Point: (995, 720)
+[17:03:13.251]     Point: (55, 720)
+[17:03:13.251] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:13.251] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:13.251]     Point: (1005, 55)
+[17:03:13.252]     Point: (1945, 55)
+[17:03:13.252]     Point: (1945, 720)
+[17:03:13.252]     Point: (1005, 720)
+[17:03:13.252] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:13.252] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:13.252]     Point: (55, 730)
+[17:03:13.252]     Point: (995, 730)
+[17:03:13.253]     Point: (995, 1395)
+[17:03:13.253]     Point: (55, 1395)
+[17:03:13.253] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:13.791] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:13.792] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:13.792]     Point: (55, 55)
+[17:03:13.792]     Point: (995, 55)
+[17:03:13.792]     Point: (995, 720)
+[17:03:13.792]     Point: (55, 720)
+[17:03:13.792] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:13.793] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:13.793]     Point: (1005, 55)
+[17:03:13.793]     Point: (1945, 55)
+[17:03:13.793]     Point: (1945, 720)
+[17:03:13.793]     Point: (1005, 720)
+[17:03:13.793] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:13.794] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:13.794]     Point: (55, 730)
+[17:03:13.794]     Point: (995, 730)
+[17:03:13.794]     Point: (995, 1395)
+[17:03:13.794]     Point: (55, 1395)
+[17:03:13.794] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:14.416] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:14.416] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:14.416]     Point: (55, 55)
+[17:03:14.416]     Point: (995, 55)
+[17:03:14.416]     Point: (995, 720)
+[17:03:14.416]     Point: (55, 720)
+[17:03:14.416] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:14.417] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:14.417]     Point: (1005, 55)
+[17:03:14.417]     Point: (1945, 55)
+[17:03:14.417]     Point: (1945, 720)
+[17:03:14.417]     Point: (1005, 720)
+[17:03:14.417] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:14.418] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:14.418]     Point: (55, 730)
+[17:03:14.418]     Point: (995, 730)
+[17:03:14.418]     Point: (995, 1395)
+[17:03:14.418]     Point: (55, 1395)
+[17:03:14.418] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:14.933] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:14.933] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:14.933]     Point: (55, 55)
+[17:03:14.934]     Point: (995, 55)
+[17:03:14.934]     Point: (995, 720)
+[17:03:14.934]     Point: (55, 720)
+[17:03:14.934] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:14.934] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:14.935]     Point: (1005, 55)
+[17:03:14.935]     Point: (1945, 55)
+[17:03:14.935]     Point: (1945, 720)
+[17:03:14.935]     Point: (1005, 720)
+[17:03:14.935] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:14.935] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:14.936]     Point: (55, 730)
+[17:03:14.936]     Point: (995, 730)
+[17:03:14.936]     Point: (995, 1395)
+[17:03:14.936]     Point: (55, 1395)
+[17:03:14.936] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:15.551] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:15.552] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:15.552]     Point: (55, 55)
+[17:03:15.552]     Point: (995, 55)
+[17:03:15.552]     Point: (995, 720)
+[17:03:15.552]     Point: (55, 720)
+[17:03:15.553] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:15.553] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:15.553]     Point: (1005, 55)
+[17:03:15.553]     Point: (1945, 55)
+[17:03:15.553]     Point: (1945, 720)
+[17:03:15.553]     Point: (1005, 720)
+[17:03:15.553] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:15.554] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:15.554]     Point: (55, 730)
+[17:03:15.554]     Point: (995, 730)
+[17:03:15.554]     Point: (995, 1395)
+[17:03:15.554]     Point: (55, 1395)
+[17:03:15.554] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:16.055] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:16.056] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:16.056]     Point: (55, 55)
+[17:03:16.056]     Point: (995, 55)
+[17:03:16.056]     Point: (995, 720)
+[17:03:16.057]     Point: (55, 720)
+[17:03:16.057] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:16.057] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:16.057]     Point: (1005, 55)
+[17:03:16.057]     Point: (1945, 55)
+[17:03:16.057]     Point: (1945, 720)
+[17:03:16.057]     Point: (1005, 720)
+[17:03:16.058] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:16.058] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:16.058]     Point: (55, 730)
+[17:03:16.058]     Point: (995, 730)
+[17:03:16.058]     Point: (995, 1395)
+[17:03:16.059]     Point: (55, 1395)
+[17:03:16.059] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:16.444] === HitTest START at (995.5, 730.2), frictionless=False, design=True ===
+[17:03:16.445] Checking node terminals...
+[17:03:16.445] HIT: Zone vertex 2 of 'Warehouse Zone 1'
+[17:03:16.445] >>> CLICK RESULT: Hit type = ZoneVertex at (995.5, 730.2)
+[17:03:16.445]     FrictionlessMode=False, DesignMode=True
+[17:03:16.567] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:16.568] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:16.568]     Point: (55, 55)
+[17:03:16.568]     Point: (995, 55)
+[17:03:16.568]     Point: (995, 720)
+[17:03:16.568]     Point: (55, 720)
+[17:03:16.569] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:16.569] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:16.569]     Point: (1005, 55)
+[17:03:16.569]     Point: (1945, 55)
+[17:03:16.569]     Point: (1945, 720)
+[17:03:16.569]     Point: (1005, 720)
+[17:03:16.570] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:16.570] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:16.570]     Point: (55, 730)
+[17:03:16.570]     Point: (995, 730)
+[17:03:16.570]     Point: (995, 1395)
+[17:03:16.570]     Point: (55, 1395)
+[17:03:16.571] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:16.789] === HitTest START at (995.5, 730.2), frictionless=False, design=True ===
+[17:03:16.789] Checking node terminals...
+[17:03:16.789] HIT: Zone vertex 2 of 'Warehouse Zone 1'
+[17:03:16.790] === HitTest START at (995.5, 730.2), frictionless=False, design=True ===
+[17:03:16.790] Checking node terminals...
+[17:03:16.790] HIT: Zone vertex 2 of 'Warehouse Zone 1'
+[17:03:16.790] >>> CLICK RESULT: Hit type = ZoneVertex at (995.5, 730.2)
+[17:03:16.790]     FrictionlessMode=False, DesignMode=True
+[17:03:17.190] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:17.191] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:17.191]     Point: (55, 55)
+[17:03:17.191]     Point: (995, 55)
+[17:03:17.191]     Point: (995, 720)
+[17:03:17.191]     Point: (55, 720)
+[17:03:17.192] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:17.192] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:17.192]     Point: (1005, 55)
+[17:03:17.192]     Point: (1945, 55)
+[17:03:17.192]     Point: (1945, 720)
+[17:03:17.192]     Point: (1005, 720)
+[17:03:17.193] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:17.193] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:17.193]     Point: (55, 730)
+[17:03:17.193]     Point: (995, 730)
+[17:03:17.193]     Point: (995, 1395)
+[17:03:17.193]     Point: (55, 1395)
+[17:03:17.193] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:17.701] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:17.701] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:17.701]     Point: (55, 55)
+[17:03:17.702]     Point: (995, 55)
+[17:03:17.702]     Point: (995, 720)
+[17:03:17.702]     Point: (55, 720)
+[17:03:17.702] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:17.702] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:17.703]     Point: (1005, 55)
+[17:03:17.703]     Point: (1945, 55)
+[17:03:17.703]     Point: (1945, 720)
+[17:03:17.703]     Point: (1005, 720)
+[17:03:17.703] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:17.704] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:17.704]     Point: (55, 730)
+[17:03:17.704]     Point: (995, 730)
+[17:03:17.704]     Point: (995, 1395)
+[17:03:17.704]     Point: (55, 1395)
+[17:03:17.704] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:18.051] === HitTest START at (1002.8, 718.2), frictionless=False, design=True ===
+[17:03:18.051] Checking node terminals...
+[17:03:18.051] HIT: Zone vertex 2 of 'Warehouse Zone 1'
+[17:03:18.051] >>> CLICK RESULT: Hit type = ZoneVertex at (1002.8, 718.2)
+[17:03:18.051]     FrictionlessMode=False, DesignMode=True
+[17:03:18.218] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:18.218] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:18.218]     Point: (55, 55)
+[17:03:18.219]     Point: (995, 55)
+[17:03:18.219]     Point: (995, 720)
+[17:03:18.219]     Point: (55, 720)
+[17:03:18.220] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:18.220] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:18.221]     Point: (1005, 55)
+[17:03:18.221]     Point: (1945, 55)
+[17:03:18.221]     Point: (1945, 720)
+[17:03:18.221]     Point: (1005, 720)
+[17:03:18.222] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:18.222] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:18.222]     Point: (55, 730)
+[17:03:18.222]     Point: (995, 730)
+[17:03:18.222]     Point: (995, 1395)
+[17:03:18.223]     Point: (55, 1395)
+[17:03:18.223] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:18.251] === HitTest START at (1002.8, 718.2), frictionless=False, design=True ===
+[17:03:18.252] Checking node terminals...
+[17:03:18.252] HIT: Zone vertex 2 of 'Warehouse Zone 1'
+[17:03:18.252] === HitTest START at (1002.8, 718.2), frictionless=False, design=True ===
+[17:03:18.252] Checking node terminals...
+[17:03:18.252] HIT: Zone vertex 2 of 'Warehouse Zone 1'
+[17:03:18.253] >>> CLICK RESULT: Hit type = ZoneVertex at (1002.8, 718.2)
+[17:03:18.253]     FrictionlessMode=False, DesignMode=True
+[17:03:18.507] === HitTest START at (1002.8, 718.2), frictionless=False, design=True ===
+[17:03:18.507] Checking node terminals...
+[17:03:18.508] HIT: Zone vertex 2 of 'Warehouse Zone 1'
+[17:03:18.508] >>> CLICK RESULT: Hit type = ZoneVertex at (1002.8, 718.2)
+[17:03:18.508]     FrictionlessMode=False, DesignMode=True
+[17:03:18.731] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:18.732] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:18.732]     Point: (55, 55)
+[17:03:18.732]     Point: (995, 55)
+[17:03:18.732]     Point: (995, 720)
+[17:03:18.732]     Point: (55, 720)
+[17:03:18.733] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:18.733] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:18.733]     Point: (1005, 55)
+[17:03:18.733]     Point: (1945, 55)
+[17:03:18.733]     Point: (1945, 720)
+[17:03:18.733]     Point: (1005, 720)
+[17:03:18.734] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:18.734] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:18.734]     Point: (55, 730)
+[17:03:18.734]     Point: (995, 730)
+[17:03:18.734]     Point: (995, 1395)
+[17:03:18.734]     Point: (55, 1395)
+[17:03:18.734] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:19.246] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:19.247] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:19.247]     Point: (55, 55)
+[17:03:19.247]     Point: (995, 55)
+[17:03:19.247]     Point: (995, 720)
+[17:03:19.248]     Point: (55, 720)
+[17:03:19.248] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:19.248] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:19.248]     Point: (1005, 55)
+[17:03:19.249]     Point: (1945, 55)
+[17:03:19.249]     Point: (1945, 720)
+[17:03:19.249]     Point: (1005, 720)
+[17:03:19.249] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:19.250] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:19.250]     Point: (55, 730)
+[17:03:19.250]     Point: (995, 730)
+[17:03:19.250]     Point: (995, 1395)
+[17:03:19.251]     Point: (55, 1395)
+[17:03:19.251] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:19.825] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:19.825] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:19.825]     Point: (55, 55)
+[17:03:19.826]     Point: (995, 55)
+[17:03:19.826]     Point: (995, 720)
+[17:03:19.826]     Point: (55, 720)
+[17:03:19.826] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:19.826] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:19.827]     Point: (1005, 55)
+[17:03:19.827]     Point: (1945, 55)
+[17:03:19.827]     Point: (1945, 720)
+[17:03:19.827]     Point: (1005, 720)
+[17:03:19.827] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:19.827] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:19.827]     Point: (55, 730)
+[17:03:19.828]     Point: (995, 730)
+[17:03:19.828]     Point: (995, 1395)
+[17:03:19.828]     Point: (55, 1395)
+[17:03:19.828] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:20.338] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:20.338] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:20.339]     Point: (55, 55)
+[17:03:20.339]     Point: (995, 55)
+[17:03:20.339]     Point: (995, 720)
+[17:03:20.339]     Point: (55, 720)
+[17:03:20.339] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:20.339] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:20.339]     Point: (1005, 55)
+[17:03:20.340]     Point: (1945, 55)
+[17:03:20.340]     Point: (1945, 720)
+[17:03:20.340]     Point: (1005, 720)
+[17:03:20.340] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:20.341] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:20.341]     Point: (55, 730)
+[17:03:20.341]     Point: (995, 730)
+[17:03:20.342]     Point: (995, 1395)
+[17:03:20.342]     Point: (55, 1395)
+[17:03:20.342] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:20.853] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:20.853] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:20.853]     Point: (55, 55)
+[17:03:20.853]     Point: (995, 55)
+[17:03:20.854]     Point: (995, 720)
+[17:03:20.854]     Point: (55, 720)
+[17:03:20.854] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:20.854] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:20.854]     Point: (1005, 55)
+[17:03:20.855]     Point: (1945, 55)
+[17:03:20.855]     Point: (1945, 720)
+[17:03:20.855]     Point: (1005, 720)
+[17:03:20.855] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:20.855] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:20.855]     Point: (55, 730)
+[17:03:20.856]     Point: (995, 730)
+[17:03:20.856]     Point: (995, 1395)
+[17:03:20.856]     Point: (55, 1395)
+[17:03:20.856] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:21.384] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:21.385] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:21.385]     Point: (55, 55)
+[17:03:21.386]     Point: (995, 55)
+[17:03:21.386]     Point: (995, 720)
+[17:03:21.386]     Point: (55, 720)
+[17:03:21.386] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:21.386] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:21.387]     Point: (1005, 55)
+[17:03:21.387]     Point: (1945, 55)
+[17:03:21.387]     Point: (1945, 720)
+[17:03:21.387]     Point: (1005, 720)
+[17:03:21.388] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:21.388] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:21.388]     Point: (55, 730)
+[17:03:21.388]     Point: (995, 730)
+[17:03:21.388]     Point: (995, 1395)
+[17:03:21.389]     Point: (55, 1395)
+[17:03:21.389] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:21.903] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:21.903] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:21.903]     Point: (55, 55)
+[17:03:21.903]     Point: (995, 55)
+[17:03:21.904]     Point: (995, 720)
+[17:03:21.904]     Point: (55, 720)
+[17:03:21.904] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:21.904] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:21.904]     Point: (1005, 55)
+[17:03:21.904]     Point: (1945, 55)
+[17:03:21.905]     Point: (1945, 720)
+[17:03:21.905]     Point: (1005, 720)
+[17:03:21.905] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:21.905] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:21.905]     Point: (55, 730)
+[17:03:21.905]     Point: (995, 730)
+[17:03:21.906]     Point: (995, 1395)
+[17:03:21.906]     Point: (55, 1395)
+[17:03:21.906] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:22.416] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:22.416] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:22.417]     Point: (55, 55)
+[17:03:22.417]     Point: (995, 55)
+[17:03:22.417]     Point: (995, 720)
+[17:03:22.418]     Point: (55, 720)
+[17:03:22.420] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:22.420] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:22.420]     Point: (1005, 55)
+[17:03:22.420]     Point: (1945, 55)
+[17:03:22.420]     Point: (1945, 720)
+[17:03:22.421]     Point: (1005, 720)
+[17:03:22.421] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:22.422] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:22.422]     Point: (55, 730)
+[17:03:22.422]     Point: (995, 730)
+[17:03:22.422]     Point: (995, 1395)
+[17:03:22.422]     Point: (55, 1395)
+[17:03:22.423] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:22.930] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:22.930] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:22.930]     Point: (55, 55)
+[17:03:22.931]     Point: (995, 55)
+[17:03:22.931]     Point: (995, 720)
+[17:03:22.931]     Point: (55, 720)
+[17:03:22.931] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:22.931] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:22.931]     Point: (1005, 55)
+[17:03:22.932]     Point: (1945, 55)
+[17:03:22.932]     Point: (1945, 720)
+[17:03:22.932]     Point: (1005, 720)
+[17:03:22.932] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:22.932] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:22.932]     Point: (55, 730)
+[17:03:22.932]     Point: (995, 730)
+[17:03:22.933]     Point: (995, 1395)
+[17:03:22.933]     Point: (55, 1395)
+[17:03:22.933] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:23.444] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:23.445] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:23.446]     Point: (55, 55)
+[17:03:23.446]     Point: (995, 55)
+[17:03:23.447]     Point: (995, 720)
+[17:03:23.447]     Point: (55, 720)
+[17:03:23.447] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:23.448] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:23.448]     Point: (1005, 55)
+[17:03:23.448]     Point: (1945, 55)
+[17:03:23.448]     Point: (1945, 720)
+[17:03:23.449]     Point: (1005, 720)
+[17:03:23.449] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:23.449] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:23.449]     Point: (55, 730)
+[17:03:23.450]     Point: (995, 730)
+[17:03:23.450]     Point: (995, 1395)
+[17:03:23.450]     Point: (55, 1395)
+[17:03:23.450] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[17:03:23.961] [SpatialRenderer] RenderZones called, zone count: 3
+[17:03:23.961] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[17:03:23.961]     Point: (55, 55)
+[17:03:23.961]     Point: (995, 55)
+[17:03:23.962]     Point: (995, 720)
+[17:03:23.962]     Point: (55, 720)
+[17:03:23.962] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[17:03:23.962] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[17:03:23.963]     Point: (1005, 55)
+[17:03:23.963]     Point: (1945, 55)
+[17:03:23.963]     Point: (1945, 720)
+[17:03:23.963]     Point: (1005, 720)
+[17:03:23.963] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[17:03:23.963] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[17:03:23.964]     Point: (55, 730)
+[17:03:23.964]     Point: (995, 730)
+[17:03:23.964]     Point: (995, 1395)
+[17:03:23.964]     Point: (55, 1395)
+[17:03:23.964] [SpatialRenderer] Zone 'Production Zone 3' added to canvas

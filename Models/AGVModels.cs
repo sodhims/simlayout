@@ -268,6 +268,12 @@ namespace LayoutEditor.Models
         private double _dockingTolerance = 0.05; // meters
         private double _serviceTime = 30.0; // seconds
         private string _color = "#E67E22"; // Orange
+        private bool _isHoming = false; // True if this is a home/parking station for AGVs
+        private double? _approachAngle = 0; // Required approach angle
+        private double? _dwellTime = 5.0; // Minimum wait time in seconds
+        private int? _queueCapacity = 3; // Max AGVs waiting
+        private bool? _isBlocking = false; // Block when queue is full
+        private int? _priority = 0; // Station priority
 
         public string Id
         {
@@ -354,6 +360,60 @@ namespace LayoutEditor.Models
         {
             get => _color;
             set => SetProperty(ref _color, value);
+        }
+
+        /// <summary>
+        /// True if this station is a homing/parking station where AGVs return when idle
+        /// </summary>
+        public bool IsHoming
+        {
+            get => _isHoming;
+            set => SetProperty(ref _isHoming, value);
+        }
+
+        /// <summary>
+        /// Required approach angle in degrees
+        /// </summary>
+        public double? ApproachAngle
+        {
+            get => _approachAngle;
+            set => SetProperty(ref _approachAngle, value);
+        }
+
+        /// <summary>
+        /// Minimum dwell/wait time in seconds
+        /// </summary>
+        public double? DwellTime
+        {
+            get => _dwellTime;
+            set => SetProperty(ref _dwellTime, value);
+        }
+
+        /// <summary>
+        /// Maximum AGVs that can queue at this station
+        /// </summary>
+        public int? QueueCapacity
+        {
+            get => _queueCapacity;
+            set => SetProperty(ref _queueCapacity, value);
+        }
+
+        /// <summary>
+        /// Whether this station blocks upstream when queue is full
+        /// </summary>
+        public bool? IsBlocking
+        {
+            get => _isBlocking;
+            set => SetProperty(ref _isBlocking, value);
+        }
+
+        /// <summary>
+        /// Station priority for scheduling (higher = more priority)
+        /// </summary>
+        public int? Priority
+        {
+            get => _priority;
+            set => SetProperty(ref _priority, value);
         }
 
         /// <summary>

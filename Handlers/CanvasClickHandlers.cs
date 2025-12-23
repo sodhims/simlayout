@@ -192,7 +192,17 @@ namespace LayoutEditor
         private void HandleGroupBorderClick(GroupData group)
         {
             bool addToSelection = Keyboard.Modifiers.HasFlag(ModifierKeys.Shift);
-            
+
+            // Check if this is a zone in design mode
+            var zone = _layout.Zones.FirstOrDefault(z => z.Id == group.Id);
+            if (zone != null && _layout.DesignMode)
+            {
+                // Select zone for vertex editing
+                SelectZoneForEditing(zone.Id);
+                StatusText.Text = $"Design Mode: {zone.Name} selected - drag vertices to reshape";
+                return;
+            }
+
             // For cells, include internal paths in selection
             if (group.IsCell)
             {
@@ -202,10 +212,10 @@ namespace LayoutEditor
             {
                 _selectionService.SelectGroup(group.Id, group.Members, addToSelection);
             }
-            
+
             UpdateSelectionVisuals();
             UpdatePropertyPanel();
-            
+
             if (_selectionService.HasMultipleGroups)
             {
                 StatusText.Text = $"Selected {_selectionService.SelectedGroupIds.Count} groups - use alignment tools";
@@ -418,6 +428,7 @@ namespace LayoutEditor
             {
                 _selectionService.ClearSelection();
                 ClearWallSelection();  // Also clear wall selection
+                _selectionIndicator?.HideIndicator();  // Hide equipment browser indicator
                 UpdateSelectionVisuals();
                 UpdatePropertyPanel();
                 Redraw();  // Redraw to show deselected walls

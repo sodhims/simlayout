@@ -1,0 +1,199 @@
+=== LayoutEditor Debug Log Started at 12/21/2025 3:46:35 PM ===
+[15:46:35.673] MainWindow constructor completed successfully
+[15:46:35.674] Window should be visible now
+[15:47:01.494] === HitTest START at (47.2, 294.2), frictionless=False, design=True ===
+[15:47:01.494] Checking node terminals...
+[15:47:01.497] Checking GuidedTransport layer, visible=True
+[15:47:01.497] Checking AGV stations (count=0)...
+[15:47:01.497] HitTestAGVStations at (47.2, 294.2), designMode=True, radius=25
+[15:47:01.498] Checking 0 AGV stations
+[15:47:01.498]   No AGV station within hit radius
+[15:47:01.498] No AGV station hit
+[15:47:01.499] >>> CLICK RESULT: Hit type = Canvas at (47.2, 294.2)
+[15:47:01.500]     FrictionlessMode=False, DesignMode=True
+[15:47:02.543] === HitTest START at (44.5, 194.2), frictionless=False, design=True ===
+[15:47:02.543] Checking node terminals...
+[15:47:02.543] Checking GuidedTransport layer, visible=True
+[15:47:02.544] Checking AGV stations (count=0)...
+[15:47:02.544] HitTestAGVStations at (44.5, 194.2), designMode=True, radius=25
+[15:47:02.544] Checking 0 AGV stations
+[15:47:02.544]   No AGV station within hit radius
+[15:47:02.544] No AGV station hit
+[15:47:02.545] >>> CLICK RESULT: Hit type = Canvas at (44.5, 194.2)
+[15:47:02.545]     FrictionlessMode=False, DesignMode=True
+[15:47:03.555] === HitTest START at (49.8, 96.2), frictionless=False, design=True ===
+[15:47:03.555] Checking node terminals...
+[15:47:03.555] Checking GuidedTransport layer, visible=True
+[15:47:03.555] Checking AGV stations (count=0)...
+[15:47:03.556] HitTestAGVStations at (49.8, 96.2), designMode=True, radius=25
+[15:47:03.556] Checking 0 AGV stations
+[15:47:03.556]   No AGV station within hit radius
+[15:47:03.556] No AGV station hit
+[15:47:03.556] >>> CLICK RESULT: Hit type = Canvas at (49.8, 96.2)
+[15:47:03.556]     FrictionlessMode=False, DesignMode=True
+[15:47:06.352] === HitTest START at (202.5, 224.2), frictionless=False, design=True ===
+[15:47:06.352] Checking node terminals...
+[15:47:06.353] >>> CLICK RESULT: Hit type = Node at (202.5, 224.2)
+[15:47:06.353]     FrictionlessMode=False, DesignMode=True
+[15:47:07.222] === HitTest START at (480.5, 222.2), frictionless=False, design=True ===
+[15:47:07.223] Checking node terminals...
+[15:47:07.223] >>> CLICK RESULT: Hit type = Node at (480.5, 222.2)
+[15:47:07.223]     FrictionlessMode=False, DesignMode=True
+[15:47:08.438] === HitTest START at (749.8, 230.2), frictionless=False, design=True ===
+[15:47:08.438] Checking node terminals...
+[15:47:08.438] >>> CLICK RESULT: Hit type = Node at (749.8, 230.2)
+[15:47:08.438]     FrictionlessMode=False, DesignMode=True
+[15:47:09.324] === HitTest START at (1018.5, 227.5), frictionless=False, design=True ===
+[15:47:09.325] Checking node terminals...
+[15:47:09.325] >>> CLICK RESULT: Hit type = Node at (1018.5, 227.5)
+[15:47:09.326]     FrictionlessMode=False, DesignMode=True
+[15:47:10.530] === HitTest START at (1297.2, 224.9), frictionless=False, design=True ===
+[15:47:10.531] Checking node terminals...
+[15:47:10.531] >>> CLICK RESULT: Hit type = Node at (1297.2, 224.9)
+[15:47:10.531]     FrictionlessMode=False, DesignMode=True
+[15:47:14.639] === HitTest START at (1296.1, 228.9), frictionless=False, design=True ===
+[15:47:14.639] Checking node terminals...
+[15:47:14.640] >>> CLICK RESULT: Hit type = Node at (1296.1, 228.9)
+[15:47:14.640]     FrictionlessMode=False, DesignMode=True
+[15:47:15.959] === HitTest START at (1567.5, 224.9), frictionless=False, design=True ===
+[15:47:15.960] Checking node terminals...
+[15:47:15.960] >>> CLICK RESULT: Hit type = Node at (1567.5, 224.9)
+[15:47:15.960]     FrictionlessMode=False, DesignMode=True
+[15:47:17.107] === HitTest START at (1832.8, 224.2), frictionless=False, design=True ===
+[15:47:17.107] Checking node terminals...
+[15:47:17.107] >>> CLICK RESULT: Hit type = Node at (1832.8, 224.2)
+[15:47:17.108]     FrictionlessMode=False, DesignMode=True
+[15:47:19.042] === HitTest START at (1948.8, 196.2), frictionless=False, design=True ===
+[15:47:19.042] Checking node terminals...
+[15:47:19.042] Checking GuidedTransport layer, visible=True
+[15:47:19.042] Checking AGV stations (count=0)...
+[15:47:19.043] HitTestAGVStations at (1948.8, 196.2), designMode=True, radius=25
+[15:47:19.043] Checking 0 AGV stations
+[15:47:19.043]   No AGV station within hit radius
+[15:47:19.043] No AGV station hit
+[15:47:19.043] >>> CLICK RESULT: Hit type = Canvas at (1948.8, 196.2)
+[15:47:19.044]     FrictionlessMode=False, DesignMode=True
+[15:47:20.183] === HitTest START at (1943.5, 96.2), frictionless=False, design=True ===
+[15:47:20.183] Checking node terminals...
+[15:47:20.183] Checking GuidedTransport layer, visible=True
+[15:47:20.183] Checking AGV stations (count=0)...
+[15:47:20.183] HitTestAGVStations at (1943.5, 96.2), designMode=True, radius=25
+[15:47:20.184] Checking 0 AGV stations
+[15:47:20.184]   No AGV station within hit radius
+[15:47:20.184] No AGV station hit
+[15:47:20.184] >>> CLICK RESULT: Hit type = Canvas at (1943.5, 96.2)
+[15:47:20.184]     FrictionlessMode=False, DesignMode=True
+[15:47:23.512] === HitTest START at (1838.1, 548.2), frictionless=False, design=True ===
+[15:47:23.512] Checking node terminals...
+[15:47:23.512] >>> CLICK RESULT: Hit type = Node at (1838.1, 548.2)
+[15:47:23.512]     FrictionlessMode=False, DesignMode=True
+[15:47:25.149] === HitTest START at (1562.1, 550.9), frictionless=False, design=True ===
+[15:47:25.149] Checking node terminals...
+[15:47:25.149] >>> CLICK RESULT: Hit type = Node at (1562.1, 550.9)
+[15:47:25.149]     FrictionlessMode=False, DesignMode=True
+[15:47:26.669] === HitTest START at (1294.1, 548.9), frictionless=False, design=True ===
+[15:47:26.669] Checking node terminals...
+[15:47:26.669] >>> CLICK RESULT: Hit type = Node at (1294.1, 548.9)
+[15:47:26.669]     FrictionlessMode=False, DesignMode=True
+[15:47:28.313] === HitTest START at (1022.1, 551.5), frictionless=False, design=True ===
+[15:47:28.313] Checking node terminals...
+[15:47:28.313] >>> CLICK RESULT: Hit type = Node at (1022.1, 551.5)
+[15:47:28.313]     FrictionlessMode=False, DesignMode=True
+[15:47:31.433] === HitTest START at (999.5, 550.9), frictionless=False, design=True ===
+[15:47:31.433] Checking node terminals...
+[15:47:31.433] HIT: NodeTerminal
+[15:47:31.433] >>> CLICK RESULT: Hit type = NodeTerminal at (999.5, 550.9)
+[15:47:31.434]     FrictionlessMode=False, DesignMode=True
+[15:47:36.609] === HitTest START at (998.8, 546.9), frictionless=False, design=True ===
+[15:47:36.609] Checking node terminals...
+[15:47:36.609] HIT: NodeTerminal
+[15:47:36.609] >>> CLICK RESULT: Hit type = NodeTerminal at (998.8, 546.9)
+[15:47:36.610]     FrictionlessMode=False, DesignMode=True
+[15:47:37.531] === HitTest START at (1014.8, 550.9), frictionless=False, design=True ===
+[15:47:37.531] Checking node terminals...
+[15:47:37.532] >>> CLICK RESULT: Hit type = Node at (1014.8, 550.9)
+[15:47:37.532]     FrictionlessMode=False, DesignMode=True
+[15:47:38.896] === HitTest START at (999.5, 550.2), frictionless=False, design=True ===
+[15:47:38.896] Checking node terminals...
+[15:47:38.896] >>> CLICK RESULT: Hit type = Runway at (999.5, 550.2)
+[15:47:38.896]     FrictionlessMode=False, DesignMode=True
+[15:47:43.733] === HitTest START at (744.5, 556.2), frictionless=False, design=True ===
+[15:47:43.733] Checking node terminals...
+[15:47:43.733] >>> CLICK RESULT: Hit type = Node at (744.5, 556.2)
+[15:47:43.734]     FrictionlessMode=False, DesignMode=True
+[15:47:45.120] === HitTest START at (483.2, 551.5), frictionless=False, design=True ===
+[15:47:45.120] Checking node terminals...
+[15:47:45.120] >>> CLICK RESULT: Hit type = Node at (483.2, 551.5)
+[15:47:45.120]     FrictionlessMode=False, DesignMode=True
+[15:47:46.079] === HitTest START at (209.8, 542.2), frictionless=False, design=True ===
+[15:47:46.079] Checking node terminals...
+[15:47:46.080] >>> CLICK RESULT: Hit type = Node at (209.8, 542.2)
+[15:47:46.080]     FrictionlessMode=False, DesignMode=True
+[15:47:48.302] === HitTest START at (207.8, 877.5), frictionless=False, design=True ===
+[15:47:48.303] Checking node terminals...
+[15:47:48.303] >>> CLICK RESULT: Hit type = Node at (207.8, 877.5)
+[15:47:48.303]     FrictionlessMode=False, DesignMode=True
+[15:47:49.349] === HitTest START at (476.5, 876.2), frictionless=False, design=True ===
+[15:47:49.349] Checking node terminals...
+[15:47:49.350] >>> CLICK RESULT: Hit type = Node at (476.5, 876.2)
+[15:47:49.350]     FrictionlessMode=False, DesignMode=True
+[15:47:50.311] === HitTest START at (744.5, 872.2), frictionless=False, design=True ===
+[15:47:50.312] Checking node terminals...
+[15:47:50.312] >>> CLICK RESULT: Hit type = Node at (744.5, 872.2)
+[15:47:50.312]     FrictionlessMode=False, DesignMode=True
+[15:47:51.195] === HitTest START at (1024.5, 874.9), frictionless=False, design=True ===
+[15:47:51.195] Checking node terminals...
+[15:47:51.196] >>> CLICK RESULT: Hit type = Node at (1024.5, 874.9)
+[15:47:51.196]     FrictionlessMode=False, DesignMode=True
+[15:47:52.427] === HitTest START at (1296.5, 879.5), frictionless=False, design=True ===
+[15:47:52.428] Checking node terminals...
+[15:47:52.428] >>> CLICK RESULT: Hit type = Node at (1296.5, 879.5)
+[15:47:52.428]     FrictionlessMode=False, DesignMode=True
+[15:47:55.907] === HitTest START at (1560.1, 877.5), frictionless=False, design=True ===
+[15:47:55.907] Checking node terminals...
+[15:47:55.907] >>> CLICK RESULT: Hit type = Node at (1560.1, 877.5)
+[15:47:55.907]     FrictionlessMode=False, DesignMode=True
+[15:47:56.994] === HitTest START at (1833.5, 879.5), frictionless=False, design=True ===
+[15:47:56.995] Checking node terminals...
+[15:47:56.995] >>> CLICK RESULT: Hit type = Node at (1833.5, 879.5)
+[15:47:56.995]     FrictionlessMode=False, DesignMode=True
+[15:48:00.996] === HitTest START at (998.8, 1048.9), frictionless=False, design=True ===
+[15:48:00.997] Checking node terminals...
+[15:48:00.997] >>> CLICK RESULT: Hit type = Runway at (998.8, 1048.9)
+[15:48:00.997]     FrictionlessMode=False, DesignMode=True
+[15:48:06.008] === HitTest START at (205.2, 1205.8), frictionless=False, design=True ===
+[15:48:06.008] Checking node terminals...
+[15:48:06.009] >>> CLICK RESULT: Hit type = Node at (205.2, 1205.8)
+[15:48:06.009]     FrictionlessMode=False, DesignMode=True
+[15:48:06.945] === HitTest START at (478.5, 1209.1), frictionless=False, design=True ===
+[15:48:06.946] Checking node terminals...
+[15:48:06.946] >>> CLICK RESULT: Hit type = Node at (478.5, 1209.1)
+[15:48:06.946]     FrictionlessMode=False, DesignMode=True
+[15:48:08.206] === HitTest START at (750.5, 1203.1), frictionless=False, design=True ===
+[15:48:08.206] Checking node terminals...
+[15:48:08.206] >>> CLICK RESULT: Hit type = Node at (750.5, 1203.1)
+[15:48:08.207]     FrictionlessMode=False, DesignMode=True
+[15:48:09.525] === HitTest START at (1012.5, 1201.8), frictionless=False, design=True ===
+[15:48:09.525] Checking node terminals...
+[15:48:09.526] >>> CLICK RESULT: Hit type = Node at (1012.5, 1201.8)
+[15:48:09.526]     FrictionlessMode=False, DesignMode=True
+[15:48:10.877] === HitTest START at (1295.8, 1209.1), frictionless=False, design=True ===
+[15:48:10.877] Checking node terminals...
+[15:48:10.877] >>> CLICK RESULT: Hit type = Node at (1295.8, 1209.1)
+[15:48:10.878]     FrictionlessMode=False, DesignMode=True
+[15:48:14.858] === HitTest START at (1564.8, 1205.8), frictionless=False, design=True ===
+[15:48:14.859] Checking node terminals...
+[15:48:14.859] >>> CLICK RESULT: Hit type = Node at (1564.8, 1205.8)
+[15:48:14.859]     FrictionlessMode=False, DesignMode=True
+[15:48:18.114] === HitTest START at (1409.5, 1419.8), frictionless=False, design=True ===
+[15:48:18.114] Checking node terminals...
+[15:48:18.115] >>> CLICK RESULT: Hit type = JibCrane at (1409.5, 1419.8)
+[15:48:18.115]     FrictionlessMode=False, DesignMode=True
+[15:48:19.725] === HitTest START at (742.8, 1416.5), frictionless=False, design=True ===
+[15:48:19.725] Checking node terminals...
+[15:48:19.725] >>> CLICK RESULT: Hit type = JibCrane at (742.8, 1416.5)
+[15:48:19.725]     FrictionlessMode=False, DesignMode=True
+[15:48:22.462] === HitTest START at (78.5, 1415.8), frictionless=False, design=True ===
+[15:48:22.463] Checking node terminals...
+[15:48:22.463] >>> CLICK RESULT: Hit type = JibCrane at (78.5, 1415.8)
+[15:48:22.463]     FrictionlessMode=False, DesignMode=True

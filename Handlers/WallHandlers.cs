@@ -40,17 +40,17 @@ namespace LayoutEditor
             _selectedWallIds.Clear();
             _selectedWallIds.Add(wallId);
             _selectedWallId = wallId;
-            
+
             _selectionService.ClearSelection();
             UpdateWallRendererSelection();
-            
+
             var wall = _layout.Walls.FirstOrDefault(w => w.Id == wallId);
             if (wall != null)
             {
-                _panelManager.ShowWallProperties(wall);
+                _panelManager?.ShowWallProperties(wall);
                 StatusText.Text = $"Wall selected (Layer: {wall.Layer ?? "none"}) - drag to move, Del to delete";
             }
-            
+
             Redraw();
         }
 
@@ -430,7 +430,7 @@ namespace LayoutEditor
         {
             var menu = new ContextMenu();
 
-            menu.Items.Add(CreateMenuItem("Properties...", () => _panelManager.ShowWallProperties(wall)));
+            menu.Items.Add(CreateMenuItem("Properties...", () => _panelManager?.ShowWallProperties(wall)));
             menu.Items.Add(new Separator());
 
             // Break/Doorway options

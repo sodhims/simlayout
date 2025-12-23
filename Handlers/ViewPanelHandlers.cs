@@ -21,6 +21,11 @@ namespace LayoutEditor
             TogglePanelById("validation");
         }
 
+        private void ToggleEquipmentBrowserPanel_Click(object sender, RoutedEventArgs e)
+        {
+            TogglePanelById("equipment_browser");
+        }
+
         private void ResetDockLayout_Click(object sender, RoutedEventArgs e)
         {
             // Show all panels
@@ -29,6 +34,7 @@ namespace LayoutEditor
             ShowPanelById("explorer");
             ShowPanelById("transport_layers");
             ShowPanelById("validation");
+            ShowPanelById("equipment_browser");
 
             StatusText.Text = "All panels now visible";
         }

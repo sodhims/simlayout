@@ -5,6 +5,7 @@ using System.Windows;
 using Microsoft.Win32;
 using LayoutEditor.Helpers;
 using LayoutEditor.Models;
+using LayoutEditor.Services;
 
 namespace LayoutEditor
 {
@@ -24,9 +25,57 @@ namespace LayoutEditor
             _undoService.Clear();
             _selectionService.ClearSelection();
 
+            // Reset renderers and reinitialize animation service for new layout
+            ResetLayoutDependentRenderers();
+
             RefreshAll();
             UpdateTitle();
             StatusText.Text = "New layout created";
+        }
+
+        /// <summary>
+        /// Reinitialize the animation service when the layout changes
+        /// </summary>
+        private void ReinitializeAnimationService()
+        {
+            _animationService?.Dispose();
+            _animationService = new Services.AnimationService(
+                _layout,
+                () => Redraw(),
+                status => StatusText.Text = status
+            );
+        }
+
+        /// <summary>
+        /// Reset all renderers that cache the layout reference.
+        /// Call this when the layout is replaced (New, Open, Import, etc.)
+        /// </summary>
+        private void ResetLayoutDependentRenderers()
+        {
+            // Reset handle renderers - they cache the layout reference
+            _handleRenderer = null;
+            _designModeRenderer = null;
+
+            // Hide and recreate selection indicator for new layout
+            _selectionIndicator?.HideIndicator();
+            _selectionIndicator?.Dispose();
+            _selectionIndicator = new SelectionIndicatorService(
+                EditorCanvas,
+                _layout,
+                () => { }
+            );
+
+            // Initialize jib crane current angles to their arc start positions
+            if (_layout.JibCranes != null)
+            {
+                foreach (var jib in _layout.JibCranes)
+                {
+                    jib.CurrentAngle = jib.ArcStart;
+                }
+            }
+
+            // Reinitialize animation service
+            ReinitializeAnimationService();
         }
 
         private void Open_Click(object sender, RoutedEventArgs e)
@@ -69,6 +118,8 @@ namespace LayoutEditor
                         _layout.LayerManager.InitializeDefaultLayers();
                     }
 
+                    // Reset renderers and reinitialize animation service for new layout
+                    ResetLayoutDependentRenderers();
 
                     RefreshAll();
                     UpdateTitle();
@@ -169,6 +220,10 @@ namespace LayoutEditor
         _currentFilePath = null;
         Title = $"Layout Editor - {dialog.LoadedLayoutName} (from database)";
         _isDirty = false;
+
+        // Reset renderers and reinitialize animation service for new layout
+        ResetLayoutDependentRenderers();
+
         RefreshAll();
         ZoomFit_Click(sender, e);
         StatusText.Text = $"Loaded '{dialog.LoadedLayoutName}' from database";
@@ -202,6 +257,10 @@ private void ImportSqlFile_Click(object sender, RoutedEventArgs e)
             _currentFilePath = null;
             Title = $"Layout Editor - {System.IO.Path.GetFileNameWithoutExtension(dialog.FileName)}";
             _isDirty = false;
+
+            // Reset renderers and reinitialize animation service for new layout
+            ResetLayoutDependentRenderers();
+
             RefreshAll();
             ZoomFit_Click(sender, e);
             StatusText.Text = $"Imported from {System.IO.Path.GetFileName(dialog.FileName)}";
@@ -245,6 +304,10 @@ private void OpenDatabaseFile_Click(object sender, RoutedEventArgs e)
             _currentFilePath = null;
             Title = $"Layout Editor - {layouts[0].Name}";
             _isDirty = false;
+
+            // Reset renderers and reinitialize animation service for new layout
+            ResetLayoutDependentRenderers();
+
             RefreshAll();
             ZoomFit_Click(sender, e);
             StatusText.Text = $"Loaded from {System.IO.Path.GetFileName(dialog.FileName)}";

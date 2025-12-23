@@ -15,6 +15,7 @@ namespace LayoutEditor.Models
         private BackgroundImage? _background;
         private LayerManager _layerManager = new();
         private bool _frictionlessMode = false;
+        private bool _designMode = false;
 
         public string Id
         {
@@ -59,6 +60,15 @@ namespace LayoutEditor.Models
         {
             get => _frictionlessMode;
             set => SetProperty(ref _frictionlessMode, value);
+        }
+
+        /// <summary>
+        /// Design mode: unlocks all entities for free movement and editing
+        /// </summary>
+        public bool DesignMode
+        {
+            get => _designMode;
+            set => SetProperty(ref _designMode, value);
         }
 
         // Core simulation elements

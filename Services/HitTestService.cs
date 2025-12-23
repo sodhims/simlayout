@@ -19,9 +19,14 @@ namespace LayoutEditor.Services
         public RunwayData? Runway { get; set; }
         public PrimaryAisleData? PrimaryAisle { get; set; }
         public RestrictedAreaData? RestrictedArea { get; set; }
+        public EOTCraneData? EOTCrane { get; set; }
+        public JibCraneData? JibCrane { get; set; }
+        public AGVWaypointData? AGVWaypoint { get; set; }
+        public AGVStationData? AGVStation { get; set; }
         public string? TerminalType { get; set; }  // "input" or "output"
         public LayerType Layer { get; set; }
         public bool IsEditable { get; set; } = true;
+        public int VertexIndex { get; set; } = -1;  // For zone vertex hit testing
     }
 
     public enum HitType
@@ -38,8 +43,13 @@ namespace LayoutEditor.Services
         Column,
         Opening,
         Runway,
+        EOTCrane,
+        JibCrane,
+        AGVWaypoint,
+        AGVStation,
         PrimaryAisle,
         RestrictedArea,
+        ZoneVertex,
         Canvas
     }
 
@@ -66,16 +76,30 @@ namespace LayoutEditor.Services
         /// </summary>
         public HitTestResult HitTest(LayoutData layout, Point point, ArchitectureLayerManager? layerManager, bool frictionlessMode)
         {
+            return HitTest(layout, point, layerManager, frictionlessMode, false);
+        }
+
+        /// <summary>
+        /// Layer-aware hit test method with frictionless mode and design mode support
+        /// </summary>
+        public HitTestResult HitTest(LayoutData layout, Point point, ArchitectureLayerManager? layerManager, bool frictionlessMode, bool designMode)
+        {
+            DebugLogger.Log($"=== HitTest START at ({point.X:F1}, {point.Y:F1}), frictionless={frictionlessMode}, design={designMode} ===");
+
             // Test in reverse Z-order (top layers first) - Pedestrian down to Infrastructure
             // This ensures that elements on higher layers are selected before lower layers
 
             // In frictionless mode, skip terminals (not constrained entities)
             if (!frictionlessMode)
             {
+                DebugLogger.Log("Checking node terminals...");
                 // Check node terminals first (highest priority for path connections)
                 var terminalHit = HitTestNodeTerminals(layout, point, layerManager);
                 if (terminalHit != null)
+                {
+                    DebugLogger.Log($"HIT: NodeTerminal");
                     return terminalHit;
+                }
             }
 
             // In frictionless mode, skip cell terminals and nodes (not constrained)
@@ -133,10 +157,69 @@ namespace LayoutEditor.Services
                 }
             }
 
+            // In design mode OR frictionless mode, check EOT cranes BEFORE zones
+            // This allows clicking anywhere on the crane's runway zone to select/animate the crane
+            // even if a zone is underneath
+            if ((designMode || frictionlessMode) && (layerManager == null || layerManager.IsVisible(LayerType.OverheadTransport)))
+            {
+                bool overheadEditable = layerManager?.IsEditable(LayerType.OverheadTransport) ?? true;
+                var eotCrane = HitTestEOTCranes(layout, point);
+                if (eotCrane != null)
+                {
+                    string modeDesc = designMode ? "design mode" : "frictionless mode";
+                    DebugLogger.Log($"HIT: EOT crane '{eotCrane.Name}' ({modeDesc} priority)");
+                    return new HitTestResult
+                    {
+                        Type = HitType.EOTCrane,
+                        Id = eotCrane.Id,
+                        EOTCrane = eotCrane,
+                        Layer = LayerType.OverheadTransport,
+                        IsEditable = overheadEditable
+                    };
+                }
+
+                // Also check jib cranes in frictionless mode for animation
+                if (frictionlessMode)
+                {
+                    var jibCrane = HitTestJibCranes(layout, point, false);
+                    if (jibCrane != null)
+                    {
+                        DebugLogger.Log($"HIT: Jib crane '{jibCrane.Name}' (frictionless mode priority)");
+                        return new HitTestResult
+                        {
+                            Type = HitType.JibCrane,
+                            Id = jibCrane.Id,
+                            JibCrane = jibCrane,
+                            Layer = LayerType.OverheadTransport,
+                            IsEditable = overheadEditable
+                        };
+                    }
+                }
+            }
+
             // Check Spatial layer elements
             if (layerManager == null || layerManager.IsVisible(LayerType.Spatial))
             {
                 bool spatialEditable = layerManager?.IsEditable(LayerType.Spatial) ?? true;
+
+                // In design mode, check zone vertices for reshaping
+                if (designMode)
+                {
+                    var (vertexZone, vertexIndex) = HitTestZoneVertices(layout, point);
+                    if (vertexZone != null)
+                    {
+                        DebugLogger.Log($"HIT: Zone vertex {vertexIndex} of '{vertexZone.Name}'");
+                        return new HitTestResult
+                        {
+                            Type = HitType.ZoneVertex,
+                            Id = vertexZone.Id,
+                            Zone = vertexZone,
+                            VertexIndex = vertexIndex,
+                            Layer = LayerType.Spatial,
+                            IsEditable = spatialEditable
+                        };
+                    }
+                }
 
                 // Check restricted areas
                 var restrictedArea = HitTestRestrictedAreas(layout, point);
@@ -166,10 +249,11 @@ namespace LayoutEditor.Services
                     };
                 }
 
-                // Check zones
+                // Check zone interiors (for moving whole zone)
                 var zone = HitTestZones(layout, point);
                 if (zone != null)
                 {
+                    DebugLogger.Log($"HIT: Zone interior '{zone.Name}'");
                     return new HitTestResult
                     {
                         Type = HitType.Zone,
@@ -179,6 +263,102 @@ namespace LayoutEditor.Services
                         IsEditable = spatialEditable
                     };
                 }
+            }
+
+            // Check Infrastructure layer elements (runways) BEFORE EOT cranes in design mode
+            if (designMode && (layerManager == null || layerManager.IsVisible(LayerType.Infrastructure)))
+            {
+                bool infraEditable = layerManager?.IsEditable(LayerType.Infrastructure) ?? true;
+
+                // In design mode, runways have priority over EOT cranes (easier to select bays)
+                var runway = HitTestRunways(layout, point, designMode);
+                if (runway != null)
+                {
+                    return new HitTestResult
+                    {
+                        Type = HitType.Runway,
+                        Id = runway.Id,
+                        Runway = runway,
+                        Layer = LayerType.Infrastructure,
+                        IsEditable = infraEditable
+                    };
+                }
+            }
+
+            // Check OverheadTransport layer elements (EOT cranes)
+            if (layerManager == null || layerManager.IsVisible(LayerType.OverheadTransport))
+            {
+                bool overheadEditable = layerManager?.IsEditable(LayerType.OverheadTransport) ?? true;
+
+                // Check EOT cranes (higher priority than runways in normal mode)
+                var eotCrane = HitTestEOTCranes(layout, point);
+                if (eotCrane != null)
+                {
+                    return new HitTestResult
+                    {
+                        Type = HitType.EOTCrane,
+                        Id = eotCrane.Id,
+                        EOTCrane = eotCrane,
+                        Layer = LayerType.OverheadTransport,
+                        IsEditable = overheadEditable
+                    };
+                }
+
+                // Check Jib cranes
+                var jibCrane = HitTestJibCranes(layout, point, designMode);
+                if (jibCrane != null)
+                {
+                    return new HitTestResult
+                    {
+                        Type = HitType.JibCrane,
+                        Id = jibCrane.Id,
+                        JibCrane = jibCrane,
+                        Layer = LayerType.OverheadTransport,
+                        IsEditable = overheadEditable
+                    };
+                }
+
+                // Check AGV waypoints (GuidedTransport layer) - only in frictionless mode
+                if (frictionlessMode)
+                {
+                    bool guidedEditable = layerManager?.IsEditable(LayerType.GuidedTransport) ?? true;
+                    var agvWaypoint = HitTestAGVWaypoints(layout, point);
+                    if (agvWaypoint != null)
+                    {
+                        return new HitTestResult
+                        {
+                            Type = HitType.AGVWaypoint,
+                            Id = agvWaypoint.Id,
+                            AGVWaypoint = agvWaypoint,
+                            Layer = LayerType.GuidedTransport,
+                            IsEditable = guidedEditable
+                        };
+                    }
+                }
+            }
+
+            // Check GuidedTransport layer elements (AGV stations)
+            DebugLogger.Log($"Checking GuidedTransport layer, visible={layerManager == null || layerManager.IsVisible(LayerType.GuidedTransport)}");
+            if (layerManager == null || layerManager.IsVisible(LayerType.GuidedTransport))
+            {
+                bool guidedEditable = layerManager?.IsEditable(LayerType.GuidedTransport) ?? true;
+
+                DebugLogger.Log($"Checking AGV stations (count={layout.AGVStations.Count})...");
+                // Check AGV stations (always visible, draggable in design mode)
+                var agvStation = HitTestAGVStations(layout, point, designMode);
+                if (agvStation != null)
+                {
+                    DebugLogger.Log($"HIT: AGV Station '{agvStation.Name}'");
+                    return new HitTestResult
+                    {
+                        Type = HitType.AGVStation,
+                        Id = agvStation.Id,
+                        AGVStation = agvStation,
+                        Layer = LayerType.GuidedTransport,
+                        IsEditable = guidedEditable
+                    };
+                }
+                DebugLogger.Log("No AGV station hit");
             }
 
             // Check Infrastructure layer elements
@@ -228,21 +408,25 @@ namespace LayoutEditor.Services
                     };
                 }
 
-                // Check runways
-                var runway = HitTestRunways(layout, point);
-                if (runway != null)
+                // Check runways (if not already checked in design mode)
+                if (!designMode)
                 {
-                    return new HitTestResult
+                    var runway = HitTestRunways(layout, point, false);
+                    if (runway != null)
                     {
-                        Type = HitType.Runway,
-                        Id = runway.Id,
-                        Runway = runway,
-                        Layer = LayerType.Infrastructure,
-                        IsEditable = infraEditable
-                    };
+                        return new HitTestResult
+                        {
+                            Type = HitType.Runway,
+                            Id = runway.Id,
+                            Runway = runway,
+                            Layer = LayerType.Infrastructure,
+                            IsEditable = infraEditable
+                        };
+                    }
                 }
             }
 
+            System.Console.WriteLine("[DEBUG] === HitTest END: Nothing hit, returning Canvas ===");
             return new HitTestResult { Type = HitType.Canvas };
         }
 
@@ -467,9 +651,13 @@ namespace LayoutEditor.Services
             return null;
         }
 
-        private RunwayData? HitTestRunways(LayoutData layout, Point point)
+        private RunwayData? HitTestRunways(LayoutData layout, Point point, bool designMode = false)
         {
-            const double hitMargin = 6.0;
+            // In design mode, use a much larger hit margin to make narrow runways easier to click
+            const double normalHitMargin = 6.0;
+            const double designModeHitMargin = 20.0;  // Much larger for easier selection
+            double hitMargin = designMode ? designModeHitMargin : normalHitMargin;
+
             foreach (var runway in layout.Runways)
             {
                 var p1 = new Point(runway.StartX, runway.StartY);
@@ -480,15 +668,219 @@ namespace LayoutEditor.Services
             return null;
         }
 
+        private AGVStationData? HitTestAGVStations(LayoutData layout, Point point, bool designMode = false)
+        {
+            // In design mode, use a larger hit radius to make stations easier to click
+            const double normalHitRadius = 15.0;
+            const double designModeHitRadius = 25.0;
+            double hitRadius = designMode ? designModeHitRadius : normalHitRadius;
+
+            DebugLogger.Log($"HitTestAGVStations at ({point.X:F1}, {point.Y:F1}), designMode={designMode}, radius={hitRadius}");
+            DebugLogger.Log($"Checking {layout.AGVStations.Count} AGV stations");
+
+            foreach (var station in layout.AGVStations)
+            {
+                double dx = point.X - station.X;
+                double dy = point.Y - station.Y;
+                double distance = Math.Sqrt(dx * dx + dy * dy);
+
+                DebugLogger.Log($"  Station '{station.Name}' at ({station.X:F1}, {station.Y:F1}), distance={distance:F1}");
+
+                if (distance <= hitRadius)
+                {
+                    DebugLogger.Log($"  HIT! Returning station '{station.Name}'");
+                    return station;
+                }
+            }
+            DebugLogger.Log("  No AGV station within hit radius");
+            return null;
+        }
+
+        private EOTCraneData? HitTestEOTCranes(LayoutData layout, Point point)
+        {
+            // Use larger hit radius in frictionless mode for easier handle grabbing
+            const double normalHitRadius = 12.0;
+            const double frictionlessHitRadius = 20.0;
+            double hitRadius = layout.FrictionlessMode ? frictionlessHitRadius : normalHitRadius;
+
+            // In frictionless or design mode, allow clicking anywhere on the crane's runway zone
+            bool allowRunwayZoneHit = layout.FrictionlessMode || layout.DesignMode;
+
+            foreach (var crane in layout.EOTCranes)
+            {
+                // Find the runway
+                var runway = layout.Runways?.FirstOrDefault(r => r.Id == crane.RunwayId);
+                if (runway == null) continue;
+
+                // Get crane's current position on runway
+                var (craneX, craneY) = runway.GetPositionAt(crane.BridgePosition);
+
+                // Check if click is within hit radius of bridge position
+                var dx = point.X - craneX;
+                var dy = point.Y - craneY;
+                var distance = Math.Sqrt(dx * dx + dy * dy);
+
+                if (distance <= hitRadius)
+                    return crane;
+
+                // In frictionless/design mode, also allow clicking anywhere along the crane's zone on the runway
+                if (allowRunwayZoneHit)
+                {
+                    // Get the crane's zone segment on the runway
+                    var (zoneStartX, zoneStartY) = runway.GetPositionAt(crane.ZoneMin);
+                    var (zoneEndX, zoneEndY) = runway.GetPositionAt(crane.ZoneMax);
+
+                    // Check if click is near the runway line within the crane's zone
+                    double distToLine = DistanceToLineSegment(point,
+                        new Point(zoneStartX, zoneStartY),
+                        new Point(zoneEndX, zoneEndY));
+
+                    // Use a wider hit margin for the runway zone (same as runway hit margin)
+                    const double runwayZoneHitMargin = 15.0;
+                    if (distToLine <= runwayZoneHitMargin)
+                    {
+                        DebugLogger.Log($"[HitTest] EOT crane '{crane.Name}' hit via runway zone, distance to line = {distToLine:F1}");
+                        return crane;
+                    }
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Calculate distance from a point to a line segment
+        /// </summary>
+        private double DistanceToLineSegment(Point p, Point a, Point b)
+        {
+            var dx = b.X - a.X;
+            var dy = b.Y - a.Y;
+            var lengthSq = dx * dx + dy * dy;
+
+            if (lengthSq == 0)
+                return Distance(p, a);
+
+            // Calculate projection parameter
+            var t = Math.Max(0, Math.Min(1, ((p.X - a.X) * dx + (p.Y - a.Y) * dy) / lengthSq));
+            var projX = a.X + t * dx;
+            var projY = a.Y + t * dy;
+
+            return Math.Sqrt((p.X - projX) * (p.X - projX) + (p.Y - projY) * (p.Y - projY));
+        }
+
+        private JibCraneData? HitTestJibCranes(LayoutData layout, Point point, bool designMode = false)
+        {
+            // In design mode, use larger hit radius for easier selection
+            const double normalHitRadius = 15.0;
+            const double designModeHitRadius = 25.0;
+            double hitRadius = designMode ? designModeHitRadius : normalHitRadius;
+
+            if (layout.JibCranes == null) return null;
+
+            foreach (var jib in layout.JibCranes)
+            {
+                // Check if click is within hit radius of jib center
+                var dx = point.X - jib.CenterX;
+                var dy = point.Y - jib.CenterY;
+                var distance = Math.Sqrt(dx * dx + dy * dy);
+
+                if (distance <= hitRadius)
+                    return jib;
+            }
+            return null;
+        }
+
+        private AGVWaypointData? HitTestAGVWaypoints(LayoutData layout, Point point)
+        {
+            const double hitRadius = 12.0; // Same as handle size
+
+            foreach (var waypoint in layout.AGVWaypoints)
+            {
+                var dx = point.X - waypoint.X;
+                var dy = point.Y - waypoint.Y;
+                var distance = Math.Sqrt(dx * dx + dy * dy);
+
+                if (distance <= hitRadius)
+                    return waypoint;
+            }
+            return null;
+        }
+
         private ZoneData? HitTestZones(LayoutData layout, Point point)
         {
             foreach (var zone in layout.Zones)
             {
-                var rect = new Rect(zone.X, zone.Y, zone.Width, zone.Height);
-                if (rect.Contains(point))
-                    return zone;
+                // Check if zone is polygon-based (Points) or rectangle-based (X/Y/Width/Height)
+                if (zone.Points != null && zone.Points.Count >= 3)
+                {
+                    // Polygon hit test using point-in-polygon algorithm
+                    if (IsPointInPolygon(point, zone.Points))
+                        return zone;
+                }
+                else if (zone.Width > 0 && zone.Height > 0)
+                {
+                    // Rectangle hit test
+                    var rect = new Rect(zone.X, zone.Y, zone.Width, zone.Height);
+                    if (rect.Contains(point))
+                        return zone;
+                }
             }
             return null;
+        }
+
+        /// <summary>
+        /// Point-in-polygon test using ray casting algorithm
+        /// </summary>
+        private bool IsPointInPolygon(Point point, System.Collections.Generic.IList<PointData> polygon)
+        {
+            if (polygon == null || polygon.Count < 3)
+                return false;
+
+            bool inside = false;
+            int j = polygon.Count - 1;
+
+            for (int i = 0; i < polygon.Count; i++)
+            {
+                double xi = polygon[i].X, yi = polygon[i].Y;
+                double xj = polygon[j].X, yj = polygon[j].Y;
+
+                if (((yi > point.Y) != (yj > point.Y)) &&
+                    (point.X < (xj - xi) * (point.Y - yi) / (yj - yi) + xi))
+                {
+                    inside = !inside;
+                }
+                j = i;
+            }
+
+            return inside;
+        }
+
+        /// <summary>
+        /// Hit test zone vertices for reshaping in design mode
+        /// </summary>
+        private (ZoneData? zone, int vertexIndex) HitTestZoneVertices(LayoutData layout, Point point)
+        {
+            const double vertexHitRadius = 20.0;  // Large hit radius for easy vertex grabbing
+
+            foreach (var zone in layout.Zones)
+            {
+                if (zone.Points == null || zone.Points.Count == 0)
+                    continue;
+
+                for (int i = 0; i < zone.Points.Count; i++)
+                {
+                    var vertex = zone.Points[i];
+                    double dist = Math.Sqrt(
+                        (point.X - vertex.X) * (point.X - vertex.X) +
+                        (point.Y - vertex.Y) * (point.Y - vertex.Y));
+
+                    if (dist <= vertexHitRadius)
+                    {
+                        return (zone, i);
+                    }
+                }
+            }
+
+            return (null, -1);
         }
 
         private PrimaryAisleData? HitTestPrimaryAisles(LayoutData layout, Point point)

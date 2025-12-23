@@ -166,6 +166,8 @@ namespace LayoutEditor.Models
         private double _speedTrolley = 0.5;
         private double _speedHoist = 0.3;
         private string _color = "#E67E22";
+        private double _bridgePosition = 0.5; // Current position along runway (0-1)
+        private double _bayWidth = 240.0; // Bay width in inches (default 20' = 240")
 
         public string Id
         {
@@ -254,8 +256,46 @@ namespace LayoutEditor.Models
             set => SetProperty(ref _color, value);
         }
 
+        /// <summary>
+        /// Current bridge position along runway (0 = runway start, 1 = runway end)
+        /// Constrained to stay within ZoneMin and ZoneMax
+        /// </summary>
+        public double BridgePosition
+        {
+            get => _bridgePosition;
+            set => SetProperty(ref _bridgePosition, Math.Clamp(value, ZoneMin, ZoneMax));
+        }
+
         [JsonIgnore]
         public double TotalReach => ReachLeft + ReachRight;
+
+        /// <summary>
+        /// Stores the starting position for animation (not serialized)
+        /// </summary>
+        [JsonIgnore]
+        public double AnimationStartPosition { get; set; }
+
+        /// <summary>
+        /// Bay width in inches (defines the width of the EOT service bay, default 20' = 240")
+        /// This sets ReachLeft and ReachRight symmetrically.
+        /// </summary>
+        public double BayWidth
+        {
+            get => _bayWidth;
+            set
+            {
+                if (SetProperty(ref _bayWidth, Math.Max(60, value))) // Minimum 5' bay
+                {
+                    // Update reaches to be symmetric around runway
+                    var halfBay = _bayWidth / 2;
+                    _reachLeft = halfBay;
+                    _reachRight = halfBay;
+                    OnPropertyChanged(nameof(ReachLeft));
+                    OnPropertyChanged(nameof(ReachRight));
+                    OnPropertyChanged(nameof(TotalReach));
+                }
+            }
+        }
 
         /// <summary>
         /// Transport layer assignment for 8-layer architecture
@@ -541,6 +581,24 @@ namespace LayoutEditor.Models
 
         [JsonIgnore]
         public bool IsFullCircle => Math.Abs(ArcAngle - 360) < 0.1;
+
+        /// <summary>
+        /// Current angle of the jib arm (degrees) - for animation
+        /// </summary>
+        [JsonIgnore]
+        public double CurrentAngle { get; set; }
+
+        /// <summary>
+        /// Stores the starting angle for animation (not serialized)
+        /// </summary>
+        [JsonIgnore]
+        public double AnimationStartAngle { get; set; }
+
+        /// <summary>
+        /// Animation speed multiplier (uses SpeedSlew internally)
+        /// </summary>
+        [JsonIgnore]
+        public double Speed => SpeedSlew / 10.0; // Normalize to reasonable animation speed
 
         /// <summary>
         /// Transport layer assignment for 8-layer architecture

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Windows;
 using LayoutEditor.Models;
 using LayoutEditor.Services.Constraints;
@@ -58,13 +59,22 @@ namespace LayoutEditor.Services
 
             // Check for collisions and boundary violations
             if (_collisionDetector.CheckConstraintCollision(entity, position))
+            {
+                DebugLogger.Log($"[ConstrainedDrag] UpdateEntityPosition blocked by collision check");
                 return false;
+            }
 
             if (_collisionDetector.CheckBoundaryViolation(entity, position))
+            {
+                DebugLogger.Log($"[ConstrainedDrag] UpdateEntityPosition blocked by boundary violation: projected=({position.X:F1}, {position.Y:F1})");
                 return false;
+            }
 
             if (!_collisionDetector.IsWithinCanvasBounds(position))
+            {
+                DebugLogger.Log($"[ConstrainedDrag] UpdateEntityPosition blocked by canvas bounds: ({position.X:F1}, {position.Y:F1})");
                 return false;
+            }
 
             // Update the entity's position based on its type
             if (entity is JibCraneData jibCrane)
@@ -77,8 +87,18 @@ namespace LayoutEditor.Services
             else if (entity is EOTCraneData eotCrane)
             {
                 // EOT crane: moves along runway
-                // We need to update the crane's position on the runway
-                // (This would require a position parameter on EOTCraneData)
+                // The parameter from ProjectToConstraint is [0,1] on the zone segment (ZoneMin to ZoneMax)
+                // Map it back to the runway's zone range
+                var runway = _layout.Runways?.FirstOrDefault(r => r.Id == eotCrane.RunwayId);
+                if (runway == null) return false;
+
+                // The constraint is defined from ZoneMin to ZoneMax positions,
+                // so parameter 0 = ZoneMin position, parameter 1 = ZoneMax position
+                double bridgePos = eotCrane.ZoneMin + parameter * (eotCrane.ZoneMax - eotCrane.ZoneMin);
+
+                // Update crane position (BridgePosition setter already clamps to zone)
+                eotCrane.BridgePosition = bridgePos;
+
                 return true;
             }
             else if (entity is ConveyorData conveyor)

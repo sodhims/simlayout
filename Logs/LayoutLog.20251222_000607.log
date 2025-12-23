@@ -1,0 +1,391 @@
+=== LayoutEditor Debug Log Started at 12/22/2025 12:06:07 AM ===
+[00:06:07.298] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:07.316] MainWindow constructor completed successfully
+[00:06:07.317] Window should be visible now
+[00:06:19.639] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:25.390] === HitTest START at (1957.4, 206.9), frictionless=False, design=False ===
+[00:06:25.390] Checking node terminals...
+[00:06:25.393] Checking GuidedTransport layer, visible=True
+[00:06:25.393] Checking AGV stations (count=4)...
+[00:06:25.394] HitTestAGVStations at (1957.4, 206.9), designMode=False, radius=15
+[00:06:25.401] Checking 4 AGV stations
+[00:06:25.402]   Station 'AGV Station 1' at (50.0, 100.0), distance=1910.3
+[00:06:25.402]   Station 'AGV Station 2' at (1950.0, 100.0), distance=107.2
+[00:06:25.402]   Station 'AGV Station 3' at (50.0, 200.0), distance=1907.4
+[00:06:25.402]   Station 'AGV Station 4' at (1950.0, 200.0), distance=10.1
+[00:06:25.403]   HIT! Returning station 'AGV Station 4'
+[00:06:25.403] HIT: AGV Station 'AGV Station 4'
+[00:06:25.404] >>> CLICK RESULT: Hit type = AGVStation at (1957.4, 206.9)
+[00:06:25.404]     FrictionlessMode=False, DesignMode=False
+[00:06:26.768] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:26.868] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:27.374] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:27.899] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:27.945] === HitTest START at (1951.0, 199.3), frictionless=False, design=True ===
+[00:06:27.945] Checking node terminals...
+[00:06:27.946] Checking GuidedTransport layer, visible=True
+[00:06:27.946] Checking AGV stations (count=4)...
+[00:06:27.946] HitTestAGVStations at (1951.0, 199.3), designMode=True, radius=25
+[00:06:27.947] Checking 4 AGV stations
+[00:06:27.947]   Station 'AGV Station 1' at (50.0, 100.0), distance=1903.6
+[00:06:27.947]   Station 'AGV Station 2' at (1950.0, 100.0), distance=99.3
+[00:06:27.947]   Station 'AGV Station 3' at (50.0, 200.0), distance=1901.0
+[00:06:27.947]   Station 'AGV Station 4' at (1950.0, 200.0), distance=1.2
+[00:06:27.947]   HIT! Returning station 'AGV Station 4'
+[00:06:27.947] HIT: AGV Station 'AGV Station 4'
+[00:06:27.948] >>> CLICK RESULT: Hit type = AGVStation at (1951.0, 199.3)
+[00:06:27.948]     FrictionlessMode=False, DesignMode=True
+[00:06:27.954] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.093] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.114] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.139] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.162] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.188] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.209] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.231] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.258] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.278] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.299] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.351] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.370] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.393] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.414] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.437] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.462] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.487] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.510] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.536] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.560] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.587] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.612] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.656] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.734] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.760] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.788] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.814] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.839] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.863] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:28.889] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:29.172] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:30.261] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:30.775] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:30.930] === HitTest START at (55.3, 195.4), frictionless=False, design=True ===
+[00:06:30.930] Checking node terminals...
+[00:06:30.930] Checking GuidedTransport layer, visible=True
+[00:06:30.930] Checking AGV stations (count=4)...
+[00:06:30.931] HitTestAGVStations at (55.3, 195.4), designMode=True, radius=25
+[00:06:30.931] Checking 4 AGV stations
+[00:06:30.931]   Station 'AGV Station 1' at (50.0, 100.0), distance=95.6
+[00:06:30.931]   Station 'AGV Station 2' at (1950.0, 100.0), distance=1897.1
+[00:06:30.931]   Station 'AGV Station 3' at (50.0, 200.0), distance=7.0
+[00:06:30.931]   HIT! Returning station 'AGV Station 3'
+[00:06:30.931] HIT: AGV Station 'AGV Station 3'
+[00:06:30.932] >>> CLICK RESULT: Hit type = AGVStation at (55.3, 195.4)
+[00:06:30.932]     FrictionlessMode=False, DesignMode=True
+[00:06:30.935] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:30.994] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.068] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.088] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.114] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.135] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.159] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.181] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.203] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.228] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.251] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.274] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.297] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.320] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.347] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.371] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.393] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.417] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.446] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.473] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.500] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.521] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.548] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.573] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.602] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.631] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:31.662] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:32.164] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:32.567] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:32.593] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:32.617] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:32.641] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:32.677] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:32.747] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:32.785] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:32.812] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:32.852] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:33.178] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:33.684] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:34.203] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:34.715] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:35.233] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:36.453] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:36.967] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:37.479] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:37.672] === HitTest START at (1959.9, 344.6), frictionless=False, design=True ===
+[00:06:37.672] Checking node terminals...
+[00:06:37.672] Checking GuidedTransport layer, visible=True
+[00:06:37.673] Checking AGV stations (count=4)...
+[00:06:37.673] HitTestAGVStations at (1959.9, 344.6), designMode=True, radius=25
+[00:06:37.673] Checking 4 AGV stations
+[00:06:37.673]   Station 'AGV Station 1' at (50.0, 100.0), distance=1925.5
+[00:06:37.673]   Station 'AGV Station 2' at (1950.0, 100.0), distance=244.8
+[00:06:37.673]   Station 'AGV Station 3' at (37.5, 393.0), distance=1923.0
+[00:06:37.674]   Station 'AGV Station 4' at (1959.9, 351.0), distance=6.4
+[00:06:37.674]   HIT! Returning station 'AGV Station 4'
+[00:06:37.674] HIT: AGV Station 'AGV Station 4'
+[00:06:37.674] >>> CLICK RESULT: Hit type = AGVStation at (1959.9, 344.6)
+[00:06:37.674]     FrictionlessMode=False, DesignMode=True
+[00:06:37.679] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:37.727] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:37.848] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:37.877] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:37.900] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:37.929] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:37.956] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:37.983] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.010] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.038] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.063] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.089] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.115] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.143] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.169] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.193] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.222] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.249] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.278] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.302] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.330] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.354] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.398] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.461] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.485] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.522] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:38.897] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:39.398] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:39.897] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:39.946] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:39.968] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:39.999] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:40.291] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:40.397] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:40.893] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:41.399] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:42.020] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:42.599] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:43.098] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:43.630] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:44.133] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:44.636] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:45.136] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:45.651] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:46.156] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:46.673] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:47.175] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:47.688] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:48.199] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:48.717] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:49.229] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:49.747] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:50.259] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:50.758] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:51.253] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:51.758] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:52.267] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:52.787] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:53.285] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:53.785] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:54.298] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:54.843] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:55.356] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:55.885] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:56.386] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:56.901] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:57.403] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:57.913] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:58.413] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:58.912] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:59.410] [SpatialRenderer] RenderZones called, zone count: 0
+[00:06:59.914] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:00.414] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:00.911] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:01.410] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:01.914] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:02.414] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:02.919] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:03.426] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:03.932] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:04.430] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:04.929] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:05.426] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:05.927] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:06.445] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:06.970] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:07.492] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:08.003] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:08.506] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:09.005] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:09.507] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:10.028] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:10.535] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:11.038] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:11.538] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:12.039] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:12.540] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:13.043] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:13.565] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:14.071] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:14.596] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:15.109] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:15.617] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:16.125] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:16.637] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:17.152] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:17.665] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:18.215] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:18.746] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:19.260] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:19.777] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:20.294] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:20.807] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:21.316] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:21.821] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:22.373] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:22.883] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:23.386] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:23.883] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:24.383] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:24.881] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:25.380] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:25.880] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:26.386] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:26.900] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:27.402] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:27.913] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:28.425] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:28.940] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:29.453] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:29.981] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:30.497] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:31.012] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:31.527] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:32.058] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:32.574] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:33.091] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:33.621] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:34.137] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:34.651] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:35.149] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:35.666] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:36.163] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:36.664] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:37.162] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:37.661] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:38.159] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:38.661] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:39.160] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:39.662] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:40.190] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:40.695] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:41.204] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:41.802] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:42.312] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:42.824] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:43.338] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:43.872] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:44.382] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:44.916] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:45.415] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:45.935] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:46.443] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:46.944] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:47.448] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:47.964] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:48.476] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:48.993] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:49.497] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:50.007] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:50.555] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:51.072] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:51.588] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:52.115] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:52.623] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:53.143] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:53.661] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:54.173] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:54.686] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:55.221] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:55.729] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:56.251] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:56.762] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:57.285] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:57.791] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:58.313] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:58.823] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:59.342] [SpatialRenderer] RenderZones called, zone count: 0
+[00:07:59.855] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:00.377] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:00.885] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:01.413] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:01.935] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:02.455] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:02.964] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:03.483] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:03.998] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:04.509] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:05.018] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:05.533] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:06.043] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:06.562] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:07.086] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:07.614] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:08.116] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:08.633] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:09.159] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:09.672] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:10.187] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:10.706] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:11.212] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:11.731] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:12.245] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:12.766] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:13.279] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:13.795] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:14.312] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:14.826] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:15.335] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:15.838] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:16.355] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:16.870] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:17.389] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:17.904] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:18.418] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:18.937] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:19.454] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:19.976] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:20.489] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:21.004] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:21.511] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:22.031] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:22.547] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:23.055] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:23.580] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:24.095] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:24.612] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:25.125] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:25.635] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:26.156] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:26.666] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:27.179] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:27.678] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:28.176] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:28.706] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:29.236] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:29.751] [SpatialRenderer] RenderZones called, zone count: 0
+[00:08:30.266] [SpatialRenderer] RenderZones called, zone count: 0

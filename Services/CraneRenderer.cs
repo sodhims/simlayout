@@ -18,6 +18,7 @@ namespace LayoutEditor.Services
         private readonly HashSet<string> _selectedRunwayIds = new();
         private readonly HashSet<string> _selectedCraneIds = new();
         private readonly HashSet<string> _selectedJibIds = new();
+        private LayoutData? _layout;
 
         #region Selection
 
@@ -57,6 +58,8 @@ namespace LayoutEditor.Services
         public void Draw(Canvas canvas, LayoutData layout,
             Action<FrameworkElement, string, string>? registerElement = null)
         {
+            _layout = layout; // Store reference for rendering decisions
+
             // Runways
             if (layout.Runways != null)
             {
@@ -201,8 +204,8 @@ namespace LayoutEditor.Services
 
             canvas.Children.Add(polygon);
 
-            // Bridge at zone center
-            var bridgePos = (crane.ZoneMin + crane.ZoneMax) / 2;
+            // Bridge at current position (defaults to zone center if not set)
+            var bridgePos = crane.BridgePosition;
             DrawCraneBridge(canvas, crane, runway, bridgePos, color);
 
             // Label
@@ -300,6 +303,42 @@ namespace LayoutEditor.Services
                 s.StrokeDashArray = new DoubleCollection { 6, 3 };
 
             canvas.Children.Add(coverage);
+
+            // Draw boom arm at current angle (for animation)
+            if (jib.CurrentAngle != 0 || _layout?.FrictionlessMode == true)
+            {
+                var angleRad = jib.CurrentAngle * Math.PI / 180;
+                var tipX = jib.CenterX + jib.Radius * Math.Cos(angleRad);
+                var tipY = jib.CenterY + jib.Radius * Math.Sin(angleRad);
+
+                var boom = new Line
+                {
+                    X1 = jib.CenterX,
+                    Y1 = jib.CenterY,
+                    X2 = tipX,
+                    Y2 = tipY,
+                    Stroke = new SolidColorBrush(color),
+                    StrokeThickness = 4,
+                    StrokeEndLineCap = PenLineCap.Round,
+                    IsHitTestVisible = false
+                };
+                canvas.Children.Add(boom);
+
+                // Draw hook at tip
+                var hookSize = 8;
+                var hook = new Ellipse
+                {
+                    Width = hookSize,
+                    Height = hookSize,
+                    Fill = Brushes.DarkGray,
+                    Stroke = new SolidColorBrush(color),
+                    StrokeThickness = 2,
+                    IsHitTestVisible = false
+                };
+                Canvas.SetLeft(hook, tipX - hookSize / 2);
+                Canvas.SetTop(hook, tipY - hookSize / 2);
+                canvas.Children.Add(hook);
+            }
 
             // Pivot point
             var pivotSize = CraneRenderConstants.JibCranePivotSize;

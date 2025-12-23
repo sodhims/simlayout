@@ -1,0 +1,29 @@
+=== LayoutEditor Debug Log Started at 12/21/2025 8:40:14 PM ===
+[20:40:14.727] [SpatialRenderer] RenderZones called, zone count: 0
+[20:40:14.739] MainWindow constructor completed successfully
+[20:40:14.739] Window should be visible now
+[20:40:27.408] [SpatialRenderer] RenderZones called, zone count: 4
+[20:40:27.408] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[20:40:27.409]     Point: (55, 55)
+[20:40:27.409]     Point: (995, 55)
+[20:40:27.409]     Point: (995, 720)
+[20:40:27.410]     Point: (55, 720)
+[20:40:27.410] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas
+[20:40:27.417] [SpatialRenderer] Rendering polygon zone 'Storage Zone 2' with 4 points
+[20:40:27.417]     Point: (1005, 55)
+[20:40:27.417]     Point: (1945, 55)
+[20:40:27.417]     Point: (1945, 720)
+[20:40:27.417]     Point: (1005, 720)
+[20:40:27.418] [SpatialRenderer] Zone 'Storage Zone 2' added to canvas
+[20:40:27.418] [SpatialRenderer] Rendering polygon zone 'Production Zone 3' with 4 points
+[20:40:27.418]     Point: (55, 730)
+[20:40:27.418]     Point: (995, 730)
+[20:40:27.418]     Point: (995, 1395)
+[20:40:27.419]     Point: (55, 1395)
+[20:40:27.419] [SpatialRenderer] Zone 'Production Zone 3' added to canvas
+[20:40:27.419] [SpatialRenderer] Rendering polygon zone 'Shipping Zone 4' with 4 points
+[20:40:27.419]     Point: (1005, 730)
+[20:40:27.419]     Point: (1945, 730)
+[20:40:27.420]     Point: (1945, 1395)
+[20:40:27.420]     Point: (1005, 1395)
+[20:40:27.420] [SpatialRenderer] Zone 'Shipping Zone 4' added to canvas

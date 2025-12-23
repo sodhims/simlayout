@@ -1,0 +1,100 @@
+<Window x:Class="LayoutEditor.Dialogs.OptimizeDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Optimize Layout" Height="500" Width="450"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,15">
+            <TextBlock Text="Layout Optimization" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,5"/>
+            <TextBlock Text="Use genetic algorithm to optimize entity placement for better performance."
+                       TextWrapping="Wrap" Foreground="Gray"/>
+        </StackPanel>
+
+        <!-- Options -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <!-- Objective -->
+                <GroupBox Header="Optimization Objective" Margin="0,0,0,10">
+                    <StackPanel Margin="10">
+                        <RadioButton x:Name="ObjectiveTravel" Content="Minimize total travel distance" IsChecked="True" Margin="0,5"/>
+                        <RadioButton x:Name="ObjectiveThroughput" Content="Maximize throughput" Margin="0,5"/>
+                        <RadioButton x:Name="ObjectiveBalance" Content="Balance workload across zones" Margin="0,5"/>
+                        <RadioButton x:Name="ObjectiveCustom" Content="Custom (use GA fitness function)" Margin="0,5"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <!-- GA Parameters -->
+                <GroupBox Header="Genetic Algorithm Parameters" Margin="0,0,0,10">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Generations:" VerticalAlignment="Center" Grid.Row="0"/>
+                        <TextBox x:Name="GenerationsBox" Text="100" Grid.Row="0" Grid.Column="1" Margin="5,2"/>
+
+                        <TextBlock Text="Population Size:" VerticalAlignment="Center" Grid.Row="1"/>
+                        <TextBox x:Name="PopulationBox" Text="50" Grid.Row="1" Grid.Column="1" Margin="5,2"/>
+
+                        <TextBlock Text="Mutation Rate:" VerticalAlignment="Center" Grid.Row="2"/>
+                        <TextBox x:Name="MutationBox" Text="0.1" Grid.Row="2" Grid.Column="1" Margin="5,2"/>
+
+                        <TextBlock Text="Crossover Rate:" VerticalAlignment="Center" Grid.Row="3"/>
+                        <TextBox x:Name="CrossoverBox" Text="0.8" Grid.Row="3" Grid.Column="1" Margin="5,2"/>
+                    </Grid>
+                </GroupBox>
+
+                <!-- Constraints -->
+                <GroupBox Header="Constraints" Margin="0,0,0,10">
+                    <StackPanel Margin="10">
+                        <CheckBox x:Name="RespectZonesCheck" Content="Respect zone boundaries" IsChecked="True" Margin="0,5"/>
+                        <CheckBox x:Name="MaintainConnectivityCheck" Content="Maintain path connectivity" IsChecked="True" Margin="0,5"/>
+                        <CheckBox x:Name="MinSpacingCheck" Content="Enforce minimum spacing between entities" IsChecked="True" Margin="0,5"/>
+                        <CheckBox x:Name="KeepCranesOnRunwaysCheck" Content="Keep EOT cranes on runways" IsChecked="True" Margin="0,5"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <!-- Entities to Optimize -->
+                <GroupBox Header="Entities to Optimize" Margin="0,0,0,10">
+                    <StackPanel Margin="10">
+                        <CheckBox x:Name="OptimizeNodesCheck" Content="Nodes (machines, buffers, etc.)" IsChecked="True" Margin="0,5"/>
+                        <CheckBox x:Name="OptimizeStationsCheck" Content="AGV Stations" IsChecked="True" Margin="0,5"/>
+                        <CheckBox x:Name="OptimizeWaypointsCheck" Content="AGV Waypoints" IsChecked="True" Margin="0,5"/>
+                        <CheckBox x:Name="OptimizeJibCranesCheck" Content="Jib Cranes" IsChecked="True" Margin="0,5"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Progress -->
+        <Grid Grid.Row="2" Margin="0,10,0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ProgressBar x:Name="ProgressBar" Height="20" Minimum="0" Maximum="100" Value="0"/>
+            <TextBlock x:Name="ProgressText" Grid.Row="1" Text="Ready to optimize" Foreground="Gray" Margin="0,5,0,0"/>
+        </Grid>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="OptimizeButton" Content="Optimize" Width="100" Height="30" Margin="0,0,10,0" Click="Optimize_Click" IsDefault="True"/>
+            <Button x:Name="CancelButton" Content="Cancel" Width="100" Height="30" Click="Cancel_Click" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

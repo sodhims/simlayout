@@ -1,0 +1,3 @@
+@echo off
+echo Launching Layout Editor GUI...
+start "" "%~dp0bin\Debug\net8.0-windows\LayoutEditor.exe" --skip-tests

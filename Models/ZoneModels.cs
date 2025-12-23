@@ -59,9 +59,12 @@ namespace LayoutEditor.Models
     public class ZoneData : NotifyBase, IConstrainedEntity
     {
         private string _id = "";
-        private string _type = "restricted";
+        private string _type = "storage";
         private string _name = "";
         private ZoneVisual _visual = new();
+        private int? _capacity = 100;
+        private int? _maxOccupancy = 0;
+        private bool? _isRestricted = false;
 
         public string Id
         {
@@ -92,6 +95,33 @@ namespace LayoutEditor.Models
         {
             get => _visual;
             set => SetProperty(ref _visual, value);
+        }
+
+        /// <summary>
+        /// Storage capacity (units)
+        /// </summary>
+        public int? Capacity
+        {
+            get => _capacity;
+            set => SetProperty(ref _capacity, value);
+        }
+
+        /// <summary>
+        /// Maximum occupancy (people), 0 = unlimited
+        /// </summary>
+        public int? MaxOccupancy
+        {
+            get => _maxOccupancy;
+            set => SetProperty(ref _maxOccupancy, value);
+        }
+
+        /// <summary>
+        /// Whether this is a restricted access zone
+        /// </summary>
+        public bool? IsRestricted
+        {
+            get => _isRestricted;
+            set => SetProperty(ref _isRestricted, value);
         }
 
         /// <summary>

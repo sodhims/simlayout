@@ -10,9 +10,15 @@ namespace LayoutEditor
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-        
+            // Test vehicle movement has priority (for track validation)
+            if (HandleTestVehicleKey(e.Key))
+            {
+                e.Handled = true;
+                return;
+            }
+
             if (HandleCraneKeyDown(e.Key)) return;
-            
+
             // Check for Ctrl modifier
             if (Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
             {
@@ -157,7 +163,10 @@ namespace LayoutEditor
 
                 case Key.D0:
                 case Key.NumPad0:
-                    ZoomFit_Click(this, new RoutedEventArgs());
+                    if (Keyboard.Modifiers.HasFlag(ModifierKeys.Shift))
+                        ZoomFitFloor_Click(this, new RoutedEventArgs());
+                    else
+                        ZoomFit_Click(this, new RoutedEventArgs());
                     e.Handled = true;
                     break;
 
@@ -297,6 +306,12 @@ namespace LayoutEditor
                         FrictionlessModeToggle.IsChecked = !FrictionlessModeToggle.IsChecked;
                         ToggleFrictionlessMode_Click(FrictionlessModeToggle, new RoutedEventArgs());
                     }
+                    e.Handled = true;
+                    break;
+
+                case Key.D:
+                    // Toggle design mode
+                    ToggleDesignMode();
                     e.Handled = true;
                     break;
 

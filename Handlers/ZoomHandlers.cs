@@ -67,6 +67,43 @@ namespace LayoutEditor
             CanvasScroller.ScrollToVerticalOffset((minY - 50) * _zoomLevel);
         }
 
+        private void ZoomFitFloor_Click(object sender, RoutedEventArgs e)
+        {
+            if (_layout == null) return;
+
+            // Use floor/canvas dimensions
+            double floorWidth = _layout.Canvas.Width;
+            double floorHeight = _layout.Canvas.Height;
+
+            if (floorWidth <= 0 || floorHeight <= 0)
+            {
+                // Fall back to content fit if no floor size defined
+                ZoomFit_Click(sender, e);
+                return;
+            }
+
+            double viewWidth = CanvasScroller.ActualWidth;
+            double viewHeight = CanvasScroller.ActualHeight;
+
+            if (viewWidth <= 0 || viewHeight <= 0) return;
+
+            // Add padding around floor
+            double paddedWidth = floorWidth + 100;
+            double paddedHeight = floorHeight + 100;
+
+            double zoomX = viewWidth / paddedWidth;
+            double zoomY = viewHeight / paddedHeight;
+            double newZoom = Math.Min(zoomX, zoomY);
+
+            SetZoom(Math.Max(ZoomMin, Math.Min(ZoomMax, newZoom)));
+
+            // Scroll to origin (floor starts at 0,0)
+            CanvasScroller.ScrollToHorizontalOffset(0);
+            CanvasScroller.ScrollToVerticalOffset(0);
+
+            StatusText.Text = $"Fit to floor: {floorWidth:F0} x {floorHeight:F0}";
+        }
+
         private void SetZoom(double zoom)
         {
             _zoomLevel = Math.Max(ZoomMin, Math.Min(ZoomMax, zoom));

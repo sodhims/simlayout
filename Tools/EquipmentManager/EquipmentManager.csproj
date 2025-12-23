@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>EquipmentManager</AssemblyName>
+    <RootNamespace>EquipmentManager</RootNamespace>
+    <StartupObject>EquipmentManager.App</StartupObject>
+  </PropertyGroup>
+
+  <!-- Reference main LayoutEditor project to get all models -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\LayoutEditor.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+  </ItemGroup>
+
+</Project>

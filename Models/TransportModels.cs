@@ -737,6 +737,13 @@ namespace LayoutEditor.Models
         private double _batteryCapacity = 100;
         private double _batteryConsumption = 1;
 
+        // Current position (for frictionless mode movement)
+        private double _currentX;
+        private double _currentY;
+        private double _heading; // Direction in degrees (0 = right, 90 = down)
+        private string _currentTrackId = ""; // AGV path or forklift aisle currently on
+        private double _positionOnTrack; // 0.0 to 1.0 along the current track segment
+
         public string Id { get => _id; set => SetProperty(ref _id, value); }
         public string Name { get => _name; set => SetProperty(ref _name, value); }
         
@@ -791,6 +798,43 @@ namespace LayoutEditor.Models
         /// Battery consumption per meter traveled
         /// </summary>
         public double BatteryConsumption { get => _batteryConsumption; set => SetProperty(ref _batteryConsumption, value); }
+
+        #region Position Properties (Frictionless Mode)
+
+        /// <summary>
+        /// Current X position on the canvas
+        /// </summary>
+        public double CurrentX { get => _currentX; set => SetProperty(ref _currentX, value); }
+
+        /// <summary>
+        /// Current Y position on the canvas
+        /// </summary>
+        public double CurrentY { get => _currentY; set => SetProperty(ref _currentY, value); }
+
+        /// <summary>
+        /// Current heading/direction in degrees (0 = right, 90 = down, 180 = left, 270 = up)
+        /// </summary>
+        public double Heading { get => _heading; set => SetProperty(ref _heading, value); }
+
+        /// <summary>
+        /// ID of the current track segment (AGVPathData.Id or ForkliftAisleData.Id)
+        /// </summary>
+        public string CurrentTrackId { get => _currentTrackId; set => SetProperty(ref _currentTrackId, value); }
+
+        /// <summary>
+        /// Position along the current track (0.0 = start, 1.0 = end)
+        /// </summary>
+        public double PositionOnTrack { get => _positionOnTrack; set => SetProperty(ref _positionOnTrack, Math.Clamp(value, 0.0, 1.0)); }
+
+        /// <summary>
+        /// Layer type for architecture layer system
+        /// </summary>
+        [System.Text.Json.Serialization.JsonIgnore]
+        public LayerType ArchitectureLayer => TransporterType == TransporterTypes.Forklift
+            ? LayerType.FlexibleTransport
+            : LayerType.GuidedTransport;
+
+        #endregion
     }
 
     #endregion

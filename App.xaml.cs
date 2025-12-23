@@ -13,11 +13,24 @@ namespace LayoutEditor
             DispatcherUnhandledException += App_DispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
-            // Run transport layer tests on startup
+            // Run transport layer tests on startup (only in console mode)
             Startup += (s, e) =>
             {
+                // Skip tests if --skip-tests argument is provided
+                var args = Environment.GetCommandLineArgs();
+                if (args.Length > 1 && args[1] == "--skip-tests")
+                {
+                    return; // Skip all tests and go straight to GUI
+                }
+
                 try
                 {
+                    // Disable debug logging during tests for faster execution
+                    DebugLogger.IsEnabled = false;
+
+                    // Run Equipment Browser tests FIRST to verify data sync
+                    LayoutEditor.Tests.EquipmentBrowserTests.RunAllTests();
+                    Console.WriteLine("\n"); // Separator
                     LayoutEditor.Tests.TransportLayerTests.RunAllTests();
                     Console.WriteLine("\n"); // Separator
                     LayoutEditor.Tests.Week2Tests.RunAllTests();
@@ -95,6 +108,18 @@ namespace LayoutEditor
                     LayoutEditor.Tests.Stage12ATests.RunAllTests();
                     Console.WriteLine("\n"); // Separator
                     LayoutEditor.Tests.Stage12BTests.RunAllTests();
+                    Console.WriteLine("\n"); // Separator
+                    LayoutEditor.Tests.AGVStationDragTest.RunAllTests();
+                    Console.WriteLine("\n"); // Separator
+                    // Skip OptimizationServiceTests temporarily (causes async deadlock in WPF context)
+                    // LayoutEditor.Tests.OptimizationServiceTests.RunAllTests().Wait();
+                    Console.WriteLine("OptimizationServiceTests: SKIPPED (async deadlock in WPF context)");
+                    Console.WriteLine("\n"); // Separator
+                    LayoutEditor.Tests.FrictionlessModeTests.RunAllTests();
+                    Console.WriteLine("\n"); // Separator
+
+                    // Run comprehensive random layout tests (100 iterations)
+                    LayoutEditor.Tests.ComprehensiveLayoutTests.RunAllTests(100);
                 }
                 catch (Exception ex)
                 {

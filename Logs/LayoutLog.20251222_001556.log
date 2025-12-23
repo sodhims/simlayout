@@ -1,0 +1,11 @@
+=== LayoutEditor Debug Log Started at 12/22/2025 12:15:56 AM ===
+[00:15:56.729] [SpatialRenderer] RenderZones called, zone count: 0
+[00:15:56.747] MainWindow constructor completed successfully
+[00:15:56.748] Window should be visible now
+[00:16:04.776] [SpatialRenderer] RenderZones called, zone count: 1
+[00:16:04.776] [SpatialRenderer] Rendering polygon zone 'Warehouse Zone 1' with 4 points
+[00:16:04.777]     Point: (55, 55)
+[00:16:04.778]     Point: (1945, 55)
+[00:16:04.778]     Point: (1945, 1395)
+[00:16:04.778]     Point: (55, 1395)
+[00:16:04.778] [SpatialRenderer] Zone 'Warehouse Zone 1' added to canvas

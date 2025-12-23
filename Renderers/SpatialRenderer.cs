@@ -27,24 +27,74 @@ namespace LayoutEditor.Renderers
 
         private void RenderZones(Canvas canvas, LayoutData layout, Action<string, UIElement> registerElement)
         {
+            DebugLogger.Log($"[SpatialRenderer] RenderZones called, zone count: {layout.Zones.Count}");
+
             foreach (var zone in layout.Zones)
             {
-                var rect = new Rectangle
-                {
-                    Width = zone.Width,
-                    Height = zone.Height,
-                    Fill = GetZoneBrush(zone),
-                    Stroke = GetZoneBorderBrush(zone),
-                    StrokeThickness = 1,
-                    StrokeDashArray = GetBorderDashArray(zone),
-                    RadiusX = 4,
-                    RadiusY = 4
-                };
+                Shape shape;
+                double labelX, labelY;
 
-                Canvas.SetLeft(rect, zone.X);
-                Canvas.SetTop(rect, zone.Y);
-                canvas.Children.Add(rect);
-                registerElement($"zone:{zone.Id}", rect);
+                // Check if zone is defined by Points (polygon) or by X/Y/Width/Height (rectangle)
+                if (zone.Points.Count > 0)
+                {
+                    // Polygon zone from Points collection
+                    DebugLogger.Log($"[SpatialRenderer] Rendering polygon zone '{zone.Name}' with {zone.Points.Count} points");
+
+                    var polygon = new Polygon
+                    {
+                        Fill = GetZoneBrush(zone),
+                        Stroke = GetZoneBorderBrush(zone),
+                        StrokeThickness = 2,
+                        StrokeDashArray = GetBorderDashArray(zone)
+                    };
+
+                    foreach (var pt in zone.Points)
+                    {
+                        polygon.Points.Add(new Point(pt.X, pt.Y));
+                        DebugLogger.Log($"    Point: ({pt.X}, {pt.Y})");
+                    }
+
+                    canvas.Children.Add(polygon);
+                    registerElement($"zone:{zone.Id}", polygon);
+                    shape = polygon;
+
+                    // Label at first point
+                    labelX = zone.Points[0].X + 4;
+                    labelY = zone.Points[0].Y + 4;
+                }
+                else if (zone.Width > 0 && zone.Height > 0)
+                {
+                    // Rectangle zone from X/Y/Width/Height
+                    DebugLogger.Log($"[SpatialRenderer] Rendering rectangle zone '{zone.Name}' at ({zone.X}, {zone.Y}), size: {zone.Width}x{zone.Height}");
+
+                    var rect = new Rectangle
+                    {
+                        Width = zone.Width,
+                        Height = zone.Height,
+                        Fill = GetZoneBrush(zone),
+                        Stroke = GetZoneBorderBrush(zone),
+                        StrokeThickness = 2,
+                        StrokeDashArray = GetBorderDashArray(zone),
+                        RadiusX = 4,
+                        RadiusY = 4
+                    };
+
+                    Canvas.SetLeft(rect, zone.X);
+                    Canvas.SetTop(rect, zone.Y);
+                    canvas.Children.Add(rect);
+                    registerElement($"zone:{zone.Id}", rect);
+                    shape = rect;
+
+                    labelX = zone.X + 4;
+                    labelY = zone.Y + 4;
+                }
+                else
+                {
+                    DebugLogger.Log($"[SpatialRenderer] Skipping zone '{zone.Name}' - no valid geometry (Points={zone.Points.Count}, W={zone.Width}, H={zone.Height})");
+                    continue;
+                }
+
+                DebugLogger.Log($"[SpatialRenderer] Zone '{zone.Name}' added to canvas");
 
                 // Zone label
                 if (!string.IsNullOrEmpty(zone.Name))
@@ -52,11 +102,13 @@ namespace LayoutEditor.Renderers
                     var label = new TextBlock
                     {
                         Text = zone.Name,
-                        FontSize = 10,
-                        Foreground = Brushes.DimGray
+                        FontSize = 11,
+                        FontWeight = FontWeights.SemiBold,
+                        Foreground = Brushes.DarkGoldenrod,
+                        Background = new SolidColorBrush(Color.FromArgb(200, 255, 255, 255))
                     };
-                    Canvas.SetLeft(label, zone.X + 4);
-                    Canvas.SetTop(label, zone.Y + 4);
+                    Canvas.SetLeft(label, labelX);
+                    Canvas.SetTop(label, labelY);
                     canvas.Children.Add(label);
                 }
             }
@@ -170,14 +222,18 @@ namespace LayoutEditor.Renderers
                 catch { }
             }
 
-            // Default colors by type
+            // Very light pastel colors - highly visible, semi-transparent
             var color2 = zone.Type?.ToLower() switch
             {
-                "restricted" => Color.FromArgb(30, 255, 0, 0),
-                "safety" => Color.FromArgb(30, 255, 255, 0),
-                "storage" => Color.FromArgb(30, 0, 0, 255),
-                "maintenance" => Color.FromArgb(30, 255, 165, 0),
-                _ => Color.FromArgb(20, 128, 128, 128)
+                "warehouse" => Color.FromArgb(50, 255, 255, 150),      // Very light yellow
+                "storage" => Color.FromArgb(50, 150, 255, 150),        // Very light mint green
+                "production" => Color.FromArgb(50, 150, 200, 255),     // Very light sky blue
+                "shipping" => Color.FromArgb(50, 255, 180, 150),       // Very light peach
+                "receiving" => Color.FromArgb(50, 200, 150, 255),      // Very light lavender
+                "restricted" => Color.FromArgb(50, 255, 150, 150),     // Very light pink
+                "safety" => Color.FromArgb(50, 255, 255, 100),         // Very light yellow
+                "maintenance" => Color.FromArgb(50, 255, 200, 130),    // Very light orange
+                _ => Color.FromArgb(40, 255, 255, 180)                 // Very light cream (default)
             };
 
             return new SolidColorBrush(color2);
@@ -195,7 +251,19 @@ namespace LayoutEditor.Renderers
                 catch { }
             }
 
-            return Brushes.Gray;
+            // Matching border colors - darker versions of fill colors
+            return zone.Type?.ToLower() switch
+            {
+                "warehouse" => new SolidColorBrush(Color.FromRgb(180, 150, 50)),    // Dark yellow/gold
+                "storage" => new SolidColorBrush(Color.FromRgb(50, 150, 80)),       // Dark green
+                "production" => new SolidColorBrush(Color.FromRgb(70, 130, 180)),   // Steel blue
+                "shipping" => new SolidColorBrush(Color.FromRgb(200, 120, 80)),     // Dark peach/coral
+                "receiving" => new SolidColorBrush(Color.FromRgb(130, 100, 180)),   // Dark lavender
+                "restricted" => Brushes.DarkRed,
+                "safety" => Brushes.DarkOrange,
+                "maintenance" => Brushes.Chocolate,
+                _ => new SolidColorBrush(Color.FromRgb(150, 140, 100))              // Dark beige
+            };
         }
 
         private DoubleCollection? GetBorderDashArray(ZoneData zone)
@@ -205,7 +273,7 @@ namespace LayoutEditor.Renderers
             if (zone.Visual != null && zone.Visual.BorderStyle == "dotted")
                 return new DoubleCollection { 2, 2 };
 
-            return new DoubleCollection { 2, 2 }; // Default dashed
+            return null; // Default solid border for better visibility
         }
 
         private Brush CreateWarningPattern(string restrictionType)

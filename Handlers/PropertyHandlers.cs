@@ -13,12 +13,59 @@ namespace LayoutEditor
 
         /// <summary>
         /// Updates the property display based on current selection.
-        /// Since docked properties panel was removed, this now uses the floating panel manager.
+        /// In Design Mode, automatically shows properties for selected entities.
         /// </summary>
         private void UpdatePropertyPanel()
         {
-            // Property updates are now handled by the floating properties panel
-            // which is shown via right-click context menu or the _panelManager
+            // In Design Mode, automatically show properties panel for selected entities
+            if (_layout?.DesignMode == true && _panelManager != null)
+            {
+                // Check for selected node
+                var selectedNode = _selectionService.GetSelectedNode(_layout);
+                if (selectedNode != null)
+                {
+                    _panelManager.ShowNodeProperties(selectedNode);
+                    return;
+                }
+
+                // Check for selected path
+                var selectedPathId = _selectionService.SelectedPathId;
+                if (!string.IsNullOrEmpty(selectedPathId))
+                {
+                    var selectedPath = _layout.Paths.FirstOrDefault(p => p.Id == selectedPathId);
+                    if (selectedPath != null)
+                    {
+                        _panelManager.ShowPathProperties(selectedPath);
+                        return;
+                    }
+                }
+
+                // Check for selected group
+                if (_selectionService.SelectedGroupIds.Count == 1)
+                {
+                    var groupId = _selectionService.SelectedGroupIds.First();
+                    var selectedGroup = _layout.Groups.FirstOrDefault(g => g.Id == groupId);
+                    if (selectedGroup != null)
+                    {
+                        _panelManager.ShowGroupProperties(selectedGroup);
+                        return;
+                    }
+                }
+
+                // Check for selected wall
+                if (_selectedWallIds.Count == 1)
+                {
+                    var wall = _layout.Walls.FirstOrDefault(w => w.Id == _selectedWallIds[0]);
+                    if (wall != null)
+                    {
+                        _panelManager.ShowWallProperties(wall);
+                        return;
+                    }
+                }
+
+                // No single selection - clear panel if visible
+                _panelManager.ClearSelection();
+            }
         }
 
         /// <summary>

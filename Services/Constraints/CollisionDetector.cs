@@ -59,7 +59,10 @@ namespace LayoutEditor.Services.Constraints
 
             var constraint = _constraintFactory.GetConstraintForEntity(entity);
             if (constraint == null)
+            {
+                DebugLogger.Log($"[CollisionDetector] CheckBoundaryViolation: no constraint for entity, returning false");
                 return false;
+            }
 
             // Project the position onto the constraint
             var parameter = constraint.ProjectPoint(position);
@@ -69,8 +72,15 @@ namespace LayoutEditor.Services.Constraints
             // (indicates position is outside constraint boundaries)
             var distance = (position - projectedPos).Length;
 
+            DebugLogger.Log($"[CollisionDetector] CheckBoundaryViolation: position=({position.X:F1}, {position.Y:F1}), projected=({projectedPos.X:F1}, {projectedPos.Y:F1}), distance={distance:F2}, parameter={parameter:F3}");
+
             // Tolerance: 1 pixel
-            return distance > 1.0;
+            bool violated = distance > 1.0;
+            if (violated)
+            {
+                DebugLogger.Log($"[CollisionDetector] BOUNDARY VIOLATION: distance {distance:F2} > 1.0");
+            }
+            return violated;
         }
 
         /// <summary>
@@ -104,7 +114,10 @@ namespace LayoutEditor.Services.Constraints
                 .ToList();
 
             if (!otherCranes.Any())
+            {
+                DebugLogger.Log($"[CollisionDetector] CheckEOTCraneCollision: no other cranes on runway, returning false");
                 return false;
+            }
 
             // Get runway
             var runway = _layout.Runways.FirstOrDefault(r => r.Id == crane.RunwayId);
@@ -125,19 +138,22 @@ namespace LayoutEditor.Services.Constraints
                 if (otherConstraint == null)
                     continue;
 
-                // Get other crane's current position (using its center)
-                var otherCenter = new Point(
-                    runway.StartX + (runway.EndX - runway.StartX) * 0.5,
-                    runway.StartY + (runway.EndY - runway.StartY) * 0.5
-                );
+                // Get other crane's actual position on the runway (not runway center)
+                var (otherX, otherY) = runway.GetPositionAt(other.BridgePosition);
+                var otherCenter = new Point(otherX, otherY);
                 var otherParameter = otherConstraint.ProjectPoint(otherCenter);
 
                 // Check if parameters are too close (collision distance)
                 var parameterDistance = Math.Abs(craneParameter - otherParameter);
 
+                DebugLogger.Log($"[CollisionDetector] CheckEOTCraneCollision: crane '{crane.Name}' param={craneParameter:F3}, other '{other.Name}' param={otherParameter:F3}, distance={parameterDistance:F3}");
+
                 // Collision threshold: 10% of runway length
                 if (parameterDistance < 0.1)
+                {
+                    DebugLogger.Log($"[CollisionDetector] COLLISION DETECTED: distance {parameterDistance:F3} < 0.1");
                     return true;
+                }
             }
 
             return false;

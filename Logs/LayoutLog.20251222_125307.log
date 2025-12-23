@@ -1,0 +1,34 @@
+=== LayoutEditor Debug Log Started at 12/22/2025 12:53:07 PM ===
+[12:53:07.032] === HitTest START at (125.0, 125.0), frictionless=False, design=False ===
+[12:53:07.034] Checking node terminals...
+[12:53:07.037] === HitTest START at (125.0, 125.0), frictionless=True, design=False ===
+[12:53:07.039] Checking GuidedTransport layer, visible=True
+[12:53:07.039] Checking AGV stations (count=0)...
+[12:53:07.040] HitTestAGVStations at (125.0, 125.0), designMode=False, radius=15
+[12:53:07.041] Checking 0 AGV stations
+[12:53:07.042]   No AGV station within hit radius
+[12:53:07.042] No AGV station hit
+[12:53:07.045] === HitTest START at (125.0, 125.0), frictionless=True, design=False ===
+[12:53:07.046] Checking GuidedTransport layer, visible=True
+[12:53:07.047] Checking AGV stations (count=0)...
+[12:53:07.047] HitTestAGVStations at (125.0, 125.0), designMode=False, radius=15
+[12:53:07.048] Checking 0 AGV stations
+[12:53:07.048]   No AGV station within hit radius
+[12:53:07.049] No AGV station hit
+[12:53:07.050] === HitTest START at (125.0, 125.0), frictionless=False, design=False ===
+[12:53:07.051] Checking node terminals...
+[12:53:07.051] === HitTest START at (125.0, 125.0), frictionless=True, design=False ===
+[12:53:07.052] Checking GuidedTransport layer, visible=True
+[12:53:07.052] Checking AGV stations (count=0)...
+[12:53:07.053] HitTestAGVStations at (125.0, 125.0), designMode=False, radius=15
+[12:53:07.053] Checking 0 AGV stations
+[12:53:07.054]   No AGV station within hit radius
+[12:53:07.054] No AGV station hit
+[12:53:07.055] === HitTest START at (125.0, 125.0), frictionless=False, design=False ===
+[12:53:07.055] Checking node terminals...
+[12:53:07.063] [CollisionDetector] CheckBoundaryViolation: position=(50.0, 50.0), projected=(50.0, 50.0), distance=0.00, parameter=0.785
+[12:53:07.069] [CollisionDetector] CheckEOTCraneCollision: crane 'EOT' param=0.500, other 'EOT' param=0.500, distance=0.000
+[12:53:07.070] [CollisionDetector] COLLISION DETECTED: distance 0.000 < 0.1
+[12:53:07.072] [CollisionDetector] CheckBoundaryViolation: position=(35.0, 35.0), projected=(35.4, 35.4), distance=0.50, parameter=0.785
+[12:53:07.073] [CollisionDetector] CheckBoundaryViolation: position=(-50.0, 0.0), projected=(0.0, 50.0), distance=70.71, parameter=1.571
+[12:53:07.073] [CollisionDetector] BOUNDARY VIOLATION: distance 70.71 > 1.0

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -8,6 +9,56 @@ namespace LayoutEditor
 {
     public partial class MainWindow
     {
+        #region Frictionless Mode Initialization
+
+        /// <summary>
+        /// Track current visibility state for handle blinking
+        /// </summary>
+        private bool _handleVisibility = true;
+
+        /// <summary>
+        /// Initialize frictionless mode handle blinking
+        /// </summary>
+        private void InitializeFrictionlessHandles()
+        {
+            // Create blinking timer (500ms interval)
+            _handleBlinkTimer = new System.Windows.Threading.DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(500)
+            };
+            _handleBlinkTimer.Tick += HandleBlinkTimer_Tick;
+            _handleBlinkTimer.Start();
+        }
+
+        /// <summary>
+        /// Timer tick - toggle handle visibility for blinking effect
+        /// </summary>
+        private void HandleBlinkTimer_Tick(object? sender, EventArgs e)
+        {
+            if (_layout == null || (!_layout.FrictionlessMode && !_layout.DesignMode))
+                return;
+
+            // Toggle visibility
+            _handleVisibility = !_handleVisibility;
+
+            // Update frictionless mode handles
+            if (_handleRenderer != null && _layout.FrictionlessMode)
+            {
+                _handleRenderer.SetHandleVisibility(_handleVisibility);
+            }
+
+            // Update design mode handles
+            if (_designModeRenderer != null && _layout.DesignMode)
+            {
+                _designModeRenderer.SetHandleVisibility(_handleVisibility);
+            }
+
+            // Redraw to show/hide handles
+            Redraw();
+        }
+
+        #endregion
+
         #region Frictionless Mode Rendering
 
         /// <summary>

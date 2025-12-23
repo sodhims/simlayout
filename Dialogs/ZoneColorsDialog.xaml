@@ -1,0 +1,33 @@
+<Window x:Class="LayoutEditor.Dialogs.ZoneColorsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Zone Colors" Height="400" Width="450"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,15">
+            <TextBlock Text="Zone Colors" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,5"/>
+            <TextBlock Text="Click on a color swatch to change the zone's fill color."
+                       TextWrapping="Wrap" Foreground="Gray"/>
+        </StackPanel>
+
+        <!-- Zone List -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="ZoneListPanel">
+                <!-- Zone items will be added dynamically -->
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0">
+            <Button Content="Reset to Defaults" Width="120" Margin="0,0,10,0" Click="ResetColors_Click"/>
+            <Button Content="Close" Width="80" Click="Close_Click" IsDefault="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

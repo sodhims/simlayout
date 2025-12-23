@@ -79,6 +79,19 @@ namespace LayoutEditor
                 return;
             }
 
+            // Check for zone vertex hit in design mode
+            if (_layout.DesignMode)
+            {
+                var vertexHit = HitTestZoneVertex(pos);
+                if (vertexHit.zone != null)
+                {
+                    StartVertexDrag(vertexHit.zone, vertexHit.vertexIndex);
+                    EditorCanvas.CaptureMouse();
+                    e.Handled = true;
+                    return;
+                }
+            }
+
             // Check for waypoint handle clicks first
             if (CheckWaypointHandleClick(pos, e))
             {
@@ -86,8 +99,11 @@ namespace LayoutEditor
                 return;
             }
 
-            var hitResult = _hitTestService.HitTest(_layout, pos);
-            
+            var hitResult = _hitTestService.HitTest(_layout, pos, _transportArchitectureLayerManager, _layout.FrictionlessMode, _layout.DesignMode);
+
+            DebugLogger.Log($">>> CLICK RESULT: Hit type = {hitResult.Type} at ({pos.X:F1}, {pos.Y:F1})");
+            DebugLogger.Log($"    FrictionlessMode={_layout.FrictionlessMode}, DesignMode={_layout.DesignMode}");
+
             // When Shift is held and we have groups selected, prioritize cell selection
             bool shiftHeld = Keyboard.Modifiers.HasFlag(ModifierKeys.Shift);
             if (shiftHeld && _selectionService.SelectedGroupIds.Count > 0)
@@ -151,6 +167,13 @@ namespace LayoutEditor
                     HandleCellTerminalClick(hitResult);
                     break;
                 case HitType.Node:
+                    // In frictionless mode, ignore node clicks (can't drag nodes)
+                    if (_layout.FrictionlessMode)
+                    {
+                        StatusText.Text = "Frictionless mode: Only constrained entities can be moved";
+                        return;
+                    }
+
                     if (shiftHeld && hitResult.Node != null)
                     {
                         var nodeCell = _layout.Groups.FirstOrDefault(g => g.IsCell && g.Members.Contains(hitResult.Node.Id));
@@ -166,6 +189,13 @@ namespace LayoutEditor
                     break;
                 case HitType.GroupBorder:
                 case HitType.CellInterior:
+                    // In frictionless mode, ignore all group clicks (including zones - zones are for design mode)
+                    if (_layout.FrictionlessMode)
+                    {
+                        StatusText.Text = "Frictionless mode: Only constrained entities can be moved";
+                        return;
+                    }
+
                     if ((_currentTool == "path" || _isDrawingPath) && hitResult.Group?.IsCell == true)
                         HandleCellPathClick(hitResult.Group);
                     else
@@ -177,6 +207,32 @@ namespace LayoutEditor
                     break;
                 case HitType.Path:
                     HandlePathClick(hitResult.Id!);
+                    break;
+                case HitType.Runway:
+                    if (hitResult.Runway != null)
+                        HandleRunwayClick(hitResult.Runway, pos, e);
+                    break;
+                case HitType.EOTCrane:
+                    HandleEOTCraneClick(hitResult.EOTCrane!, e);
+                    break;
+                case HitType.JibCrane:
+                    if (hitResult.JibCrane != null)
+                        HandleJibCraneClick(hitResult.JibCrane, e);
+                    break;
+                case HitType.AGVWaypoint:
+                    HandleAGVWaypointClick(hitResult.AGVWaypoint!, e);
+                    break;
+                case HitType.AGVStation:
+                    if (hitResult.AGVStation != null)
+                        HandleAGVStationClick(hitResult.AGVStation, e);
+                    break;
+                case HitType.Zone:
+                    if (hitResult.Zone != null)
+                        HandleZoneClick(hitResult.Zone, e);
+                    break;
+                case HitType.ZoneVertex:
+                    if (hitResult.Zone != null)
+                        HandleZoneVertexClick(hitResult.Zone, hitResult.VertexIndex, e);
                     break;
                 case HitType.Canvas:
                     HandleCanvasClick(pos, e);
@@ -214,7 +270,7 @@ namespace LayoutEditor
                 return;
             }
 
-            var hitResult = _hitTestService.HitTest(_layout, pos);
+            var hitResult = _hitTestService.HitTest(_layout, pos, _transportArchitectureLayerManager, _layout.FrictionlessMode, _layout.DesignMode);
 
             if (hitResult.Type == HitType.Node && hitResult.Id != null)
             {
@@ -259,6 +315,62 @@ namespace LayoutEditor
             if (_isDraggingWalls)
             {
                 DragWalls(pos);
+                return;
+            }
+
+            // Handle EOT crane dragging in frictionless mode
+            if (_isDraggingCrane)
+            {
+                DragEOTCrane(pos);
+                return;
+            }
+
+            // Handle jib crane dragging in design mode
+            if (_isDraggingJibCrane)
+            {
+                DragJibCrane(pos);
+                return;
+            }
+
+            // Handle AGV waypoint dragging in frictionless mode
+            if (_isDraggingAGVWaypoint)
+            {
+                DragAGVWaypoint(pos);
+                return;
+            }
+
+            // Handle zone vertex dragging in design mode
+            if (_isDraggingVertex)
+            {
+                DragVertex(pos);
+                return;
+            }
+
+            // Handle runway dragging in design mode
+            if (_isDraggingRunway)
+            {
+                DragRunway(pos);
+                return;
+            }
+
+            // Handle AGV station dragging in design mode
+            if (_isDraggingAGVStation)
+            {
+                DragAGVStation(pos);
+                return;
+            }
+
+            // Handle zone dragging in design mode
+            if (_isDraggingZone)
+            {
+                DragZone(pos);
+                return;
+            }
+
+            // Handle zone vertex dragging in design mode
+            if (_isDraggingZoneVertex)
+            {
+                DragZoneVertex(pos);
                 return;
             }
 
@@ -354,6 +466,34 @@ namespace LayoutEditor
             {
                 FinishWallDrag();
             }
+            if (_isDraggingCrane)
+            {
+                FinishEOTCraneDrag();
+            }
+            if (_isDraggingJibCrane)
+            {
+                FinishJibCraneDrag();
+            }
+            if (_isDraggingAGVWaypoint)
+            {
+                FinishAGVWaypointDrag();
+            }
+            if (_isDraggingVertex)
+            {
+                FinishVertexDrag();
+            }
+            if (_isDraggingRunway)
+            {
+                FinishRunwayDrag();
+            }
+            if (_isDraggingAGVStation)
+            {
+                FinishAGVStationDrag();
+            }
+            if (IsDraggingZone)
+            {
+                EndZoneDrag();
+            }
             if (_isDraggingWaypoint)
             {
                 _isDraggingWaypoint = false;
@@ -383,13 +523,20 @@ namespace LayoutEditor
         private void Canvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
             _contextMenuPosition = e.GetPosition(EditorCanvas);
-            
+
             if (CheckWaypointRightClick(_contextMenuPosition))
             {
                 e.Handled = true;
                 return;
             }
-            
+
+            // Check for zone right-click in design mode
+            if (CheckZoneRightClick(_contextMenuPosition))
+            {
+                e.Handled = true;
+                return;
+            }
+
             // Check for wall right-click
             var wall = HitTestWall(_contextMenuPosition);
             if (wall != null)
@@ -399,7 +546,7 @@ namespace LayoutEditor
                 e.Handled = true;
                 return;
             }
-            
+
             ShowContextMenu(_contextMenuPosition);
         }
 

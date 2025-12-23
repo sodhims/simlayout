@@ -132,7 +132,12 @@ xmlns:ad="https://github.com/Dirkster99/AvalonDock"
                 <Separator/>
                 <MenuItem Header="_Save" Click="Save_Click" InputGestureText="Ctrl+S"/>
                 <MenuItem Header="Save _As..." Click="SaveAs_Click"/>
-                <MenuItem Header="Save to Database..." Click="SaveToDatabase_Click"/>
+                <MenuItem Header="_Database">
+                    <MenuItem Header="Open SQLite File..." Click="OpenDatabaseFile_Click"/>
+                    <MenuItem Header="Save to SQLite File..." Click="SaveAsDatabaseFile_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Export to PostgreSQL..." Click="SaveToDatabase_Click"/>
+                </MenuItem>
                 <Separator/>
                 <MenuItem Header="_Import">
                     <MenuItem Header="Background Image..." Click="ImportBackground_Click"/>
@@ -191,6 +196,7 @@ xmlns:ad="https://github.com/Dirkster99/AvalonDock"
                 <MenuItem Header="Zoom In" Click="ZoomIn_Click" InputGestureText="Ctrl++"/>
                 <MenuItem Header="Zoom Out" Click="ZoomOut_Click" InputGestureText="Ctrl+-"/>
                 <MenuItem Header="Zoom to Fit" Click="ZoomFit_Click" InputGestureText="Ctrl+0"/>
+                <MenuItem Header="Fit to Floor" Click="ZoomFitFloor_Click" InputGestureText="Ctrl+Shift+0"/>
                 <MenuItem Header="Reset Zoom" Click="ZoomReset_Click"/>
                 <Separator/>
                 <MenuItem Header="Show Grid" x:Name="ShowGridMenu" IsCheckable="True" IsChecked="True" Click="ToggleGrid_Click"/>
@@ -203,6 +209,8 @@ xmlns:ad="https://github.com/Dirkster99/AvalonDock"
                 <Separator/>
                 <MenuItem Header="Snap to Grid" x:Name="SnapToGridMenu" IsCheckable="True" IsChecked="True"/>
                 <MenuItem Header="Show Guides" x:Name="ShowGuidesMenu" IsCheckable="True" IsChecked="True"/>
+                <MenuItem Header="Show Zones" x:Name="ShowZonesMenu" IsCheckable="True" IsChecked="True" Click="ToggleZones_Click"/>
+                <MenuItem Header="Zone Colors..." Click="ShowZoneColorsDialog_Click"/>
                 <Separator/>
                 <MenuItem Header="Panels">
                     <MenuItem Header="Toolbox" Click="ToggleToolboxPanel_Click" InputGestureText="F2"/>
@@ -210,6 +218,7 @@ xmlns:ad="https://github.com/Dirkster99/AvalonDock"
                     <MenuItem Header="Transport Layers" Click="ToggleTransportLayersPanel_Click" InputGestureText="F4"/>
                     <MenuItem Header="Transport" Click="ToggleTransportPanel_Click" InputGestureText="F5"/>
                     <MenuItem Header="Validation" Click="ToggleValidationPanel_Click" InputGestureText="F6"/>
+                    <MenuItem Header="Equipment Browser" Click="ToggleEquipmentBrowserPanel_Click" InputGestureText="F7"/>
                     <Separator/>
                     <MenuItem Header="Show All Panels" Click="ResetDockLayout_Click"/>
                 </MenuItem>
@@ -220,12 +229,16 @@ xmlns:ad="https://github.com/Dirkster99/AvalonDock"
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="_Generate">
+                <MenuItem Header="Custom Layout..." Click="GenerateCustomLayout_Click" ToolTip="Specify exact counts for each entity type" FontWeight="Bold"/>
+                <Separator/>
                 <MenuItem Header="Warehouse Layout..." Click="GenerateWarehouseLayout_Click" ToolTip="Generate warehouse with racks and aisles"/>
                 <MenuItem Header="Assembly Line..." Click="GenerateAssemblyLine_Click" ToolTip="Generate linear production line"/>
                 <MenuItem Header="Storage Grid..." Click="GenerateStorageGrid_Click" ToolTip="Generate dense storage cell grid"/>
                 <Separator/>
                 <MenuItem Header="Auto-Place Cranes" Click="AutoPlaceCranes_Click" ToolTip="Automatically place cranes over equipment zones"/>
                 <MenuItem Header="Auto-Generate AGV Network" Click="AutoGenerateAGVNetwork_Click" ToolTip="Generate AGV waypoints and paths"/>
+                <Separator/>
+                <MenuItem Header="Optimize Layout..." Click="OptimizeLayout_Click" ToolTip="Run genetic algorithm to optimize entity placement" FontWeight="Bold"/>
             </MenuItem>
             <MenuItem Header="_Tools">
                 <MenuItem Header="Apply Canonical Names" Click="ApplyCanonicalNames_Click"/>
@@ -296,6 +309,10 @@ xmlns:ad="https://github.com/Dirkster99/AvalonDock"
             <MenuItem Header="_Validate">
                 <MenuItem Header="Validate Layout" Click="Validate_Click" InputGestureText="F5"/>
                 <MenuItem Header="Show Validation Panel" x:Name="ShowValidationMenu" IsCheckable="True" Click="ToggleValidation_Click"/>
+                <Separator/>
+                <MenuItem Header="Test _AGV on Paths" Click="TestAGV_Click" ToolTip="Create test AGV to validate path connectivity (Arrow keys to move)"/>
+                <MenuItem Header="Test _Forklift on Aisles" Click="TestForklift_Click" ToolTip="Create test forklift to validate aisle connectivity (Arrow keys to move)"/>
+                <MenuItem Header="_Remove Test Vehicle" Click="RemoveTestVehicle_Click" InputGestureText="Esc"/>
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="Keyboard Shortcuts" Click="Shortcuts_Click"/>
@@ -351,6 +368,7 @@ xmlns:ad="https://github.com/Dirkster99/AvalonDock"
                 <Button Style="{StaticResource Btn}" ToolTip="Zoom In" Click="ZoomIn_Click"><TextBlock Text="🔍" FontSize="14"/></Button>
                 <Button Style="{StaticResource Btn}" ToolTip="Zoom Out" Click="ZoomOut_Click"><TextBlock Text="🔎" FontSize="14"/></Button>
                 <Button Style="{StaticResource Btn}" ToolTip="Zoom to Fit" Click="ZoomFit_Click"><TextBlock Text="⬜" FontSize="14"/></Button>
+                <Button Style="{StaticResource Btn}" ToolTip="Fit to Floor (Ctrl+Shift+0)" Click="ZoomFitFloor_Click"><TextBlock Text="🏠" FontSize="14"/></Button>
                 <ComboBox x:Name="SnapModeCombo" Width="120" Height="24" Margin="8,0,0,0" VerticalAlignment="Center" SelectedIndex="1" SelectionChanged="SnapModeCombo_SelectionChanged">
                     <ComboBoxItem Tag="None">Snap: None</ComboBoxItem>
                     <ComboBoxItem Tag="Grid">Snap: Grid</ComboBoxItem>
@@ -392,6 +410,12 @@ xmlns:ad="https://github.com/Dirkster99/AvalonDock"
                         <ad:LayoutAnchorGroup>
                             <ad:LayoutAnchorable Title="Transport Layers" ContentId="transport_layers" CanClose="False">
                                 <controls:TransportLayersPanel x:Name="TransportLayersPanel"/>
+                            </ad:LayoutAnchorable>
+                        </ad:LayoutAnchorGroup>
+
+                        <ad:LayoutAnchorGroup>
+                            <ad:LayoutAnchorable Title="Equipment Browser" ContentId="equipment_browser" CanClose="False">
+                                <controls:EquipmentBrowserPanel x:Name="EquipmentBrowserPanel"/>
                             </ad:LayoutAnchorable>
                         </ad:LayoutAnchorGroup>
                     </ad:LayoutAnchorSide>

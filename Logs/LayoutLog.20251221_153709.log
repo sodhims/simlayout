@@ -1,0 +1,27 @@
+=== LayoutEditor Debug Log Started at 12/21/2025 3:37:09 PM ===
+[15:37:09.246] MainWindow constructor completed successfully
+[15:37:09.247] Window should be visible now
+[15:37:30.607] >>> CLICK RESULT: Hit type = Node at (207.8, 228.2)
+[15:37:30.607]     FrictionlessMode=False, DesignMode=True
+[15:37:35.083] >>> CLICK RESULT: Hit type = Runway at (1003.8, 1046.9)
+[15:37:35.084]     FrictionlessMode=False, DesignMode=True
+[15:37:38.196] >>> CLICK RESULT: Hit type = Canvas at (42.5, 94.9)
+[15:37:38.196]     FrictionlessMode=False, DesignMode=True
+[15:37:39.339] >>> CLICK RESULT: Hit type = Canvas at (47.8, 198.2)
+[15:37:39.340]     FrictionlessMode=False, DesignMode=True
+[15:37:41.094] >>> CLICK RESULT: Hit type = Canvas at (47.8, 303.5)
+[15:37:41.095]     FrictionlessMode=False, DesignMode=True
+[15:37:41.748] >>> CLICK RESULT: Hit type = Canvas at (47.8, 305.5)
+[15:37:41.749]     FrictionlessMode=False, DesignMode=True
+[15:37:42.268] >>> CLICK RESULT: Hit type = Canvas at (47.2, 294.2)
+[15:37:42.269]     FrictionlessMode=False, DesignMode=True
+[15:37:42.950] >>> CLICK RESULT: Hit type = Canvas at (49.2, 206.2)
+[15:37:42.951]     FrictionlessMode=False, DesignMode=True
+[15:37:43.942] >>> CLICK RESULT: Hit type = Canvas at (51.2, 98.2)
+[15:37:43.942]     FrictionlessMode=False, DesignMode=True
+[15:37:48.755] >>> CLICK RESULT: Hit type = Canvas at (1950.8, 196.2)
+[15:37:48.755]     FrictionlessMode=False, DesignMode=True
+[15:37:54.399] >>> CLICK RESULT: Hit type = JibCrane at (1412.1, 1416.5)
+[15:37:54.399]     FrictionlessMode=False, DesignMode=True
+[15:37:56.037] >>> CLICK RESULT: Hit type = JibCrane at (754.1, 1420.5)
+[15:37:56.038]     FrictionlessMode=False, DesignMode=True

@@ -63,6 +63,15 @@ namespace LayoutEditor
             Redraw();
         }
 
+        private void ToggleZones_Click(object sender, RoutedEventArgs e)
+        {
+            if (_layout == null) return;
+            // Toggle the Spatial layer visibility to show/hide zones
+            _transportArchitectureLayerManager.ToggleVisibility(Models.LayerType.Spatial);
+            ShowZonesMenu.IsChecked = _transportArchitectureLayerManager.IsVisible(Models.LayerType.Spatial);
+            Redraw();
+        }
+
         #endregion
 
         #region Tools Menu Handlers

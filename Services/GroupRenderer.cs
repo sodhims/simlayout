@@ -29,6 +29,7 @@ namespace LayoutEditor.Services
 
         public void DrawZones(Canvas canvas, LayoutData layout)
         {
+            DebugLogger.Log($"DrawZones called, zone count: {layout.Zones.Count}");
             foreach (var zone in layout.Zones)
                 DrawZone(canvas, zone);
         }
@@ -228,25 +229,76 @@ namespace LayoutEditor.Services
 
         private void DrawZone(Canvas canvas, ZoneData zone)
         {
-            var rect = new Rectangle
-            {
-                Width = zone.Width, Height = zone.Height,
-                Fill = GetZoneBrush(zone),
-                Stroke = new SolidColorBrush(Colors.Gray),
-                StrokeThickness = 1,
-                StrokeDashArray = new DoubleCollection { 2, 2 },
-                RadiusX = 4, RadiusY = 4,
-                Tag = $"zone:{zone.Id}"
-            };
-            Canvas.SetLeft(rect, zone.X);
-            Canvas.SetTop(rect, zone.Y);
-            canvas.Children.Add(rect);
+            DebugLogger.Log($"DrawZone: '{zone.Name}', Points count: {zone.Points.Count}, Rect: ({zone.X}, {zone.Y}, {zone.Width}x{zone.Height})");
 
+            Shape shape;
+            double labelX, labelY;
+
+            // Check if zone is defined by Points (polygon) or by X/Y/Width/Height (rectangle)
+            if (zone.Points.Count > 0)
+            {
+                // Polygon zone from Points
+                var polygon = new Polygon
+                {
+                    Fill = GetZoneBrush(zone),
+                    Stroke = new SolidColorBrush(Colors.DarkGoldenrod),
+                    StrokeThickness = 2,
+                    Tag = $"zone:{zone.Id}"
+                };
+
+                foreach (var pt in zone.Points)
+                {
+                    polygon.Points.Add(new Point(pt.X, pt.Y));
+                    DebugLogger.Log($"    Point: ({pt.X}, {pt.Y})");
+                }
+
+                canvas.Children.Add(polygon);
+                shape = polygon;
+
+                // Label at first point
+                labelX = zone.Points[0].X + 4;
+                labelY = zone.Points[0].Y + 4;
+
+                DebugLogger.Log($"  Polygon zone added with {zone.Points.Count} points, canvas has {canvas.Children.Count} children");
+            }
+            else
+            {
+                // Rectangle zone from X/Y/Width/Height
+                var rect = new Rectangle
+                {
+                    Width = zone.Width,
+                    Height = zone.Height,
+                    Fill = GetZoneBrush(zone),
+                    Stroke = new SolidColorBrush(Colors.DarkGoldenrod),
+                    StrokeThickness = 2,
+                    RadiusX = 4,
+                    RadiusY = 4,
+                    Tag = $"zone:{zone.Id}"
+                };
+                Canvas.SetLeft(rect, zone.X);
+                Canvas.SetTop(rect, zone.Y);
+                canvas.Children.Add(rect);
+                shape = rect;
+
+                labelX = zone.X + 4;
+                labelY = zone.Y + 4;
+
+                DebugLogger.Log($"  Rectangle zone added at ({zone.X}, {zone.Y})");
+            }
+
+            // Add label
             if (!string.IsNullOrEmpty(zone.Name))
             {
-                var label = new TextBlock { Text = zone.Name, FontSize = 10, Foreground = Brushes.DimGray };
-                Canvas.SetLeft(label, zone.X + 4);
-                Canvas.SetTop(label, zone.Y + 4);
+                var label = new TextBlock
+                {
+                    Text = zone.Name,
+                    FontSize = 10,
+                    FontWeight = FontWeights.Bold,
+                    Foreground = Brushes.DarkGoldenrod,
+                    Background = new SolidColorBrush(Color.FromArgb(180, 255, 255, 255))  // Semi-transparent white background
+                };
+                Canvas.SetLeft(label, labelX);
+                Canvas.SetTop(label, labelY);
                 canvas.Children.Add(label);
             }
         }
@@ -263,14 +315,17 @@ namespace LayoutEditor.Services
 
         private Brush GetZoneBrush(ZoneData zone)
         {
+            // More visible colors with better opacity - light yellow as default
             var color = zone.Type?.ToLower() switch
             {
-                "restricted" => Color.FromArgb(30, 255, 0, 0),
-                "safety" => Color.FromArgb(30, 255, 255, 0),
-                "storage" => Color.FromArgb(30, 0, 0, 255),
-                "maintenance" => Color.FromArgb(30, 255, 165, 0),
-                _ => Color.FromArgb(20, 128, 128, 128)
+                "restricted" => Color.FromArgb(80, 255, 100, 100),    // Light red
+                "safety" => Color.FromArgb(80, 255, 255, 100),        // Light yellow
+                "storage" => Color.FromArgb(80, 150, 200, 255),       // Light blue
+                "maintenance" => Color.FromArgb(80, 255, 200, 100),   // Light orange
+                "warehouse" => Color.FromArgb(80, 200, 220, 255),     // Light cyan for warehouse
+                _ => Color.FromArgb(80, 255, 255, 150)                // Light yellow (default for traffic zones)
             };
+            DebugLogger.Log($"  Zone brush: type='{zone.Type}', alpha={color.A}, RGB=({color.R},{color.G},{color.B})");
             return new SolidColorBrush(color);
         }
 
