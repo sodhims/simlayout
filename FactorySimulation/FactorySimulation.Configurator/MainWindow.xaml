@@ -1,0 +1,285 @@
+<Window x:Class="FactorySimulation.Configurator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FactorySimulation.Configurator"
+        xmlns:views="clr-namespace:FactorySimulation.Configurator.Views"
+        mc:Ignorable="d"
+        Title="{Binding Title}"
+        Height="700" Width="1100"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <!-- Inverse Boolean Converter -->
+        <local:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+        <!-- Null to Visibility Converter -->
+        <local:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+        <!-- Bool to Visibility Converter -->
+        <local:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
+        <!-- Inverse Bool to Visibility Converter -->
+        <local:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibility"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Menu -->
+        <Menu Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New Scenario..."
+                          Command="{Binding ScenarioSelector.NewScenarioCommand}"/>
+                <MenuItem Header="_Clone Scenario..."
+                          Command="{Binding ScenarioSelector.CloneScenarioCommand}"/>
+                <Separator/>
+                <MenuItem Header="_Import Parts...">
+                    <MenuItem Header="From _File(s)..."
+                              Click="ImportParts_Click"/>
+                    <MenuItem Header="From F_older..."
+                              Click="ImportPartsFromFolder_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Export Parts..."
+                          Click="ExportParts_Click"/>
+                <Separator/>
+                <MenuItem Header="_Exit"
+                          Click="ExitMenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Delete Scenario"
+                          Command="{Binding ScenarioSelector.DeleteScenarioCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About"
+                          Click="AboutMenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Toolbar -->
+        <ToolBarTray Grid.Row="1">
+            <ToolBar>
+                <!-- Scenario Selector -->
+                <TextBlock Text="Scenario:"
+                           VerticalAlignment="Center"
+                           Margin="5,0,10,0"/>
+                <ComboBox Width="200"
+                          ItemsSource="{Binding ScenarioSelector.Scenarios}"
+                          SelectedItem="{Binding ScenarioSelector.SelectedScenario}"
+                          IsEnabled="{Binding ScenarioSelector.IsLoading, Converter={StaticResource InverseBooleanConverter}}"
+                          ToolTip="Select active scenario">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DisplayName}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Separator/>
+
+                <!-- Scenario Commands -->
+                <Button Content="New"
+                        Command="{Binding ScenarioSelector.NewScenarioCommand}"
+                        ToolTip="Create new scenario"
+                        Padding="10,2"/>
+                <Button Content="Clone"
+                        Command="{Binding ScenarioSelector.CloneScenarioCommand}"
+                        ToolTip="Clone selected scenario"
+                        Padding="10,2"/>
+                <Button Content="Delete"
+                        Command="{Binding ScenarioSelector.DeleteScenarioCommand}"
+                        ToolTip="Delete selected scenario"
+                        Padding="10,2"/>
+
+                <Separator/>
+
+                <!-- Refresh -->
+                <Button Content="Refresh"
+                        Command="{Binding ScenarioSelector.LoadScenariosCommand}"
+                        ToolTip="Reload scenarios"
+                        Padding="10,2"/>
+            </ToolBar>
+        </ToolBarTray>
+
+        <!-- Main Content Area -->
+        <TabControl Grid.Row="2" Margin="5">
+            <TabItem Header="Overview">
+                <Grid>
+                    <StackPanel HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="20">
+                        <TextBlock Text="Factory Configurator"
+                                   FontSize="32"
+                                   FontWeight="Light"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Text="Select a scenario to begin configuration"
+                                   FontSize="16"
+                                   Foreground="Gray"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,10,0,30"/>
+
+                        <!-- Scenario Info -->
+                        <Border BorderBrush="#CCCCCC"
+                                BorderThickness="1"
+                                CornerRadius="5"
+                                Padding="20"
+                                Width="400"
+                                Visibility="{Binding ScenarioSelector.SelectedScenario, Converter={StaticResource NullToVisibilityConverter}}">
+                            <StackPanel>
+                                <TextBlock Text="Current Scenario"
+                                           FontSize="14"
+                                           FontWeight="Bold"
+                                           Margin="0,0,0,10"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:"
+                                               FontWeight="SemiBold"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="1"
+                                               Text="{Binding ScenarioSelector.SelectedScenario.Name}"/>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Type:"
+                                               FontWeight="SemiBold" Margin="0,5,0,0"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,5,0,0">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Text" Value="Child Scenario"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ScenarioSelector.SelectedScenario.IsBase}" Value="True">
+                                                        <Setter Property="Text" Value="Base Scenario"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Description:"
+                                               FontWeight="SemiBold" Margin="0,5,0,0"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1"
+                                               Text="{Binding ScenarioSelector.SelectedScenario.Description, TargetNullValue='(No description)'}"
+                                               TextWrapping="Wrap"
+                                               Margin="0,5,0,0"/>
+
+                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Created:"
+                                               FontWeight="SemiBold" Margin="0,5,0,0"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="1"
+                                               Text="{Binding ScenarioSelector.SelectedScenario.CreatedAt, StringFormat='{}{0:g}'}"
+                                               Margin="0,5,0,0"/>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Equipment">
+                <TextBlock Text="Equipment configuration coming soon..."
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="Gray"/>
+            </TabItem>
+            <TabItem Header="Processes">
+                <TextBlock Text="Process configuration coming soon..."
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="Gray"/>
+            </TabItem>
+            <TabItem Header="Parts &amp; BOM">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Parts Tree/List -->
+                    <Border Grid.Column="0" BorderBrush="#CCCCCC" BorderThickness="0,0,1,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Text="Parts" FontWeight="Bold" Margin="10,10,10,5"/>
+
+                            <!-- Search -->
+                            <TextBox Grid.Row="1"
+                                     x:Name="PartSearchBox"
+                                     Margin="10,0,10,10"
+                                     ToolTip="Search parts..."
+                                     TextChanged="PartSearchBox_TextChanged"/>
+
+                            <!-- Parts List -->
+                            <ListBox Grid.Row="2"
+                                     x:Name="PartsListBox"
+                                     ItemsSource="{Binding BomEditor.AllParts}"
+                                     SelectedItem="{Binding BomEditor.SelectedPartType}"
+                                     Margin="5,0,5,5">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding PartNumber}" FontWeight="SemiBold"/>
+                                            <TextBlock Text="{Binding Name}" FontSize="11" Foreground="Gray"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+
+                            <!-- Add/Edit/Delete Part Buttons -->
+                            <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="10,5,10,10">
+                                <Button Content="Add" Click="AddPart_Click" Padding="10,3"/>
+                                <Button Content="Edit"
+                                        Command="{Binding BomEditor.EditPartCommand}"
+                                        Padding="10,3" Margin="5,0,0,0"/>
+                                <Button Content="Delete"
+                                        Command="{Binding BomEditor.DeletePartCommand}"
+                                        Padding="10,3" Margin="5,0,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- BOM Editor -->
+                    <views:BomEditorView Grid.Column="1"
+                                         DataContext="{Binding BomEditor}"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Layout">
+                <TextBlock Text="Layout configuration coming soon..."
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="Gray"/>
+            </TabItem>
+            <TabItem Header="Simulation">
+                <TextBlock Text="Simulation settings coming soon..."
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="Gray"/>
+            </TabItem>
+            <TabItem Header="Part Families">
+                <views:PartFamiliesView DataContext="{Binding PartFamilies}"/>
+            </TabItem>
+            <TabItem Header="Visual BOM">
+                <views:VisualBomView DataContext="{Binding VisualBom}"/>
+            </TabItem>
+        </TabControl>
+
+        <!-- Status Bar -->
+        <StatusBar Grid.Row="3">
+            <StatusBarItem>
+                <TextBlock Text="{Binding StatusMessage}"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

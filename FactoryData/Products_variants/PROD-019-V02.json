@@ -1,0 +1,71 @@
+{
+  "product": {
+    "id": "PROD-019-V02",
+    "name": "Product 019 Variant 02",
+    "base_product_id": "PROD-019",
+    "root_subassembly": "SA-089",
+    "revision": "B",
+    "variant_of_revision": "B",
+    "created_utc": "2025-12-24T14:07:02Z"
+  },
+  "bom_overrides": [
+    {
+      "op": "qty_delta",
+      "parent_subassembly_id": "SA-089",
+      "child_type": "subassembly",
+      "child_id": "SA-054",
+      "delta": 1
+    },
+    {
+      "op": "qty_delta",
+      "parent_subassembly_id": "SA-089",
+      "child_type": "component",
+      "child_id": "CMP-041",
+      "delta": -1
+    },
+    {
+      "op": "qty_delta",
+      "parent_subassembly_id": "SA-054",
+      "child_type": "subassembly",
+      "child_id": "SA-014",
+      "delta": -1
+    },
+    {
+      "op": "qty_delta",
+      "parent_subassembly_id": "SA-054",
+      "child_type": "subassembly",
+      "child_id": "SA-039",
+      "delta": 1
+    },
+    {
+      "op": "qty_delta",
+      "parent_subassembly_id": "SA-004",
+      "child_type": "component",
+      "child_id": "CMP-027",
+      "delta": 1
+    },
+    {
+      "op": "qty_delta",
+      "parent_subassembly_id": "SA-004",
+      "child_type": "component",
+      "child_id": "CMP-092",
+      "delta": 1
+    },
+    {
+      "op": "replace_child",
+      "parent_subassembly_id": "SA-089",
+      "old_child_type": "subassembly",
+      "old_child_id": "SA-039",
+      "new_child_type": "subassembly",
+      "new_child_id": "SA-025",
+      "new_qty": 3
+    },
+    {
+      "op": "add_child",
+      "parent_subassembly_id": "SA-089",
+      "child_type": "component",
+      "child_id": "CMP-097",
+      "qty": 3
+    }
+  ]
+}

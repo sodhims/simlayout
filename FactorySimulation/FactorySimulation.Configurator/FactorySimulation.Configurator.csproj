@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="gong-wpf-dragdrop" Version="3.2.1" />
+    <PackageReference Include="NodeNetwork" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FactorySimulation.Core\FactorySimulation.Core.csproj" />
+    <ProjectReference Include="..\FactorySimulation.Data\FactorySimulation.Data.csproj" />
+    <ProjectReference Include="..\FactorySimulation.Services\FactorySimulation.Services.csproj" />
+  </ItemGroup>
+
+</Project>

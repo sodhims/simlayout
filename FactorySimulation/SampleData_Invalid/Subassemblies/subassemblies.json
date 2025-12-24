@@ -1,0 +1,11 @@
+{
+  "subassemblies": [
+    {
+      "id": "SA-BAD",
+      "name": "Invalid Assembly",
+      "children": [
+        { "id": "CMP-MISSING", "type": "component", "quantity": 1 }
+      ]
+    }
+  ]
+}

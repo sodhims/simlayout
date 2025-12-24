@@ -1,0 +1,26 @@
+{
+  "product": {
+    "id": "PROD-001",
+    "name": "Industrial Drive System",
+    "description": "Complete drive system assembly"
+  },
+  "bom": {
+    "id": "PROD-001",
+    "name": "Industrial Drive System",
+    "type": "product",
+    "children": [
+      {
+        "id": "SA-004",
+        "name": "Complete Drive Unit",
+        "type": "subassembly",
+        "quantity": 1
+      },
+      {
+        "id": "CMP-004",
+        "name": "Steel Plate 100x100x5",
+        "type": "component",
+        "quantity": 2
+      }
+    ]
+  }
+}

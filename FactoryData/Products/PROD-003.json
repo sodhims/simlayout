@@ -1,0 +1,91 @@
+{
+  "product": {
+    "id": "PROD-003",
+    "name": "Product 003",
+    "root_subassembly": "SA-073",
+    "revision": "B",
+    "created_utc": "2025-12-24T14:03:04Z"
+  },
+  "bom": {
+    "id": "SA-073",
+    "name": "Product Assembly PROD-003",
+    "level": 6,
+    "children": [
+      {
+        "type": "subassembly",
+        "id": "SA-066",
+        "qty": 1
+      },
+      {
+        "type": "subassembly",
+        "id": "SA-067",
+        "qty": 2
+      },
+      {
+        "type": "subassembly",
+        "id": "SA-068",
+        "qty": 2
+      },
+      {
+        "type": "subassembly",
+        "id": "SA-024",
+        "qty": 2
+      },
+      {
+        "type": "subassembly",
+        "id": "SA-051",
+        "qty": 3
+      },
+      {
+        "type": "subassembly",
+        "id": "SA-037",
+        "qty": 3
+      },
+      {
+        "type": "subassembly",
+        "id": "SA-015",
+        "qty": 3
+      },
+      {
+        "type": "subassembly",
+        "id": "SA-022",
+        "qty": 3
+      },
+      {
+        "type": "subassembly",
+        "id": "SA-059",
+        "qty": 2
+      },
+      {
+        "type": "subassembly",
+        "id": "SA-009",
+        "qty": 2
+      },
+      {
+        "type": "subassembly",
+        "id": "SA-019",
+        "qty": 2
+      },
+      {
+        "type": "subassembly",
+        "id": "SA-008",
+        "qty": 3
+      },
+      {
+        "type": "subassembly",
+        "id": "SA-069",
+        "qty": 2
+      },
+      {
+        "type": "component",
+        "id": "CMP-045",
+        "qty": 1
+      },
+      {
+        "type": "component",
+        "id": "CMP-056",
+        "qty": 1
+      }
+    ]
+  }
+}

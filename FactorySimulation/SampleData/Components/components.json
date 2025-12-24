@@ -1,0 +1,60 @@
+{
+  "components": [
+    {
+      "id": "CMP-001",
+      "name": "Steel Bolt M8x20",
+      "description": "Standard M8 bolt, 20mm length",
+      "uom": "EA",
+      "unit_cost": 0.15
+    },
+    {
+      "id": "CMP-002",
+      "name": "Steel Nut M8",
+      "description": "Standard M8 nut",
+      "uom": "EA",
+      "unit_cost": 0.08
+    },
+    {
+      "id": "CMP-003",
+      "name": "Flat Washer M8",
+      "description": "Standard M8 flat washer",
+      "uom": "EA",
+      "unit_cost": 0.05
+    },
+    {
+      "id": "CMP-004",
+      "name": "Steel Plate 100x100x5",
+      "description": "Steel plate 100mm x 100mm x 5mm thick",
+      "uom": "EA",
+      "unit_cost": 2.50
+    },
+    {
+      "id": "CMP-005",
+      "name": "Rubber Gasket",
+      "description": "Rubber sealing gasket",
+      "uom": "EA",
+      "unit_cost": 0.75
+    },
+    {
+      "id": "CMP-006",
+      "name": "Steel Rod 10mm x 200mm",
+      "description": "Steel rod, 10mm diameter, 200mm length",
+      "uom": "EA",
+      "unit_cost": 1.20
+    },
+    {
+      "id": "CMP-007",
+      "name": "Spring Coil",
+      "description": "Compression spring",
+      "uom": "EA",
+      "unit_cost": 0.45
+    },
+    {
+      "id": "CMP-008",
+      "name": "Bearing 6200",
+      "description": "Ball bearing 6200 series",
+      "uom": "EA",
+      "unit_cost": 3.50
+    }
+  ]
+}

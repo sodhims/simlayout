@@ -1,0 +1,604 @@
+{
+  "components": [
+    {
+      "id": "CMP-001",
+      "name": "Component 001",
+      "uom": "EA",
+      "description": "Generic component 001"
+    },
+    {
+      "id": "CMP-002",
+      "name": "Component 002",
+      "uom": "M",
+      "description": "Generic component 002"
+    },
+    {
+      "id": "CMP-003",
+      "name": "Component 003",
+      "uom": "KG",
+      "description": "Generic component 003"
+    },
+    {
+      "id": "CMP-004",
+      "name": "Component 004",
+      "uom": "EA",
+      "description": "Generic component 004"
+    },
+    {
+      "id": "CMP-005",
+      "name": "Component 005",
+      "uom": "M",
+      "description": "Generic component 005"
+    },
+    {
+      "id": "CMP-006",
+      "name": "Component 006",
+      "uom": "M",
+      "description": "Generic component 006"
+    },
+    {
+      "id": "CMP-007",
+      "name": "Component 007",
+      "uom": "KG",
+      "description": "Generic component 007"
+    },
+    {
+      "id": "CMP-008",
+      "name": "Component 008",
+      "uom": "KG",
+      "description": "Generic component 008"
+    },
+    {
+      "id": "CMP-009",
+      "name": "Component 009",
+      "uom": "EA",
+      "description": "Generic component 009"
+    },
+    {
+      "id": "CMP-010",
+      "name": "Component 010",
+      "uom": "M",
+      "description": "Generic component 010"
+    },
+    {
+      "id": "CMP-011",
+      "name": "Component 011",
+      "uom": "KG",
+      "description": "Generic component 011"
+    },
+    {
+      "id": "CMP-012",
+      "name": "Component 012",
+      "uom": "M",
+      "description": "Generic component 012"
+    },
+    {
+      "id": "CMP-013",
+      "name": "Component 013",
+      "uom": "KG",
+      "description": "Generic component 013"
+    },
+    {
+      "id": "CMP-014",
+      "name": "Component 014",
+      "uom": "EA",
+      "description": "Generic component 014"
+    },
+    {
+      "id": "CMP-015",
+      "name": "Component 015",
+      "uom": "KG",
+      "description": "Generic component 015"
+    },
+    {
+      "id": "CMP-016",
+      "name": "Component 016",
+      "uom": "M",
+      "description": "Generic component 016"
+    },
+    {
+      "id": "CMP-017",
+      "name": "Component 017",
+      "uom": "KG",
+      "description": "Generic component 017"
+    },
+    {
+      "id": "CMP-018",
+      "name": "Component 018",
+      "uom": "M",
+      "description": "Generic component 018"
+    },
+    {
+      "id": "CMP-019",
+      "name": "Component 019",
+      "uom": "KG",
+      "description": "Generic component 019"
+    },
+    {
+      "id": "CMP-020",
+      "name": "Component 020",
+      "uom": "KG",
+      "description": "Generic component 020"
+    },
+    {
+      "id": "CMP-021",
+      "name": "Component 021",
+      "uom": "M",
+      "description": "Generic component 021"
+    },
+    {
+      "id": "CMP-022",
+      "name": "Component 022",
+      "uom": "M",
+      "description": "Generic component 022"
+    },
+    {
+      "id": "CMP-023",
+      "name": "Component 023",
+      "uom": "EA",
+      "description": "Generic component 023"
+    },
+    {
+      "id": "CMP-024",
+      "name": "Component 024",
+      "uom": "EA",
+      "description": "Generic component 024"
+    },
+    {
+      "id": "CMP-025",
+      "name": "Component 025",
+      "uom": "EA",
+      "description": "Generic component 025"
+    },
+    {
+      "id": "CMP-026",
+      "name": "Component 026",
+      "uom": "EA",
+      "description": "Generic component 026"
+    },
+    {
+      "id": "CMP-027",
+      "name": "Component 027",
+      "uom": "M",
+      "description": "Generic component 027"
+    },
+    {
+      "id": "CMP-028",
+      "name": "Component 028",
+      "uom": "EA",
+      "description": "Generic component 028"
+    },
+    {
+      "id": "CMP-029",
+      "name": "Component 029",
+      "uom": "EA",
+      "description": "Generic component 029"
+    },
+    {
+      "id": "CMP-030",
+      "name": "Component 030",
+      "uom": "EA",
+      "description": "Generic component 030"
+    },
+    {
+      "id": "CMP-031",
+      "name": "Component 031",
+      "uom": "KG",
+      "description": "Generic component 031"
+    },
+    {
+      "id": "CMP-032",
+      "name": "Component 032",
+      "uom": "M",
+      "description": "Generic component 032"
+    },
+    {
+      "id": "CMP-033",
+      "name": "Component 033",
+      "uom": "EA",
+      "description": "Generic component 033"
+    },
+    {
+      "id": "CMP-034",
+      "name": "Component 034",
+      "uom": "M",
+      "description": "Generic component 034"
+    },
+    {
+      "id": "CMP-035",
+      "name": "Component 035",
+      "uom": "KG",
+      "description": "Generic component 035"
+    },
+    {
+      "id": "CMP-036",
+      "name": "Component 036",
+      "uom": "KG",
+      "description": "Generic component 036"
+    },
+    {
+      "id": "CMP-037",
+      "name": "Component 037",
+      "uom": "M",
+      "description": "Generic component 037"
+    },
+    {
+      "id": "CMP-038",
+      "name": "Component 038",
+      "uom": "KG",
+      "description": "Generic component 038"
+    },
+    {
+      "id": "CMP-039",
+      "name": "Component 039",
+      "uom": "EA",
+      "description": "Generic component 039"
+    },
+    {
+      "id": "CMP-040",
+      "name": "Component 040",
+      "uom": "M",
+      "description": "Generic component 040"
+    },
+    {
+      "id": "CMP-041",
+      "name": "Component 041",
+      "uom": "EA",
+      "description": "Generic component 041"
+    },
+    {
+      "id": "CMP-042",
+      "name": "Component 042",
+      "uom": "EA",
+      "description": "Generic component 042"
+    },
+    {
+      "id": "CMP-043",
+      "name": "Component 043",
+      "uom": "KG",
+      "description": "Generic component 043"
+    },
+    {
+      "id": "CMP-044",
+      "name": "Component 044",
+      "uom": "EA",
+      "description": "Generic component 044"
+    },
+    {
+      "id": "CMP-045",
+      "name": "Component 045",
+      "uom": "EA",
+      "description": "Generic component 045"
+    },
+    {
+      "id": "CMP-046",
+      "name": "Component 046",
+      "uom": "EA",
+      "description": "Generic component 046"
+    },
+    {
+      "id": "CMP-047",
+      "name": "Component 047",
+      "uom": "EA",
+      "description": "Generic component 047"
+    },
+    {
+      "id": "CMP-048",
+      "name": "Component 048",
+      "uom": "M",
+      "description": "Generic component 048"
+    },
+    {
+      "id": "CMP-049",
+      "name": "Component 049",
+      "uom": "M",
+      "description": "Generic component 049"
+    },
+    {
+      "id": "CMP-050",
+      "name": "Component 050",
+      "uom": "EA",
+      "description": "Generic component 050"
+    },
+    {
+      "id": "CMP-051",
+      "name": "Component 051",
+      "uom": "KG",
+      "description": "Generic component 051"
+    },
+    {
+      "id": "CMP-052",
+      "name": "Component 052",
+      "uom": "KG",
+      "description": "Generic component 052"
+    },
+    {
+      "id": "CMP-053",
+      "name": "Component 053",
+      "uom": "EA",
+      "description": "Generic component 053"
+    },
+    {
+      "id": "CMP-054",
+      "name": "Component 054",
+      "uom": "KG",
+      "description": "Generic component 054"
+    },
+    {
+      "id": "CMP-055",
+      "name": "Component 055",
+      "uom": "KG",
+      "description": "Generic component 055"
+    },
+    {
+      "id": "CMP-056",
+      "name": "Component 056",
+      "uom": "KG",
+      "description": "Generic component 056"
+    },
+    {
+      "id": "CMP-057",
+      "name": "Component 057",
+      "uom": "KG",
+      "description": "Generic component 057"
+    },
+    {
+      "id": "CMP-058",
+      "name": "Component 058",
+      "uom": "EA",
+      "description": "Generic component 058"
+    },
+    {
+      "id": "CMP-059",
+      "name": "Component 059",
+      "uom": "EA",
+      "description": "Generic component 059"
+    },
+    {
+      "id": "CMP-060",
+      "name": "Component 060",
+      "uom": "KG",
+      "description": "Generic component 060"
+    },
+    {
+      "id": "CMP-061",
+      "name": "Component 061",
+      "uom": "M",
+      "description": "Generic component 061"
+    },
+    {
+      "id": "CMP-062",
+      "name": "Component 062",
+      "uom": "KG",
+      "description": "Generic component 062"
+    },
+    {
+      "id": "CMP-063",
+      "name": "Component 063",
+      "uom": "KG",
+      "description": "Generic component 063"
+    },
+    {
+      "id": "CMP-064",
+      "name": "Component 064",
+      "uom": "M",
+      "description": "Generic component 064"
+    },
+    {
+      "id": "CMP-065",
+      "name": "Component 065",
+      "uom": "M",
+      "description": "Generic component 065"
+    },
+    {
+      "id": "CMP-066",
+      "name": "Component 066",
+      "uom": "KG",
+      "description": "Generic component 066"
+    },
+    {
+      "id": "CMP-067",
+      "name": "Component 067",
+      "uom": "KG",
+      "description": "Generic component 067"
+    },
+    {
+      "id": "CMP-068",
+      "name": "Component 068",
+      "uom": "KG",
+      "description": "Generic component 068"
+    },
+    {
+      "id": "CMP-069",
+      "name": "Component 069",
+      "uom": "M",
+      "description": "Generic component 069"
+    },
+    {
+      "id": "CMP-070",
+      "name": "Component 070",
+      "uom": "EA",
+      "description": "Generic component 070"
+    },
+    {
+      "id": "CMP-071",
+      "name": "Component 071",
+      "uom": "EA",
+      "description": "Generic component 071"
+    },
+    {
+      "id": "CMP-072",
+      "name": "Component 072",
+      "uom": "EA",
+      "description": "Generic component 072"
+    },
+    {
+      "id": "CMP-073",
+      "name": "Component 073",
+      "uom": "M",
+      "description": "Generic component 073"
+    },
+    {
+      "id": "CMP-074",
+      "name": "Component 074",
+      "uom": "EA",
+      "description": "Generic component 074"
+    },
+    {
+      "id": "CMP-075",
+      "name": "Component 075",
+      "uom": "KG",
+      "description": "Generic component 075"
+    },
+    {
+      "id": "CMP-076",
+      "name": "Component 076",
+      "uom": "M",
+      "description": "Generic component 076"
+    },
+    {
+      "id": "CMP-077",
+      "name": "Component 077",
+      "uom": "M",
+      "description": "Generic component 077"
+    },
+    {
+      "id": "CMP-078",
+      "name": "Component 078",
+      "uom": "KG",
+      "description": "Generic component 078"
+    },
+    {
+      "id": "CMP-079",
+      "name": "Component 079",
+      "uom": "EA",
+      "description": "Generic component 079"
+    },
+    {
+      "id": "CMP-080",
+      "name": "Component 080",
+      "uom": "KG",
+      "description": "Generic component 080"
+    },
+    {
+      "id": "CMP-081",
+      "name": "Component 081",
+      "uom": "KG",
+      "description": "Generic component 081"
+    },
+    {
+      "id": "CMP-082",
+      "name": "Component 082",
+      "uom": "EA",
+      "description": "Generic component 082"
+    },
+    {
+      "id": "CMP-083",
+      "name": "Component 083",
+      "uom": "KG",
+      "description": "Generic component 083"
+    },
+    {
+      "id": "CMP-084",
+      "name": "Component 084",
+      "uom": "KG",
+      "description": "Generic component 084"
+    },
+    {
+      "id": "CMP-085",
+      "name": "Component 085",
+      "uom": "EA",
+      "description": "Generic component 085"
+    },
+    {
+      "id": "CMP-086",
+      "name": "Component 086",
+      "uom": "M",
+      "description": "Generic component 086"
+    },
+    {
+      "id": "CMP-087",
+      "name": "Component 087",
+      "uom": "M",
+      "description": "Generic component 087"
+    },
+    {
+      "id": "CMP-088",
+      "name": "Component 088",
+      "uom": "KG",
+      "description": "Generic component 088"
+    },
+    {
+      "id": "CMP-089",
+      "name": "Component 089",
+      "uom": "M",
+      "description": "Generic component 089"
+    },
+    {
+      "id": "CMP-090",
+      "name": "Component 090",
+      "uom": "KG",
+      "description": "Generic component 090"
+    },
+    {
+      "id": "CMP-091",
+      "name": "Component 091",
+      "uom": "M",
+      "description": "Generic component 091"
+    },
+    {
+      "id": "CMP-092",
+      "name": "Component 092",
+      "uom": "EA",
+      "description": "Generic component 092"
+    },
+    {
+      "id": "CMP-093",
+      "name": "Component 093",
+      "uom": "M",
+      "description": "Generic component 093"
+    },
+    {
+      "id": "CMP-094",
+      "name": "Component 094",
+      "uom": "M",
+      "description": "Generic component 094"
+    },
+    {
+      "id": "CMP-095",
+      "name": "Component 095",
+      "uom": "KG",
+      "description": "Generic component 095"
+    },
+    {
+      "id": "CMP-096",
+      "name": "Component 096",
+      "uom": "EA",
+      "description": "Generic component 096"
+    },
+    {
+      "id": "CMP-097",
+      "name": "Component 097",
+      "uom": "M",
+      "description": "Generic component 097"
+    },
+    {
+      "id": "CMP-098",
+      "name": "Component 098",
+      "uom": "EA",
+      "description": "Generic component 098"
+    },
+    {
+      "id": "CMP-099",
+      "name": "Component 099",
+      "uom": "KG",
+      "description": "Generic component 099"
+    },
+    {
+      "id": "CMP-100",
+      "name": "Component 100",
+      "uom": "EA",
+      "description": "Generic component 100"
+    }
+  ]
+}

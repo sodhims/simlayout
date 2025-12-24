@@ -72,7 +72,19 @@
       "Bash(timeout 350 dotnet run:*)",
       "Bash(timeout 400 dotnet run:*)",
       "Bash(timeout 480 dotnet run:*)",
-      "Bash(timeout 600 dotnet run:*)"
+      "Bash(timeout 600 dotnet run:*)",
+      "Bash(dotnet new:*)",
+      "Bash(dotnet sln:*)",
+      "Bash(dotnet sln add:*)",
+      "Bash(dotnet add:*)",
+      "Bash(pwsh -c \"dir r:\\\\layoutbak\\\\FactorySimulation\\\\FactorySimulation.Core\\\\Models\")",
+      "Bash(pwsh -c \"dir r:\\\\layoutbak\\\\FactorySimulation -Recurse -Filter ''*Test*.cs''\")",
+      "Bash(pwsh -c \"dir r:\\\\layoutbak\\\\FactorySimulation\":*)",
+      "Bash(pwsh -c \"dir r:\\\\layoutbak\\\\FactorySimulation\\\\FactorySimulation.Core -Recurse\")",
+      "Bash(pwsh -c:*)",
+      "Bash(dotnet restore:*)",
+      "Bash(sqlite3:*)",
+      "Bash(timeout 8 ./FactorySimulation.Configurator.exe:*)"
     ]
   }
 }

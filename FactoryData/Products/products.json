@@ -1,0 +1,144 @@
+{
+  "products": [
+    {
+      "id": "PROD-001",
+      "name": "Product 001",
+      "root_subassembly": "SA-071",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-002",
+      "name": "Product 002",
+      "root_subassembly": "SA-072",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-003",
+      "name": "Product 003",
+      "root_subassembly": "SA-073",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-004",
+      "name": "Product 004",
+      "root_subassembly": "SA-074",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-005",
+      "name": "Product 005",
+      "root_subassembly": "SA-075",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-006",
+      "name": "Product 006",
+      "root_subassembly": "SA-076",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-007",
+      "name": "Product 007",
+      "root_subassembly": "SA-077",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-008",
+      "name": "Product 008",
+      "root_subassembly": "SA-078",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-009",
+      "name": "Product 009",
+      "root_subassembly": "SA-079",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-010",
+      "name": "Product 010",
+      "root_subassembly": "SA-080",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-011",
+      "name": "Product 011",
+      "root_subassembly": "SA-081",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-012",
+      "name": "Product 012",
+      "root_subassembly": "SA-082",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-013",
+      "name": "Product 013",
+      "root_subassembly": "SA-083",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-014",
+      "name": "Product 014",
+      "root_subassembly": "SA-084",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-015",
+      "name": "Product 015",
+      "root_subassembly": "SA-085",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-016",
+      "name": "Product 016",
+      "root_subassembly": "SA-086",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-017",
+      "name": "Product 017",
+      "root_subassembly": "SA-087",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-018",
+      "name": "Product 018",
+      "root_subassembly": "SA-088",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-019",
+      "name": "Product 019",
+      "root_subassembly": "SA-089",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    },
+    {
+      "id": "PROD-020",
+      "name": "Product 020",
+      "root_subassembly": "SA-090",
+      "revision": "B",
+      "created_utc": "2025-12-24T14:03:04Z"
+    }
+  ]
+}

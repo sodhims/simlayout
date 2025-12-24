@@ -1,0 +1,39 @@
+{
+  "subassemblies": [
+    {
+      "id": "SA-001",
+      "name": "Bolt Assembly",
+      "children": [
+        { "id": "CMP-001", "type": "component", "qty": 1 },
+        { "id": "CMP-002", "type": "component", "qty": 1 },
+        { "id": "CMP-003", "type": "component", "qty": 2 }
+      ]
+    },
+    {
+      "id": "SA-002",
+      "name": "Plate Assembly",
+      "children": [
+        { "id": "CMP-004", "type": "component", "qty": 2 },
+        { "id": "CMP-005", "type": "component", "qty": 1 },
+        { "id": "SA-001", "type": "subassembly", "qty": 4 }
+      ]
+    },
+    {
+      "id": "SA-003",
+      "name": "Shaft Assembly",
+      "children": [
+        { "id": "CMP-006", "type": "component", "qty": 1 },
+        { "id": "CMP-008", "type": "component", "qty": 2 },
+        { "id": "CMP-007", "type": "component", "qty": 1 }
+      ]
+    },
+    {
+      "id": "SA-004",
+      "name": "Complete Drive Unit",
+      "children": [
+        { "id": "SA-002", "type": "subassembly", "qty": 1 },
+        { "id": "SA-003", "type": "subassembly", "qty": 2 }
+      ]
+    }
+  ]
+}

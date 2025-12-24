@@ -1,0 +1,1859 @@
+    Continuing Factory Configurator (WPF/C#/.NET 8). Existing scenarios are working.
+
+    Objective: Add testing infrastructure and begin Parts implementation (schema, models, repository). All tests must pass with dotnet test.
+
+    1. Add test project to solution
+
+    * Project: FactorySimulation.Tests (.NET 8, xUnit)
+    * Project references: Core, Data, Services
+    * NuGet packages:
+      * xunit
+      * xunit.runner.visualstudio
+      * FluentAssertions
+      * Microsoft.Data.Sqlite
+
+    2. Testing approach (SQLite in-memory)
+
+    * Use SQLite in-memory with a single open connection per test run so schema persists during each test.
+    * Prefer isolation via transactions per test (begin transaction in test setup, rollback in teardown). If not feasible, recreate schema per test.
+
+    3. Test utilities in Tests/Utilities/
+
+    * TestDbFactory.cs
+      * CreateOpenInMemoryConnection(): returns an open Microsoft.Data.Sqlite.SqliteConnection using "Data Source=:memory:;Cache=Shared"
+      * CreateSchemaAsync(IDbConnection): calls domain-specific schema methods (see section 9)
+      * SeedBasicDataAsync(IDbConnection): calls domain-specific seed methods (see section 9)
+
+    * TestFixture.cs
+      * Implements IAsyncLifetime
+      * Opens and holds the connection
+      * Calls CreateSchemaAsync and SeedBasicDataAsync
+      * Exposes Connection property for tests
+
+    4. Database schema for Parts (SQLite)
+
+    Create these tables exactly with constraints:
+
+    * part_Categories
+      * Id INTEGER PRIMARY KEY
+      * Name TEXT NOT NULL UNIQUE
+      * Color TEXT NULL
+      * SortOrder INTEGER NULL
+
+    * part_Types
+      * Id INTEGER PRIMARY KEY
+      * CategoryId INTEGER NOT NULL
+      * ParentPartTypeId INTEGER NULL REFERENCES part_Types(Id) ON DELETE RESTRICT
+      * PartNumber TEXT NOT NULL UNIQUE
+      * Name TEXT NOT NULL
+      * IsTemplate INTEGER NOT NULL DEFAULT 0
+      * IsActive INTEGER NOT NULL DEFAULT 1
+      * FOREIGN KEY (CategoryId) REFERENCES part_Categories(Id) ON DELETE RESTRICT
+
+    5. Seed categories
+
+    Seed these names into part_Categories in SeedPartsDataAsync:
+    RawMaterial, Component, Subassembly, FinishedGood, Packaging, Consumable
+
+    6. Core models (Core project)
+
+    * PartCategory.cs: Id (int), Name (string), Color (string?), SortOrder (int?)
+    * PartType.cs: Id (int), CategoryId (int), ParentPartTypeId (int?), PartNumber (string), Name (string), IsTemplate (bool), IsActive (bool)
+
+    7. Repository (Data project)
+
+    * IPartTypeRepository:
+      * Task<IReadOnlyList<PartType>> GetAllAsync()
+      * Task<PartType?> GetByIdAsync(int id)
+      * Task<int> CreateAsync(PartType part)
+      * Task UpdateAsync(PartType part)
+      * Task DeleteAsync(int id)
+      * Task<IReadOnlyList<PartType>> GetChildrenAsync(int parentId)
+
+    * PartTypeRepository:
+      * Use the existing DB access pattern in the solution (ADO.NET or Dapper). Keep consistent with current style.
+      * Behavior rules:
+        * CreateAsync returns new Id.
+        * Duplicate PartNumber must throw InvalidOperationException with message containing "PartNumber" and "duplicate".
+        * GetChildrenAsync returns only direct children (ParentPartTypeId = parentId).
+        * DeleteAsync must be restricted if the part has any children. If children exist, throw InvalidOperationException with message containing "children". If no children, delete succeeds.
+
+    8. Tests (FactorySimulation.Tests)
+
+    Create Tests/Repositories/PartTypeRepositoryTests.cs:
+
+    * Test class pattern (use for all future test classes):
+      public class PartTypeRepositoryTests : IClassFixture<TestFixture>
+      {
+          private readonly TestFixture _fixture;
+          public PartTypeRepositoryTests(TestFixture fixture) => _fixture = fixture;
+      }
+
+    * Tests using FluentAssertions:
+
+      * CreatePart_WithValidData_ReturnsId
+        * Insert a PartType with valid CategoryId (use category "Component").
+        * Assert returned Id > 0.
+        * Assert GetByIdAsync returns matching PartNumber and Name.
+
+      * CreatePart_DuplicatePartNumber_ThrowsException
+        * Create part with PartNumber "PN-001".
+        * Attempt second part with same PartNumber.
+        * Assert throws InvalidOperationException.
+        * Assert message contains "PartNumber" and "duplicate".
+
+      * GetChildren_ReturnsOnlyDirectChildren
+        * Create parent part.
+        * Create childA with ParentPartTypeId = parent.
+        * Create grandchild with ParentPartTypeId = childA.
+        * Create childB with ParentPartTypeId = parent.
+        * Assert GetChildrenAsync(parent.Id) returns exactly 2 items.
+        * Assert result contains childA and childB, not grandchild.
+
+      * DeletePart_WithChildren_ThrowsException
+        * Create parent and child.
+        * Assert DeleteAsync(parent.Id) throws InvalidOperationException.
+        * Assert message contains "children".
+        * Assert GetByIdAsync(parent.Id) still returns parent.
+
+      * DeletePart_NoChildren_Succeeds
+        * Create part with no children.
+        * Call DeleteAsync(part.Id).
+        * Assert GetByIdAsync(part.Id) returns null.
+
+    9. Schema and seed extension pattern
+
+    Structure for incremental growth across future =====prompts:
+
+    * TestDbFactory.CreateSchemaAsync calls domain methods:
+      public static async Task CreateSchemaAsync(IDbConnection db)
+      {
+          await CreateCoreSchemaAsync(db);    // Scenarios table, any base tables
+          await CreatePartsSchemaAsync(db);   // part_Categories, part_Types
+          // Future =====prompts add calls here: CreateWorkstationsSchemaAsync, etc.
+      }
+
+    * TestDbFactory.SeedBasicDataAsync calls domain methods:
+      public static async Task SeedBasicDataAsync(IDbConnection db)
+      {
+          await SeedCoreDataAsync(db);        // Base scenario if needed
+          await SeedPartsDataAsync(db);       // Part categories
+          // Future =====prompts add calls here: SeedOperatorTypesAsync, etc.
+      }
+
+    * Future =====prompts will specify: "Add CreateXxxSchemaAsync method and call it from CreateSchemaAsync"
+
+    Run dotnet test and ensure all 5 tests pass.
+
+    =====prompt 3:
+    Continuing Factory Configurator. =====prompt 2 complete, 5 repository tests passing.
+
+    Objective: Implement PartTypeService with tree operations and validation. All tests must pass.
+
+    1. Service interface (Core or Services project)
+
+    * IPartTypeService:
+      * Task<IReadOnlyList<PartType>> GetTreeAsync()
+      * Task<PartType> CreateVariantAsync(int templateId, string partNumber, string name)
+      * Task<bool> ValidatePartNumberAsync(string partNumber)
+      * Task<IReadOnlyList<PartType>> GetAncestorsAsync(int partTypeId)
+
+    2. Service implementation (Services project)
+
+    * PartTypeService:
+      * Constructor takes IPartTypeRepository
+  
+      * GetTreeAsync:
+        * Get all parts, build hierarchy in memory.
+        * Return only root parts (ParentPartTypeId = null) with Children populated recursively.
+        * Add Children property (List<PartType>) to PartType model if not present.
+  
+      * CreateVariantAsync:
+        * Validate templateId exists and IsTemplate = true. If not template, throw InvalidOperationException with "template".
+        * Validate partNumber is unique via ValidatePartNumberAsync.
+        * Create new PartType with ParentPartTypeId = templateId, CategoryId inherited from template.
+        * Return created part with Id populated.
+  
+      * ValidatePartNumberAsync:
+        * Return true if partNumber does not exist, false if exists.
+  
+      * GetAncestorsAsync:
+        * Walk up ParentPartTypeId chain to root.
+        * Return list ordered from immediate parent to root (or root to immediate parent - pick one, document it).
+
+    3. Tests in Tests/Services/PartTypeServiceTests.cs
+
+    * GetTree_ReturnsHierarchicalStructure
+      * Create: RootA, ChildA1 (under RootA), ChildA2 (under RootA), RootB.
+      * Call GetTreeAsync.
+      * Assert result contains exactly 2 root items (RootA, RootB).
+      * Assert RootA.Children contains exactly 2 items.
+      * Assert RootB.Children is empty.
+
+    * CreateVariant_FromTemplate_InheritsCategory
+      * Create template part with CategoryId = Component, IsTemplate = true.
+      * Call CreateVariantAsync with new partNumber.
+      * Assert returned part has ParentPartTypeId = template.Id.
+      * Assert returned part has CategoryId = template's CategoryId.
+
+    * CreateVariant_FromNonTemplate_ThrowsException
+      * Create part with IsTemplate = false.
+      * Assert CreateVariantAsync throws InvalidOperationException.
+      * Assert message contains "template".
+
+    * ValidatePartNumber_Exists_ReturnsFalse
+      * Create part with PartNumber "EXIST-001".
+      * Assert ValidatePartNumberAsync("EXIST-001") returns false.
+
+    * ValidatePartNumber_NotExists_ReturnsTrue
+      * Assert ValidatePartNumberAsync("NOTEXIST-001") returns true.
+
+    * GetAncestors_ThreeLevels_ReturnsPathToRoot
+      * Create: Root → Child → Grandchild.
+      * Call GetAncestorsAsync(grandchild.Id).
+      * Assert result contains exactly 2 items (Child and Root).
+      * Assert correct order.
+
+    Run dotnet test. All 11 tests should pass (5 from =====prompt 2 + 6 new).
+
+    =====prompt 4:
+    Continuing Factory Configurator. =====prompt 3 complete, 11 tests passing.
+
+    Objective: Implement PartsTreeViewModel for UI binding. All tests must pass.
+
+    1. ViewModel (Configurator project, ViewModels folder)
+
+    * PartsTreeViewModel : ObservableObject
+      * Dependencies: IPartTypeService (injected)
+  
+      * Properties:
+        * ObservableCollection<PartType> RootParts
+        * PartType? SelectedPart (with OnPropertyChanged)
+        * string SearchText (filters visible parts)
+        * bool IsLoading
+  
+      * Commands (RelayCommand or AsyncRelayCommand):
+        * LoadPartsCommand - calls GetTreeAsync, populates RootParts
+        * AddPartCommand - opens dialog/creates new root part
+        * AddVariantCommand - enabled when SelectedPart?.IsTemplate == true
+        * DeletePartCommand - enabled when SelectedPart != null
+  
+      * Methods:
+        * FilterParts(string searchText) - filters RootParts by PartNumber or Name match
+
+    2. Tests in Tests/ViewModels/PartsTreeViewModelTests.cs
+
+    Use mocking (add Moq or NSubstitute to test project) for IPartTypeService.
+
+    * LoadParts_PopulatesRootParts
+      * Mock GetTreeAsync to return 3 root parts.
+      * Execute LoadPartsCommand.
+      * Assert RootParts.Count == 3.
+
+    * LoadParts_SetsIsLoadingDuringOperation
+      * Mock GetTreeAsync with delay.
+      * Start LoadPartsCommand.
+      * Assert IsLoading becomes true then false.
+
+    * SelectPart_UpdatesSelectedPart
+      * Set SelectedPart to a part.
+      * Assert SelectedPart is set.
+      * Assert PropertyChanged fired for "SelectedPart".
+
+    * AddVariantCommand_WhenTemplateSelected_IsEnabled
+      * Set SelectedPart to part with IsTemplate = true.
+      * Assert AddVariantCommand.CanExecute() returns true.
+
+    * AddVariantCommand_WhenNonTemplateSelected_IsDisabled
+      * Set SelectedPart to part with IsTemplate = false.
+      * Assert AddVariantCommand.CanExecute() returns false.
+
+    * FilterParts_MatchingSearch_ShowsMatches
+      * Load 3 parts: "ABC-001", "ABC-002", "XYZ-001".
+      * Set SearchText = "ABC".
+      * Assert filtered result contains 2 parts.
+
+    Run dotnet test. All 17 tests should pass.
+
+==========prompt 5:
+    Continuing Factory Configurator. =====prompt 4 complete, 17 tests passing.
+
+    Objective: Implement PartsTreeView XAML with data binding. Manual UI verification.
+
+    1. View (Configurator project, Views folder)
+
+    * PartsTreeView.xaml (UserControl):
+      * DataContext: PartsTreeViewModel
+  
+      * Layout:
+        * Grid with two columns (Left: tree, Right: detail panel)
+  
+      * Left panel - Parts tree:
+        * TreeView bound to RootParts
+        * HierarchicalDataTemplate with ItemsSource="{Binding Children}"
+        * Display: PartNumber - Name
+        * Template parts shown in bold or with icon
+        * SelectedItem bound to SelectedPart (use TreeView behavior or EventTrigger)
+  
+      * Right panel - Detail editor:
+        * Visible when SelectedPart != null
+        * TextBox: PartNumber (bound, UpdateSourceTrigger=PropertyChanged)
+        * TextBox: Name (bound)
+        * ComboBox: Category (ItemsSource from categories, SelectedValue bound to CategoryId)
+        * CheckBox: IsTemplate
+        * CheckBox: IsActive
+  
+      * Toolbar above tree:
+        * TextBox: Search (bound to SearchText)
+        * Button: Add Part (bound to AddPartCommand)
+        * Button: Add Variant (bound to AddVariantCommand)
+        * Button: Delete (bound to DeletePartCommand)
+
+    2. Wire up in MainWindow
+
+    * Add "Parts" tab to main TabControl
+    * Tab content: PartsTreeView with ViewModel resolved from DI or created
+
+    3. Manual verification
+
+    * Run application
+    * Verify parts tree loads with seed categories available
+    * Create new part, verify it appears in tree
+    * Create template, then create variant under it
+    * Verify variant appears as child of template
+    * Test search filtering
+    * Verify detail panel updates when selection changes
+
+    No new automated tests this =====prompt. Existing 17 tests should still pass.
+
+==========prompt 6:
+    Continuing Factory Configurator. =====prompt 5 complete, 17 tests passing, UI working.
+
+    Objective: Add part_Properties table with repository layer. All tests must pass.
+
+    1. Database schema
+
+    Add to CreatePartsSchemaAsync:
+
+    * part_Properties
+      * Id INTEGER PRIMARY KEY
+      * PartTypeId INTEGER NOT NULL UNIQUE REFERENCES part_Types(Id) ON DELETE CASCADE
+      * LengthMm REAL NULL
+      * WidthMm REAL NULL
+      * HeightMm REAL NULL
+      * WeightKg REAL NULL
+      * ContainerType TEXT NULL
+      * UnitsPerContainer INTEGER NULL
+      * RequiresForklift INTEGER NOT NULL DEFAULT 0
+      * Notes TEXT NULL
+
+    2. Core model
+
+    * PartProperties.cs:
+      * Id (int), PartTypeId (int)
+      * LengthMm (decimal?), WidthMm (decimal?), HeightMm (decimal?), WeightKg (decimal?)
+      * ContainerType (string?), UnitsPerContainer (int?)
+      * RequiresForklift (bool)
+      * Notes (string?)
+
+    3. Repository
+
+    * IPartPropertiesRepository:
+      * Task<PartProperties?> GetByPartTypeIdAsync(int partTypeId)
+      * Task SaveAsync(PartProperties properties) - insert or update (upsert)
+      * Task DeleteByPartTypeIdAsync(int partTypeId)
+
+    * PartPropertiesRepository implementation:
+      * SaveAsync: If exists, UPDATE. If not, INSERT. Use PartTypeId as key.
+
+    4. Tests in Tests/Repositories/PartPropertiesRepositoryTests.cs
+
+    * Save_NewProperties_Inserts
+      * Create a part.
+      * Save properties for that part.
+      * Assert GetByPartTypeIdAsync returns saved values.
+
+    * Save_ExistingProperties_Updates
+      * Create part and save properties with WeightKg = 1.0.
+      * Update properties with WeightKg = 2.0.
+      * Assert GetByPartTypeIdAsync returns WeightKg = 2.0.
+
+    * GetByPartTypeId_NoProperties_ReturnsNull
+      * Create part without properties.
+      * Assert GetByPartTypeIdAsync returns null.
+
+    * DeletePart_CascadesDeleteProperties
+      * Create part with properties.
+      * Delete the part via PartTypeRepository.
+      * Assert GetByPartTypeIdAsync returns null (cascade worked).
+
+    Run dotnet test. All 21 tests should pass.
+
+==========prompt 7
+    Continuing Factory Configurator. =====prompt 6 complete, 21 tests passing.
+
+    Objective: Implement property inheritance from template to variant. All tests must pass.
+
+    1. Service
+
+    * IPartPropertiesService:
+      * Task<PartProperties?> GetPropertiesAsync(int partTypeId)
+      * Task<PartProperties> GetEffectivePropertiesAsync(int partTypeId)
+      * Task SavePropertiesAsync(int partTypeId, PartProperties properties)
+
+    * PartPropertiesService:
+      * Dependencies: IPartPropertiesRepository, IPartTypeRepository
+  
+      * GetPropertiesAsync: Direct lookup, returns null if none.
+  
+      * GetEffectivePropertiesAsync:
+        * Get part's own properties.
+        * If part has ParentPartTypeId, get parent's effective properties (recursive).
+        * Merge: For each nullable field, use own value if not null, else parent's value.
+        * RequiresForklift: Use own value if properties exist, else parent's.
+        * Return merged result.
+  
+      * SavePropertiesAsync: Delegates to repository.
+
+    2. Tests in Tests/Services/PartPropertiesServiceTests.cs
+
+    * GetEffectiveProperties_NoParent_ReturnsOwnProperties
+      * Create part with properties (WeightKg = 5.0).
+      * Assert GetEffectivePropertiesAsync returns WeightKg = 5.0.
+
+    * GetEffectiveProperties_VariantNoProperties_ReturnsTemplateProperties
+      * Create template with properties (LengthMm = 100, WeightKg = 2.0).
+      * Create variant under template with no properties.
+      * Assert GetEffectivePropertiesAsync(variant) returns LengthMm = 100, WeightKg = 2.0.
+
+    * GetEffectiveProperties_VariantPartialOverride_MergesCorrectly
+      * Create template with LengthMm = 100, WidthMm = 50, WeightKg = 2.0.
+      * Create variant with WeightKg = 3.0 only (LengthMm and WidthMm null).
+      * Assert GetEffectivePropertiesAsync(variant):
+        * LengthMm = 100 (from template)
+        * WidthMm = 50 (from template)
+        * WeightKg = 3.0 (variant override)
+
+    * GetEffectiveProperties_ThreeLevelInheritance_MergesAllLevels
+      * Create grandparent with LengthMm = 100.
+      * Create parent (under grandparent) with WidthMm = 50.
+      * Create child (under parent) with HeightMm = 25.
+      * Assert GetEffectivePropertiesAsync(child) has all three values.
+
+    * GetEffectiveProperties_NoPropertiesAnywhere_ReturnsDefaults
+      * Create template with no properties.
+      * Create variant with no properties.
+      * Assert GetEffectivePropertiesAsync(variant) returns non-null object with null/default fields.
+
+    Run dotnet test. All 26 tests should pass.
+==========prompt 8
+    Continuing Factory Configurator. =====prompt 7 complete, 26 tests passing.
+
+    Objective: Add properties editing to PartsTreeView. Manual verification.
+
+    1. ViewModel additions
+
+    * PartsTreeViewModel additions:
+      * PartProperties? CurrentProperties (effective properties for SelectedPart)
+      * PartProperties? LocalProperties (part's own properties, may be null)
+      * SavePropertiesCommand
+  
+      * When SelectedPart changes:
+        * Load CurrentProperties via GetEffectivePropertiesAsync
+        * Load LocalProperties via GetPropertiesAsync
+  
+      * Property display helper:
+        * For each field, track IsInherited (LocalProperties field is null but CurrentProperties field has value)
+
+    2. View updates
+
+    * Add tabs to detail panel:
+      * Tab 1: General (existing fields)
+      * Tab 2: Physical Properties
+        * LengthMm, WidthMm, HeightMm - TextBoxes
+        * WeightKg - TextBox
+        * Each field: show inherited value in gray if IsInherited, editable value in black
+      * Tab 3: Handling
+        * ContainerType - ComboBox (Box, Pallet, Bin, Tote, Loose)
+        * UnitsPerContainer - TextBox
+        * RequiresForklift - CheckBox
+        * Notes - TextBox multiline
+
+    * Save button calls SavePropertiesCommand
+
+    3. Inheritance visual indicator
+
+    * Inherited fields: Background light gray or italic text
+    * Tooltip: "Inherited from [TemplateName]"
+    * When user enters value, field becomes "local override"
+    * Clear button or empty value reverts to inherited
+
+    4. Manual verification
+
+    * Create template with all properties set
+    * Create variant with no properties
+    * Verify variant shows inherited values (visually distinct)
+    * Edit one property on variant
+    * Save and reload - verify override persisted, others still inherited
+
+    No new automated tests. Existing 26 tests should pass.
+
+==========prompt 9
+
+    Continuing Factory Configurator. =====prompt 8 complete, 26 tests passing, properties UI working.
+
+    Objective: Add BOM tables and models. All tests must pass.
+
+    1. Database schema
+
+    Add CreateBomSchemaAsync method, call from CreateSchemaAsync:
+
+    * part_BOMs
+      * Id INTEGER PRIMARY KEY
+      * ParentPartTypeId INTEGER NOT NULL REFERENCES part_Types(Id) ON DELETE CASCADE
+      * Version TEXT NOT NULL DEFAULT '1.0'
+      * IsActive INTEGER NOT NULL DEFAULT 1
+      * Notes TEXT NULL
+      * CreatedAt TEXT NULL
+      * ModifiedAt TEXT NULL
+      * UNIQUE(ParentPartTypeId, Version)
+
+    * part_BOMItems
+      * Id INTEGER PRIMARY KEY
+      * BOMId INTEGER NOT NULL REFERENCES part_BOMs(Id) ON DELETE CASCADE
+      * ChildPartTypeId INTEGER NOT NULL REFERENCES part_Types(Id) ON DELETE RESTRICT
+      * Quantity REAL NOT NULL CHECK(Quantity > 0)
+      * Unit TEXT NOT NULL
+      * Position INTEGER NULL
+      * Notes TEXT NULL
+      * UNIQUE(BOMId, ChildPartTypeId)
+
+    2. Core models
+
+    * BillOfMaterials.cs:
+      * Id (int), ParentPartTypeId (int), Version (string), IsActive (bool)
+      * Notes (string?), CreatedAt (DateTime?), ModifiedAt (DateTime?)
+      * Items (List<BOMItem>) - navigation property
+
+    * BOMItem.cs:
+      * Id (int), BOMId (int), ChildPartTypeId (int)
+      * Quantity (decimal), Unit (string), Position (int?)
+      * Notes (string?)
+      * ChildPartType (PartType?) - navigation property for display
+
+    * BOMExplosionLine.cs:
+      * Level (int)
+      * PartTypeId (int)
+      * PartNumber (string)
+      * PartName (string)
+      * Quantity (decimal)
+      * Unit (string)
+      * Path (string) - e.g., "Assembly > Subassembly > Component"
+
+    3. Tests in Tests/Models/BomModelTests.cs
+
+    Basic model instantiation tests:
+
+    * BillOfMaterials_DefaultValues_AreCorrect
+      * New BOM has IsActive = true (or appropriate default).
+      * Items list is initialized empty.
+
+    * BOMItem_QuantityMustBePositive
+      * If using validation attributes, test they're applied.
+      * Or just document constraint is in DB.
+
+    Run dotnet test. All 28 tests should pass (26 + 2 model tests).
+
+==========prompt 10
+
+    Continuing Factory Configurator. =====prompt 9 complete, 28 tests passing.
+
+    Objective: Implement BOM repository with item management. All tests must pass.
+
+    1. Repository
+
+    * IBomRepository:
+      * Task<BillOfMaterials?> GetByIdAsync(int bomId)
+      * Task<BillOfMaterials?> GetByPartTypeAsync(int partTypeId) - active BOM
+      * Task<IReadOnlyList<BillOfMaterials>> GetAllVersionsAsync(int partTypeId)
+      * Task<BillOfMaterials?> GetWithItemsAsync(int bomId) - includes Items populated
+      * Task<int> CreateAsync(BillOfMaterials bom)
+      * Task UpdateAsync(BillOfMaterials bom)
+      * Task DeleteAsync(int bomId)
+      * Task AddItemAsync(int bomId, BOMItem item)
+      * Task UpdateItemAsync(BOMItem item)
+      * Task RemoveItemAsync(int bomItemId)
+
+    * BomRepository implementation:
+      * GetByPartTypeAsync: Returns BOM where IsActive = 1 for given part.
+      * GetWithItemsAsync: Joins part_BOMItems with part_Types for ChildPartType name/number.
+      * AddItemAsync: Inserts item, returns with Id set.
+      * Duplicate ChildPartTypeId in same BOM throws InvalidOperationException with "duplicate".
+
+    2. Tests in Tests/Repositories/BomRepositoryTests.cs
+
+    * CreateBom_ValidData_ReturnsId
+      * Create part, create BOM for it.
+      * Assert Id > 0.
+
+    * GetByPartType_ActiveBom_ReturnsBom
+      * Create part with active BOM.
+      * Assert GetByPartTypeAsync returns the BOM.
+
+    * GetByPartType_NoBom_ReturnsNull
+      * Create part without BOM.
+      * Assert GetByPartTypeAsync returns null.
+
+    * GetWithItems_ReturnsPopulatedItems
+      * Create BOM with 3 items.
+      * Assert GetWithItemsAsync returns BOM with Items.Count = 3.
+      * Assert each item has ChildPartType.PartNumber populated.
+
+    * AddItem_DuplicateChild_ThrowsException
+      * Create BOM, add item with ChildPartTypeId = X.
+      * Attempt to add another item with same ChildPartTypeId.
+      * Assert throws InvalidOperationException with "duplicate".
+
+    * RemoveItem_RemovesFromBom
+      * Create BOM with 2 items.
+      * Remove one item.
+      * Assert GetWithItemsAsync returns 1 item.
+
+    * DeleteBom_CascadesItems
+      * Create BOM with items.
+      * Delete BOM.
+      * Assert items are also deleted (query part_BOMItems directly or via repo method).
+
+    Run dotnet test. All 35 tests should pass.
+
+
+==========prompt 11
+
+    Continuing Factory Configurator. =====prompt 10 complete, 35 tests passing.
+
+    Objective: Implement BOM explosion and circular reference detection. All tests must pass.
+
+    1. Service
+
+    * IBomService:
+      * Task<IReadOnlyList<BOMExplosionLine>> ExplodeBOMAsync(int bomId, int maxLevels = 10)
+      * Task<bool> DetectCircularReferenceAsync(int bomId, int candidateChildPartTypeId)
+      * Task<IReadOnlyList<BillOfMaterials>> GetWhereUsedAsync(int partTypeId)
+      * Task<int> CloneBOMAsync(int bomId, string newVersion)
+
+    * BomService implementation:
+  
+      * ExplodeBOMAsync:
+        * Recursively expand BOM items.
+        * For each item, if child part has its own active BOM, expand it.
+        * Multiply quantities through levels.
+        * Track Level (1 = direct child, 2 = grandchild, etc.).
+        * Build Path string showing hierarchy.
+        * Stop at maxLevels to prevent infinite loops.
+        * Return flat list sorted by path/level.
+  
+      * DetectCircularReferenceAsync:
+        * If candidateChildPartTypeId is added to this BOM, would it create a cycle?
+        * Get the BOM's ParentPartTypeId.
+        * Recursively check if candidateChildPartTypeId's BOM contains ParentPartTypeId anywhere in its tree.
+        * Return true if cycle would be created.
+  
+      * GetWhereUsedAsync:
+        * Find all BOMs that contain this partTypeId as a child item.
+        * Return list of parent assemblies.
+  
+      * CloneBOMAsync:
+        * Copy BOM and all items with new version string.
+        * Return new BOM Id.
+
+    2. Tests in Tests/Services/BomServiceTests.cs
+
+    * ExplodeBOM_SingleLevel_ReturnsDirectChildren
+      * Assembly with 3 components (no sub-BOMs).
+      * Assert explosion returns 3 lines, all Level = 1.
+
+    * ExplodeBOM_TwoLevels_MultipliesQuantities
+      * Assembly needs 2x Subassembly.
+      * Subassembly needs 3x Component.
+      * Assert explosion shows Component with Quantity = 6 (2 * 3).
+
+    * ExplodeBOM_ThreeLevels_CalculatesCorrectly
+      * A (2x B), B (3x C), C (4x D).
+      * Assert D appears with Quantity = 24.
+      * Assert Level = 3 for D.
+
+    * ExplodeBOM_MaxLevelsRespected
+      * Create 5-level deep BOM.
+      * Call ExplodeBOMAsync with maxLevels = 3.
+      * Assert no items with Level > 3.
+
+    * DetectCircular_DirectCycle_ReturnsTrue
+      * Assembly A contains Component B.
+      * Attempt to add A as child of B's BOM.
+      * Assert DetectCircularReferenceAsync returns true.
+
+    * DetectCircular_IndirectCycle_ReturnsTrue
+      * A contains B, B contains C.
+      * Attempt to add A as child of C's BOM.
+      * Assert returns true.
+
+    * DetectCircular_NoCycle_ReturnsFalse
+      * A contains B.
+      * Attempt to add unrelated part D to A's BOM.
+      * Assert returns false.
+
+    * GetWhereUsed_ReturnsAllParentAssemblies
+      * Component X is used in Assembly A, Assembly B, Assembly C.
+      * Assert GetWhereUsedAsync(X) returns 3 assemblies.
+
+    * CloneBOM_CopiesAllItems
+      * Create BOM with 3 items.
+      * Clone with new version.
+      * Assert new BOM exists with same 3 items.
+      * Assert original BOM unchanged.
+
+    Run dotnet test. All 44 tests should pass.
+
+
+==========prompt 12
+
+    Continuing Factory Configurator. =====prompt 11 complete, 44 tests passing.
+
+    Objective: Implement BOM editing UI. Manual verification.
+
+    1. ViewModel
+
+    * BomViewModel : ObservableObject
+      * Dependencies: IBomService, IBomRepository, IPartTypeService
+  
+      * Properties:
+        * PartType? SelectedPartType (bound from parts tree selection)
+        * BillOfMaterials? CurrentBOM
+        * ObservableCollection<BOMItem> Items
+        * BOMItem? SelectedItem
+        * ObservableCollection<BOMExplosionLine> ExplosionLines
+  
+      * Commands:
+        * LoadBOMCommand - loads BOM for SelectedPartType
+        * AddItemCommand - opens part picker, adds to BOM
+        * RemoveItemCommand - removes SelectedItem
+        * ExplodeCommand - calls ExplodeBOMAsync, populates ExplosionLines
+        * ShowWhereUsedCommand - shows dialog with parent assemblies
+
+    2. Views
+
+    * BomEditorView.xaml (UserControl):
+      * Header: "BOM for [PartNumber]", Version display
+      * DataGrid for Items:
+        * Columns: Part Number | Part Name | Quantity | Unit | Remove button
+        * Quantity editable in grid
+      * Toolbar: Add Component, Remove Selected, Save
+      * Explode button opens explosion dialog
+
+    * PartPickerDialog.xaml:
+      * Searchable list of parts
+      * Filter: exclude current assembly and ancestors (prevent obvious cycles)
+      * Returns selected PartType and quantity/unit
+
+    * BomExplosionDialog.xaml:
+      * DataGrid showing explosion:
+        * Columns: Level (or indentation) | Part Number | Name | Quantity | Unit
+      * Level indicated by indent or numeric column
+      * Read-only display
+
+    3. Integration
+
+    * Add BOM tab to part detail panel (shows when part selected has or can have BOM)
+    * Or: Separate BOM tab in main window that responds to part selection
+
+    4. Manual verification
+
+    * Select a FinishedGood part
+    * Create BOM, add 3 components with quantities
+    * Save, reload, verify items persist
+    * Add subassembly that has its own BOM
+    * Run explosion, verify quantities multiply correctly
+    * Test circular reference prevention: try to add parent as child
+
+    No new automated tests. Existing 44 tests should pass.
+
+=====prompt 13
+
+    Continuing Factory Configurator. =====prompt 12 complete, 44 tests passing, BOM UI working.
+
+    Objective: Add workstation configuration linked to layout Elements. All tests must pass.
+
+    1. Database schema
+
+    Add CreateWorkstationsSchemaAsync method, call from CreateSchemaAsync:
+
+    * cfg_Workstations
+      * Id INTEGER PRIMARY KEY
+      * ElementId INTEGER NOT NULL UNIQUE
+      * Name TEXT NULL
+      * WorkstationType TEXT NOT NULL
+      * Capacity INTEGER NOT NULL DEFAULT 1
+      * IsActive INTEGER NOT NULL DEFAULT 1
+      * Notes TEXT NULL
+      * FOREIGN KEY (ElementId) REFERENCES Elements(Id) ON DELETE CASCADE
+
+    Note: Elements table exists from Stage 1. Ensure test schema includes minimal Elements table:
+    * Elements (Id INTEGER PRIMARY KEY, Name TEXT, ElementType TEXT, LayoutId INTEGER)
+
+    2. Seed test data
+
+    Add SeedWorkstationsDataAsync:
+    * Insert 3-5 test Elements with ElementType values like "Machine", "Station", "Inspection"
+
+    3. Enums (Core project)
+
+    * WorkstationType: Assembly, Machining, Inspection, Packaging, Storage, LoadUnload, Manual
+
+    4. Core model
+
+    * Workstation.cs:
+      * Id (int), ElementId (int), Name (string?)
+      * WorkstationType (WorkstationType enum)
+      * Capacity (int), IsActive (bool), Notes (string?)
+      * ElementName (string?) - populated from join for display
+
+    5. Repository
+
+    * IWorkstationRepository:
+      * Task<IReadOnlyList<Workstation>> GetAllAsync()
+      * Task<Workstation?> GetByIdAsync(int id)
+      * Task<Workstation?> GetByElementIdAsync(int elementId)
+      * Task<IReadOnlyList<Workstation>> GetByTypeAsync(WorkstationType type)
+      * Task<int> CreateAsync(Workstation workstation)
+      * Task UpdateAsync(Workstation workstation)
+      * Task DeleteAsync(int id)
+
+    * WorkstationRepository:
+      * GetAllAsync joins with Elements to populate ElementName.
+      * CreateAsync with duplicate ElementId throws InvalidOperationException.
+
+    6. Tests in Tests/Repositories/WorkstationRepositoryTests.cs
+
+    * CreateWorkstation_ValidData_ReturnsId
+      * Create workstation for existing Element.
+      * Assert Id > 0.
+
+    * CreateWorkstation_DuplicateElementId_ThrowsException
+      * Create workstation for Element X.
+      * Attempt second workstation for Element X.
+      * Assert throws InvalidOperationException.
+
+    * GetAll_IncludesElementName
+      * Create workstation.
+      * Assert GetAllAsync result has ElementName populated.
+
+    * GetByType_FiltersCorrectly
+      * Create 2 Assembly workstations, 1 Machining.
+      * Assert GetByTypeAsync(Assembly) returns exactly 2.
+
+    * DeleteElement_CascadesWorkstation
+      * Create workstation for Element.
+      * Delete Element directly (simulate Stage 1 action).
+      * Assert GetByElementIdAsync returns null.
+
+    Run dotnet test. All 49 tests should pass.
+
+
+=====prompt 14
+
+    Continuing Factory Configurator. =====prompt 13 complete, 49 tests passing.
+
+    Objective: Implement workstation sync with layout and basic UI. All tests must pass.
+
+    1. Service
+
+    * IWorkstationService:
+      * Task SyncWithLayoutAsync()
+      * Task<IReadOnlyList<Workstation>> GetAllWithElementInfoAsync()
+
+    * WorkstationService:
+      * SyncWithLayoutAsync:
+        * Query Elements table for elements that should be workstations (ElementType in 'Machine', 'Station', 'Inspection', 'Assembly', 'Packaging').
+        * For each Element without a Workstation entry, create one with default WorkstationType based on ElementType.
+        * For each Workstation whose Element no longer exists, mark IsActive = false.
+        * Do not delete workstations (preserve configuration history).
+  
+      * ElementType to WorkstationType mapping:
+        * "Machine" → Machining
+        * "Station" → Manual
+        * "Inspection" → Inspection
+        * "Assembly" → Assembly
+        * "Packaging" → Packaging
+        * Default → Manual
+
+    2. Tests in Tests/Services/WorkstationServiceTests.cs
+
+    * SyncWithLayout_NewElements_CreatesWorkstations
+      * Insert 3 Elements without workstations.
+      * Call SyncWithLayoutAsync.
+      * Assert 3 workstations created.
+
+    * SyncWithLayout_ExistingWorkstation_NotDuplicated
+      * Create Element and Workstation.
+      * Call SyncWithLayoutAsync.
+      * Assert still only 1 workstation for that Element.
+
+    * SyncWithLayout_DeletedElement_MarksInactive
+      * Create Element and Workstation.
+      * Delete Element.
+      * Call SyncWithLayoutAsync.
+      * Assert Workstation.IsActive = false.
+
+    * SyncWithLayout_MapsElementTypeCorrectly
+      * Create Element with ElementType = "Machine".
+      * Call SyncWithLayoutAsync.
+      * Assert created Workstation has WorkstationType = Machining.
+
+    3. View
+
+    * WorkstationsView.xaml (new main tab):
+      * Toolbar: "Sync with Layout" button, filter by WorkstationType
+      * DataGrid:
+        * Columns: Element Name | Type | Capacity | Active | Notes
+        * Grouped by WorkstationType
+      * Detail panel (when row selected):
+        * WorkstationType dropdown
+        * Capacity input
+        * Notes textbox
+        * Save button
+
+    4. Manual verification
+
+    * Add Elements in test data or via Stage 1
+    * Click Sync - verify workstations created
+    * Edit WorkstationType, Capacity
+    * Save and reload
+
+    Run dotnet test. All 53 tests should pass.
+
+
+=====prompt 15
+
+    Continuing Factory Configurator. =====prompt 14 complete, 53 tests passing.
+
+    Objective: Assign parts to workstations (what can be processed where). All tests must pass.
+
+    1. Database schema
+
+    Add to CreateWorkstationsSchemaAsync:
+
+    * cfg_WorkstationParts
+      * Id INTEGER PRIMARY KEY
+      * WorkstationId INTEGER NOT NULL REFERENCES cfg_Workstations(Id) ON DELETE CASCADE
+      * PartTypeId INTEGER NOT NULL REFERENCES part_Types(Id) ON DELETE CASCADE
+      * Priority INTEGER NOT NULL DEFAULT 0
+      * Notes TEXT NULL
+      * UNIQUE(WorkstationId, PartTypeId)
+
+    2. Model
+
+    * WorkstationPart.cs:
+      * Id (int), WorkstationId (int), PartTypeId (int)
+      * Priority (int), Notes (string?)
+      * PartType (PartType?) - navigation for display
+
+    3. Repository additions to IWorkstationRepository
+
+      * Task<IReadOnlyList<WorkstationPart>> GetPartsForWorkstationAsync(int workstationId)
+      * Task<IReadOnlyList<Workstation>> GetWorkstationsForPartAsync(int partTypeId)
+      * Task AssignPartAsync(int workstationId, int partTypeId, int priority = 0)
+      * Task UnassignPartAsync(int workstationId, int partTypeId)
+
+    4. Tests in Tests/Repositories/WorkstationPartRepositoryTests.cs
+
+    * AssignPart_CreatesRecord
+      * Assign part to workstation.
+      * Assert GetPartsForWorkstationAsync includes the part.
+
+    * AssignPart_Duplicate_ThrowsException
+      * Assign part X to workstation.
+      * Attempt to assign part X again.
+      * Assert throws (or silently ignores - pick one, test it).
+
+    * GetWorkstationsForPart_ReturnsAllAssigned
+      * Assign Part X to Workstation A, B, C.
+      * Assert GetWorkstationsForPartAsync(X) returns 3 workstations.
+
+    * UnassignPart_RemovesRecord
+      * Assign and then unassign.
+      * Assert GetPartsForWorkstationAsync no longer includes the part.
+
+    * DeleteWorkstation_CascadesAssignments
+      * Assign part to workstation.
+      * Delete workstation.
+      * Assert assignment record gone.
+
+    * DeletePart_CascadesAssignments
+      * Assign part to workstation.
+      * Delete part.
+      * Assert assignment record gone.
+
+    5. View updates
+
+    * Workstation detail panel - new tab: "Assigned Parts"
+      * DataGrid: Part Number | Part Name | Priority | Remove button
+      * "Add Part" button opens part picker
+      * Priority editable in grid
+
+    Run dotnet test. All 59 tests should pass.
+
+
+=====prompt 16
+
+    Continuing Factory Configurator. =====prompt 15 complete, 59 tests passing.
+
+    Objective: Add process times table with scenario support. All tests must pass.
+
+    1. Database schema
+
+    Add CreateProcessTimesSchemaAsync method, call from CreateSchemaAsync:
+
+    * cfg_ProcessTimes
+      * Id INTEGER PRIMARY KEY
+      * ScenarioId INTEGER NOT NULL REFERENCES Scenarios(Id) ON DELETE CASCADE
+      * WorkstationId INTEGER NOT NULL REFERENCES cfg_Workstations(Id) ON DELETE CASCADE
+      * PartTypeId INTEGER NULL REFERENCES part_Types(Id) ON DELETE CASCADE
+      * ProcessTimeSec REAL NOT NULL CHECK(ProcessTimeSec >= 0)
+      * LoadTimeSec REAL NOT NULL DEFAULT 0 CHECK(LoadTimeSec >= 0)
+      * UnloadTimeSec REAL NOT NULL DEFAULT 0 CHECK(UnloadTimeSec >= 0)
+      * Notes TEXT NULL
+      * UNIQUE(ScenarioId, WorkstationId, PartTypeId)
+
+    Note: PartTypeId NULL = default time for any part at this workstation.
+
+    2. Model
+
+    * ProcessTime.cs:
+      * Id (int), ScenarioId (int), WorkstationId (int), PartTypeId (int?)
+      * ProcessTimeSec (decimal), LoadTimeSec (decimal), UnloadTimeSec (decimal)
+      * Notes (string?)
+      * Computed: TotalCycleTime => LoadTimeSec + ProcessTimeSec + UnloadTimeSec
+
+    3. Repository
+
+    * IProcessTimeRepository:
+      * Task<ProcessTime?> GetAsync(int scenarioId, int workstationId, int? partTypeId)
+      * Task<IReadOnlyList<ProcessTime>> GetAllForWorkstationAsync(int scenarioId, int workstationId)
+      * Task<IReadOnlyList<ProcessTime>> GetAllForScenarioAsync(int scenarioId)
+      * Task<int> CreateAsync(ProcessTime time)
+      * Task UpdateAsync(ProcessTime time)
+      * Task DeleteAsync(int id)
+
+    * ProcessTimeRepository:
+      * GetAsync: exact match on all three keys (scenarioId, workstationId, partTypeId).
+      * Duplicate key combination throws InvalidOperationException.
+
+    4. Tests in Tests/Repositories/ProcessTimeRepositoryTests.cs
+
+    * Create_ValidData_ReturnsId
+      * Create process time.
+      * Assert Id > 0.
+
+    * Create_DuplicateKey_ThrowsException
+      * Create time for (Scenario 1, Workstation 1, Part 1).
+      * Attempt duplicate.
+      * Assert throws InvalidOperationException.
+
+    * Create_NullPartTypeId_AllowedOnce
+      * Create time for (Scenario 1, Workstation 1, NULL).
+      * Assert succeeds.
+      * Attempt second (Scenario 1, Workstation 1, NULL).
+      * Assert throws.
+
+    * GetAllForWorkstation_ReturnsCorrectTimes
+      * Create 3 times for Workstation 1, 2 times for Workstation 2.
+      * Assert GetAllForWorkstationAsync(Workstation 1) returns 3.
+
+    * DeleteScenario_CascadesTimes
+      * Create process time in scenario.
+      * Delete scenario.
+      * Assert GetAsync returns null.
+
+    Run dotnet test. All 64 tests should pass.
+
+
+=====prompt 17
+
+    Continuing Factory Configurator. =====prompt 16 complete, 64 tests passing.
+
+    Objective: Implement process time lookup with scenario/part fallback. All tests must pass.
+
+    1. Service
+
+    * IProcessTimeService:
+      * Task<ProcessTime?> GetEffectiveTimeAsync(int scenarioId, int workstationId, int partTypeId)
+      * Task<decimal?> GetCycleTimeAsync(int scenarioId, int workstationId, int partTypeId)
+      * Task CopyFromScenarioAsync(int sourceScenarioId, int targetScenarioId, int workstationId)
+      * Task SaveAsync(ProcessTime time)
+
+    * ProcessTimeService:
+      * Dependencies: IProcessTimeRepository, IScenarioRepository
+  
+      * GetEffectiveTimeAsync fallback order:
+        1. Exact: (scenarioId, workstationId, partTypeId)
+        2. Scenario default: (scenarioId, workstationId, NULL)
+        3. Base scenario specific: (baseScenarioId, workstationId, partTypeId)
+        4. Base scenario default: (baseScenarioId, workstationId, NULL)
+        5. Return null if nothing found
+    
+        Note: Get baseScenarioId from Scenarios table (ParentScenarioId chain or IsBase = 1)
+  
+      * GetCycleTimeAsync:
+        * Get effective time.
+        * Return TotalCycleTime (Load + Process + Unload) or null if no time found.
+  
+      * CopyFromScenarioAsync:
+        * Copy all times for workstation from source to target scenario.
+        * Skip if target already has entry (don't overwrite).
+
+    2. Tests in Tests/Services/ProcessTimeServiceTests.cs
+
+    * GetEffectiveTime_ExactMatch_ReturnsIt
+      * Create time for (Scenario, Workstation, Part).
+      * Assert GetEffectiveTimeAsync returns that time.
+
+    * GetEffectiveTime_NoExact_ReturnsScenarioDefault
+      * Create time for (Scenario, Workstation, NULL).
+      * Query for (Scenario, Workstation, SomeOtherPart).
+      * Assert returns the default time.
+
+    * GetEffectiveTime_NoScenarioEntry_FallsBackToBase
+      * Create time in Base scenario for (Base, Workstation, Part).
+      * Create child scenario with no times.
+      * Query child scenario.
+      * Assert returns Base scenario time.
+
+    * GetEffectiveTime_NothingExists_ReturnsNull
+      * Query for time that doesn't exist anywhere.
+      * Assert returns null.
+
+    * GetEffectiveTime_ChildOverridesBase
+      * Create time in Base (ProcessTimeSec = 10).
+      * Create same key in Child (ProcessTimeSec = 5).
+      * Query Child.
+      * Assert returns 5, not 10.
+
+    * GetCycleTime_SumsCorrectly
+      * Create time with Load=5, Process=30, Unload=5.
+      * Assert GetCycleTimeAsync returns 40.
+
+    * CopyFromScenario_CopiesAllTimes
+      * Create 3 times in Base for a workstation.
+      * Copy to Child scenario.
+      * Assert Child has 3 times with same values.
+
+    * CopyFromScenario_DoesNotOverwriteExisting
+      * Create time in Base (ProcessTimeSec = 10).
+      * Create same key in Child (ProcessTimeSec = 5).
+      * Call CopyFromScenario.
+      * Assert Child still has 5.
+
+    Run dotnet test. All 72 tests should pass.
+
+
+=====prompt 18
+
+    Continuing Factory Configurator. =====prompt 17 complete, 72 tests passing.
+
+    Objective: Implement process times editing UI. Manual verification.
+
+    1. ViewModel
+
+    * ProcessTimesViewModel : ObservableObject
+      * Dependencies: IProcessTimeService, IWorkstationRepository, IPartTypeRepository
+  
+      * Properties:
+        * int SelectedScenarioId (from main window scenario selector)
+        * Workstation? SelectedWorkstation
+        * ObservableCollection<Workstation> Workstations
+        * ObservableCollection<ProcessTimeRow> TimeRows
+        * ProcessTimeRow? SelectedTimeRow
+  
+      * ProcessTimeRow (display model):
+        * ProcessTime Time
+        * string PartDisplay (PartNumber or "[Default]" if PartTypeId null)
+        * bool IsInherited (true if from base scenario)
+        * decimal TotalCycleTime
+  
+      * Commands:
+        * LoadCommand - loads workstations
+        * SelectWorkstationCommand - loads times for selected workstation
+        * AddTimeCommand - add new time entry
+        * DeleteTimeCommand - remove selected
+        * SaveCommand - save changes
+        * CopyFromBaseCommand - copies base times to current scenario
+
+    2. View
+
+    * ProcessTimesView.xaml (new main tab):
+      * Toolbar:
+        * Workstation dropdown (filter times by workstation)
+        * "Copy from Base" button (enabled when not Base scenario)
+      * DataGrid:
+        * Columns: Part (or Default) | Process (sec) | Load (sec) | Unload (sec) | Total | Notes
+        * Inherited rows shown in italic or gray background
+        * Editable cells for times
+      * Add/Delete buttons
+      * Save button
+
+    3. Inheritance indicator
+
+    * Times inherited from Base scenario: show visually distinct (gray/italic)
+    * Tooltip: "Inherited from Base scenario"
+    * When user edits inherited row, create new entry in current scenario (override)
+
+    4. Manual verification
+
+    * Select Base scenario, add process times for a workstation
+    * Create child scenario, select it
+    * Verify times show as inherited
+    * Edit one time, verify it becomes a local override
+    * Add new time in child, verify it's not in Base
+    * Test Copy from Base button
+
+    No new automated tests. Existing 72 tests should pass.
+
+
+=====prompt 19
+
+    Continuing Factory Configurator. =====prompt 18 complete, 72 tests passing, process times UI working.
+
+    Objective: Implement setup/changeover times. All tests must pass.
+
+    1. Database schema
+
+    Add to CreateProcessTimesSchemaAsync:
+
+    * cfg_SetupTimes
+      * Id INTEGER PRIMARY KEY
+      * ScenarioId INTEGER NOT NULL REFERENCES Scenarios(Id) ON DELETE CASCADE
+      * WorkstationId INTEGER NOT NULL REFERENCES cfg_Workstations(Id) ON DELETE CASCADE
+      * FromPartTypeId INTEGER NULL REFERENCES part_Types(Id) ON DELETE CASCADE
+      * ToPartTypeId INTEGER NULL REFERENCES part_Types(Id) ON DELETE CASCADE
+      * SetupTimeSec REAL NOT NULL CHECK(SetupTimeSec >= 0)
+      * Notes TEXT NULL
+      * UNIQUE(ScenarioId, WorkstationId, FromPartTypeId, ToPartTypeId)
+
+    Note: FromPartTypeId NULL = initial setup (cold start). ToPartTypeId NULL = teardown.
+
+    2. Model
+
+    * SetupTime.cs:
+      * Id (int), ScenarioId (int), WorkstationId (int)
+      * FromPartTypeId (int?), ToPartTypeId (int?)
+      * SetupTimeSec (decimal), Notes (string?)
+
+    3. Repository
+
+    * ISetupTimeRepository:
+      * Task<SetupTime?> GetAsync(int scenarioId, int workstationId, int? fromPartId, int? toPartId)
+      * Task<IReadOnlyList<SetupTime>> GetAllForWorkstationAsync(int scenarioId, int workstationId)
+      * Task<int> CreateAsync(SetupTime time)
+      * Task UpdateAsync(SetupTime time)
+      * Task DeleteAsync(int id)
+
+    4. Service
+
+    * ISetupTimeService:
+      * Task<decimal?> GetSetupTimeAsync(int scenarioId, int workstationId, int? fromPartId, int toPartId)
+      * Task<IReadOnlyList<SetupTime>> GetMatrixAsync(int scenarioId, int workstationId)
+
+    5. Tests in Tests/Services/SetupTimeServiceTests.cs
+
+    * GetSetupTime_ExactMatch_ReturnsTime
+      * Create setup time for Part A → Part B = 120 sec.
+      * Assert GetSetupTimeAsync returns 120.
+
+    * GetSetupTime_InitialSetup_FromNull
+      * Create setup time for NULL → Part A = 300 sec.
+      * Assert GetSetupTimeAsync(null, PartA) returns 300.
+
+    * GetSetupTime_Teardown_ToNull
+      * Create setup time for Part A → NULL = 60 sec.
+      * Assert GetSetupTimeAsync(PartA, null) returns 60.
+
+    * GetSetupTime_NoEntry_ReturnsNull
+      * Query for nonexistent combination.
+      * Assert returns null.
+
+    * GetMatrix_ReturnsAllForWorkstation
+      * Create 5 setup times for workstation.
+      * Assert GetMatrixAsync returns 5.
+
+    6. View
+
+    * SetupTimesView.xaml (sub-view or separate tab):
+      * Workstation selector
+      * DataGrid approach (not pivot matrix):
+        * Columns: From Part | To Part | Setup Time (sec) | Notes
+        * "Initial" shown for From = NULL
+        * "Teardown" shown for To = NULL
+      * Add/Edit/Delete buttons
+
+    Run dotnet test. All 77 tests should pass.
+
+
+=====prompt 20
+
+    Continuing Factory Configurator. =====prompt 19 complete, 77 tests passing.
+
+    Objective: Implement operator resources. All tests must pass.
+
+    1. Database schema
+
+    Add CreateOperatorsSchemaAsync method, call from CreateSchemaAsync:
+
+    * res_OperatorTypes
+      * Id INTEGER PRIMARY KEY
+      * Name TEXT NOT NULL UNIQUE
+      * HourlyRate REAL NULL
+      * Color TEXT NULL
+
+    * res_Operators
+      * Id INTEGER PRIMARY KEY
+      * OperatorTypeId INTEGER NOT NULL REFERENCES res_OperatorTypes(Id) ON DELETE RESTRICT
+      * EmployeeId TEXT NULL UNIQUE
+      * Name TEXT NOT NULL
+      * IsActive INTEGER NOT NULL DEFAULT 1
+      * Notes TEXT NULL
+
+    2. Seed data (SeedOperatorsDataAsync)
+
+    OperatorTypes: Assembler, Machinist, Inspector, MaterialHandler, Supervisor
+
+    3. Models
+
+    * OperatorType.cs: Id, Name, HourlyRate (decimal?), Color (string?)
+    * Operator.cs: Id, OperatorTypeId, EmployeeId (string?), Name, IsActive, Notes
+      * OperatorTypeName (string?) - for display
+
+    4. Repository
+
+    * IOperatorRepository:
+      * Task<IReadOnlyList<Operator>> GetAllAsync()
+      * Task<Operator?> GetByIdAsync(int id)
+      * Task<IReadOnlyList<Operator>> GetByTypeAsync(int operatorTypeId)
+      * Task<int> CreateAsync(Operator op)
+      * Task UpdateAsync(Operator op)
+      * Task DeleteAsync(int id)
+
+    * IOperatorTypeRepository:
+      * Task<IReadOnlyList<OperatorType>> GetAllAsync()
+      * Task<OperatorType?> GetByIdAsync(int id)
+      * Task<int> CreateAsync(OperatorType type)
+
+    5. Tests in Tests/Repositories/OperatorRepositoryTests.cs
+
+    * CreateOperator_ValidData_ReturnsId
+      * Create operator.
+      * Assert Id > 0.
+
+    * CreateOperator_DuplicateEmployeeId_ThrowsException
+      * Create operator with EmployeeId "E001".
+      * Attempt second with same EmployeeId.
+      * Assert throws.
+
+    * CreateOperator_NullEmployeeId_AllowsMultiple
+      * Create two operators with EmployeeId = null.
+      * Assert both succeed (NULL is not duplicate).
+
+    * GetByType_ReturnsFiltered
+      * Create 2 Assemblers, 1 Machinist.
+      * Assert GetByTypeAsync(Assembler) returns 2.
+
+    * GetAll_IncludesOperatorTypeName
+      * Create operator.
+      * Assert GetAllAsync result has OperatorTypeName populated.
+
+    6. View
+
+    * OperatorsView.xaml (new main tab):
+      * Left: ListView grouped by OperatorType
+      * Right: Detail panel
+        * Name, EmployeeId, Type dropdown, Active checkbox, Notes
+      * Add/Delete buttons
+
+    Run dotnet test. All 82 tests should pass.
+
+
+=====prompt 21
+
+    Continuing Factory Configurator. =====prompt 20 complete, 82 tests passing.
+
+    Objective: Add skills and operator skill assignments. All tests must pass.
+
+    1. Database schema
+
+    Add to CreateOperatorsSchemaAsync:
+
+    * res_Skills
+      * Id INTEGER PRIMARY KEY
+      * Name TEXT NOT NULL UNIQUE
+      * Category TEXT NOT NULL
+      * Description TEXT NULL
+
+    * res_OperatorSkills
+      * Id INTEGER PRIMARY KEY
+      * OperatorId INTEGER NOT NULL REFERENCES res_Operators(Id) ON DELETE CASCADE
+      * SkillId INTEGER NOT NULL REFERENCES res_Skills(Id) ON DELETE CASCADE
+      * ProficiencyLevel INTEGER NOT NULL CHECK(ProficiencyLevel BETWEEN 1 AND 5)
+      * CertifiedDate TEXT NULL
+      * ExpirationDate TEXT NULL
+      * UNIQUE(OperatorId, SkillId)
+
+    2. Seed data (SeedSkillsDataAsync)
+
+    Skills with categories:
+    * Assembly (Operation)
+    * Machining (Operation)
+    * Inspection (Quality)
+    * ForkliftOperation (Equipment)
+    * CraneOperation (Equipment)
+    * SafetyCertified (Safety)
+
+    3. Models
+
+    * Skill.cs: Id, Name, Category, Description
+    * OperatorSkill.cs: Id, OperatorId, SkillId, ProficiencyLevel (1-5), CertifiedDate, ExpirationDate
+      * SkillName (string?) - for display
+
+    4. Repository additions
+
+    * ISkillRepository:
+      * Task<IReadOnlyList<Skill>> GetAllAsync()
+      * Task<Skill?> GetByIdAsync(int id)
+
+    * IOperatorRepository additions:
+      * Task<IReadOnlyList<OperatorSkill>> GetSkillsForOperatorAsync(int operatorId)
+      * Task AddSkillAsync(int operatorId, int skillId, int level, DateTime? certified, DateTime? expires)
+      * Task UpdateSkillLevelAsync(int operatorSkillId, int newLevel)
+      * Task RemoveSkillAsync(int operatorSkillId)
+      * Task<IReadOnlyList<Operator>> GetBySkillAsync(int skillId, int minLevel = 1)
+
+    5. Tests in Tests/Repositories/OperatorSkillRepositoryTests.cs
+
+    * AddSkill_CreatesRecord
+      * Add skill to operator.
+      * Assert GetSkillsForOperatorAsync includes skill.
+
+    * AddSkill_DuplicateSkill_ThrowsException
+      * Add Skill X to operator.
+      * Attempt to add Skill X again.
+      * Assert throws.
+
+    * UpdateSkillLevel_ChangesLevel
+      * Add skill with level 2.
+      * Update to level 4.
+      * Assert level is 4.
+
+    * GetBySkill_FiltersbyMinLevel
+      * Operator A has Skill X level 2.
+      * Operator B has Skill X level 4.
+      * Assert GetBySkillAsync(X, minLevel: 3) returns only B.
+
+    * RemoveSkill_DeletesRecord
+      * Add and remove skill.
+      * Assert GetSkillsForOperatorAsync no longer includes it.
+
+    * DeleteOperator_CascadesSkills
+      * Add skill to operator.
+      * Delete operator.
+      * Assert operator skill record gone.
+
+    6. Service
+
+    * ISkillService:
+      * Task<IReadOnlyList<OperatorSkill>> GetExpiringCertificationsAsync(int daysAhead)
+
+    * Test: GetExpiringCertifications_FindsWithinWindow
+      * Create skill expiring in 15 days.
+      * Create skill expiring in 45 days.
+      * Assert GetExpiringCertificationsAsync(30) returns only first.
+
+    7. View update
+
+    * Operator detail - new tab: Skills
+      * DataGrid: Skill | Level (1-5) | Certified | Expires
+      * Add Skill button (skill picker + level input)
+      * Remove button
+
+    Run dotnet test. All 89 tests should pass.
+
+
+=====prompt 22
+
+    Continuing Factory Configurator. =====prompt 21 complete, 89 tests passing.
+
+    Objective: Define required skills for workstations. All tests must pass.
+
+    1. Database schema
+
+    Add to CreateWorkstationsSchemaAsync:
+
+    * cfg_WorkstationSkills
+      * Id INTEGER PRIMARY KEY
+      * WorkstationId INTEGER NOT NULL REFERENCES cfg_Workstations(Id) ON DELETE CASCADE
+      * SkillId INTEGER NOT NULL REFERENCES res_Skills(Id) ON DELETE CASCADE
+      * MinProficiencyLevel INTEGER NOT NULL DEFAULT 1 CHECK(MinProficiencyLevel BETWEEN 1 AND 5)
+      * UNIQUE(WorkstationId, SkillId)
+
+    2. Model
+
+    * WorkstationSkill.cs: Id, WorkstationId, SkillId, MinProficiencyLevel
+      * SkillName (string?) - for display
+
+    3. Repository additions to IWorkstationRepository
+
+      * Task<IReadOnlyList<WorkstationSkill>> GetRequiredSkillsAsync(int workstationId)
+      * Task AddRequiredSkillAsync(int workstationId, int skillId, int minLevel)
+      * Task UpdateRequiredSkillAsync(int workstationSkillId, int newMinLevel)
+      * Task RemoveRequiredSkillAsync(int workstationSkillId)
+
+    4. Service additions to IWorkstationService
+
+      * Task<IReadOnlyList<Operator>> GetQualifiedOperatorsAsync(int workstationId)
+        * Returns operators who have ALL required skills at or above required levels.
+  
+      * Task<IReadOnlyList<SkillGap>> ValidateOperatorForWorkstationAsync(int operatorId, int workstationId)
+        * Returns list of missing skills or insufficient levels.
+        * SkillGap: SkillId, SkillName, RequiredLevel, ActualLevel (null if missing)
+
+    5. Tests in Tests/Services/WorkstationServiceTests.cs
+
+    * GetQualifiedOperators_AllSkillsMet_ReturnsOperator
+      * Workstation requires Skill A (level 2), Skill B (level 1).
+      * Operator has Skill A (level 3), Skill B (level 2).
+      * Assert operator returned.
+
+    * GetQualifiedOperators_MissingOneSkill_NotReturned
+      * Workstation requires Skill A, Skill B.
+      * Operator has only Skill A.
+      * Assert operator NOT returned.
+
+    * GetQualifiedOperators_LevelTooLow_NotReturned
+      * Workstation requires Skill A level 3.
+      * Operator has Skill A level 2.
+      * Assert operator NOT returned.
+
+    * GetQualifiedOperators_NoRequirements_ReturnsAllActive
+      * Workstation with no required skills.
+      * Assert returns all active operators.
+
+    * ValidateOperator_MissingSkill_ReturnsGap
+      * Workstation requires Skill A.
+      * Operator lacks Skill A.
+      * Assert gap returned with ActualLevel = null.
+
+    * ValidateOperator_LevelInsufficient_ReturnsGap
+      * Workstation requires Skill A level 4.
+      * Operator has level 2.
+      * Assert gap returned with RequiredLevel=4, ActualLevel=2.
+
+    * ValidateOperator_AllMet_ReturnsEmptyList
+      * Operator meets all requirements.
+      * Assert empty list returned.
+
+    6. View update
+
+    * Workstation detail - new tab: Required Skills
+      * DataGrid: Skill | Min Level
+      * Add/Remove buttons
+      * Info panel: "X operators qualified"
+
+    Run dotnet test. All 96 tests should pass.
+
+
+=====prompt 23
+
+    Continuing Factory Configurator. =====prompt 22 complete, 96 tests passing.
+
+    Objective: Implement transport equipment with parameters. All tests must pass.
+
+    1. Database schema
+
+    Add CreateTransportSchemaAsync method, call from CreateSchemaAsync:
+
+    * res_TransportTypes
+      * Id INTEGER PRIMARY KEY
+      * Name TEXT NOT NULL UNIQUE
+      * Category TEXT NOT NULL
+
+    * res_TransportEquipment
+      * Id INTEGER PRIMARY KEY
+      * TransportTypeId INTEGER NOT NULL REFERENCES res_TransportTypes(Id) ON DELETE RESTRICT
+      * AssetId TEXT NULL UNIQUE
+      * Name TEXT NOT NULL
+      * HomeElementId INTEGER NULL REFERENCES Elements(Id) ON DELETE SET NULL
+      * Status TEXT NOT NULL DEFAULT 'Available'
+      * IsActive INTEGER NOT NULL DEFAULT 1
+      * Notes TEXT NULL
+
+    * res_TransportParams
+      * Id INTEGER PRIMARY KEY
+      * TransportEquipmentId INTEGER NOT NULL UNIQUE REFERENCES res_TransportEquipment(Id) ON DELETE CASCADE
+      * SpeedMps REAL NULL
+      * LoadedSpeedMps REAL NULL
+      * CapacityKg REAL NULL
+      * LoadTimeSec REAL NULL
+      * UnloadTimeSec REAL NULL
+
+    2. Seed data (SeedTransportDataAsync)
+
+    TransportTypes with categories:
+    * Forklift (Forklift)
+    * AGV (AGV)
+    * OverheadCrane (Crane)
+    * PalletJack (Manual)
+
+    3. Enums
+
+    * TransportCategory: Forklift, AGV, Crane, Manual
+    * TransportStatus: Available, InUse, Charging, Maintenance, OutOfService
+
+    4. Models
+
+    * TransportType.cs: Id, Name, Category
+    * TransportEquipment.cs: Id, TransportTypeId, AssetId, Name, HomeElementId, Status, IsActive, Notes
+      * TransportTypeName, HomeElementName - for display
+    * TransportParams.cs: Id, TransportEquipmentId, SpeedMps, LoadedSpeedMps, CapacityKg, LoadTimeSec, UnloadTimeSec
+
+    5. Repository
+
+    * ITransportRepository:
+      * Task<IReadOnlyList<TransportEquipment>> GetAllAsync()
+      * Task<TransportEquipment?> GetByIdAsync(int id)
+      * Task<IReadOnlyList<TransportEquipment>> GetByCategoryAsync(TransportCategory category)
+      * Task<IReadOnlyList<TransportEquipment>> GetAvailableAsync()
+      * Task<int> CreateAsync(TransportEquipment equipment)
+      * Task UpdateAsync(TransportEquipment equipment)
+      * Task DeleteAsync(int id)
+      * Task<TransportParams?> GetParamsAsync(int equipmentId)
+      * Task SaveParamsAsync(TransportParams params)
+
+    6. Tests in Tests/Repositories/TransportRepositoryTests.cs
+
+    * CreateEquipment_ValidData_ReturnsId
+      * Create transport equipment.
+      * Assert Id > 0.
+
+    * CreateEquipment_DuplicateAssetId_ThrowsException
+      * Create with AssetId "FL-001".
+      * Attempt duplicate.
+      * Assert throws.
+
+    * GetByCategory_FiltersCorrectly
+      * Create 2 Forklifts, 1 AGV.
+      * Assert GetByCategoryAsync(Forklift) returns 2.
+
+    * GetAvailable_ExcludesInactiveAndNonAvailable
+      * Create: Active+Available, Active+InUse, Inactive+Available.
+      * Assert GetAvailableAsync returns only first.
+
+    * SaveParams_InsertsAndUpdates
+      * Save params, assert retrieved correctly.
+      * Update params, assert changes persisted.
+
+    * DeleteEquipment_CascadesParams
+      * Create equipment with params.
+      * Delete equipment.
+      * Assert params gone.
+
+    7. View
+
+    * TransportView.xaml (new main tab):
+      * Left: ListView grouped by TransportType
+      * Right: Detail panel
+        * General tab: Name, AssetId, Type, Status dropdown, Home location picker, Active
+        * Parameters tab: Speed, Loaded Speed, Capacity, Load Time, Unload Time
+      * Add/Delete buttons
+
+    Run dotnet test. All 102 tests should pass.
+
+
+
+    Continuing Factory Configurator. =====prompt 23 complete, 102 tests passing.
+
+    Objective: Implement routing configuration. All tests must pass.
+
+    1. Database schema
+
+    Add CreateRoutingsSchemaAsync method, call from CreateSchemaAsync:
+
+    * cfg_Routings
+      * Id INTEGER PRIMARY KEY
+      * ScenarioId INTEGER NOT NULL REFERENCES Scenarios(Id) ON DELETE CASCADE
+      * PartTypeId INTEGER NOT NULL REFERENCES part_Types(Id) ON DELETE CASCADE
+      * Name TEXT NULL
+      * IsActive INTEGER NOT NULL DEFAULT 1
+      * Notes TEXT NULL
+      * UNIQUE(ScenarioId, PartTypeId)
+
+    * cfg_RoutingSteps
+      * Id INTEGER PRIMARY KEY
+      * RoutingId INTEGER NOT NULL REFERENCES cfg_Routings(Id) ON DELETE CASCADE
+      * StepNumber INTEGER NOT NULL CHECK(StepNumber > 0)
+      * OperationType TEXT NOT NULL
+      * WorkstationId INTEGER NULL REFERENCES cfg_Workstations(Id) ON DELETE SET NULL
+      * Description TEXT NULL
+      * Notes TEXT NULL
+      * UNIQUE(RoutingId, StepNumber)
+
+    2. Enums
+
+    * OperationType: Load, Process, Assemble, Inspect, Package, Unload, Store, Manual
+
+    3. Models
+
+    * Routing.cs: Id, ScenarioId, PartTypeId, Name, IsActive, Notes
+      * Steps (List<RoutingStep>) - navigation
+      * PartNumber, PartName - for display
+
+    * RoutingStep.cs: Id, RoutingId, StepNumber, OperationType, WorkstationId, Description, Notes
+      * WorkstationName - for display
+
+    4. Repository
+
+    * IRoutingRepository:
+      * Task<Routing?> GetByPartTypeAsync(int scenarioId, int partTypeId)
+      * Task<Routing?> GetWithStepsAsync(int routingId)
+      * Task<int> CreateAsync(Routing routing)
+      * Task UpdateAsync(Routing routing)
+      * Task DeleteAsync(int routingId)
+      * Task<int> AddStepAsync(RoutingStep step)
+      * Task UpdateStepAsync(RoutingStep step)
+      * Task DeleteStepAsync(int stepId)
+      * Task<IReadOnlyList<RoutingStep>> GetStepsAsync(int routingId)
+
+    5. Tests in Tests/Repositories/RoutingRepositoryTests.cs
+
+    * CreateRouting_ValidData_ReturnsId
+      * Create routing.
+      * Assert Id > 0.
+
+    * CreateRouting_DuplicateScenarioPart_ThrowsException
+      * Create routing for (Scenario 1, Part 1).
+      * Attempt duplicate.
+      * Assert throws.
+
+    * GetWithSteps_ReturnsOrderedSteps
+      * Create routing with steps 1, 2, 3.
+      * Assert GetWithStepsAsync returns steps in order.
+
+    * AddStep_SetsStepNumber
+      * Add step to routing.
+      * Assert StepNumber assigned correctly.
+
+    * DeleteRouting_CascadesSteps
+      * Create routing with steps.
+      * Delete routing.
+      * Assert steps gone.
+
+    * DeleteScenario_CascadesRoutings
+      * Create routing in scenario.
+      * Delete scenario.
+      * Assert routing gone.
+
+    Run dotnet test. All 108 tests should pass.
+
+
+=====prompt 25
+
+    Continuing Factory Configurator. =====prompt 24 complete, 108 tests passing.
+
+    Objective: Implement step reordering and transport links. All tests must pass.
+
+    1. Database schema addition
+
+    Add to CreateRoutingsSchemaAsync:
+
+    * cfg_RoutingTransport
+      * Id INTEGER PRIMARY KEY
+      * FromStepId INTEGER NOT NULL REFERENCES cfg_RoutingSteps(Id) ON DELETE CASCADE
+      * ToStepId INTEGER NOT NULL REFERENCES cfg_RoutingSteps(Id) ON DELETE CASCADE
+      * TransportCategory TEXT NULL
+      * TransportTimeSec REAL NULL
+      * Notes TEXT NULL
+      * UNIQUE(FromStepId, ToStepId)
+
+    2. Model
+
+    * RoutingTransport.cs: Id, FromStepId, ToStepId, TransportCategory, TransportTimeSec, Notes
+
+    3. Service
+
+    * IRoutingService:
+      * Task AddStepAsync(int routingId, OperationType opType, int? workstationId, string? description)
+        * Appends step with next StepNumber.
+      * Task RemoveStepAsync(int stepId)
+        * Removes step and renumbers remaining.
+      * Task MoveStepAsync(int stepId, int newPosition)
+        * Moves step to new position, renumbers all.
+      * Task<decimal> GetTotalTimeAsync(int routingId, int scenarioId)
+        * Sums: process times for each step + transport times between steps.
+      * Task SetTransportAsync(int fromStepId, int toStepId, TransportCategory? category, decimal? timeSec)
+      * Task<Routing?> CloneRoutingAsync(int routingId, int targetScenarioId)
+
+    4. Tests in Tests/Services/RoutingServiceTests.cs
+
+    * AddStep_IncrementsStepNumber
+      * Add 3 steps.
+      * Assert StepNumbers are 1, 2, 3.
+
+    * RemoveStep_RenumbersRemaining
+      * Create steps 1, 2, 3.
+      * Remove step 2.
+      * Assert remaining steps are numbered 1, 2.
+
+    * MoveStep_FromEndToStart_RenumbersAll
+      * Steps: 1, 2, 3.
+      * Move step 3 to position 1.
+      * Assert order is: (was 3), (was 1), (was 2) numbered 1, 2, 3.
+
+    * MoveStep_FromStartToEnd_RenumbersAll
+      * Steps: 1, 2, 3.
+      * Move step 1 to position 3.
+      * Assert correct renumbering.
+
+    * GetTotalTime_SumsProcessAndTransport
+      * Routing with 3 steps at workstations with process times 10, 20, 30.
+      * Transport times between: 5, 5.
+      * Assert total = 10 + 5 + 20 + 5 + 30 = 70.
+
+    * GetTotalTime_MissingProcessTime_SkipsOrReturnsNull
+      * Step at workstation with no process time defined.
+      * Define expected behavior and test it.
+
+    * CloneRouting_CopiesStepsAndTransport
+      * Create routing with steps and transport links.
+      * Clone to new scenario.
+      * Assert new routing has same structure.
+
+    5. View
+
+    * RoutingView.xaml (new main tab):
+      * Part selector dropdown (shows parts with/without routings)
+      * Scenario indicator
+      * Steps list:
+        * ListBox or DataGrid with: Step # | Operation | Workstation | Transport to next
+        * Move Up / Move Down buttons
+        * Add Step / Remove Step buttons
+      * Step detail panel:
+        * OperationType dropdown
+        * Workstation picker
+        * Transport to next: Category dropdown, Time input
+      * Footer: Total routing time display
+
+    6. Manual verification
+
+    * Create routing with 5 steps
+    * Reorder via Move Up/Down
+    * Add transport links between steps
+    * Verify total time calculation
+    * Clone routing to child scenario
+
+    Run dotnet test. All 115 tests should pass.
